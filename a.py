@@ -1,6 +1,7 @@
 import discord
+import os
 
-TOKEN = 'MTIyNTE2MjUwNDM5NzY1MjA4MA.GUS3o_.mm1HUBkujEmVBZObMUK53jxngU82TBEjZ4_bfM'
+TOKEN = os.getenv('TOKEN')
 
 intents = discord.Intents.default()
 intents.messages = True
