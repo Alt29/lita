@@ -13,8 +13,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copier le reste des fichiers de l'application dans le conteneur
 COPY . .
 
-# Exposer le port sur lequel l'application écoute (si nécessaire)
-# EXPOSE 8080
+# Exposer le port sur lequel l'application écoute
+EXPOSE 8080
 
 # Commande à exécuter lors du démarrage du conteneur
 CMD ["python", "a.py"]
