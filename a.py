@@ -46,4 +46,4 @@ def create_embed(title = None, description = None, color = None, author_name = N
 
     return embed
 
-client.run(TOKEN)
+client.run(TOKEN, port=8080)
