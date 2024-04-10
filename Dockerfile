@@ -17,5 +17,4 @@ COPY . .
 EXPOSE 8080
 
 # Commande à exécuter lors du démarrage du conteneur
-CMD ["python", "a.py"]
-CMD ["python", "keep_alive.py"]
+CMD ["python", "start.py"]
