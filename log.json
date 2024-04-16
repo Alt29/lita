@@ -1,0 +1,34 @@
+{
+    "altan3062": {
+        "rank": 0,
+        "gold": 2989500,
+        "!daily": "2024-04-13 23:27:38.782052",
+        "bag": {
+            "Casquette": {
+                "quantity": 1,
+                "icon": ":billed_cap:",
+                "rank": 3
+            },
+            "Baskets": {
+                "quantity": 1,
+                "icon": ":athletic_shoe:",
+                "rank": 2
+            },
+            "Jean": {
+                "quantity": 1,
+                "icon": ":jeans:",
+                "rank": 2
+            },
+            "T-shirt": {
+                "quantity": 1,
+                "icon": ":shirt:",
+                "rank": 2
+            }
+        },
+        "stats": {
+            "pv": 2500,
+            "for": 25,
+            "def": 31
+        }
+    }
+}
