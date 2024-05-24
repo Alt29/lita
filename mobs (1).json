@@ -1,0 +1,529 @@
+{
+    "Slime": {
+        "name": "Slime",
+        "stats": {
+            "pv": 100,
+            "for": 1,
+            "def": 1
+        },
+        "loot": {
+            "gold": 50,
+            "xp": 100,
+            "special_0": {
+                "nom": "Gelée revigorante",
+                "description": "Augmente vos PV, +100 PV max",
+                "taux": 0.1
+            },
+            "special_1": {
+                "nom": "Essence de vie",
+                "description": "Augmente grandement vos PV, +2000 PV max",
+                "taux": 0.01
+            },
+            "special_2": {
+                "nom": "Cristal de régénération",
+                "description": "Augmente grandement votre régénération de PV",
+                "taux": 0.001
+            }
+        },
+        "image": "https://i.imgur.com/tLYX58K.jpeg",
+        "spawn_rate": 0.16,
+        "min_level": 1,
+        "max_level": 50
+    },
+    "Squelette": {
+        "name": "Squelette",
+        "stats": {
+            "pv": 300,
+            "for": 10,
+            "def": 7
+        },
+        "loot": {
+            "gold": 100,
+            "xp": 150,
+            "special_0": {
+                "nom": "Epée osseuse",
+                "description": "Epée scultée dans un os ancien, For+5",
+                "taux": 0.1
+            },
+            "special_1": {
+                "nom": "Exo-squelette",
+                "description": "Un exo-squetelle qui se greffe à votre armure, Def+10",
+                "taux": 0.01
+            },
+            "special_2": {
+                "nom": "Crâne maudit",
+                "description": "Annule la première attaque que vous devez subir",
+                "taux": 0.001
+            }
+        },
+        "image": "https://i.imgur.com/Ckt7V81.jpeg",
+        "spawn_rate": 0.32,
+        "min_level": 1,
+        "max_level": 50
+    },
+    "Meute_de_loups": {
+        "name": "Meute de loups",
+        "stats": {
+            "pv": 400,
+            "for": 16,
+            "def": 4
+        },
+        "loot": {
+            "gold": 100,
+            "xp": 150,
+            "special_0": {
+                "nom": "Epée osseuse",
+                "description": "Epée scultée dans un os ancien, For+5",
+                "taux": 0.1
+            },
+            "special_1": {
+                "nom": "Exo-squelette",
+                "description": "Un exo-squetelle qui se greffe à votre armure, Def+10",
+                "taux": 0.01
+            },
+            "special_2": {
+                "nom": "Crâne maudit",
+                "description": "Annule la première attaque que vous devez subir",
+                "taux": 0.001
+            }
+        },
+        "image": "https://i.imgur.com/esNGY0j.jpeg",
+        "spawn_rate": 0.48,
+        "min_level": 1,
+        "max_level": 50
+    },
+    "Gobelin": {
+        "name": "Gobelin",
+        "stats": {
+            "pv": 500,
+            "for": 5,
+            "def": 15
+        },
+        "loot": {
+            "gold": 100,
+            "xp": 150,
+            "special_0": {
+                "nom": "Epée osseuse",
+                "description": "Epée scultée dans un os ancien, For+5",
+                "taux": 0.1
+            },
+            "special_1": {
+                "nom": "Exo-squelette",
+                "description": "Un exo-squetelle qui se greffe à votre armure, Def+10",
+                "taux": 0.01
+            },
+            "special_2": {
+                "nom": "Crâne maudit",
+                "description": "Annule la première attaque que vous devez subir",
+                "taux": 0.001
+            }
+        },
+        "image": "https://i.imgur.com/bLXiOQs.jpeg",
+        "spawn_rate": 0.64,
+        "min_level": 1,
+        "max_level": 50
+    },
+    "Grand_gobelin": {
+        "name": "Grand gobelin",
+        "stats": {
+            "pv": 500,
+            "for": 10,
+            "def": 15
+        },
+        "loot": {
+            "gold": 100,
+            "xp": 150,
+            "special_0": {
+                "nom": "Epée osseuse",
+                "description": "Epée scultée dans un os ancien, For+5",
+                "taux": 0.1
+            },
+            "special_1": {
+                "nom": "Exo-squelette",
+                "description": "Un exo-squetelle qui se greffe à votre armure, Def+10",
+                "taux": 0.01
+            },
+            "special_2": {
+                "nom": "Crâne maudit",
+                "description": "Annule la première attaque que vous devez subir",
+                "taux": 0.001
+            }
+        },
+        "image": "https://i.imgur.com/6G7k698.jpeg",
+        "spawn_rate": 0.72,
+        "min_level": 50,
+        "max_level": 100
+    },
+    "Roi_des_slimes": {
+        "name": "Roi des slimes",
+        "stats": {
+            "pv": 1000,
+            "for": 10,
+            "def": 10
+        },
+        "loot": {
+            "gold": 100,
+            "xp": 150,
+            "special_0": {
+                "nom": "Epée osseuse",
+                "description": "Epée scultée dans un os ancien, For+5",
+                "taux": 0.1
+            },
+            "special_1": {
+                "nom": "Exo-squelette",
+                "description": "Un exo-squetelle qui se greffe à votre armure, Def+10",
+                "taux": 0.01
+            },
+            "special_2": {
+                "nom": "Crâne maudit",
+                "description": "Annule la première attaque que vous devez subir",
+                "taux": 0.001
+            }
+        },
+        "image": "https://i.imgur.com/hokqDoB.jpeg",
+        "spawn_rate": 0.768,
+        "min_level": 100,
+        "max_level": 200
+    },
+    "Demon_intermediaire": {
+        "name": "Démon intermédiaire",
+        "stats": {
+            "pv": 500,
+            "for": 30,
+            "def": 10
+        },
+        "loot": {
+            "gold": 100,
+            "xp": 150,
+            "special_0": {
+                "nom": "Epée osseuse",
+                "description": "Epée scultée dans un os ancien, For+5",
+                "taux": 0.1
+            },
+            "special_1": {
+                "nom": "Exo-squelette",
+                "description": "Un exo-squetelle qui se greffe à votre armure, Def+10",
+                "taux": 0.01
+            },
+            "special_2": {
+                "nom": "Crâne maudit",
+                "description": "Annule la première attaque que vous devez subir",
+                "taux": 0.001
+            }
+        },
+        "image": "https://i.imgur.com/TwKBVxH.jpeg",
+        "spawn_rate": 0.8,
+        "min_level": 200,
+        "max_level": 300
+    },
+    "Bebe_dragon": {
+        "name": "Bébé dragon",
+        "stats": {
+            "pv": 800,
+            "for": 15,
+            "def": 20
+        },
+        "loot": {
+            "gold": 100,
+            "xp": 150,
+            "special_0": {
+                "nom": "Epée osseuse",
+                "description": "Epée scultée dans un os ancien, For+5",
+                "taux": 0.1
+            },
+            "special_1": {
+                "nom": "Exo-squelette",
+                "description": "Un exo-squetelle qui se greffe à votre armure, Def+10",
+                "taux": 0.01
+            },
+            "special_2": {
+                "nom": "Crâne maudit",
+                "description": "Annule la première attaque que vous devez subir",
+                "taux": 0.001
+            }
+        },
+        "image": "https://i.imgur.com/ht0JGST.jpeg",
+        "spawn_rate": 0.832,
+        "min_level": 200,
+        "max_level": 300
+    },
+    "Serpent_geant": {
+        "name": "Serpent géant",
+        "stats": {
+            "pv": 500,
+            "for": 18,
+            "def": 20
+        },
+        "loot": {
+            "gold": 100,
+            "xp": 150,
+            "special_0": {
+                "nom": "Epée osseuse",
+                "description": "Epée scultée dans un os ancien, For+5",
+                "taux": 0.1
+            },
+            "special_1": {
+                "nom": "Exo-squelette",
+                "description": "Un exo-squetelle qui se greffe à votre armure, Def+10",
+                "taux": 0.01
+            },
+            "special_2": {
+                "nom": "Crâne maudit",
+                "description": "Annule la première attaque que vous devez subir",
+                "taux": 0.001
+            }
+        },
+        "image": "https://i.imgur.com/FWu1jW3.jpeg",
+        "spawn_rate": 0.864,
+        "min_level": 200,
+        "max_level": 300
+    },
+    "Troll_des_neiges": {
+        "name": "Troll des neiges",
+        "stats": {
+            "pv": 600,
+            "for": 22,
+            "def": 20
+        },
+        "loot": {
+            "gold": 100,
+            "xp": 150,
+            "special_0": {
+                "nom": "Epée osseuse",
+                "description": "Epée scultée dans un os ancien, For+5",
+                "taux": 0.1
+            },
+            "special_1": {
+                "nom": "Exo-squelette",
+                "description": "Un exo-squetelle qui se greffe à votre armure, Def+10",
+                "taux": 0.01
+            },
+            "special_2": {
+                "nom": "Crâne maudit",
+                "description": "Annule la première attaque que vous devez subir",
+                "taux": 0.001
+            }
+        },
+        "image": "https://i.imgur.com/pDBNZzB.jpeg",
+        "spawn_rate": 0.896,
+        "min_level": 200,
+        "max_level": 300
+    },
+    "Tresor": {
+        "name": "Trésor",
+        "stats": {
+            "pv": 300,
+            "for": 10,
+            "def": 7
+        },
+        "loot": {
+            "gold": 100,
+            "xp": 150,
+            "special_0": {
+                "nom": "Epée osseuse",
+                "description": "Epée scultée dans un os ancien, For+5",
+                "taux": 0.1
+            },
+            "special_1": {
+                "nom": "Exo-squelette",
+                "description": "Un exo-squetelle qui se greffe à votre armure, Def+10",
+                "taux": 0.01
+            },
+            "special_2": {
+                "nom": "Crâne maudit",
+                "description": "Annule la première attaque que vous devez subir",
+                "taux": 0.001
+            }
+        },
+        "image": "https://i.imgur.com/OcjMGWV.jpeg",
+        "spawn_rate": 0.912,
+        "min_level": 0,
+        "max_level": 0
+    },
+    "Goldy": {
+        "name": "Goldy",
+        "stats": {
+            "pv": 10,
+            "for": 10,
+            "def": 50
+        },
+        "loot": {
+            "gold": 100,
+            "xp": 150,
+            "special_0": {
+                "nom": "Epée osseuse",
+                "description": "Epée scultée dans un os ancien, For+5",
+                "taux": 0.1
+            },
+            "special_1": {
+                "nom": "Exo-squelette",
+                "description": "Un exo-squetelle qui se greffe à votre armure, Def+10",
+                "taux": 0.01
+            },
+            "special_2": {
+                "nom": "Crâne maudit",
+                "description": "Annule la première attaque que vous devez subir",
+                "taux": 0.001
+            }
+        },
+        "image": "https://i.imgur.com/I0jligj.jpeg",
+        "spawn_rate": 0.928,
+        "min_level": 300,
+        "max_level": 500
+    },
+    "Arthur": {
+        "name": "Arthur",
+        "stats": {
+            "pv": 300,
+            "for": 10,
+            "def": 7
+        },
+        "loot": {
+            "gold": 100,
+            "xp": 150,
+            "special_0": {
+                "nom": "Epée osseuse",
+                "description": "Epée scultée dans un os ancien, For+5",
+                "taux": 0.1
+            },
+            "special_1": {
+                "nom": "Exo-squelette",
+                "description": "Un exo-squetelle qui se greffe à votre armure, Def+10",
+                "taux": 0.01
+            },
+            "special_2": {
+                "nom": "Crâne maudit",
+                "description": "Annule la première attaque que vous devez subir",
+                "taux": 0.001
+            }
+        },
+        "image": "https://i.imgur.com/8eTUsRr.jpeg",
+        "spawn_rate": 0.944,
+        "min_level": 300,
+        "max_level": 500
+    },
+    "Dragone_de_glace": {
+        "name": "Dragone de glace",
+        "stats": {
+            "pv": 300,
+            "for": 10,
+            "def": 7
+        },
+        "loot": {
+            "gold": 100,
+            "xp": 150,
+            "special_0": {
+                "nom": "Epée osseuse",
+                "description": "Epée scultée dans un os ancien, For+5",
+                "taux": 0.1
+            },
+            "special_1": {
+                "nom": "Exo-squelette",
+                "description": "Un exo-squetelle qui se greffe à votre armure, Def+10",
+                "taux": 0.01
+            },
+            "special_2": {
+                "nom": "Crâne maudit",
+                "description": "Annule la première attaque que vous devez subir",
+                "taux": 0.001
+            }
+        },
+        "image": "https://i.imgur.com/vjSsklY.jpeg",
+        "spawn_rate": 0.952,
+        "min_level": 500,
+        "max_level": 900
+    },
+    "Dragon_de_feu": {
+        "name": "Dragon de feu",
+        "stats": {
+            "pv": 300,
+            "for": 10,
+            "def": 7
+        },
+        "loot": {
+            "gold": 100,
+            "xp": 150,
+            "special_0": {
+                "nom": "Epée osseuse",
+                "description": "Epée scultée dans un os ancien, For+5",
+                "taux": 0.1
+            },
+            "special_1": {
+                "nom": "Exo-squelette",
+                "description": "Un exo-squetelle qui se greffe à votre armure, Def+10",
+                "taux": 0.01
+            },
+            "special_2": {
+                "nom": "Crâne maudit",
+                "description": "Annule la première attaque que vous devez subir",
+                "taux": 0.001
+            }
+        },
+        "image": "https://i.imgur.com/udGJJ6U.jpeg",
+        "spawn_rate": 0.96,
+        "min_level": 500,
+        "max_level": 900
+    },
+    "Petite_fille": {
+        "name": "Petite fille",
+        "stats": {
+            "pv": 300,
+            "for": 10,
+            "def": 7
+        },
+        "loot": {
+            "gold": 100,
+            "xp": 150,
+            "special_0": {
+                "nom": "Epée osseuse",
+                "description": "Epée scultée dans un os ancien, For+5",
+                "taux": 0.1
+            },
+            "special_1": {
+                "nom": "Exo-squelette",
+                "description": "Un exo-squetelle qui se greffe à votre armure, Def+10",
+                "taux": 0.01
+            },
+            "special_2": {
+                "nom": "Crâne maudit",
+                "description": "Annule la première attaque que vous devez subir",
+                "taux": 0.001
+            }
+        },
+        "image": "https://i.imgur.com/OcjMGWV.jpeg",
+        "spawn_rate": 0.9984,
+        "min_level": 0,
+        "max_level": 0
+    },
+    "Devoreur_d_ames": {
+        "name": "Dévoreur d'âmes",
+        "stats": {
+            "pv": 300,
+            "for": 10,
+            "def": 7
+        },
+        "loot": {
+            "gold": 100,
+            "xp": 150,
+            "special_0": {
+                "nom": "Epée osseuse",
+                "description": "Epée scultée dans un os ancien, For+5",
+                "taux": 0.1
+            },
+            "special_1": {
+                "nom": "Exo-squelette",
+                "description": "Un exo-squetelle qui se greffe à votre armure, Def+10",
+                "taux": 0.01
+            },
+            "special_2": {
+                "nom": "Crâne maudit",
+                "description": "Annule la première attaque que vous devez subir",
+                "taux": 0.001
+            }
+        },
+        "image": "https://i.imgur.com/OcjMGWV.jpeg",
+        "spawn_rate": 1,
+        "min_level": 1000,
+        "max_level": 1000
+    }
+}

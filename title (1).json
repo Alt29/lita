@@ -1,0 +1,28 @@
+{
+    "slime": {
+        "titre_0": {
+            "requis": 1,
+            "nom": "Premier slime",
+            "stats": {
+                "degats_infliges": 1.1,
+                "degats_subits": 0.9
+            }
+        },
+        "titre_1": {
+            "requis": 10,
+            "nom": "Tueur de slimes",
+            "stats": {
+                "degats_infliges": 1.3,
+                "degats_subits": 0.70
+            }
+        },
+        "titre_2": {
+            "requis": 100,
+            "nom": "Exterminateur de slimes",
+            "stats": {
+                "degats_infliges": 2,
+                "degats_subits": 0.2
+            }
+        }
+    }
+}
