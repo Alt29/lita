@@ -2,9 +2,12 @@ from pickle import FALSE
 import discord
 import json
 from datetime import datetime, timedelta
+import asyncio
 import os
+import random
 
 TOKEN = os.getenv('TOKEN')
+CHANNEL_ID = int(os.getenv('CHANNEL_ID'))
 
 intents = discord.Intents.default()
 intents.messages = True
@@ -26,11 +29,92 @@ try:
 except FileNotFoundError:
     items = {}
 
+try:
+    with open("mobs.json", "r") as file:
+        mobs = json.load(file)
+except FileNotFoundError:
+    mobs = {}
 
 @client.event
 async def on_ready():
     print("Bot is ready.")
+    client.loop.create_task(hourly_mob())
 
+class BattleView(discord.ui.View):
+    def __init__(self, timeout=300):
+        super().__init__(timeout=timeout)
+        self.responded = False
+
+    @discord.ui.button(label="Combattre", style=discord.ButtonStyle.green, custom_id="button_yes")
+    async def yes_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await self.handle_response(interaction, "Vous partez affronter le monstre")
+
+    @discord.ui.button(label="Demander de l'aide", style=discord.ButtonStyle.red, custom_id="button_no")
+    async def no_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await self.handle_response(interaction, "@altan")
+
+
+    async def handle_response(self, interaction: discord.Interaction, message: str):
+        print(interaction)
+        if not self.responded:
+            self.responded = True
+            for child in self.children:
+                child.disabled = True
+            await interaction.response.send_message(message, ephemeral=True)
+            await interaction.message.edit(view=self)
+
+# Fonction asynchrone pour envoyer un message à chaque heure pile
+async def hourly_mob():
+    await client.wait_until_ready()  # Attendre que le client soit prêt
+    channel = client.get_channel(CHANNEL_ID)  # Obtenir le canal par son ID
+    if channel is None:
+        return
+
+    while not client.is_closed():  # Boucle pour vérifier si le client est toujours ouvert
+        now = datetime.now()  # Obtenir l'heure actuelle
+        # Calculer le temps restant jusqu'à la prochaine heure pile
+        next_hour = (now + timedelta(seconds=3)).replace(microsecond=0)
+        wait_time = (next_hour - now).total_seconds()  # Temps à attendre en secondes
+
+        await asyncio.sleep(wait_time)  # Attendre jusqu'à la prochaine heure pile
+
+        
+    # Générateur de monstre via LVL STATS Récompenses Loot Bouton Combattre Durée Partage récompenses compteur de kill = titre = stats bonus / retire des pv et en cas de defaite repos 3h pv 0 to 100% / regen pv stat regen / 10min max pv max / stats de degat crit chance crit precision esquive degat brut saignement
+        random_number = random.randint(1, 100)
+        for mob in mobs:
+            spawn_rate = round(random.random(), 4)
+            if(spawn_rate <= mobs[mob]['spawn_rate']):
+                lvl = random.randint(mobs[mob]['min_level'], mobs[mob]['max_level'])
+                title = mobs[mob]['name'] + ' LVL ' + str(lvl)
+                tabFields = {'PV : ' + str(lvl * mobs[mob]['stats']['pv']) + ' :hearts:     For : ' + str(lvl * mobs[mob]['stats']['for']) + ' :crossed_swords:     Def : ' + str(lvl * mobs[mob]['stats']['def']) + ' :shield:' : '', 'Combattez ce monstre !' : ''}
+                image = mobs[mob]['image']
+
+                if(lvl <= 0):
+                    color = discord.Color.blue()
+                else:
+                    if(lvl <= 20):
+                        color = discord.Color.green()
+                    else:
+                        if(lvl <= 50):
+                            color = discord.Color.green()
+                        else:
+                            if(lvl <= 200):
+                                color = discord.Color.yellow()
+                            else:
+                                if(lvl <= 300):
+                                    color = discord.Color.orange()
+                                else:
+                                    if(lvl <= 500):
+                                        color = discord.Color.red()
+                                    else:
+                                        if(lvl <= 1000):
+                                            color = discord.Color.white()
+                
+                embed = create_embed(title=title, color=color, image=image, tabFields=tabFields)
+                break;
+
+        view = BattleView(timeout=300)
+        await channel.send(embed=embed, view=view)
 
 @client.event
 async def on_message(message):
@@ -40,7 +124,7 @@ async def on_message(message):
 
     if message.content.startswith("!"):
         if message.author.name not in log_data:
-            log_data[message.author.name] = {"rank": 0, "gold": 0, "!daily": "2024-01-01 11:11:11.111111", "bag": {}, "stats": {"pv": 1000, "for": 10, "def": 10}}
+            log_data[message.author.name] = {"rank": 0, "gold": 0, "!daily": "2024-01-01 11:11:11.111111", "bag": {}, "stats": {"pv": 1000, "for": 10, "def": 10}, "mobs_kill": {"slime": 0, "squelette": 0, "loup": 0, "gobelin": 0, "troll": 0, "serpent":0, "dragon": 0, "demon": 0, "boss": 0}, "title": {}}
             updated = True
 
     if message.content.startswith("!info"):
@@ -261,9 +345,22 @@ def me_action(author_name, author_icon, global_name, type):
                 if res != {}:
                     for item in res:
                         if 'rank' in log_data[author_name][type][item] and log_data[author_name][type][item]['rank'] > 0:
-                            bag += log_data[author_name][type][item]['icon'] + rank[log_data[author_name][type][item]['rank']] + ' ' + item + ' • ' + str(log_data[author_name][type][item]['quantity']) + '\n'
+                            if item == 'Casquette':
+                                casquette = log_data[author_name][type][item]['icon'] + rank[log_data[author_name][type][item]['rank']] + ' ' + item + ' • ' + str(log_data[author_name][type][item]['quantity']) + '\n';
+                            else:
+                                if item == 'T-shirt':
+                                    tshirt = log_data[author_name][type][item]['icon'] + rank[log_data[author_name][type][item]['rank']] + ' ' + item + ' • ' + str(log_data[author_name][type][item]['quantity']) + '\n';
+                                else:
+                                    if item == 'Jean':
+                                        jean = log_data[author_name][type][item]['icon'] + rank[log_data[author_name][type][item]['rank']] + ' ' + item + ' • ' + str(log_data[author_name][type][item]['quantity']) + '\n';
+                                    else:
+                                        if item == 'Baskets':
+                                            baskets = log_data[author_name][type][item]['icon'] + rank[log_data[author_name][type][item]['rank']] + ' ' + item + ' • ' + str(log_data[author_name][type][item]['quantity']) + '\n';
+                                        else:  
+                                            bag += log_data[author_name][type][item]['icon'] + rank[log_data[author_name][type][item]['rank']] + ' ' + item + ' • ' + str(log_data[author_name][type][item]['quantity']) + '\n'
                         else:
                             bag += log_data[author_name][type][item]['icon'] + ' ' + item + ' • ' + str(log_data[author_name][type][item]['quantity']) + '\n'
+                    bag = casquette + tshirt + jean + baskets + bag
                 else:
                     bag = 'Rien'
                 tabFields = {'Vous avez :' : bag}
