@@ -1,0 +1,149 @@
+{
+    "Casquette": {
+        "price": 500,
+        "stats": {
+            "def": 1
+        },
+        "icon": ":billed_cap:",
+        "unique": true,
+        "rank": 0
+    },
+    "T-shirt": {
+        "price": 1000,
+        "stats": {
+            "def": 2
+        },
+        "icon": ":shirt:",
+        "unique": true,
+        "rank": 0
+    },
+    "Jean": {
+        "price": 1000,
+        "stats": {
+            "def": 2
+        },
+        "icon": ":jeans:",
+        "unique": true,
+        "rank": 0
+    },
+    "Baskets": {
+        "price": 500,
+        "stats": {
+            "def": 1
+        },
+        "icon": ":athletic_shoe:",
+        "unique": true,
+        "rank": 0
+    },
+    "Dague": {
+        "price": 1500,
+        "stats": {
+            "for": 3
+        },
+        "icon": ":dagger:",
+        "unique": true,
+        "rank": 0
+    },
+    "Étherium": {
+        "price": 360000,
+        "stats": {
+            "def": 350,
+            "for": 50,
+            "pv": 35000
+        },
+        "icon": ":regional_indicator_s:",
+        "requirements": 6
+    },
+    "Adamantium": {
+        "price": 120000,
+        "stats": {
+            "def": 120,
+            "for": 30,
+            "pv": 12000
+        },
+        "icon": ":regional_indicator_a:",
+        "requirements": 5
+    },
+    "Orichalque": {
+        "price": 40000,
+        "stats": {
+            "def": 35,
+            "for": 20,
+            "pv": 3500
+        },
+        "icon": ":regional_indicator_b:",
+        "requirements": 4
+    },
+    "Mithril": {
+        "price": 13000,
+        "stats": {
+            "def": 16,
+            "for": 4,
+            "pv": 1000
+        },
+        "icon": ":regional_indicator_c:",
+        "requirements": 3
+    },
+    "Argent": {
+        "price": 4500,
+        "stats": {
+            "def": 4,
+            "for": 2,
+            "pv": 300
+        },
+        "icon": ":regional_indicator_d:",
+        "requirements": 2
+    },
+    "Fer": {
+        "price": 1500,
+        "stats": {
+            "def": 3,
+            "for": 1,
+            "pv": 200
+        },
+        "icon": ":regional_indicator_e:",
+        "requirements": 1
+    },
+    "Cuir": {
+        "price": 500,
+        "stats": {
+            "def": 2,
+            "pv": 100
+        },
+        "icon": ":regional_indicator_f:",
+        "requirements": 0
+    },
+    "Feu": {
+        "price": 5000,
+        "stats": {
+            "for": 1
+        },
+        "icon": ":fire:"
+    },
+    "Terre": {
+        "price": 5000,
+        "stats": {
+            "def": 1
+        },
+        "icon": ":seedling:"
+    },
+    "Eau": {
+        "price": 5000,
+        "stats": {
+            "pv": 100
+        },
+        "icon": ":droplet:"
+    },
+    "Legendaire": {
+        "price": 500000,
+        "icon": ":Legendaire:"
+    },
+    "Epique": {
+        "price": 50000,
+        "icon": ":Epique:"
+    },
+    "Rare": {
+        "price": 5000,
+        "icon": ":Rare:"
+    }
+}
