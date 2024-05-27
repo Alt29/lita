@@ -3,14 +3,14 @@
         "id": 701782195844546662,
         "avenger": true,
         "rank": 0,
-        "gold": 584,
+        "gold": 3653,
         "!daily": "2024-05-26 21:27:23.717945",
-        "!explore": "2024-05-27 08:50:10.069596",
+        "!explore": "2024-05-27 17:14:04.591326",
         "bag": {
             "Casquette": {
                 "quantity": 1,
                 "icon": ":billed_cap:",
-                "rank": 1
+                "rank": 2
             },
             "Baskets": {
                 "quantity": 1,
@@ -25,7 +25,7 @@
             "Tshirt": {
                 "quantity": 1,
                 "icon": ":shirt:",
-                "rank": 1
+                "rank": 2
             },
             "Jean": {
                 "quantity": 1,
@@ -34,13 +34,13 @@
             }
         },
         "level": {
-            "lvl": 7,
-            "xp": 231
+            "lvl": 10,
+            "xp": 2764
         },
         "stats": {
-            "pv": 1513,
-            "for": 20,
-            "def": 33
+            "pv": 1919,
+            "for": 25,
+            "def": 42
         },
         "deaths": 0,
         "penality": 0,
@@ -61,9 +61,9 @@
         "id": 503247209165357066,
         "avenger": false,
         "rank": 0,
-        "gold": 380,
+        "gold": 777,
         "!daily": "2024-05-26 21:29:05.756114",
-        "!explore": "2024-05-26 22:42:37.846368",
+        "!explore": "2024-05-27 11:40:24.168271",
         "bag": {
             "Casquette": {
                 "quantity": 1,
@@ -93,7 +93,7 @@
         },
         "level": {
             "lvl": 5,
-            "xp": 337
+            "xp": 874
         },
         "stats": {
             "pv": 1209,
@@ -151,9 +151,9 @@
         "id": 752965970666061864,
         "avenger": true,
         "rank": 0,
-        "gold": 432,
+        "gold": 657,
         "!daily": "2024-05-27 00:23:54.321419",
-        "!explore": "2024-05-27 00:23:56.726505",
+        "!explore": "2024-05-27 17:13:25.684699",
         "bag": {
             "Casquette": {
                 "quantity": 1,
@@ -164,16 +164,31 @@
                 "quantity": 1,
                 "icon": ":dagger:",
                 "rank": 0
+            },
+            "Jean": {
+                "quantity": 1,
+                "icon": ":jeans:",
+                "rank": 0
+            },
+            "Tshirt": {
+                "quantity": 1,
+                "icon": ":shirt:",
+                "rank": 0
+            },
+            "Baskets": {
+                "quantity": 1,
+                "icon": ":athletic_shoe:",
+                "rank": 0
             }
         },
         "level": {
-            "lvl": 2,
-            "xp": 285
+            "lvl": 7,
+            "xp": 203
         },
         "stats": {
-            "pv": 1003,
-            "for": 15,
-            "def": 13
+            "pv": 1013,
+            "for": 20,
+            "def": 23
         },
         "deaths": 0,
         "penality": 0,
@@ -226,34 +241,39 @@
         "id": 326718702370291712,
         "avenger": true,
         "rank": 0,
-        "gold": 0,
+        "gold": 919,
         "!daily": "2024-05-26 23:46:21.154265",
-        "!explore": "2024-05-27 06:43:54.326572",
+        "!explore": "2024-05-27 17:17:06.177222",
         "bag": {
             "Baskets": {
                 "quantity": 1,
                 "icon": ":athletic_shoe:",
-                "rank": 0
+                "rank": 1
             },
             "Dague": {
                 "quantity": 1,
                 "icon": ":dagger:",
-                "rank": 0
+                "rank": 1
             },
             "Tshirt": {
                 "quantity": 1,
                 "icon": ":shirt:",
-                "rank": 1
+                "rank": 2
+            },
+            "Casquette": {
+                "quantity": 1,
+                "icon": ":billed_cap:",
+                "rank": 0
             }
         },
         "level": {
-            "lvl": 2,
-            "xp": 639
+            "lvl": 8,
+            "xp": 269
         },
         "stats": {
-            "pv": 1103,
-            "for": 15,
-            "def": 17
+            "pv": 1515,
+            "for": 22,
+            "def": 31
         },
         "deaths": 0,
         "penality": 0,
@@ -306,9 +326,9 @@
         "id": 518397017072992257,
         "avenger": true,
         "rank": 0,
-        "gold": 796,
-        "!daily": "2024-05-25 23:11:09.414408",
-        "!explore": "2024-05-27 00:00:18.516327",
+        "gold": 1043,
+        "!daily": "2024-05-27 11:41:21.179946",
+        "!explore": "2024-05-27 15:25:44.851761",
         "bag": {
             "Baskets": {
                 "quantity": 1,
@@ -319,16 +339,21 @@
                 "quantity": 1,
                 "icon": ":jeans:",
                 "rank": 0
+            },
+            "Dague": {
+                "quantity": 1,
+                "icon": ":dagger:",
+                "rank": 0
             }
         },
         "level": {
-            "lvl": 2,
-            "xp": 616
+            "lvl": 5,
+            "xp": 33
         },
         "stats": {
-            "pv": 1103,
-            "for": 12,
-            "def": 17
+            "pv": 1109,
+            "for": 18,
+            "def": 20
         },
         "deaths": 0,
         "penality": 0,
@@ -393,6 +418,44 @@
             "pv": 1000,
             "for": 10,
             "def": 10
+        },
+        "deaths": 0,
+        "penality": 0,
+        "mobs_kill": {
+            "Slime": 0,
+            "Squelette": 0,
+            "Loup": 0,
+            "Gobelin": 0,
+            "Troll": 0,
+            "Serpent": 0,
+            "Dragon": 0,
+            "Demon": 0,
+            "Devoreur": 0
+        },
+        "title": {}
+    },
+    "akastukye": {
+        "id": 619654294160932896,
+        "avenger": true,
+        "rank": 0,
+        "gold": 232,
+        "!daily": "2024-05-27 14:20:08.407828",
+        "!explore": "2024-05-27 17:16:45.493892",
+        "bag": {
+            "Casquette": {
+                "quantity": 1,
+                "icon": ":billed_cap:",
+                "rank": 0
+            }
+        },
+        "level": {
+            "lvl": 0,
+            "xp": 166
+        },
+        "stats": {
+            "pv": 1000,
+            "for": 10,
+            "def": 11
         },
         "deaths": 0,
         "penality": 0,

@@ -38,8 +38,8 @@
             "def": 10
         },
         "loot": {
-            "gold": 175,
-            "xp": 175,
+            "gold": 75,
+            "xp": 225,
             "special_0": {
                 "nom": "Epée osseuse",
                 "description": "Epée scultée dans un os ancien, For+3",
@@ -70,7 +70,7 @@
         },
         "loot": {
             "gold": 50,
-            "xp": 300,
+            "xp": 250,
             "special_0": {
                 "nom": "Peau de loup",
                 "description": "Matériau de défense léger, Def+3",
@@ -100,8 +100,8 @@
             "def": 15
         },
         "loot": {
-            "gold": 300,
-            "xp": 50,
+            "gold": 100,
+            "xp": 200,
             "special_0": {
                 "nom": "Pièces d'or'",
                 "description": "Le butin d'un gobelin, Gold+500",
