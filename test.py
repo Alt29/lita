@@ -720,13 +720,6 @@ def combat(mob_name, mob_lvl, total_pv, total_for, total_def):
     mob_for = mob_lvl * mobs[mob_name]['stats']['for']
     mob_def = mob_lvl * mobs[mob_name]['stats']['def']
 
-    # while mob_pv > 0 and total_pv > 0:
-    #     mob_pv = mob_pv - max((total_for-mob_def), 10)
-    #     if(mob_pv <= 0):
-    #         return True
-    #     total_pv = total_pv - max((mob_for-total_def), 10)
-    #     if(total_pv <= 0):
-    #         return False
     if (mob_pv // (total_for * (1 - (mob_def / (100 + mob_def))))) > (total_pv / (mob_for * (1 - (total_def / (100 + total_def))))):
         return False
     return True
