@@ -734,10 +734,11 @@ def combat(mob_name, mob_lvl, total_pv, total_for, total_def):
 def notif_action(author_name):
     chad = ""
     if log_data[author_name]['avenger']:
-        title = "Vous faites déjà parti de la liste des chads"
+        log_data[author_name]['avenger'] = False
+        title = "Vous ne serez plus notifié lorsqu'une personne demande de l'aide"
     else:
         log_data[author_name]['avenger'] = True
-        title = "Vous aller desormais être notifié lorsqu'une personne demande de l'aide"
+        title = "Desormais vous serez notifié lorsqu'une personne demande de l'aide"
     
     for player in log_data:
         if(log_data[player]['avenger']):
