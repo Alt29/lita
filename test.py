@@ -53,7 +53,7 @@ async def on_ready():
     client.loop.create_task(hourly_mob())
 
 class BattleView(discord.ui.View):
-    def __init__(self, timeout=300):
+    def __init__(self, timeout):
         super().__init__(timeout=timeout)
         self.responded = False
         self.message = None
@@ -61,6 +61,7 @@ class BattleView(discord.ui.View):
 
     @discord.ui.button(label="Combattre", style=discord.ButtonStyle.green, custom_id="button_fight")
     async def fight_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        self.timeout = 0
         if self.message is None:
             self.message = interaction.message
         
