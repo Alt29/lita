@@ -1,8 +1,8 @@
 {
-    "slime": {
+    "Slime": {
         "titre_0": {
             "requis": 1,
-            "nom": "Premier slime",
+            "nom": "Premier Slime",
             "stats": {
                 "degats_infliges": 1.1,
                 "degats_subits": 0.9
@@ -10,7 +10,7 @@
         },
         "titre_1": {
             "requis": 10,
-            "nom": "Tueur de slimes",
+            "nom": "Tueur de Slimes",
             "stats": {
                 "degats_infliges": 1.3,
                 "degats_subits": 0.70
@@ -18,7 +18,215 @@
         },
         "titre_2": {
             "requis": 100,
-            "nom": "Exterminateur de slimes",
+            "nom": "Exterminateur de Slimes",
+            "stats": {
+                "degats_infliges": 2,
+                "degats_subits": 0.2
+            }
+        }
+    },
+    "Squelette": {
+        "titre_0": {
+            "requis": 1,
+            "nom": "Premier Squelette",
+            "stats": {
+                "degats_infliges": 1.1,
+                "degats_subits": 0.9
+            }
+        },
+        "titre_1": {
+            "requis": 10,
+            "nom": "Tueur de Squelettes",
+            "stats": {
+                "degats_infliges": 1.3,
+                "degats_subits": 0.70
+            }
+        },
+        "titre_2": {
+            "requis": 100,
+            "nom": "Exterminateur de Squelettes",
+            "stats": {
+                "degats_infliges": 2,
+                "degats_subits": 0.2
+            }
+        }
+    },
+    "Loup": {
+        "titre_0": {
+            "requis": 1,
+            "nom": "Premier Loup",
+            "stats": {
+                "degats_infliges": 1.1,
+                "degats_subits": 0.9
+            }
+        },
+        "titre_1": {
+            "requis": 10,
+            "nom": "Tueur de Loups",
+            "stats": {
+                "degats_infliges": 1.3,
+                "degats_subits": 0.70
+            }
+        },
+        "titre_2": {
+            "requis": 100,
+            "nom": "Exterminateur de Loups",
+            "stats": {
+                "degats_infliges": 2,
+                "degats_subits": 0.2
+            }
+        }
+    },
+    "Gobelin": {
+        "titre_0": {
+            "requis": 1,
+            "nom": "Premier Gobelin",
+            "stats": {
+                "degats_infliges": 1.1,
+                "degats_subits": 0.9
+            }
+        },
+        "titre_1": {
+            "requis": 10,
+            "nom": "Tueur de Gobelins",
+            "stats": {
+                "degats_infliges": 1.3,
+                "degats_subits": 0.70
+            }
+        },
+        "titre_2": {
+            "requis": 100,
+            "nom": "Exterminateur de Gobelins",
+            "stats": {
+                "degats_infliges": 2,
+                "degats_subits": 0.2
+            }
+        }
+    },
+    "Demon": {
+        "titre_0": {
+            "requis": 1,
+            "nom": "Premier Démon",
+            "stats": {
+                "degats_infliges": 1.1,
+                "degats_subits": 0.9
+            }
+        },
+        "titre_1": {
+            "requis": 10,
+            "nom": "Tueur de Démons",
+            "stats": {
+                "degats_infliges": 1.3,
+                "degats_subits": 0.70
+            }
+        },
+        "titre_2": {
+            "requis": 100,
+            "nom": "Exterminateur de Démons",
+            "stats": {
+                "degats_infliges": 2,
+                "degats_subits": 0.2
+            }
+        }
+    },
+    "Dragon": {
+        "titre_0": {
+            "requis": 1,
+            "nom": "Premier Dragon",
+            "stats": {
+                "degats_infliges": 1.1,
+                "degats_subits": 0.9
+            }
+        },
+        "titre_1": {
+            "requis": 10,
+            "nom": "Tueur de Dragons",
+            "stats": {
+                "degats_infliges": 1.3,
+                "degats_subits": 0.70
+            }
+        },
+        "titre_2": {
+            "requis": 100,
+            "nom": "Exterminateur de Dragons",
+            "stats": {
+                "degats_infliges": 2,
+                "degats_subits": 0.2
+            }
+        }
+    },
+    "Serpent": {
+        "titre_0": {
+            "requis": 1,
+            "nom": "Premier Serpent",
+            "stats": {
+                "degats_infliges": 1.1,
+                "degats_subits": 0.9
+            }
+        },
+        "titre_1": {
+            "requis": 10,
+            "nom": "Tueur de Serpents",
+            "stats": {
+                "degats_infliges": 1.3,
+                "degats_subits": 0.70
+            }
+        },
+        "titre_2": {
+            "requis": 100,
+            "nom": "Exterminateur de Serpents",
+            "stats": {
+                "degats_infliges": 2,
+                "degats_subits": 0.2
+            }
+        }
+    },
+    "Troll": {
+        "titre_0": {
+            "requis": 1,
+            "nom": "Premier Troll",
+            "stats": {
+                "degats_infliges": 1.1,
+                "degats_subits": 0.9
+            }
+        },
+        "titre_1": {
+            "requis": 10,
+            "nom": "Tueur de Trolls",
+            "stats": {
+                "degats_infliges": 1.3,
+                "degats_subits": 0.70
+            }
+        },
+        "titre_2": {
+            "requis": 100,
+            "nom": "Exterminateur de Trolls",
+            "stats": {
+                "degats_infliges": 2,
+                "degats_subits": 0.2
+            }
+        }
+    },
+    "Devoreur": {
+        "titre_0": {
+            "requis": 1,
+            "nom": "Premier Dévoreur d'âmes",
+            "stats": {
+                "degats_infliges": 1.1,
+                "degats_subits": 0.9
+            }
+        },
+        "titre_1": {
+            "requis": 10,
+            "nom": "Tueur de Dévoreurs d'âmes",
+            "stats": {
+                "degats_infliges": 1.3,
+                "degats_subits": 0.70
+            }
+        },
+        "titre_2": {
+            "requis": 100,
+            "nom": "Exterminateur de Dévoreurs d'âmes",
             "stats": {
                 "degats_infliges": 2,
                 "degats_subits": 0.2

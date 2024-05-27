@@ -8,7 +8,7 @@
         "unique": true,
         "rank": 0
     },
-    "T-shirt": {
+    "Tshirt": {
         "price": 1000,
         "stats": {
             "def": 2
