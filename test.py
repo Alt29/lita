@@ -6,8 +6,8 @@ import asyncio
 import os
 import random
 
-TOKEN = os.getenv('TOKEN')
-SAKURA_CHANNEL_ID = int(os.getenv('SAKURA_CHANNEL_ID'))
+TOKEN_2 = os.getenv('TOKEN_2')
+CHANNEL_ID = int(os.getenv('CHANNEL_ID'))
 
 intents = discord.Intents.default()
 intents.messages = True
@@ -56,9 +56,14 @@ class BattleView(discord.ui.View):
     def __init__(self, timeout=300):
         super().__init__(timeout=timeout)
         self.responded = False
+        self.message = None
+
 
     @discord.ui.button(label="Combattre", style=discord.ButtonStyle.green, custom_id="button_fight")
     async def fight_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        if self.message is None:
+            self.message = interaction.message
+        
         try:
             with open("battle.json", "r") as file:
                 battle = json.load(file)
@@ -84,7 +89,7 @@ class BattleView(discord.ui.View):
             total_pv += log_data[player]['stats']['pv']
             total_for += log_data[player]['stats']['for']
             total_def += log_data[player]['stats']['def']
-        attaquant += '\n**PV : ' + str(total_pv) + ' :hearts:     For : ' + str(total_for) + ' :crossed_swords:     Def : ' + str(total_def) + ' :shield:**'
+        attaquant += '\n**PV : ' + str(total_pv) + ' :hearts:   For : ' + str(total_for) + ' :crossed_swords:   Def : ' + str(total_def) + ' :shield:**'
         
         embed = interaction.message.embeds[0]
         new_fields = []
@@ -105,7 +110,10 @@ class BattleView(discord.ui.View):
 
     @discord.ui.button(label="Demander de l'aide", style=discord.ButtonStyle.red, custom_id="button_help")
     async def help_button(self, interaction: discord.Interaction, button: discord.ui.Button):
-        channel = client.get_channel(SAKURA_CHANNEL_ID)
+        if self.message is None:
+            self.message = interaction.message
+
+        channel = client.get_channel(CHANNEL_ID)
 
         if channel is None:
             return
@@ -134,13 +142,18 @@ class BattleView(discord.ui.View):
                 await interaction.message.edit(view=self)
 
     async def on_timeout(self):
+        for child in self.children:
+            child.disabled = True
+        if self.message:
+            await self.message.edit(view=self)
+
         try:
             with open("battle.json", "r") as file:
                 battle = json.load(file)
         except FileNotFoundError:
             battle = {}
 
-        channel = client.get_channel(SAKURA_CHANNEL_ID)
+        channel = client.get_channel(CHANNEL_ID)
 
         players = []
         total_pv = 0
@@ -201,13 +214,13 @@ class BattleView(discord.ui.View):
 
 async def hourly_mob():
     await client.wait_until_ready()
-    channel = client.get_channel(SAKURA_CHANNEL_ID)
+    channel = client.get_channel(CHANNEL_ID)
     if channel is None:
         return
 
     while not client.is_closed():
         now = datetime.now()
-        next_hour = (now + timedelta(minutes=10)).replace(second=0, microsecond=0)
+        next_hour = (now + timedelta(seconds=10)).replace(microsecond=0) #a1b2
         wait_time = (next_hour - now).total_seconds()
 
         await asyncio.sleep(wait_time)
@@ -220,7 +233,7 @@ async def hourly_mob():
             if(spawn_rate <= mobs[mob]['spawn_rate']):
                 lvl = random.randint(mobs[mob]['min_level'], mobs[mob]['max_level'])
                 title = mobs[mob]['name'] + ' LVL ' + str(lvl)
-                tabFields = {'PV : ' + str(lvl * mobs[mob]['stats']['pv']) + ' :hearts:     For : ' + str(lvl * mobs[mob]['stats']['for']) + ' :crossed_swords:     Def : ' + str(lvl * mobs[mob]['stats']['def']) + ' :shield:' : '', 'Combattez ce monstre !' : ''}
+                tabFields = {'PV : ' + str(lvl * mobs[mob]['stats']['pv']) + ' :hearts:   For : ' + str(lvl * mobs[mob]['stats']['for']) + ' :crossed_swords:   Def : ' + str(lvl * mobs[mob]['stats']['def']) + ' :shield:' : '', 'Combattez ce monstre !' : ''}
                 image = mobs[mob]['image']
                 mob_name = mob
 
@@ -248,8 +261,8 @@ async def hourly_mob():
                 embed = create_embed(title=title, color=color, image=image, tabFields=tabFields)
                 break;
 
-        view = BattleView(timeout=300)
-        await channel.send(embed=embed, view=view)
+        view = BattleView(timeout=5) #a1b2
+        view.message = await channel.send(embed=embed, view=view)
 
         battle = {"mob": {"name": mob_name, "lvl": lvl}, "players": {}}
 
@@ -714,7 +727,7 @@ def combat(mob_name, mob_lvl, total_pv, total_for, total_def):
     #     total_pv = total_pv - max((mob_for-total_def), 10)
     #     if(total_pv <= 0):
     #         return False
-    if (mob_pv // max((total_for-mob_def), 10)) > (total_pv // max((mob_for-total_def), 10)):
+    if (mob_pv // (total_for * (1 - (mob_def / (100 + mob_def))))) > (total_pv / (mob_for * (1 - (total_def / (100 + total_def))))):
         return False
     return True
 
@@ -733,4 +746,4 @@ def notif_action(author_name):
     color = discord.Color.green()
     return create_embed(title=title, color=color, description=description)
 
-client.run(TOKEN)
+client.run(TOKEN_2)
