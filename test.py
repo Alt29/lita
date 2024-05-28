@@ -300,7 +300,7 @@ async def on_message(message):
                             log_data[message.author.name]['gold'] -= int(montant)
                             log_data[player]['gold'] += int(montant)
                             title = "Gold envoyés"
-                            description = "Vous envoyez " + montant + " :coin: à " + cible + "Votre nouveau solde : " + str(log_data[message.author.name]['gold']) + ":coin:"
+                            description = "Vous envoyez " + montant + " :coin: à " + cible + "\nVotre nouveau solde : " + str(log_data[message.author.name]['gold']) + ":coin:"
                             color = discord.Color.green()
                         else:
                             title = "Vous n'avez pas assez de :coin:"
