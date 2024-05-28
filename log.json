@@ -3,44 +3,44 @@
         "id": 701782195844546662,
         "avenger": true,
         "rank": 0,
-        "gold": 3653,
-        "!daily": "2024-05-26 21:27:23.717945",
-        "!explore": "2024-05-27 17:14:04.591326",
+        "gold": 4591,
+        "!daily": "2024-05-27 21:29:41.243362",
+        "!explore": "2024-05-28 17:30:28.819319",
         "bag": {
             "Casquette": {
                 "quantity": 1,
                 "icon": ":billed_cap:",
-                "rank": 2
+                "rank": 3
             },
             "Baskets": {
                 "quantity": 1,
                 "icon": ":athletic_shoe:",
-                "rank": 1
+                "rank": 2
             },
             "Dague": {
                 "quantity": 1,
                 "icon": ":dagger:",
-                "rank": 1
+                "rank": 2
             },
             "Tshirt": {
                 "quantity": 1,
                 "icon": ":shirt:",
-                "rank": 2
+                "rank": 3
             },
             "Jean": {
                 "quantity": 1,
                 "icon": ":jeans:",
-                "rank": 1
+                "rank": 2
             }
         },
         "level": {
-            "lvl": 10,
-            "xp": 2764
+            "lvl": 16,
+            "xp": 2233
         },
         "stats": {
-            "pv": 1919,
-            "for": 25,
-            "def": 42
+            "pv": 3137,
+            "for": 38,
+            "def": 65
         },
         "deaths": 0,
         "penality": 0,
@@ -61,14 +61,14 @@
         "id": 503247209165357066,
         "avenger": false,
         "rank": 0,
-        "gold": 777,
-        "!daily": "2024-05-26 21:29:05.756114",
-        "!explore": "2024-05-27 11:40:24.168271",
+        "gold": 1237,
+        "!daily": "2024-05-27 21:29:34.409415",
+        "!explore": "2024-05-28 17:33:59.293684",
         "bag": {
             "Casquette": {
                 "quantity": 1,
                 "icon": ":billed_cap:",
-                "rank": 1
+                "rank": 2
             },
             "Baskets": {
                 "quantity": 1,
@@ -78,27 +78,27 @@
             "Dague": {
                 "quantity": 1,
                 "icon": ":dagger:",
-                "rank": 0
+                "rank": 1
             },
             "Tshirt": {
                 "quantity": 1,
                 "icon": ":shirt:",
-                "rank": 0
+                "rank": 2
             },
             "Jean": {
                 "quantity": 1,
                 "icon": ":jeans:",
-                "rank": 0
+                "rank": 2
             }
         },
         "level": {
-            "lvl": 5,
-            "xp": 874
+            "lvl": 10,
+            "xp": 488
         },
         "stats": {
-            "pv": 1209,
-            "for": 18,
-            "def": 25
+            "pv": 2120,
+            "for": 26,
+            "def": 45
         },
         "deaths": 0,
         "penality": 0,
@@ -151,9 +151,9 @@
         "id": 752965970666061864,
         "avenger": true,
         "rank": 0,
-        "gold": 657,
-        "!daily": "2024-05-27 00:23:54.321419",
-        "!explore": "2024-05-27 17:13:25.684699",
+        "gold": 3671,
+        "!daily": "2024-05-28 09:15:07.988288",
+        "!explore": "2024-05-28 14:03:29.809771",
         "bag": {
             "Casquette": {
                 "quantity": 1,
@@ -241,39 +241,44 @@
         "id": 326718702370291712,
         "avenger": true,
         "rank": 0,
-        "gold": 919,
-        "!daily": "2024-05-26 23:46:21.154265",
-        "!explore": "2024-05-27 17:17:06.177222",
+        "gold": 1290,
+        "!daily": "2024-05-27 23:47:30.770439",
+        "!explore": "2024-05-28 16:54:53.889444",
         "bag": {
             "Baskets": {
                 "quantity": 1,
                 "icon": ":athletic_shoe:",
-                "rank": 1
+                "rank": 2
             },
             "Dague": {
                 "quantity": 1,
                 "icon": ":dagger:",
-                "rank": 1
+                "rank": 2
             },
             "Tshirt": {
                 "quantity": 1,
                 "icon": ":shirt:",
-                "rank": 2
+                "rank": 3
             },
             "Casquette": {
                 "quantity": 1,
                 "icon": ":billed_cap:",
-                "rank": 0
+                "rank": 3
+            },
+            "Jean": {
+                "quantity": 1,
+                "icon": ":jeans:",
+                "rank": 2
             }
         },
         "level": {
-            "lvl": 8,
-            "xp": 269
+            "lvl": 15,
+            "xp": 329
         },
         "stats": {
-            "pv": 1515,
-            "for": 22,
-            "def": 31
+            "pv": 3134,
+            "for": 37,
+            "def": 64
         },
         "deaths": 0,
         "penality": 0,
@@ -326,34 +331,39 @@
         "id": 518397017072992257,
         "avenger": true,
         "rank": 0,
-        "gold": 1043,
-        "!daily": "2024-05-27 11:41:21.179946",
-        "!explore": "2024-05-27 15:25:44.851761",
+        "gold": 2482,
+        "!daily": "2024-05-28 14:09:40.811578",
+        "!explore": "2024-05-28 14:05:47.677150",
         "bag": {
             "Baskets": {
                 "quantity": 1,
                 "icon": ":athletic_shoe:",
-                "rank": 1
+                "rank": 2
             },
             "Jean": {
                 "quantity": 1,
                 "icon": ":jeans:",
-                "rank": 0
+                "rank": 1
             },
             "Dague": {
                 "quantity": 1,
                 "icon": ":dagger:",
-                "rank": 0
+                "rank": 1
+            },
+            "Casquette": {
+                "quantity": 1,
+                "icon": ":billed_cap:",
+                "rank": 1
             }
         },
         "level": {
-            "lvl": 5,
-            "xp": 33
+            "lvl": 8,
+            "xp": 1844
         },
         "stats": {
-            "pv": 1109,
-            "for": 18,
-            "def": 20
+            "pv": 1615,
+            "for": 22,
+            "def": 33
         },
         "deaths": 0,
         "penality": 0,
@@ -438,24 +448,108 @@
         "id": 619654294160932896,
         "avenger": true,
         "rank": 0,
-        "gold": 232,
-        "!daily": "2024-05-27 14:20:08.407828",
-        "!explore": "2024-05-27 17:16:45.493892",
+        "gold": 584,
+        "!daily": "2024-05-28 14:24:58.884324",
+        "!explore": "2024-05-28 14:03:14.703999",
         "bag": {
             "Casquette": {
                 "quantity": 1,
                 "icon": ":billed_cap:",
+                "rank": 1
+            },
+            "Tshirt": {
+                "quantity": 1,
+                "icon": ":shirt:",
+                "rank": 1
+            },
+            "Baskets": {
+                "quantity": 1,
+                "icon": ":athletic_shoe:",
                 "rank": 0
+            },
+            "Dague": {
+                "quantity": 1,
+                "icon": ":dagger:",
+                "rank": 0
+            },
+            "Jean": {
+                "quantity": 1,
+                "icon": ":jeans:",
+                "rank": 1
             }
         },
         "level": {
+            "lvl": 6,
+            "xp": 922
+        },
+        "stats": {
+            "pv": 1311,
+            "for": 19,
+            "def": 28
+        },
+        "deaths": 0,
+        "penality": 0,
+        "mobs_kill": {
+            "Slime": 0,
+            "Squelette": 0,
+            "Loup": 0,
+            "Gobelin": 0,
+            "Troll": 0,
+            "Serpent": 0,
+            "Dragon": 0,
+            "Demon": 0,
+            "Devoreur": 0
+        },
+        "title": {}
+    },
+    "lyfia_": {
+        "id": 337296485463097344,
+        "avenger": false,
+        "rank": 0,
+        "gold": 1437,
+        "!daily": "2024-01-01 11:11:11.111111",
+        "!explore": "2024-01-01 11:11:11.111111",
+        "bag": {},
+        "level": {
+            "lvl": 2,
+            "xp": 462
+        },
+        "stats": {
+            "pv": 1003,
+            "for": 12,
+            "def": 12
+        },
+        "deaths": 0,
+        "penality": 0,
+        "mobs_kill": {
+            "Slime": 0,
+            "Squelette": 0,
+            "Loup": 0,
+            "Gobelin": 0,
+            "Troll": 0,
+            "Serpent": 0,
+            "Dragon": 0,
+            "Demon": 0,
+            "Devoreur": 0
+        },
+        "title": {}
+    },
+    "jhellal": {
+        "id": 670257213193060353,
+        "avenger": false,
+        "rank": 0,
+        "gold": 150,
+        "!daily": "2024-01-01 11:11:11.111111",
+        "!explore": "2024-01-01 11:11:11.111111",
+        "bag": {},
+        "level": {
             "lvl": 0,
-            "xp": 166
+            "xp": 262
         },
         "stats": {
             "pv": 1000,
             "for": 10,
-            "def": 11
+            "def": 10
         },
         "deaths": 0,
         "penality": 0,
