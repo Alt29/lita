@@ -72,7 +72,7 @@ class BattleView(discord.ui.View):
             battle = {}
 
         if interaction.user.name not in log_data:
-            log_data[interaction.user.name] = {"id": interaction.user.id, "avenger": False, "rank": 0, "gold": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}}
+            log_data[interaction.user.name] = {"id": interaction.user.id, "avenger": False, "rank": 0, "gold": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}}
 
         #if log_data[interaction.user.name]["penality"] > 0:
             # await interaction.response.send_message("Vous avez échoué lors de votre dernier combat, vous devez donc vous reposez encore", ephemeral=True)
@@ -278,7 +278,7 @@ async def on_message(message):
 
     if message.content.startswith("!"):
         if message.author.name not in log_data:
-            log_data[message.author.name] = {"id": message.author.id, "avenger": False, "rank": 0, "gold": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}}
+            log_data[message.author.name] = {"id": message.author.id, "avenger": False, "rank": 0, "gold": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}}
             updated = True
 
     if message.content.startswith("!info"):
@@ -326,8 +326,14 @@ async def on_message(message):
             await message.channel.send(embed=embed)
         updated = True
         
-    if message.content.startswith("!rank"):
-        embed = me_action(message.author.name, message.author.avatar, message.author.global_name, 'rank')
+    if message.content.startswith("!train"):
+        if await time_command(message, "!train", 3):
+            embed = train_action(message.author.name, message.author.avatar, message.author.global_name)
+            await message.channel.send(embed=embed)
+        updated = True
+        
+    if message.content.startswith("!profil"):
+        embed = me_action(message.author.name, message.author.avatar, message.author.global_name, 'profil')
         await message.channel.send(embed=embed)
         updated = True
     
@@ -338,6 +344,11 @@ async def on_message(message):
     
     if message.content.startswith("!top-gold"):
         embed = top_action(message.author.name, 'gold')
+        await message.channel.send(embed=embed)
+        updated = True
+        
+    if message.content.startswith("!top-level"):
+        embed = top_action(message.author.name, 'level')
         await message.channel.send(embed=embed)
         updated = True
     
@@ -381,15 +392,18 @@ async def on_message(message):
 def info_action():
     tabFields = {
         '!gold :' : 'Pour voir combien de gold vous avez.',
-        '!rank :' : 'Pour voir vos stats.',
+        '!profil :' : 'Pour voir vos stats.',
         '!daily :' : 'Pour récupérer des golds toutes les 24h.',
         '!explore :' : 'Pour récupérer 100 golds toutes les heures.',
+        '!train :' : 'Pour un entraînement digne des plus grand, +300xp/3h',
         '!market :' : 'Pour acheter de quoi devenir plus fort.',
         '!top-gold :' : 'Pour voir le classement en Gold.',
         '!top-rank :' : 'Pour voir le classement en Rank.',
+        '!top-level :' : 'Pour voir le classement en Level.',
         '!bag :' : 'Pour voir ce que vous avez dans votre sac.',
         '!purchase :' : 'Pour acheter un item au market.',
         '!notif :' : "Pour rejoindre la liste des chads notifiés lors d'une demande d'aide",
+        '!send :' : "Pour envoyer de l'argent",
         '!awaken :' : '[En travaux]',
         '!dungeon :' : '[En travaux]',
     }
@@ -404,10 +418,11 @@ def market_action():
     rank_items = '<:Legendaire:1222193258403336222> Légendaire • 500000 :coin:\n<:Epique:1222193241022136491> Épique • 50000 :coin:\n<:Rare:1222193217957662760> Rare • 5000 :coin:'
     
     tabFields = {
+        'Pour acheter : ' : '!purchase nom_item',
         'Équipements de base : ' : base_items,
         'Matériaux : ' : material_items,
-        'Runes : ' : rune_items,
-        'Gemmes d\'éveil : ' : rank_items,
+        'Runes : (bientôt)' : rune_items,
+        'Gemmes d\'éveil : (bientôt)' : rank_items,
     }
     color = discord.Color.lighter_grey()
     title = 'Boutique'
@@ -528,7 +543,7 @@ def me_action(author_name, author_icon, global_name, type):
         color = discord.Color.gold()
     else:
         rank = ['Pas d\'éveil', ':regional_indicator_f:', ':regional_indicator_e:', ':regional_indicator_d:', ':regional_indicator_c:', ':regional_indicator_b:', ':regional_indicator_a:', ':regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s: :regional_indicator_s:']
-        if type == 'rank':
+        if type == 'profil':
             tabFields = {'Level :' : str(log_data[author_name]['level']['lvl']), 'Rank :' : rank[res], 'Stats :' : '', 'PV : ' + str(log_data[author_name]['stats']['pv']) + ' :hearts:': '', 'For : ' + str(log_data[author_name]['stats']['for']) + ' :crossed_swords:' : '', 'Def : ' + str(log_data[author_name]['stats']['def']) + ' :shield:': ''}
             color = discord.Color.dark_purple()
         else:
@@ -563,19 +578,23 @@ def me_action(author_name, author_icon, global_name, type):
                 color = discord.Color.dark_teal()
     
     footer = None
-    if type != 'bag':     
-        footer = 'Classement ' + type + ' : ' + ranking(type, author_name)
+    if type != 'bag':
+        if type == 'profil':
+            footer = 'Classement level : ' + ranking('level', author_name)
+        else:
+            footer = 'Classement ' + type + ' : ' + ranking(type, author_name)
     return create_embed(color=color, author_name=global_name, author_icon=author_icon, footer=footer, tabFields=tabFields)
 
 def top_action(author_name, type):
-    if author_name in log_data:
-        if type not in log_data[author_name]:
-            log_data[author_name][type] = 0
-    else:
-        log_data[author_name] = {type: 0}
-
     filtered_authors = [author for author in log_data.keys() if type in log_data[author]]
-    sorted_authors = sorted(filtered_authors, key=lambda x: log_data[x][type], reverse=True)
+    filtered_authors_id = []
+    for author in filtered_authors:
+        filtered_authors_id.append("<@" + str(log_data[author]['id']) + ">")
+    
+    if type == 'level':
+        sorted_authors = sorted(filtered_authors, key=lambda x: log_data[x][type]['lvl'], reverse=True)
+    else:
+        sorted_authors = sorted(filtered_authors, key=lambda x: log_data[x][type], reverse=True)
 
     if(type == 'rank'):
         rank = ['Pas d\'éveil', ':regional_indicator_f:', ':regional_indicator_e:', ':regional_indicator_d:', ':regional_indicator_c:', ':regional_indicator_b:', ':regional_indicator_a:', ':regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s: :regional_indicator_s:']
@@ -586,16 +605,22 @@ def top_action(author_name, type):
             break
         if(type == 'gold'):
             if i == 0:
-                tabFields[''] = '**' + str(i+1) + '. ' + sorted_authors[i] + '  •  ' + str(log_data[sorted_authors[i]][type]) + ' :coin:\n'
+                tabFields[''] = '**' + str(i+1) + '. <@' + str(log_data[sorted_authors[i]]['id']) + '>  •  ' + str(log_data[sorted_authors[i]][type]) + ' :coin:\n'
             else:
-                tabFields[''] += str(i+1) + '. ' + sorted_authors[i] + '  •  ' + str(log_data[sorted_authors[i]][type]) + ' :coin:\n'
+                tabFields[''] += str(i+1) + '. <@' + str(log_data[sorted_authors[i]]['id']) + '>  •  ' + str(log_data[sorted_authors[i]][type]) + ' :coin:\n'
         else:
             if(type == 'rank'):
                 if i == 0:
-                    tabFields[''] = '**' + str(i+1) + '. ' + sorted_authors[i] + '  •  ' + rank[log_data[sorted_authors[i]][type]] + '\n'
+                    tabFields[''] = '**' + str(i+1) + '. <@' + str(log_data[sorted_authors[i]]['id']) + '>  •  ' + rank[log_data[sorted_authors[i]][type]] + '\n'
                 else:
-                    tabFields[''] += str(i+1) + '. ' + sorted_authors[i] + '  •  ' + rank[log_data[sorted_authors[i]][type]] + '\n'
-    
+                    tabFields[''] += str(i+1) + '. <@' + str(log_data[sorted_authors[i]]['id']) + '>  •  ' + rank[log_data[sorted_authors[i]][type]] + '\n'
+            else:
+                if(type == 'level'):
+                    if i == 0:
+                        tabFields[''] = '**' + str(i+1) + '. <@' + str(log_data[sorted_authors[i]]['id']) + '>  •  Level ' + str(log_data[sorted_authors[i]][type]['lvl']) + '\n'
+                    else:
+                        tabFields[''] += str(i+1) + '. <@' + str(log_data[sorted_authors[i]]['id']) + '>  •  Level ' + str(log_data[sorted_authors[i]][type]['lvl']) + '\n'
+        
     target_index = sorted_authors.index(author_name)
     ranking_position = target_index + 1
     
@@ -635,6 +660,26 @@ def explore_action(author_name, author_icon, global_name):
     footer = 'Revenez dans 1 heure !'
     return create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, footer=footer, tabFields=tabFields)
 
+def train_action(author_name, author_icon, global_name):
+    level_xp = [500, 600, 720, 864, 1036, 1243, 1492, 1791, 2149, 2578, 3093, 3711, 4453, 5343, 6411, 7693, 9231, 11077, 13293, 15951, 19141, 22969, 27563, 33075, 39690, 47628, 57153, 68584, 82300, 98760, 118512, 142214, 170657, 204788, 245746, 294895, 353873, 424647, 509576, 611491, 733790, 880548, 1056657, 1267989, 1521587, 1825904, 2191085, 2629302, 3155163, 3786195, 4543434, 5452120, 6542544, 7851052, 9421262, 11305514, 13566617, 16279940, 19535928, 23443113, 28131736, 33758083, 40509700, 48611640, 58333968, 70000762, 84000914, 100801096, 120961315, 145153578, 174184293, 209021151, 250825381, 301090457, 361308548, 433570258, 520284309, 624341171, 749209405, 899051286, 1078861543, 1294633852, 1553560622, 1864272746, 2237127295, 2684552754, 3221463305, 3865755966, 4638907159, 5566688591, 6680026309, 8016031570, 9619237884, 11543158461, 13851790153, 16622148183, 19946577820, 23935893384, 28723072061, 34467686474, 41361223769, 49633468522, 59560162226, 71472194671, 85766633605, 102919960326, 123503952391, 148204742869, 177845691442, 213414829731]
+    log_data[author_name]['level']['xp'] += 300
+
+    for lvl_xp in level_xp[log_data[author_name]['level']['lvl']:]:
+        if log_data[author_name]['level']['xp'] > lvl_xp:
+            log_data[author_name]['level']['xp'] -= lvl_xp
+            log_data[author_name]['level']['lvl'] += 1
+            log_data[author_name]['stats']['pv'] = int(log_data[author_name]['stats']['pv'] * 1.001) + 1
+            log_data[author_name]['stats']['for'] = int(log_data[author_name]['stats']['for'] * 1.001) + 1
+            log_data[author_name]['stats']['def'] = int(log_data[author_name]['stats']['def'] * 1.001) + 1
+        else:
+            break
+
+    title = 'Vous surpassez vos limites !'
+    tabFields = {'Vous gagnez : ' : '300 :diamond_shape_with_a_dot_inside:'}
+    color = discord.Color.green()
+    footer = 'Revenez dans 3 heures !'
+    return create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, footer=footer, tabFields=tabFields)
+
 
 def create_embed(title = None, description = None, color = None, author_name = None, author_icon = None, image = None, footer = None, tabFields = None):
     embed = discord.Embed(
@@ -660,7 +705,10 @@ def create_embed(title = None, description = None, color = None, author_name = N
 
 def ranking(type, author_name):
     filtered_authors = [author for author in log_data.keys() if type in log_data[author]]
-    sorted_authors = sorted(filtered_authors, key=lambda x: log_data[x][type], reverse=True)
+    if type == 'level':
+        sorted_authors = sorted(filtered_authors, key=lambda x: log_data[x][type]['lvl'], reverse=True)
+    else:
+        sorted_authors = sorted(filtered_authors, key=lambda x: log_data[x][type], reverse=True)
     target_index = sorted_authors.index(author_name)
     ranking_position = target_index + 1
     return str(ranking_position) + '/' + str(len(sorted_authors))
