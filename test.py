@@ -285,6 +285,30 @@ async def on_message(message):
         embed = info_action()
         await message.channel.send(embed=embed)
 
+    if message.content.startswith("!send"):
+        command_and_argument = message.content.split(maxsplit=2)
+        title = "Commande erronée"
+        description = "Voici un exemple : !send @user 123"
+        color = discord.Color.orange()
+        
+        if len(command_and_argument) == 3:
+            command, cible, montant = command_and_argument
+            for player in log_data:
+                if player != message.author.name:
+                    if cible == '<@' + str(log_data[player]['id']) + '>' and is_integer(montant) and int(montant) > 0:
+                        if log_data[message.author.name]['gold'] >= int(montant):
+                            log_data[message.author.name]['gold'] -= int(montant)
+                            log_data[player]['gold'] += int(montant)
+                            title = "Gold envoyés"
+                            description = "Vous envoyez " + montant + " :coin: à " + cible + "Votre nouveau solde : " + str(log_data[message.author.name]['gold']) + ":coin:"
+                            color = discord.Color.green()
+                        else:
+                            title = "Vous n'avez pas assez de :coin:"
+                            description = "Votre solde : " + str(log_data[message.author.name]['gold']) + ":coin:"
+
+        embed = create_embed(title=title, description=description, color=color)
+        await message.channel.send(embed=embed)
+
     if message.content.startswith("!gold"):
         embed = me_action(message.author.name, message.author.avatar, message.author.global_name, 'gold')
         await message.channel.send(embed=embed)
@@ -740,5 +764,12 @@ def notif_action(author_name):
     description = "Liste des chads actuelle : " + chad
     color = discord.Color.green()
     return create_embed(title=title, color=color, description=description)
+
+def is_integer(s):
+    try:
+        int(s)
+        return True
+    except ValueError:
+        return False
 
 client.run(TOKEN_2)

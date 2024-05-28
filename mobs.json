@@ -7,8 +7,8 @@
             "def": 1
         },
         "loot": {
-            "gold": 65,
-            "xp": 105,
+            "gold": 55,
+            "xp": 85,
             "special_0": {
                 "nom": "Gelée revigorante",
                 "description": "Augmente vos PV, +100 PV max",
@@ -34,8 +34,8 @@
         "name": "Squelette",
         "stats": {
             "pv": 500,
-            "for": 8,
-            "def": 8
+            "for": 9,
+            "def": 9
         },
         "loot": {
             "gold": 100,
@@ -59,12 +59,12 @@
         "image": "https://i.imgur.com/Ckt7V81.jpeg",
         "spawn_rate": 0.39,
         "min_level": 2,
-        "max_level": 20
+        "max_level": 25
     },
     "Meute_de_loups": {
         "name": "Meute de loups",
         "stats": {
-            "pv": 400,
+            "pv": 420,
             "for": 10,
             "def": 7
         },
@@ -90,14 +90,14 @@
         "image": "https://i.imgur.com/esNGY0j.jpeg",
         "spawn_rate": 0.54,
         "min_level": 1,
-        "max_level": 20
+        "max_level": 25
     },
     "Gobelin": {
         "name": "Gobelin",
         "stats": {
             "pv": 450,
             "for": 4,
-            "def": 14
+            "def": 16
         },
         "loot": {
             "gold": 99,
@@ -121,7 +121,7 @@
         "image": "https://i.imgur.com/bLXiOQs.jpeg",
         "spawn_rate": 0.69,
         "min_level": 2,
-        "max_level": 20
+        "max_level": 25
     },
     "Grand_gobelin": {
         "name": "Grand gobelin",
