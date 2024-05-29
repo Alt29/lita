@@ -2,13 +2,13 @@
     "Slime": {
         "name": "Slime",
         "stats": {
-            "pv": 200,
-            "for": 2,
-            "def": 2
+            "pv": 777,
+            "for": 1,
+            "def": 4
         },
         "loot": {
-            "gold": 60,
-            "xp": 90,
+            "gold": 66,
+            "xp": 99,
             "special_0": {
                 "nom": "Gelée revigorante",
                 "description": "Augmente vos PV, +100 PV max",
@@ -33,13 +33,13 @@
     "Squelette": {
         "name": "Squelette",
         "stats": {
-            "pv": 500,
-            "for": 9,
-            "def": 9
+            "pv": 655,
+            "for": 8,
+            "def": 16
         },
         "loot": {
-            "gold": 100,
-            "xp": 175,
+            "gold": 133,
+            "xp": 211,
             "special_0": {
                 "nom": "Epée osseuse",
                 "description": "Epée scultée dans un os ancien, For+3",
@@ -59,18 +59,18 @@
         "image": "https://i.imgur.com/Ckt7V81.jpeg",
         "spawn_rate": 0.39,
         "min_level": 2,
-        "max_level": 25
+        "max_level": 30
     },
     "Meute_de_loups": {
         "name": "Meute de loups",
         "stats": {
-            "pv": 420,
-            "for": 10,
-            "def": 7
+            "pv": 310,
+            "for": 14,
+            "def": 4
         },
         "loot": {
-            "gold": 96,
-            "xp": 196,
+            "gold": 111,
+            "xp": 222,
             "special_0": {
                 "nom": "Peau de loup",
                 "description": "Matériau de défense léger, Def+3",
@@ -90,17 +90,17 @@
         "image": "https://i.imgur.com/esNGY0j.jpeg",
         "spawn_rate": 0.54,
         "min_level": 1,
-        "max_level": 25
+        "max_level": 30
     },
     "Gobelin": {
         "name": "Gobelin",
         "stats": {
-            "pv": 450,
-            "for": 4,
-            "def": 16
+            "pv": 660,
+            "for": 3,
+            "def": 32
         },
         "loot": {
-            "gold": 99,
+            "gold": 125,
             "xp": 180,
             "special_0": {
                 "nom": "Pièces d'or'",
@@ -121,7 +121,7 @@
         "image": "https://i.imgur.com/bLXiOQs.jpeg",
         "spawn_rate": 0.69,
         "min_level": 2,
-        "max_level": 25
+        "max_level": 30
     },
     "Grand_gobelin": {
         "name": "Grand gobelin",
