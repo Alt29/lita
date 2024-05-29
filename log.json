@@ -3,9 +3,10 @@
         "id": 701782195844546662,
         "avenger": true,
         "rank": 0,
-        "gold": 4591,
-        "!daily": "2024-05-27 21:29:41.243362",
-        "!explore": "2024-05-28 17:30:28.819319",
+        "gold": 3519,
+        "!daily": "2024-05-29 00:23:28.399740",
+        "!explore": "2024-05-29 09:00:23.040018",
+        "!train": "2024-05-29 07:36:25.818226",
         "bag": {
             "Casquette": {
                 "quantity": 1,
@@ -15,7 +16,7 @@
             "Baskets": {
                 "quantity": 1,
                 "icon": ":athletic_shoe:",
-                "rank": 2
+                "rank": 3
             },
             "Dague": {
                 "quantity": 1,
@@ -30,17 +31,17 @@
             "Jean": {
                 "quantity": 1,
                 "icon": ":jeans:",
-                "rank": 2
+                "rank": 3
             }
         },
         "level": {
-            "lvl": 16,
-            "xp": 2233
+            "lvl": 17,
+            "xp": 4787
         },
         "stats": {
-            "pv": 3137,
-            "for": 38,
-            "def": 65
+            "pv": 3741,
+            "for": 43,
+            "def": 74
         },
         "deaths": 0,
         "penality": 0,
@@ -55,15 +56,17 @@
             "Demon": 0,
             "Devoreur": 0
         },
-        "title": {}
+        "title": {},
+        "profil": 0
     },
     "slashoroide": {
         "id": 503247209165357066,
-        "avenger": false,
+        "avenger": true,
         "rank": 0,
-        "gold": 1237,
-        "!daily": "2024-05-27 21:29:34.409415",
-        "!explore": "2024-05-28 17:33:59.293684",
+        "gold": 3461,
+        "!daily": "2024-05-28 21:38:09.142250",
+        "!explore": "2024-05-29 00:21:42.592535",
+        "!train": "2024-05-28 21:37:17.560658",
         "bag": {
             "Casquette": {
                 "quantity": 1,
@@ -73,12 +76,12 @@
             "Baskets": {
                 "quantity": 1,
                 "icon": ":athletic_shoe:",
-                "rank": 1
+                "rank": 2
             },
             "Dague": {
                 "quantity": 1,
                 "icon": ":dagger:",
-                "rank": 1
+                "rank": 2
             },
             "Tshirt": {
                 "quantity": 1,
@@ -92,13 +95,13 @@
             }
         },
         "level": {
-            "lvl": 10,
-            "xp": 488
+            "lvl": 12,
+            "xp": 1242
         },
         "stats": {
-            "pv": 2120,
-            "for": 26,
-            "def": 45
+            "pv": 2526,
+            "for": 30,
+            "def": 53
         },
         "deaths": 0,
         "penality": 0,
@@ -113,7 +116,8 @@
             "Demon": 0,
             "Devoreur": 0
         },
-        "title": {}
+        "title": {},
+        "profil": 0
     },
     "cosmilkshake_60033": {
         "id": 1198265602314358894,
@@ -122,6 +126,7 @@
         "gold": 500,
         "!daily": "2024-05-25 20:22:03.449424",
         "!explore": "2024-01-01 11:11:11.111111",
+        "!train": "2024-01-01 11:11:11.111111",
         "bag": {},
         "level": {
             "lvl": 0,
@@ -151,44 +156,45 @@
         "id": 752965970666061864,
         "avenger": true,
         "rank": 0,
-        "gold": 3671,
+        "gold": 1008,
         "!daily": "2024-05-28 09:15:07.988288",
-        "!explore": "2024-05-28 14:03:29.809771",
+        "!explore": "2024-05-29 08:34:07.953648",
+        "!train": "2024-05-29 08:34:15.010819",
         "bag": {
             "Casquette": {
                 "quantity": 1,
                 "icon": ":billed_cap:",
-                "rank": 0
+                "rank": 2
             },
             "Dague": {
                 "quantity": 1,
                 "icon": ":dagger:",
-                "rank": 0
+                "rank": 1
             },
             "Jean": {
                 "quantity": 1,
                 "icon": ":jeans:",
-                "rank": 0
+                "rank": 1
             },
             "Tshirt": {
                 "quantity": 1,
                 "icon": ":shirt:",
-                "rank": 0
+                "rank": 2
             },
             "Baskets": {
                 "quantity": 1,
                 "icon": ":athletic_shoe:",
-                "rank": 0
+                "rank": 1
             }
         },
         "level": {
-            "lvl": 7,
-            "xp": 203
+            "lvl": 8,
+            "xp": 2119
         },
         "stats": {
-            "pv": 1013,
-            "for": 20,
-            "def": 23
+            "pv": 1915,
+            "for": 23,
+            "def": 40
         },
         "deaths": 0,
         "penality": 0,
@@ -212,6 +218,7 @@
         "gold": 0,
         "!daily": "2024-01-01 11:11:11.111111",
         "!explore": "2024-01-01 11:11:11.111111",
+        "!train": "2024-01-01 11:11:11.111111",
         "bag": {},
         "level": {
             "lvl": 0,
@@ -241,14 +248,15 @@
         "id": 326718702370291712,
         "avenger": true,
         "rank": 0,
-        "gold": 1290,
-        "!daily": "2024-05-27 23:47:30.770439",
-        "!explore": "2024-05-28 16:54:53.889444",
+        "gold": 1843,
+        "!daily": "2024-05-28 23:48:23.990348",
+        "!explore": "2024-05-29 02:52:40.102128",
+        "!train": "2024-05-29 00:51:33.713842",
         "bag": {
             "Baskets": {
                 "quantity": 1,
                 "icon": ":athletic_shoe:",
-                "rank": 2
+                "rank": 3
             },
             "Dague": {
                 "quantity": 1,
@@ -268,17 +276,17 @@
             "Jean": {
                 "quantity": 1,
                 "icon": ":jeans:",
-                "rank": 2
+                "rank": 3
             }
         },
         "level": {
-            "lvl": 15,
-            "xp": 329
+            "lvl": 17,
+            "xp": 1429
         },
         "stats": {
-            "pv": 3134,
-            "for": 37,
-            "def": 64
+            "pv": 3742,
+            "for": 43,
+            "def": 74
         },
         "deaths": 0,
         "penality": 0,
@@ -293,7 +301,8 @@
             "Demon": 0,
             "Devoreur": 0
         },
-        "title": {}
+        "title": {},
+        "profil": 0
     },
     "sitifen": {
         "id": 215558324811202560,
@@ -302,6 +311,7 @@
         "gold": 0,
         "!daily": "2024-01-01 11:11:11.111111",
         "!explore": "2024-01-01 11:11:11.111111",
+        "!train": "2024-01-01 11:11:11.111111",
         "bag": {},
         "level": {
             "lvl": 0,
@@ -331,14 +341,15 @@
         "id": 518397017072992257,
         "avenger": true,
         "rank": 0,
-        "gold": 2482,
+        "gold": 4826,
         "!daily": "2024-05-28 14:09:40.811578",
-        "!explore": "2024-05-28 14:05:47.677150",
+        "!explore": "2024-05-28 23:04:33.904376",
+        "!train": "2024-05-28 21:50:52.609544",
         "bag": {
             "Baskets": {
                 "quantity": 1,
                 "icon": ":athletic_shoe:",
-                "rank": 2
+                "rank": 3
             },
             "Jean": {
                 "quantity": 1,
@@ -357,13 +368,13 @@
             }
         },
         "level": {
-            "lvl": 8,
-            "xp": 1844
+            "lvl": 11,
+            "xp": 3263
         },
         "stats": {
-            "pv": 1615,
-            "for": 22,
-            "def": 33
+            "pv": 1921,
+            "for": 27,
+            "def": 40
         },
         "deaths": 0,
         "penality": 0,
@@ -378,7 +389,8 @@
             "Demon": 0,
             "Devoreur": 0
         },
-        "title": {}
+        "title": {},
+        "profil": 0
     },
     "kurayami6242": {
         "id": 711629884090351697,
@@ -387,6 +399,7 @@
         "gold": 0,
         "!daily": "2024-01-01 11:11:11.111111",
         "!explore": "2024-01-01 11:11:11.111111",
+        "!train": "2024-01-01 11:11:11.111111",
         "bag": {},
         "level": {
             "lvl": 0,
@@ -419,6 +432,7 @@
         "gold": 0,
         "!daily": "2024-01-01 11:11:11.111111",
         "!explore": "2024-01-01 11:11:11.111111",
+        "!train": "2024-01-01 11:11:11.111111",
         "bag": {},
         "level": {
             "lvl": 0,
@@ -448,44 +462,45 @@
         "id": 619654294160932896,
         "avenger": true,
         "rank": 0,
-        "gold": 584,
+        "gold": 168,
         "!daily": "2024-05-28 14:24:58.884324",
-        "!explore": "2024-05-28 14:03:14.703999",
+        "!explore": "2024-05-29 00:52:01.388208",
+        "!train": "2024-05-28 23:49:18.912588",
         "bag": {
             "Casquette": {
                 "quantity": 1,
                 "icon": ":billed_cap:",
-                "rank": 1
+                "rank": 2
             },
             "Tshirt": {
                 "quantity": 1,
                 "icon": ":shirt:",
-                "rank": 1
+                "rank": 2
             },
             "Baskets": {
                 "quantity": 1,
                 "icon": ":athletic_shoe:",
-                "rank": 0
+                "rank": 2
             },
             "Dague": {
                 "quantity": 1,
                 "icon": ":dagger:",
-                "rank": 0
+                "rank": 1
             },
             "Jean": {
                 "quantity": 1,
                 "icon": ":jeans:",
-                "rank": 1
+                "rank": 2
             }
         },
         "level": {
-            "lvl": 6,
-            "xp": 922
+            "lvl": 11,
+            "xp": 550
         },
         "stats": {
-            "pv": 1311,
-            "for": 19,
-            "def": 28
+            "pv": 2322,
+            "for": 28,
+            "def": 49
         },
         "deaths": 0,
         "penality": 0,
@@ -500,7 +515,8 @@
             "Demon": 0,
             "Devoreur": 0
         },
-        "title": {}
+        "title": {},
+        "profil": 0
     },
     "lyfia_": {
         "id": 337296485463097344,
@@ -509,6 +525,7 @@
         "gold": 1437,
         "!daily": "2024-01-01 11:11:11.111111",
         "!explore": "2024-01-01 11:11:11.111111",
+        "!train": "2024-01-01 11:11:11.111111",
         "bag": {},
         "level": {
             "lvl": 2,
@@ -541,6 +558,7 @@
         "gold": 150,
         "!daily": "2024-01-01 11:11:11.111111",
         "!explore": "2024-01-01 11:11:11.111111",
+        "!train": "2024-01-01 11:11:11.111111",
         "bag": {},
         "level": {
             "lvl": 0,

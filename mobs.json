@@ -59,7 +59,7 @@
         "image": "https://i.imgur.com/Ckt7V81.jpeg",
         "spawn_rate": 0.39,
         "min_level": 2,
-        "max_level": 30
+        "max_level": 25
     },
     "Meute_de_loups": {
         "name": "Meute de loups",
@@ -90,7 +90,7 @@
         "image": "https://i.imgur.com/esNGY0j.jpeg",
         "spawn_rate": 0.54,
         "min_level": 1,
-        "max_level": 30
+        "max_level": 25
     },
     "Gobelin": {
         "name": "Gobelin",
@@ -121,7 +121,7 @@
         "image": "https://i.imgur.com/bLXiOQs.jpeg",
         "spawn_rate": 0.69,
         "min_level": 2,
-        "max_level": 30
+        "max_level": 25
     },
     "Grand_gobelin": {
         "name": "Grand gobelin",
