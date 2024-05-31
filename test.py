@@ -284,7 +284,53 @@ async def on_message(message):
     if message.content.startswith("!info"):
         embed = info_action()
         await message.channel.send(embed=embed)
+        
+    if message.content.startswith("!donates"):
+        if message.author.id == 701782195844546662:
+            command_and_argument = message.content.split(maxsplit=2)
+            title = "Commande erronée"
+            description = "Voici un exemple : !donates @user 123"
+            color = discord.Color.orange()
 
+            if len(command_and_argument) == 3:
+                command, cible, montant = command_and_argument
+                for player in log_data:
+                    if cible == '<@' + str(log_data[player]['id']) + '>' and is_integer(montant) and int(montant) > 0:
+                        log_data[player]['gold'] += int(montant)
+                        title = "Gold donnés"
+                        description = "Vous donnez " + montant + " :coin: à " + cible
+                        color = discord.Color.green()
+        else:
+            title = "Commande non autorisée"
+            description = "Vous n'avait pas les droits requis pour cette commande"
+            color = discord.Color.orange()
+        
+        embed = create_embed(title=title, description=description, color=color)
+        await message.channel.send(embed=embed)
+        
+    if message.content.startswith("!remove"):
+        if message.author.id == 701782195844546662:
+            command_and_argument = message.content.split(maxsplit=2)
+            title = "Commande erronée"
+            description = "Voici un exemple : !remove @user 123"
+            color = discord.Color.orange()
+            
+            if len(command_and_argument) == 3:
+                command, cible, montant = command_and_argument
+                for player in log_data:
+                    if cible == '<@' + str(log_data[player]['id']) + '>' and is_integer(montant) and int(montant) > 0:
+                        log_data[player]['gold'] -= int(montant)
+                        title = "Gold retirés"
+                        description = "Vous retirez " + montant + " :coin: à " + cible
+                        color = discord.Color.green()
+        else:
+            title = "Commande non autorisée"
+            description = "Vous n'avait pas les droits requis pour cette commande"
+            color = discord.Color.orange()
+            
+        embed = create_embed(title=title, description=description, color=color)
+        await message.channel.send(embed=embed)
+                        
     if message.content.startswith("!send"):
         command_and_argument = message.content.split(maxsplit=2)
         title = "Commande erronée"
@@ -325,6 +371,20 @@ async def on_message(message):
             embed = explore_action(message.author.name, message.author.avatar, message.author.global_name)
             await message.channel.send(embed=embed)
         updated = True
+        
+    if message.content.startswith("!compter"):
+        if message.author.id == 518397017072992257 or message.author.id == 619654294160932896:
+            if await time_command(message, "!compter", 24):
+                embed = compter_action(message.author.name, message.author.avatar, message.author.global_name, 421)
+                await message.channel.send(embed=embed)
+            updated = True
+        else:
+            title = "Commande non autorisée"
+            description = "Vous n'avait pas les droits requis pour cette commande"
+            color = discord.Color.orange()
+            embed = create_embed(title=title, description=description, color=color)
+            await message.channel.send(embed=embed)
+        
         
     if message.content.startswith("!train"):
         if await time_command(message, "!train", 3):
@@ -394,6 +454,7 @@ def info_action():
         '!gold :' : 'Pour voir combien de gold vous avez.',
         '!profil :' : 'Pour voir vos stats.',
         '!daily :' : 'Pour récupérer des golds toutes les 24h.',
+        '!compter :' : 'Pour les tenants du record dans #compter.',
         '!explore :' : 'Pour récupérer 100 golds toutes les heures.',
         '!train :' : 'Pour un entraînement digne des plus grand, +300xp/3h',
         '!market :' : 'Pour acheter de quoi devenir plus fort.',
@@ -658,6 +719,15 @@ def explore_action(author_name, author_icon, global_name):
     tabFields = {'Vous récupérez : ' : '100 :coin:'}
     color = discord.Color.green()
     footer = 'Revenez dans 1 heure !'
+    return create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, footer=footer, tabFields=tabFields)
+
+def compter_action(author_name, author_icon, global_name, record):
+    log_data[author_name]['gold'] += record
+
+    title = 'Pour vos exploits dans #compter !'
+    tabFields = {'Vous récupérez : ' : str(record) + ' :coin:'}
+    color = discord.Color.green()
+    footer = 'Revenez demain !'
     return create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, footer=footer, tabFields=tabFields)
 
 def train_action(author_name, author_icon, global_name):
