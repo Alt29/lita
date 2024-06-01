@@ -2,13 +2,13 @@
     "Slime": {
         "name": "Slime",
         "stats": {
-            "pv": 777,
+            "pv": 1941,
             "for": 1,
-            "def": 4
+            "def": 2
         },
         "loot": {
-            "gold": 66,
-            "xp": 99,
+            "gold": 80,
+            "xp": 100,
             "special_0": {
                 "nom": "Gelée revigorante",
                 "description": "Augmente vos PV, +100 PV max",
@@ -26,20 +26,20 @@
             }
         },
         "image": "https://i.imgur.com/tLYX58K.jpeg",
-        "spawn_rate": 0.24,
-        "min_level": 10,
+        "spawn_rate": 0.16,
+        "min_level": 1,
         "max_level": 50
     },
     "Squelette": {
         "name": "Squelette",
         "stats": {
-            "pv": 655,
-            "for": 8,
-            "def": 16
+            "pv": 728,
+            "for": 6,
+            "def": 13
         },
         "loot": {
-            "gold": 133,
-            "xp": 211,
+            "gold": 130,
+            "xp": 130,
             "special_0": {
                 "nom": "Epée osseuse",
                 "description": "Epée scultée dans un os ancien, For+3",
@@ -57,20 +57,20 @@
             }
         },
         "image": "https://i.imgur.com/Ckt7V81.jpeg",
-        "spawn_rate": 0.39,
-        "min_level": 2,
-        "max_level": 30
+        "spawn_rate": 0.32,
+        "min_level": 1,
+        "max_level": 50
     },
     "Meute_de_loups": {
         "name": "Meute de loups",
         "stats": {
-            "pv": 310,
-            "for": 14,
-            "def": 4
+            "pv": 485,
+            "for": 10,
+            "def": 9
         },
         "loot": {
-            "gold": 111,
-            "xp": 222,
+            "gold": 100,
+            "xp": 160,
             "special_0": {
                 "nom": "Peau de loup",
                 "description": "Matériau de défense léger, Def+3",
@@ -88,20 +88,20 @@
             }
         },
         "image": "https://i.imgur.com/esNGY0j.jpeg",
-        "spawn_rate": 0.54,
+        "spawn_rate": 0.48,
         "min_level": 1,
-        "max_level": 30
+        "max_level": 50
     },
     "Gobelin": {
         "name": "Gobelin",
         "stats": {
-            "pv": 660,
-            "for": 3,
-            "def": 32
+            "pv": 485,
+            "for": 4,
+            "def": 22
         },
         "loot": {
-            "gold": 125,
-            "xp": 180,
+            "gold": 160,
+            "xp": 100,
             "special_0": {
                 "nom": "Pièces d'or'",
                 "description": "Le butin d'un gobelin, Gold+500",
@@ -119,20 +119,20 @@
             }
         },
         "image": "https://i.imgur.com/bLXiOQs.jpeg",
-        "spawn_rate": 0.69,
-        "min_level": 2,
-        "max_level": 30
+        "spawn_rate": 0.60,
+        "min_level": 1,
+        "max_level": 50
     },
     "Grand_gobelin": {
         "name": "Grand gobelin",
         "stats": {
             "pv": 500,
-            "for": 10,
-            "def": 15
+            "for": 5,
+            "def": 25
         },
         "loot": {
-            "gold": 300,
-            "xp": 200,
+            "gold": 200,
+            "xp": 150,
             "special_0": {
                 "nom": "Sang de gobelin",
                 "description": "Une substance revitalisante, PV+1000",
@@ -157,13 +157,13 @@
     "Roi_des_slimes": {
         "name": "Roi des slimes",
         "stats": {
-            "pv": 1000,
-            "for": 10,
-            "def": 10
+            "pv": 5000,
+            "for": 3,
+            "def": 3
         },
         "loot": {
             "gold": 200,
-            "xp": 500,
+            "xp": 300,
             "special_0": {
                 "nom": "Gelée de vie",
                 "description": "Une gelée de vitalité, PV+1500",
