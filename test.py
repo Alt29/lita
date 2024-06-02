@@ -74,7 +74,11 @@ class BattleView(discord.ui.View):
         if interaction.user.name not in log_data:
             max_place = max(player["place"] for player in log_data.values())
             place = max_place + 1
-            log_data[interaction.user.name] = {"id": interaction.user.id, "avenger": False, "rank": 0, "place": place,"gold": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}}
+            log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}}
+        else:
+            if 'global_name' not in log_data[interaction.user.name] or 'avatar' not in log_data[interaction.user.name]:
+                log_data[interaction.user.name]['global_name'] = interaction.user.global_name
+                log_data[interaction.user.name]['avatar'] = str(interaction.user.avatar)
 
         #if log_data[interaction.user.name]["penality"] > 0:
             # await interaction.response.send_message("Vous avez échoué lors de votre dernier combat, vous devez donc vous reposez encore", ephemeral=True)
@@ -282,8 +286,13 @@ async def on_message(message):
         if message.author.name not in log_data:
             max_place = max(player["place"] for player in log_data.values())
             place = max_place + 1
-            log_data[message.author.name] = {"id": message.author.id, "avenger": False, "rank": 0, "place": place, "gold": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}}
+            log_data[message.author.name] = {"id": message.author.id, "global_name": message.author.global_name, "avatar": str(message.author.avatar), "avenger": False, "rank": 0, "place": place, "gold": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}}
             updated = True
+        else:
+            if 'global_name' not in log_data[message.author.name] or 'avatar' not in log_data[message.author.name]:
+                log_data[message.author.name]['global_name'] = message.author.global_name
+                log_data[message.author.name]['avatar'] = str(message.author.avatar)
+                updated = True
 
     if message.content.startswith("!info"):
         embed = info_action()
@@ -397,7 +406,26 @@ async def on_message(message):
         await message.channel.send(embed=embed)
 
     if message.content.startswith("!gold"):
-        embed = me_action(message.author.name, message.author.avatar, message.author.global_name, 'gold')
+        name = message.author.name
+        avatar = message.author.avatar
+        global_name = message.author.global_name
+        command_and_argument = message.content.split(maxsplit=1)
+        if len(command_and_argument) == 2:
+            command, cible = command_and_argument
+            for player in log_data:
+                if cible == '<@' + str(log_data[player]['id']) + '>':
+                    name = player
+                    if 'avatar' in log_data[player]:
+                        avatar = log_data[player]['avatar']
+                    else:
+                        avatar = None
+
+                    if 'global_name' in log_data[player]:
+                        global_name = log_data[player]['global_name']
+                    else:
+                        global_name = None
+
+        embed = me_action(name, avatar, global_name, 'gold')
         await message.channel.send(embed=embed)
         updated = True
 
@@ -425,8 +453,7 @@ async def on_message(message):
             color = discord.Color.orange()
             embed = create_embed(title=title, description=description, color=color)
             await message.channel.send(embed=embed)
-        
-        
+              
     if message.content.startswith("!train"):
         if await time_command(message, "!train", 3):
             embed = train_action(message.author.name, message.author.avatar, message.author.global_name)
@@ -434,7 +461,26 @@ async def on_message(message):
         updated = True
         
     if message.content.startswith("!profil"):
-        embed = me_action(message.author.name, message.author.avatar, message.author.global_name, 'profil')
+        name = message.author.name
+        avatar = message.author.avatar
+        global_name = message.author.global_name
+        command_and_argument = message.content.split(maxsplit=1)
+        if len(command_and_argument) == 2:
+            command, cible = command_and_argument
+            for player in log_data:
+                if cible == '<@' + str(log_data[player]['id']) + '>':
+                    name = player
+                    if 'avatar' in log_data[player]:
+                        avatar = log_data[player]['avatar']
+                    else:
+                        avatar = None
+
+                    if 'global_name' in log_data[player]:
+                        global_name = log_data[player]['global_name']
+                    else:
+                        global_name = None
+
+        embed = me_action(name, avatar, global_name, 'profil')
         await message.channel.send(embed=embed)
         updated = True
     
@@ -474,7 +520,26 @@ async def on_message(message):
         updated = True
     
     if message.content.startswith("!bag"):
-        embed = me_action(message.author.name, message.author.avatar, message.author.global_name, 'bag')
+        name = message.author.name
+        avatar = message.author.avatar
+        global_name = message.author.global_name
+        command_and_argument = message.content.split(maxsplit=1)
+        if len(command_and_argument) == 2:
+            command, cible = command_and_argument
+            for player in log_data:
+                if cible == '<@' + str(log_data[player]['id']) + '>':
+                    name = player
+                    if 'avatar' in log_data[player]:
+                        avatar = log_data[player]['avatar']
+                    else:
+                        avatar = None
+
+                    if 'global_name' in log_data[player]:
+                        global_name = log_data[player]['global_name']
+                    else:
+                        global_name = None
+
+        embed = me_action(name, avatar, global_name, 'bag')
         await message.channel.send(embed=embed)
         updated = True
     
