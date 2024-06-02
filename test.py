@@ -304,6 +304,7 @@ async def on_message(message):
                         title = "Gold donnés"
                         description = "Vous donnez " + montant + " :coin: à " + cible
                         color = discord.Color.green()
+                        updated = True
         else:
             title = "Commande non autorisée"
             description = "Vous n'avait pas les droits requis pour cette commande"
@@ -327,6 +328,7 @@ async def on_message(message):
                         title = "Gold retirés"
                         description = "Vous retirez " + montant + " :coin: à " + cible
                         color = discord.Color.green()
+                        updated = True
         else:
             title = "Commande non autorisée"
             description = "Vous n'avait pas les droits requis pour cette commande"
@@ -352,6 +354,7 @@ async def on_message(message):
                             title = "Gold envoyés"
                             description = "Vous envoyez " + montant + " :coin: à " + cible + "\nVotre nouveau solde : " + str(log_data[message.author.name]['gold']) + " :coin:"
                             color = discord.Color.green()
+                            updated = True
                         else:
                             title = "Vous n'avez pas assez de :coin:"
                             description = "Votre solde : " + str(log_data[message.author.name]['gold']) + " :coin:"
@@ -380,6 +383,7 @@ async def on_message(message):
                                 title = "Combat remporté"
                                 description = "**" + "\n<@" + str(log_data[message.author.name]['id']) + ">\n" + 'PV : ' + str(log_data[message.author.name]['stats']['pv']) + ' :hearts:   For : ' + str(log_data[message.author.name]['stats']['for']) + ' :crossed_swords:   Def : ' + str(log_data[message.author.name]['stats']['def']) + ' :shield:' + "\nvs\n" + "<@" + str(log_data[player]['id']) + ">\n" + 'PV : ' + str(log_data[player]['stats']['pv']) + ' :hearts:   For : ' + str(log_data[player]['stats']['for']) + ' :crossed_swords:   Def : ' + str(log_data[player]['stats']['def']) + ' :shield:'  + "\n\nVous remportez votre combat contre <@" + str(log_data[player]['id']) + "> et vous récupérez sa place au !top-rank" + "**"
                                 color = discord.Color.green()
+                                updated = True
                             else:
                                 title = "Combat perdu"
                                 description = "**" + "\n<@" + str(log_data[message.author.name]['id']) + ">\n" + 'PV : ' + str(log_data[message.author.name]['stats']['pv']) + ' :hearts:   For : ' + str(log_data[message.author.name]['stats']['for']) + ' :crossed_swords:   Def : ' + str(log_data[message.author.name]['stats']['def']) + ' :shield:' + "\nvs\n" + "<@" + str(log_data[player]['id']) + ">\n" + 'PV : ' + str(log_data[player]['stats']['pv']) + ' :hearts:   For : ' + str(log_data[player]['stats']['for']) + ' :crossed_swords:   Def : ' + str(log_data[player]['stats']['def']) + ' :shield:'  + "\n\nVous perdez votre combat contre <@" + str(log_data[player]['id']) + ">\nVotre place au !top-rank est inchangée" + "**"
