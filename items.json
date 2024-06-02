@@ -114,23 +114,23 @@
         "requirements": 0
     },
     "Feu": {
-        "price": 5000,
+        "price": 2000,
         "stats": {
-            "for": 1
+            "for": 2
         },
         "icon": ":fire:"
     },
     "Terre": {
-        "price": 5000,
+        "price": 2000,
         "stats": {
-            "def": 1
+            "def": 4
         },
         "icon": ":seedling:"
     },
     "Eau": {
-        "price": 5000,
+        "price": 2000,
         "stats": {
-            "pv": 100
+            "pv": 250
         },
         "icon": ":droplet:"
     },
