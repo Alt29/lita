@@ -4,10 +4,10 @@
         "avenger": true,
         "rank": 0,
         "place": 1,
-        "gold": 15371,
+        "gold": 31087,
         "!daily": "2024-06-02 09:50:18.815984",
-        "!explore": "2024-06-03 00:44:44.992177",
-        "!train": "2024-06-03 00:44:49.435238",
+        "!explore": "2024-06-03 14:03:55.422106",
+        "!train": "2024-06-03 11:02:17.133819",
         "bag": {
             "Casquette": {
                 "quantity": 1,
@@ -48,13 +48,13 @@
             }
         },
         "level": {
-            "lvl": 25,
-            "xp": 37543
+            "lvl": 26,
+            "xp": 8237
         },
         "stats": {
-            "pv": 10102,
-            "for": 87,
-            "def": 182
+            "pv": 10113,
+            "for": 88,
+            "def": 183
         },
         "deaths": 0,
         "penality": 0,
@@ -78,11 +78,11 @@
         "id": 503247209165357066,
         "avenger": true,
         "rank": 0,
-        "place": 8,
-        "gold": 2826,
+        "place": 4,
+        "gold": 6132,
         "!daily": "2024-06-02 18:09:19.803129",
-        "!explore": "2024-06-02 22:51:06.468470",
-        "!train": "2024-06-02 22:00:52.821937",
+        "!explore": "2024-06-03 17:38:51.744216",
+        "!train": "2024-06-03 17:38:53.864646",
         "bag": {
             "Casquette": {
                 "quantity": 1,
@@ -108,16 +108,24 @@
                 "quantity": 1,
                 "icon": ":jeans:",
                 "rank": 3
+            },
+            "Eau": {
+                "quantity": 3,
+                "icon": ":droplet:"
+            },
+            "Feu": {
+                "quantity": 1,
+                "icon": ":fire:"
             }
         },
         "level": {
-            "lvl": 21,
-            "xp": 12956
+            "lvl": 22,
+            "xp": 3759
         },
         "stats": {
-            "pv": 8564,
-            "for": 73,
-            "def": 133
+            "pv": 9324,
+            "for": 76,
+            "def": 134
         },
         "deaths": 0,
         "penality": 0,
@@ -141,7 +149,7 @@
         "id": 1198265602314358894,
         "avenger": false,
         "rank": 0,
-        "place": 6,
+        "place": 8,
         "gold": 500,
         "!daily": "2024-05-25 20:22:03.449424",
         "!explore": "2024-01-01 11:11:11.111111",
@@ -175,11 +183,11 @@
         "id": 752965970666061864,
         "avenger": true,
         "rank": 0,
-        "place": 4,
-        "gold": 11980,
+        "place": 6,
+        "gold": 983,
         "!daily": "2024-06-02 21:51:34.749063",
-        "!explore": "2024-06-02 21:31:12.546091",
-        "!train": "2024-06-02 20:12:52.940266",
+        "!explore": "2024-06-03 17:27:43.006219",
+        "!train": "2024-06-03 14:27:54.340619",
         "bag": {
             "Casquette": {
                 "quantity": 1,
@@ -199,22 +207,26 @@
             "Tshirt": {
                 "quantity": 1,
                 "icon": ":shirt:",
-                "rank": 3
+                "rank": 4
             },
             "Baskets": {
                 "quantity": 1,
                 "icon": ":athletic_shoe:",
                 "rank": 3
+            },
+            "Feu": {
+                "quantity": 1,
+                "icon": ":fire:"
             }
         },
         "level": {
-            "lvl": 18,
-            "xp": 9954
+            "lvl": 19,
+            "xp": 1727
         },
         "stats": {
-            "pv": 5052,
-            "for": 50,
-            "def": 95
+            "pv": 6059,
+            "for": 57,
+            "def": 112
         },
         "deaths": 0,
         "penality": 0,
@@ -238,7 +250,7 @@
         "id": 816758635727290439,
         "avenger": false,
         "rank": 0,
-        "place": 5,
+        "place": 11,
         "gold": 1600,
         "!daily": "2024-01-01 11:11:11.111111",
         "!explore": "2024-01-01 11:11:11.111111",
@@ -273,10 +285,10 @@
         "avenger": true,
         "rank": 0,
         "place": 2,
-        "gold": 3649,
+        "gold": 621,
         "!daily": "2024-06-02 10:13:39.685372",
-        "!explore": "2024-06-03 00:46:26.305244",
-        "!train": "2024-06-03 01:42:00.919138",
+        "!explore": "2024-06-03 17:09:05.679187",
+        "!train": "2024-06-03 15:58:53.594272",
         "bag": {
             "Baskets": {
                 "quantity": 1,
@@ -304,18 +316,18 @@
                 "rank": 4
             },
             "Feu": {
-                "quantity": 8,
+                "quantity": 14,
                 "icon": ":fire:"
             }
         },
         "level": {
-            "lvl": 22,
-            "xp": 20069
+            "lvl": 23,
+            "xp": 2916
         },
         "stats": {
-            "pv": 9073,
-            "for": 86,
-            "def": 163
+            "pv": 9083,
+            "for": 99,
+            "def": 164
         },
         "deaths": 0,
         "penality": 0,
@@ -373,11 +385,11 @@
         "id": 518397017072992257,
         "avenger": true,
         "rank": 0,
-        "place": 11,
-        "gold": 13521,
-        "!daily": "2024-06-02 11:01:27.997423",
-        "!explore": "2024-06-02 20:32:14.155031",
-        "!train": "2024-06-02 20:32:18.663283",
+        "place": 5,
+        "gold": 4806,
+        "!daily": "2024-06-03 11:46:58.947156",
+        "!explore": "2024-06-03 11:46:44.594004",
+        "!train": "2024-06-03 11:47:00.783245",
         "bag": {
             "Baskets": {
                 "quantity": 1,
@@ -398,16 +410,24 @@
                 "quantity": 1,
                 "icon": ":billed_cap:",
                 "rank": 3
+            },
+            "Feu": {
+                "quantity": 6,
+                "icon": ":fire:"
+            },
+            "Terre": {
+                "quantity": 2,
+                "icon": ":seedling:"
             }
         },
         "level": {
-            "lvl": 21,
-            "xp": 16020
+            "lvl": 22,
+            "xp": 1995
         },
         "stats": {
-            "pv": 7959,
-            "for": 70,
-            "def": 122
+            "pv": 7967,
+            "for": 83,
+            "def": 131
         },
         "deaths": 0,
         "penality": 0,
@@ -424,7 +444,7 @@
         },
         "title": {},
         "profil": 0,
-        "!compter": "2024-06-02 11:01:31.951589",
+        "!compter": "2024-06-03 11:47:06.715395",
         "global_name": "Jungouy",
         "avatar": "https://cdn.discordapp.com/avatars/518397017072992257/8ac1d42c622fa4aee09505ab49c933f3.png?size=1024"
     },
@@ -501,10 +521,10 @@
         "avenger": true,
         "rank": 0,
         "place": 3,
-        "gold": 4788,
-        "!daily": "2024-06-02 11:08:24.091142",
-        "!explore": "2024-06-02 22:51:13.561601",
-        "!train": "2024-06-02 22:55:00.905234",
+        "gold": 809,
+        "!daily": "2024-06-03 11:28:35.032606",
+        "!explore": "2024-06-03 17:27:44.545266",
+        "!train": "2024-06-03 17:27:47.767224",
         "bag": {
             "Casquette": {
                 "quantity": 1,
@@ -532,17 +552,21 @@
                 "rank": 4
             },
             "Feu": {
-                "quantity": 1,
+                "quantity": 2,
                 "icon": ":fire:"
+            },
+            "Eau": {
+                "quantity": 2,
+                "icon": ":droplet:"
             }
         },
         "level": {
             "lvl": 21,
-            "xp": 20756
+            "xp": 22621
         },
         "stats": {
-            "pv": 9068,
-            "for": 71,
+            "pv": 9568,
+            "for": 73,
             "def": 162
         },
         "deaths": 0,
@@ -560,7 +584,7 @@
         },
         "title": {},
         "profil": 0,
-        "!compter": "2024-06-02 11:08:19.945009",
+        "!compter": "2024-06-03 11:28:30.536691",
         "global_name": "Akastukye",
         "avatar": "https://cdn.discordapp.com/avatars/619654294160932896/d250811354d20948601e5a302fb55e2a.png?size=1024"
     },
