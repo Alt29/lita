@@ -219,6 +219,126 @@ class BattleView(discord.ui.View):
         with open("log.json", "w") as file:
             json.dump(log_data, file, indent=4)
 
+class EnchereView(discord.ui.View):
+    def __init__(self, timeout, lot):
+        super().__init__(timeout=timeout)
+        self.message = None
+        self.lot = lot
+
+    @discord.ui.button(label="+ 500", style=discord.ButtonStyle.green, custom_id="btn_500")
+    async def btn_500(self, interaction: discord.Interaction, button: discord.ui.Button):
+        self.timeout = 0
+        if self.message is None:
+            self.message = interaction.message
+        
+        try:
+            with open("enchere.json", "r") as file:
+                enchere = json.load(file)
+        except FileNotFoundError:
+            enchere = {}
+
+        if interaction.user.name not in log_data:
+            max_place = max(player["place"] for player in log_data.values())
+            place = max_place + 1
+            log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}}
+        else:
+            if 'global_name' not in log_data[interaction.user.name] or 'avatar' not in log_data[interaction.user.name]:
+                log_data[interaction.user.name]['global_name'] = interaction.user.global_name
+                log_data[interaction.user.name]['avatar'] = str(interaction.user.avatar)
+
+        await interaction.response.send_message("Votre mise a été prise en compte", ephemeral=True)
+
+        lot = self.lot
+        enchere[lot]['last_price'] += 500
+        enchere[lot]['last_player'] = interaction.user.name
+        enchere[lot]['join_player'][interaction.user.name] = enchere[lot]['last_price']
+
+        embed = interaction.message.embeds[0]
+        id = str(log_data[interaction.user.name]['id'])
+        embed.clear_fields()
+        embed.add_field(name="Plus grosse mise : ", value= str(enchere[lot]['last_price']) + ' <:sakura_coin:1217220808083247154> <@' + id + '>', inline=True)
+        await interaction.followup.edit_message(message_id=interaction.message.id, embed=embed)
+
+        with open("enchere.json", "w") as file:
+            json.dump(enchere, file, indent=4)
+
+    @discord.ui.button(label="+ 1 000", style=discord.ButtonStyle.green, custom_id="btn_1000")
+    async def btn_1000(self, interaction: discord.Interaction, button: discord.ui.Button):
+        self.timeout = 0
+        if self.message is None:
+            self.message = interaction.message
+        
+        try:
+            with open("enchere.json", "r") as file:
+                enchere = json.load(file)
+        except FileNotFoundError:
+            enchere = {}
+
+        if interaction.user.name not in log_data:
+            max_place = max(player["place"] for player in log_data.values())
+            place = max_place + 1
+            log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}}
+        else:
+            if 'global_name' not in log_data[interaction.user.name] or 'avatar' not in log_data[interaction.user.name]:
+                log_data[interaction.user.name]['global_name'] = interaction.user.global_name
+                log_data[interaction.user.name]['avatar'] = str(interaction.user.avatar)
+
+        await interaction.response.send_message("Votre mise a été prise en compte", ephemeral=True)
+
+        lot = self.lot
+        enchere[lot]['last_price'] += 1000
+        enchere[lot]['last_player'] = interaction.user.name
+        enchere[lot]['join_player'][interaction.user.name] = enchere[lot]['last_price']
+
+        embed = interaction.message.embeds[0]
+        id = str(log_data[interaction.user.name]['id'])
+        embed.clear_fields()
+        embed.add_field(name="Plus grosse mise : ", value= str(enchere[lot]['last_price']) + ' <:sakura_coin:1217220808083247154> <@' + id + '>', inline=True)
+        await interaction.followup.edit_message(message_id=interaction.message.id, embed=embed)
+
+        with open("enchere.json", "w") as file:
+            json.dump(enchere, file, indent=4)
+
+
+    async def on_timeout(self):
+        for child in self.children:
+            child.disabled = True
+        if self.message:
+            await self.message.edit(view=self)
+
+        try:
+            with open("enchere.json", "r") as file:
+                enchere = json.load(file)
+        except FileNotFoundError:
+            enchere = {}
+
+        channel = client.get_channel(CHANNEL_ID)
+        lot = self.lot
+
+        title = "Fin de l'enchère !"
+        color = discord.Color.green()
+        if enchere[lot]['last_player'] == "":
+            title = "Aucun participant"
+            color = discord.Color.red()
+            embed = create_embed(title=title, color=color)
+        else:
+            winner = '<@' + str(log_data[enchere[lot]['last_player']]['id']) + '>'
+            gain = str(enchere[lot]['quantity']) + ' :coin:'
+            mise = str(enchere[lot]['last_price']) + ' <:sakura_coin:1217220808083247154>'
+            participants = ""
+            for player in enchere[lot]['join_player']:
+                participants += '<@' + str(log_data[player]['id']) + '> ' + str(enchere[lot]['join_player'][player]) + ' <:sakura_coin:1217220808083247154>\n'
+            tabFields = {"Vainqueur des enchères :" : winner, "Gains :" : gain, "Mise :" : mise, "Participants :" : participants}
+            embed = create_embed(title=title, color=color, tabFields=tabFields)
+            
+            log_data[enchere[lot]['last_player']]['gold'] += enchere[lot]['quantity']
+
+        await channel.send(embed=embed)
+
+        with open("log.json", "w") as file:
+            json.dump(log_data, file, indent=4)
+
+
 async def hourly_mob():
     await client.wait_until_ready()
     channel = client.get_channel(CHANNEL_ID)
@@ -227,7 +347,7 @@ async def hourly_mob():
 
     while not client.is_closed():
         now = datetime.now()
-        next_hour = (now + timedelta(seconds=10)).replace(microsecond=0) #a1b2
+        next_hour = (now + timedelta(minutes=15)).replace(second=0, microsecond=0) #a1b2
         wait_time = (next_hour - now).total_seconds()
 
         await asyncio.sleep(wait_time)
@@ -268,7 +388,7 @@ async def hourly_mob():
                 embed = create_embed(title=title, color=color, image=image, tabFields=tabFields)
                 break;
 
-        view = BattleView(timeout=5) #a1b2
+        view = BattleView(timeout=600) #a1b2
         view.message = await channel.send(embed=embed, view=view)
 
         battle = {"mob": {"name": mob_name, "lvl": lvl}, "players": {}}
@@ -404,6 +524,57 @@ async def on_message(message):
         footer = "Classement rank : " + str(log_data[message.author.name]['place']) + '/' + str(len(log_data))      
         embed = create_embed(title=title, description=description, color=color, footer=footer)
         await message.channel.send(embed=embed)
+
+    if message.content.startswith("!enchere"):
+        image = None
+        footer = None
+        if message.author.id == 701782195844546662:
+            command_and_argument = message.content.split(maxsplit=3)
+            title = "Commande erronée"
+            description = "Voici un exemple : !enchere numéro-lot quantité mise-à-prix"
+            color = discord.Color.orange()
+            
+            if len(command_and_argument) == 4:
+                try:
+                    with open("enchere.json", "r") as file:
+                        enchere = json.load(file)
+                except FileNotFoundError:
+                    enchere = {}
+
+                command, lot, quantity, start_price = command_and_argument
+                if lot in enchere:
+                    channel = client.get_channel(CHANNEL_ID)
+                    if channel is None:
+                        return
+                    title = "Lot n°" + str(lot) + ' : ' + str(enchere[lot]['name']) + ' ' + str(quantity) + ' :coin:'
+                    description = "Mise à prix : " + str(start_price) + " <:sakura_coin:1217220808083247154>"
+                    color = discord.Color.dark_teal()
+                    image = enchere[lot]['image']
+                    enchere[lot]['is_played'] = True
+                    enchere[lot]['quantity'] = int(quantity)
+                    enchere[lot]['start_price'] = int(start_price)
+                    enchere[lot]['last_price'] = int(start_price)
+                    enchere[lot]['last_player'] = ""
+                    enchere[lot]['join_player'] = {}
+
+                    embed = create_embed(title=title, description=description, color=color, image=image)
+                    view = EnchereView(timeout=10, lot=lot) #a1b2
+                    view.message = await channel.send(embed=embed, view=view)
+
+                    with open("enchere.json", "w") as file:
+                        json.dump(enchere, file, indent=4)
+                else:
+                    embed = create_embed(title=title, description=description, color=color, image=image)
+                    await message.channel.send(embed=embed)
+            else:
+                embed = create_embed(title=title, description=description, color=color, image=image)
+                await message.channel.send(embed=embed)
+        else:
+            title = "Commande non autorisée"
+            description = "Vous n'avait pas les droits requis pour cette commande"
+            color = discord.Color.orange()
+            embed = create_embed(title=title, description=description, color=color, image=image)
+            await message.channel.send(embed=embed)
 
     if message.content.startswith("!gold"):
         name = message.author.name

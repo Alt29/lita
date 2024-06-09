@@ -1,0 +1,14 @@
+{
+    "1": {
+        "name": "Transfert de coins",
+        "image": "https://i.imgur.com/P8Bt3Qo.jpeg",
+        "quantity": 10000,
+        "start_price": 100000,
+        "last_price": 100500,
+        "last_player": "altan3062",
+        "join_player": {
+            "altan3062": 100500
+        },
+        "is_played": true
+    }
+}
