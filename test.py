@@ -55,7 +55,6 @@ async def on_ready():
 class BattleView(discord.ui.View):
     def __init__(self, timeout):
         super().__init__(timeout=timeout)
-        self.responded = False
         self.message = None
 
 
@@ -72,7 +71,7 @@ class BattleView(discord.ui.View):
             battle = {}
 
         if interaction.user.name not in log_data:
-            max_place = max(player["place"] for player in log_data.values())
+            max_place = max((player["place"] for player in log_data.values()), default=0)
             place = max_place + 1
             log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}}
         else:
@@ -238,7 +237,7 @@ class EnchereView(discord.ui.View):
             enchere = {}
 
         if interaction.user.name not in log_data:
-            max_place = max(player["place"] for player in log_data.values())
+            max_place = max((player["place"] for player in log_data.values()), default=0)
             place = max_place + 1
             log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}}
         else:
@@ -275,7 +274,7 @@ class EnchereView(discord.ui.View):
             enchere = {}
 
         if interaction.user.name not in log_data:
-            max_place = max(player["place"] for player in log_data.values())
+            max_place = max((player["place"] for player in log_data.values()), default=0)
             place = max_place + 1
             log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}}
         else:
@@ -337,6 +336,46 @@ class EnchereView(discord.ui.View):
 
         with open("log.json", "w") as file:
             json.dump(log_data, file, indent=4)
+
+class EveilView(discord.ui.View):
+    def __init__(self, timeout, nbr_gem, gem_type):
+        super().__init__(timeout=timeout)
+        self.nbr_gem = nbr_gem
+        self.gem_type = gem_type
+        self.message = None
+
+    @discord.ui.button(label="M'éveiller", style=discord.ButtonStyle.green, custom_id="btn_eveil")
+    async def btn_eveil(self, interaction: discord.Interaction, button: discord.ui.Button):
+        rank = ['Pas d\'éveil', ':regional_indicator_f:', ':regional_indicator_e:', ':regional_indicator_d:', ':regional_indicator_c:', ':regional_indicator_b:', ':regional_indicator_a:', ':regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s: :regional_indicator_s:', '???']
+        self.timeout = 0
+        if self.message is None:
+            self.message = interaction.message
+
+        if interaction.user.name not in log_data:
+            max_place = max((player["place"] for player in log_data.values()), default=0)
+            place = max_place + 1
+            log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}}
+        else:
+            if 'global_name' not in log_data[interaction.user.name] or 'avatar' not in log_data[interaction.user.name]:
+                log_data[interaction.user.name]['global_name'] = interaction.user.global_name
+                log_data[interaction.user.name]['avatar'] = str(interaction.user.avatar)
+
+        log_data[interaction.user.name]['rank'] += 1
+        log_data[interaction.user.name]['bag'][self.gem_type]['quantity'] -= self.nbr_gem
+        await interaction.response.send_message("Vous vous êtes éveillé au rang : " + rank[log_data[interaction.user.name]['rank']] + ', félicitations !', ephemeral=True)
+
+        for child in self.children:
+            child.disabled = True
+            await interaction.message.edit(view=self)
+
+        with open("log.json", "w") as file:
+            json.dump(log_data, file, indent=4)
+
+    async def on_timeout(self):
+        for child in self.children:
+            child.disabled = True
+        if self.message:
+            await self.message.edit(view=self)
 
 
 async def hourly_mob():
@@ -404,7 +443,7 @@ async def on_message(message):
 
     if message.content.startswith("!"):
         if message.author.name not in log_data:
-            max_place = max(player["place"] for player in log_data.values())
+            max_place = max((player["place"] for player in log_data.values()), default=0)
             place = max_place + 1
             log_data[message.author.name] = {"id": message.author.id, "global_name": message.author.global_name, "avatar": str(message.author.avatar), "avenger": False, "rank": 0, "place": place, "gold": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}}
             updated = True
@@ -416,6 +455,19 @@ async def on_message(message):
 
     if message.content.startswith("!info"):
         embed = info_action()
+        await message.channel.send(embed=embed)
+        
+    if message.content.startswith("!eveil"):
+        if await time_command(message, "!eveil", 0.0125):
+            embed, view = eveil_action(message.author.name, message.author.avatar, message.author.global_name)
+            if view is not None:
+                view.message = await message.channel.send(embed=embed, view=view)
+            else:
+                await message.channel.send(embed=embed)
+            updated = True
+        
+    if message.content.startswith("!materiaux") or message.content.startswith("!matériaux"):
+        embed = materiaux_action()
         await message.channel.send(embed=embed)
         
     if message.content.startswith("!donates"):
@@ -755,23 +807,97 @@ def info_action():
         '!explore :' : 'Pour récupérer 100 golds toutes les heures.',
         '!train :' : 'Pour un entraînement digne des plus grand, +300xp/3h',
         '!market :' : 'Pour acheter de quoi devenir plus fort.',
-        '!top-rank :' : 'Pour voir le classement général. :new:',
+        '!materiaux :' : 'Pour voir les stats des matériaux. :new:',
+        '!top-rank :' : 'Pour voir le classement général.',
         '!top-gold :' : 'Pour voir le classement en Gold.',
-        '!top-eveil' : 'Pour voir le classement en Eveil. :new:',
+        '!top-eveil' : 'Pour voir le classement en Eveil.',
         '!top-level :' : 'Pour voir le classement en Level.',
-        '!top-pv :' : 'Pour voir le classement en PV. :new:',
-        '!top-for :' : 'Pour voir le classement en For. :new:',
-        '!top-def :' : 'Pour voir le classement en Def. :new:',
-        '!fight :' : 'Pour se disbuter le haut du classement !top-rank. :new:',
+        '!top-pv :' : 'Pour voir le classement en PV.',
+        '!top-for :' : 'Pour voir le classement en For.',
+        '!top-def :' : 'Pour voir le classement en Def.',
+        '!fight :' : 'Pour se disbuter le haut du classement !top-rank.',
         '!bag :' : 'Pour voir ce que vous avez dans votre sac.',
         '!purchase :' : 'Pour acheter un item au market.',
         '!notif :' : "Pour rejoindre la liste des chads notifiés lors d'une demande d'aide",
         '!send :' : "Pour envoyer de l'argent",
-        '!awaken :' : '[En travaux]',
+        '!eveil :' : 'Brisez vos limites ! :new:',
         '!dungeon :' : '[En travaux]',
     }
     color = discord.Color.blue()
     title = 'Informations'
+    return create_embed(title=title, color=color, tabFields=tabFields)
+
+def eveil_action(author_name, author_icon, global_name):
+    view = None
+    player_rank = log_data[author_name]['rank']
+    rank = ['Pas d\'éveil', ':regional_indicator_f:', ':regional_indicator_e:', ':regional_indicator_d:', ':regional_indicator_c:', ':regional_indicator_b:', ':regional_indicator_a:', ':regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s: :regional_indicator_s:', '???']
+    current_rank = rank[player_rank]
+    next_rank = rank[player_rank + 1]
+    
+    res, owned, nbr_gem, gem_type = gems_required(author_name, player_rank + 1)
+    
+    tabFields = {
+        'Rang d\'éveil' : current_rank + ' :arrow_right: ' + next_rank,
+        'Gemmes d\'éveil : ' : res,
+    }
+    
+    if owned:
+        title = 'Éveil'
+        color = discord.Color.blue()
+        view = EveilView(timeout=30, nbr_gem=nbr_gem, gem_type=gem_type) 
+    else:
+        title = 'Gemmes d\'éveil manquantes'
+        color = discord.Color.red()
+    
+    embed = create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, tabFields=tabFields)
+    
+    return embed, view
+
+def gems_required(author_name, rank):
+    gem_rank = (rank-1) // 3
+    nbr_gem = rank % 3
+    
+    if nbr_gem == 0:
+        nbr_gem = 3
+    
+    if gem_rank == 0:
+        gem = '<:Rare:1222193217957662760> Rare'
+        gem_type = 'Rare'
+    else:
+        if gem_rank == 1:
+            gem = '<:Epique:1222193241022136491> Épique'
+            gem_type = 'Epique'
+        else:
+            if gem_rank == 2:
+                gem = '<:Legendaire:1222193258403336222> Légendaire'
+                gem_type = 'Legendaire'
+    
+    if gem_type in log_data[author_name]['bag']:
+        quantity = log_data[author_name]['bag'][gem_type]['quantity']
+    else:
+        quantity = 0
+
+    nbr_gem = nbr_gem * nbr_gem
+    res = str(quantity) + '/' + str(nbr_gem) + ' • ' + gem
+    if quantity >= nbr_gem:
+        owned = True
+    else:
+        owned = False
+    
+    return res, owned, nbr_gem, gem_type
+
+def materiaux_action():
+    tabFields = {
+        ':regional_indicator_s: Étherium :' : 'PV : 35 000 :hearts:\nFor : 50 :crossed_swords:\nDef : 350 :shield:\nPrix : 360 000 :coin:',
+        ':regional_indicator_a: Adamantium :' : 'PV : 12 000 :hearts:\nFor : 30 :crossed_swords:\nDef : 120 :shield:\nPrix : 120 000 :coin:',
+        ':regional_indicator_b: Orichalque :' : 'PV : 3 500 :hearts:\nFor : 20 :crossed_swords:\nDef : 35 :shield:\nPrix : 40 000 :coin:',
+        ':regional_indicator_c: Mithril :' : 'PV : 1 000 :hearts:\nFor : 4 :crossed_swords:\nDef : 16 :shield:\nPrix : 13 000 :coin:',
+        ':regional_indicator_d: Argent :' : 'PV : 300 :hearts:\nFor : 2 :crossed_swords:\nDef : 4 :shield:\nPrix : 4 500 :coin:',
+        ':regional_indicator_e: Fer :' : 'PV : 200 :hearts:\nFor : 1 :crossed_swords:\nDef : 3 :shield:\nPrix : 1 500 :coin:',
+        ':regional_indicator_f: Cuir :' : 'PV : 100 :hearts:\nDef : 2 :shield:\nPrix : 500 :coin:',
+    }
+    color = discord.Color.blue()
+    title = 'Matériaux'
     return create_embed(title=title, color=color, tabFields=tabFields)
 
 def market_action():
@@ -784,8 +910,8 @@ def market_action():
         'Pour acheter : ' : '!purchase nom_item',
         'Équipements de base : ' : base_items,
         'Matériaux : ' : material_items,
-        'Runes : :new:' : rune_items,
-        'Gemmes d\'éveil : (bientôt)' : rank_items,
+        'Runes : ' : rune_items,
+        'Gemmes d\'éveil : :new:' : rank_items,
     }
     color = discord.Color.lighter_grey()
     title = 'Boutique'
@@ -899,7 +1025,10 @@ def me_action(author_name, author_icon, global_name, type):
         else:
             log_data[author_name] = {type: 0}
     
-    res = log_data[author_name][type]
+    if type == 'profil':
+        res = log_data[author_name]['rank']
+    else:
+        res = log_data[author_name][type]
     
     if type == 'gold':
         tabFields = {'Gold :' : str(res) + ' :coin:'}
@@ -1050,7 +1179,29 @@ def daily_action(author_name, author_icon, global_name):
     footer = 'Revenez également demain !'
     return create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, footer=footer, tabFields=tabFields)
 
-def explore_action(author_name, author_icon, global_name):
+def explore_action(author_name, author_icon, global_name): #in travauxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    random_number = random.randint(1, 1270)
+    if random_number < 640:
+        title = 'L\'Antre de l\'Ours'
+        alea = random.randint(1, 1270)
+    else:
+        if random_number <= 960:
+            title = 'La Forêt des Tentations'
+        else:
+            if random_number <= 1120:
+                title = 'Les Grandes Falaises'
+            else:
+                if random_number <= 1200:
+                    title = 'Les Profondeurs de la Coupe'
+                else:
+                    if random_number <= 1240:
+                        title = 'La Mer des Cadavres'
+                    else:
+                        if random_number <= 1260:
+                            title = 'La Capitale des Non-Retournés'
+                        else:
+                            title = 'La Dernière Épreuve'
+    
     if author_name in log_data:
         if 'gold' in log_data[author_name]:
             log_data[author_name]['gold'] += 100
@@ -1059,7 +1210,7 @@ def explore_action(author_name, author_icon, global_name):
     else:
         log_data[author_name] = {'gold': 100}
 
-    title = 'Exploration bonus !'
+    
     tabFields = {'Vous récupérez : ' : '100 :coin:'}
     color = discord.Color.green()
     footer = 'Revenez dans 1 heure !'
@@ -1093,7 +1244,6 @@ def train_action(author_name, author_icon, global_name):
     color = discord.Color.green()
     footer = 'Revenez dans 3 heures !'
     return create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, footer=footer, tabFields=tabFields)
-
 
 def create_embed(title = None, description = None, color = None, author_name = None, author_icon = None, image = None, footer = None, tabFields = None):
     embed = discord.Embed(
