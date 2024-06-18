@@ -804,8 +804,8 @@ def info_action():
         '!profil :' : 'Pour voir vos stats.',
         '!daily :' : 'Pour récupérer des golds toutes les 24h.',
         '!compter :' : 'Pour les tenants du record dans #compter.',
-        '!explore :' : 'Pour récupérer 100 golds toutes les heures.',
-        '!train :' : 'Pour un entraînement digne des plus grand, +300xp/3h',
+        '!explore :' : 'Explorez les profondeurs pour des golds toutes les heures. :new:',
+        '!train :' : 'Pour un entraînement digne des plus grand, gagnez de l\'xp toutes les 3h. :new:',
         '!market :' : 'Pour acheter de quoi devenir plus fort.',
         '!materiaux :' : 'Pour voir les stats des matériaux. :new:',
         '!top-rank :' : 'Pour voir le classement général.',
@@ -1179,39 +1179,47 @@ def daily_action(author_name, author_icon, global_name):
     footer = 'Revenez également demain !'
     return create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, footer=footer, tabFields=tabFields)
 
-def explore_action(author_name, author_icon, global_name): #in travauxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+def explore_action(author_name, author_icon, global_name):
     random_number = random.randint(1, 1270)
     if random_number < 640:
         title = 'L\'Antre de l\'Ours'
-        alea = random.randint(1, 1270)
+        alea = random.randint(50, 200)
     else:
         if random_number <= 960:
             title = 'La Forêt des Tentations'
+            alea = random.randint(150, 300)
         else:
             if random_number <= 1120:
                 title = 'Les Grandes Falaises'
+                alea = random.randint(250, 400)
             else:
                 if random_number <= 1200:
                     title = 'Les Profondeurs de la Coupe'
+                    alea = random.randint(350, 500)
                 else:
                     if random_number <= 1240:
                         title = 'La Mer des Cadavres'
+                        alea = random.randint(450, 600)
                     else:
                         if random_number <= 1260:
                             title = 'La Capitale des Non-Retournés'
+                            alea = random.randint(550, 700)
                         else:
                             title = 'La Dernière Épreuve'
+                            alea = random.randint(1, 2500)
+    
+    alea = alea * (log_data[author_name]['rank'] + 1) * (log_data[author_name]['rank'] + 1)
     
     if author_name in log_data:
         if 'gold' in log_data[author_name]:
-            log_data[author_name]['gold'] += 100
+            log_data[author_name]['gold'] += alea
         else:
-            log_data[author_name]['gold'] = 100
+            log_data[author_name]['gold'] = alea
     else:
-        log_data[author_name] = {'gold': 100}
+        log_data[author_name] = {'gold': alea}
 
     
-    tabFields = {'Vous récupérez : ' : '100 :coin:'}
+    tabFields = {'Vous récupérez : ' : str(alea) + ' :coin:'}
     color = discord.Color.green()
     footer = 'Revenez dans 1 heure !'
     return create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, footer=footer, tabFields=tabFields)
@@ -1227,7 +1235,41 @@ def compter_action(author_name, author_icon, global_name, record):
 
 def train_action(author_name, author_icon, global_name):
     level_xp = [500, 600, 720, 864, 1036, 1243, 1492, 1791, 2149, 2578, 3093, 3711, 4453, 5343, 6411, 7693, 9231, 11077, 13293, 15951, 19141, 22969, 27563, 33075, 39690, 47628, 57153, 68584, 82300, 98760, 118512, 142214, 170657, 204788, 245746, 294895, 353873, 424647, 509576, 611491, 733790, 880548, 1056657, 1267989, 1521587, 1825904, 2191085, 2629302, 3155163, 3786195, 4543434, 5452120, 6542544, 7851052, 9421262, 11305514, 13566617, 16279940, 19535928, 23443113, 28131736, 33758083, 40509700, 48611640, 58333968, 70000762, 84000914, 100801096, 120961315, 145153578, 174184293, 209021151, 250825381, 301090457, 361308548, 433570258, 520284309, 624341171, 749209405, 899051286, 1078861543, 1294633852, 1553560622, 1864272746, 2237127295, 2684552754, 3221463305, 3865755966, 4638907159, 5566688591, 6680026309, 8016031570, 9619237884, 11543158461, 13851790153, 16622148183, 19946577820, 23935893384, 28723072061, 34467686474, 41361223769, 49633468522, 59560162226, 71472194671, 85766633605, 102919960326, 123503952391, 148204742869, 177845691442, 213414829731]
-    log_data[author_name]['level']['xp'] += 300
+    
+    random_number = random.randint(1, 2550)
+    if random_number < 1280:
+        title = 'La Porte de l\'Ouverture'
+        alea = random.randint(250, 400)
+    else:
+        if random_number < 1920:
+            title = 'La Porte de l\'Énergie'
+            alea = random.randint(350, 500)
+        else:
+            if random_number <= 2240:
+                title = 'La Porte de la Vie'
+                alea = random.randint(450, 600)
+            else:
+                if random_number <= 2400:
+                    title = 'La Porte de la Douleur'
+                    alea = random.randint(550, 700)
+                else:
+                    if random_number <= 2480:
+                        title = 'La Porte de la Forêt'
+                        alea = random.randint(650, 800)
+                    else:
+                        if random_number <= 2520:
+                            title = 'La Porte de la Vision'
+                            alea = random.randint(750, 900)
+                        else:
+                            if random_number <= 2540:
+                                title = 'La Porte de l\'Insanité'
+                                alea = random.randint(850, 1000)
+                            else:
+                                title = 'La Porte de la Mort'
+                                alea = random.randint(1, 3700)
+    
+    alea = alea * (log_data[author_name]['rank'] + 1) * (log_data[author_name]['rank'] + 1)
+    log_data[author_name]['level']['xp'] += alea
 
     for lvl_xp in level_xp[log_data[author_name]['level']['lvl']:]:
         if log_data[author_name]['level']['xp'] > lvl_xp:
@@ -1239,8 +1281,7 @@ def train_action(author_name, author_icon, global_name):
         else:
             break
 
-    title = 'Vous surpassez vos limites !'
-    tabFields = {'Vous gagnez : ' : '300 :diamond_shape_with_a_dot_inside:'}
+    tabFields = {'Vous gagnez : ' : str(alea) + ' :diamond_shape_with_a_dot_inside:'}
     color = discord.Color.green()
     footer = 'Revenez dans 3 heures !'
     return create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, footer=footer, tabFields=tabFields)
