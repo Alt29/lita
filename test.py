@@ -802,7 +802,7 @@ def info_action():
     tabFields = {
         '!gold :' : 'Pour voir combien de gold vous avez.',
         '!profil :' : 'Pour voir vos stats.',
-        '!daily :' : 'Pour récupérer des golds toutes les 24h.',
+        '!daily :' : 'Pour récupérer des golds toutes les 24h, ne perdez pas votre série. :new:',
         '!compter :' : 'Pour les tenants du record dans #compter.',
         '!explore :' : 'Explorez les profondeurs pour des golds toutes les heures. :new:',
         '!train :' : 'Pour un entraînement digne des plus grand, gagnez de l\'xp toutes les 3h. :new:',
@@ -1005,7 +1005,11 @@ async def time_command(message, command, cooldown):
     check, waiting_time = check_time(author_name, command, cooldown)
     
     if check:
+        if command == '!daily':
+            log_data[author_name]['last_daily'] = log_data[author_name][command]
+            
         log_data[author_name][command] = str(datetime.now())
+        
         return True
     else:
         await message.channel.send("Vous devez attendre encore " + waiting_time)
@@ -1166,15 +1170,32 @@ def top_action(author_name, type):
 
 def daily_action(author_name, author_icon, global_name):
     if author_name in log_data:
-        if 'gold' in log_data[author_name]:
-            log_data[author_name]['gold'] += 500
+        if 'max_daily' in log_data[author_name]:
+            now = datetime.now()
+            daily_date_str = log_data[author_name]['last_daily']
+            daily_date = datetime.fromisoformat(daily_date_str)
+            time_difference = now - daily_date
+            print(now)
+            print(daily_date)
+            print(time_difference)
+            print(time_difference < timedelta(hours=48))
+            if time_difference < timedelta(hours=48):
+                log_data[author_name]['max_daily'] += 500
+            else:
+                log_data[author_name]['max_daily'] = 500
         else:
-            log_data[author_name]['gold'] = 500
+            log_data[author_name]['max_daily'] = 500
+            
+        if 'gold' in log_data[author_name]:
+            log_data[author_name]['gold'] += log_data[author_name]['max_daily']
+        else:
+            log_data[author_name]['gold'] = log_data[author_name]['max_daily']
     else:
-        log_data[author_name] = {'gold': 500}
+        log_data[author_name] = {'max_daily': 500}
+        log_data[author_name] = {'gold': log_data[author_name]['max_daily']}
 
-    title = 'Daily bonus !'
-    tabFields = {'Vous récupérez : ' : '500 :coin:'}
+    title = 'Daily Streak ' + str(log_data[author_name]['max_daily']//500) +  ' :fire: !'
+    tabFields = {'Vous récupérez : ' : str(log_data[author_name]['max_daily']) + ' :coin:'}
     color = discord.Color.green()
     footer = 'Revenez également demain !'
     return create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, footer=footer, tabFields=tabFields)
