@@ -364,6 +364,9 @@ class EveilView(discord.ui.View):
 
             log_data[interaction.user.name]['rank'] += 1
             log_data[interaction.user.name]['bag'][self.gem_type]['quantity'] -= self.nbr_gem
+            if log_data[interaction.user.name]['bag'][self.gem_type]['quantity'] == 0:
+                del log_data[interaction.user.name]['bag'][self.gem_type]
+                
             await interaction.response.send_message("Vous vous êtes éveillé au rang : " + rank[log_data[interaction.user.name]['rank']] + ', félicitations !', ephemeral=True)
 
             for child in self.children:
@@ -378,7 +381,6 @@ class EveilView(discord.ui.View):
             child.disabled = True
         if self.message:
             await self.message.edit(view=self)
-
 
 async def hourly_mob():
     await client.wait_until_ready()
@@ -457,6 +459,10 @@ async def on_message(message):
 
     if message.content.startswith("!info"):
         embed = info_action()
+        await message.channel.send(embed=embed)
+        
+    if message.content.startswith("!cd"):
+        embed = cd_action(message.author.name, message.author.avatar, message.author.global_name)
         await message.channel.send(embed=embed)
         
     if message.content.startswith("!eveil"):
@@ -808,6 +814,7 @@ def info_action():
         '!compter :' : 'Pour les tenants du record dans #compter.',
         '!explore :' : 'Explorez les profondeurs pour des golds toutes les heures. :new:',
         '!train :' : 'Pour un entraînement digne des plus grand, gagnez de l\'xp toutes les 3h. :new:',
+        '!cd :' : 'Pour voir vos cooldown. :new:',
         '!market :' : 'Pour acheter de quoi devenir plus fort.',
         '!materiaux :' : 'Pour voir les stats des matériaux. :new:',
         '!top-rank :' : 'Pour voir le classement général.',
@@ -828,6 +835,44 @@ def info_action():
     color = discord.Color.blue()
     title = 'Informations'
     return create_embed(title=title, color=color, tabFields=tabFields)
+
+def cd_action(author_name, author_icon, global_name):
+    daily_check, daily_waiting_time = check_time(author_name, '!daily', 24)
+    train_check, train_waiting_time = check_time(author_name, '!train', 3)
+    explore_check, explore_waiting_time = check_time(author_name, '!explore', 1)
+    
+    if daily_check:
+        daily_waiting_time = "Vous pouvez faire la commande dès à présent !"
+    
+    if explore_check:
+        explore_waiting_time = "Vous pouvez faire la commande dès à présent !"
+        
+    if train_check:
+        train_waiting_time = "Vous pouvez faire la commande dès à présent !"
+    
+    if '!compter' in log_data[author_name]:
+        compter_check,compter_waiting_time = check_time(author_name, '!compter', 24)
+        
+        if compter_check:
+            compter_waiting_time = "Vous pouvez faire la commande dès à présent !"
+
+        tabFields = {
+            '!daily :' : daily_waiting_time,
+            '!compter :' : compter_waiting_time,
+            '!train :' : train_waiting_time,
+            '!explore :' : explore_waiting_time
+        }
+    else:
+        tabFields = {
+            '!daily :' : daily_waiting_time,
+            '!train :' : train_waiting_time,
+            '!explore :' : explore_waiting_time
+        }
+    
+    color = discord.Color.blue()
+    title = 'Cooldown'
+    embed = create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, tabFields=tabFields)
+    return embed
 
 def eveil_action(author_name, author_icon, global_name):
     view = None
