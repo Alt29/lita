@@ -1,60 +1,64 @@
 {
-    "altan3062": {
+    "lotusia19": {
         "id": 701782195844546662,
         "avenger": true,
-        "rank": 0,
+        "rank": 3,
         "place": 1,
-        "gold": 36014,
-        "!daily": "2024-06-05 16:19:56.492786",
-        "!explore": "2024-06-05 16:19:49.923313",
-        "!train": "2024-06-05 16:19:52.684456",
+        "gold": 31299,
+        "!daily": "2024-06-18 15:39:30.609317",
+        "!explore": "2024-06-19 11:13:29.089922",
+        "!train": "2024-06-19 10:07:15.069590",
         "bag": {
             "Casquette": {
                 "quantity": 1,
                 "icon": ":billed_cap:",
-                "rank": 5
+                "rank": 6
             },
             "Baskets": {
                 "quantity": 1,
                 "icon": ":athletic_shoe:",
-                "rank": 4
+                "rank": 5
             },
             "Dague": {
                 "quantity": 1,
                 "icon": ":dagger:",
-                "rank": 4
+                "rank": 5
             },
             "Tshirt": {
                 "quantity": 1,
                 "icon": ":shirt:",
-                "rank": 4
+                "rank": 6
             },
             "Jean": {
                 "quantity": 1,
                 "icon": ":jeans:",
-                "rank": 4
+                "rank": 6
             },
             "Feu": {
-                "quantity": 7,
+                "quantity": 20,
                 "icon": ":fire:"
             },
             "Terre": {
-                "quantity": 5,
+                "quantity": 17,
                 "icon": ":seedling:"
             },
             "Eau": {
-                "quantity": 5,
+                "quantity": 17,
                 "icon": ":droplet:"
+            },
+            "Rare": {
+                "quantity": 0,
+                "icon": "<:Rare:1222193217957662760>"
             }
         },
         "level": {
-            "lvl": 27,
-            "xp": 3318
+            "lvl": 33,
+            "xp": 85242
         },
         "stats": {
-            "pv": 13877,
-            "for": 109,
-            "def": 223
+            "pv": 67122,
+            "for": 311,
+            "def": 777
         },
         "deaths": 0,
         "penality": 0,
@@ -72,32 +76,33 @@
         "title": {},
         "profil": 0,
         "global_name": "Altan#3062",
-        "avatar": "https://cdn.discordapp.com/avatars/701782195844546662/c9743b50aca8d5f64919bfb8fa655230.png?size=1024"
+        "avatar": "https://cdn.discordapp.com/avatars/701782195844546662/c9743b50aca8d5f64919bfb8fa655230.png?size=1024",
+        "!eveil": "2024-06-19 21:34:47.777397"
     },
     "slashoroide": {
         "id": 503247209165357066,
         "avenger": true,
-        "rank": 0,
+        "rank": 4,
         "place": 4,
-        "gold": 5071,
-        "!daily": "2024-06-05 10:37:16.799578",
-        "!explore": "2024-06-05 17:31:29.212737",
-        "!train": "2024-06-05 15:35:58.720685",
+        "gold": 90108,
+        "!daily": "2024-06-19 08:53:08.535771",
+        "!explore": "2024-06-19 19:27:39.042577",
+        "!train": "2024-06-19 19:27:40.515343",
         "bag": {
             "Casquette": {
                 "quantity": 1,
                 "icon": ":billed_cap:",
-                "rank": 5
+                "rank": 6
             },
             "Baskets": {
                 "quantity": 1,
                 "icon": ":athletic_shoe:",
-                "rank": 3
+                "rank": 4
             },
             "Dague": {
                 "quantity": 1,
                 "icon": ":dagger:",
-                "rank": 3
+                "rank": 4
             },
             "Tshirt": {
                 "quantity": 1,
@@ -107,7 +112,7 @@
             "Jean": {
                 "quantity": 1,
                 "icon": ":jeans:",
-                "rank": 3
+                "rank": 4
             },
             "Eau": {
                 "quantity": 3,
@@ -120,16 +125,24 @@
             "Terre": {
                 "quantity": 1,
                 "icon": ":seedling:"
+            },
+            "Epique": {
+                "quantity": 0,
+                "icon": "<:Epique:1222193241022136491>"
+            },
+            "Rare": {
+                "quantity": 3,
+                "icon": "<:Rare:1222193217957662760>"
             }
         },
         "level": {
-            "lvl": 22,
-            "xp": 27340
+            "lvl": 28,
+            "xp": 4596
         },
         "stats": {
-            "pv": 10324,
-            "for": 88,
-            "def": 154
+            "pv": 25452,
+            "for": 136,
+            "def": 328
         },
         "deaths": 0,
         "penality": 0,
@@ -147,7 +160,10 @@
         "title": {},
         "profil": 0,
         "global_name": "Slashoroide",
-        "avatar": "https://cdn.discordapp.com/avatars/503247209165357066/395763288548a9daee84962d4c51ae83.png?size=1024"
+        "avatar": "https://cdn.discordapp.com/avatars/503247209165357066/395763288548a9daee84962d4c51ae83.png?size=1024",
+        "last_daily": "2024-06-17 12:31:21.080128",
+        "max_daily": 500,
+        "!eveil": "2024-06-19 09:35:35.517750"
     },
     "cosmilkshake_60033": {
         "id": 1198265602314358894,
@@ -186,59 +202,63 @@
     "dekou216": {
         "id": 752965970666061864,
         "avenger": true,
-        "rank": 0,
+        "rank": 2,
         "place": 6,
-        "gold": 5623,
-        "!daily": "2024-06-05 01:29:07.739023",
-        "!explore": "2024-06-05 16:08:46.233306",
-        "!train": "2024-06-05 14:30:41.087849",
+        "gold": 15772,
+        "!daily": "2024-06-19 12:53:22.861226",
+        "!explore": "2024-06-19 19:45:41.368233",
+        "!train": "2024-06-19 17:23:47.768796",
         "bag": {
             "Casquette": {
                 "quantity": 1,
                 "icon": ":billed_cap:",
-                "rank": 4
+                "rank": 5
             },
             "Dague": {
                 "quantity": 1,
                 "icon": ":dagger:",
-                "rank": 3
+                "rank": 4
             },
             "Jean": {
                 "quantity": 1,
                 "icon": ":jeans:",
-                "rank": 3
+                "rank": 4
             },
             "Tshirt": {
                 "quantity": 1,
                 "icon": ":shirt:",
-                "rank": 4
+                "rank": 5
             },
             "Baskets": {
                 "quantity": 1,
                 "icon": ":athletic_shoe:",
-                "rank": 3
+                "rank": 4
             },
             "Feu": {
-                "quantity": 3,
+                "quantity": 12,
                 "icon": ":fire:"
             },
             "Eau": {
-                "quantity": 2,
+                "quantity": 12,
                 "icon": ":droplet:"
             },
             "Terre": {
-                "quantity": 1,
+                "quantity": 12,
                 "icon": ":seedling:"
+            },
+            "Rare": {
+                "quantity": 0,
+                "icon": "<:Rare:1222193217957662760>"
             }
         },
         "level": {
-            "lvl": 20,
-            "xp": 1593
+            "lvl": 25,
+            "xp": 46085
         },
         "stats": {
-            "pv": 6566,
-            "for": 62,
-            "def": 117
+            "pv": 19122,
+            "for": 137,
+            "def": 284
         },
         "deaths": 0,
         "penality": 0,
@@ -256,7 +276,10 @@
         "title": {},
         "profil": 0,
         "global_name": "dekou216",
-        "avatar": "https://cdn.discordapp.com/avatars/752965970666061864/a_a9af8c88d3ee8eabb766ad1a17c99539.gif?size=1024"
+        "avatar": "https://cdn.discordapp.com/avatars/752965970666061864/a_a9af8c88d3ee8eabb766ad1a17c99539.gif?size=1024",
+        "!eveil": "2024-06-19 12:53:07.186797",
+        "last_daily": "2024-06-18 03:46:59.408111",
+        "max_daily": 500
     },
     "vanesshw": {
         "id": 816758635727290439,
@@ -295,51 +318,55 @@
     "ruinflex": {
         "id": 326718702370291712,
         "avenger": true,
-        "rank": 0,
+        "rank": 3,
         "place": 3,
-        "gold": 29325,
-        "!daily": "2024-06-04 10:01:25.348472",
-        "!explore": "2024-06-05 16:19:59.934877",
-        "!train": "2024-06-05 15:17:19.268194",
+        "gold": 13936,
+        "!daily": "2024-06-19 15:29:57.969847",
+        "!explore": "2024-06-19 18:30:20.736219",
+        "!train": "2024-06-19 15:29:11.116826",
         "bag": {
             "Baskets": {
                 "quantity": 1,
                 "icon": ":athletic_shoe:",
-                "rank": 4
+                "rank": 5
             },
             "Dague": {
                 "quantity": 1,
                 "icon": ":dagger:",
-                "rank": 4
+                "rank": 5
             },
             "Tshirt": {
                 "quantity": 1,
                 "icon": ":shirt:",
-                "rank": 4
+                "rank": 5
             },
             "Casquette": {
                 "quantity": 1,
                 "icon": ":billed_cap:",
-                "rank": 4
+                "rank": 6
             },
             "Jean": {
                 "quantity": 1,
                 "icon": ":jeans:",
-                "rank": 4
+                "rank": 5
             },
             "Feu": {
-                "quantity": 16,
+                "quantity": 23,
                 "icon": ":fire:"
+            },
+            "Rare": {
+                "quantity": 0,
+                "icon": "<:Rare:1222193217957662760>"
             }
         },
         "level": {
-            "lvl": 24,
-            "xp": 6137
+            "lvl": 29,
+            "xp": 68220
         },
         "stats": {
-            "pv": 9093,
-            "for": 104,
-            "def": 165
+            "pv": 38713,
+            "for": 253,
+            "def": 465
         },
         "deaths": 0,
         "penality": 0,
@@ -357,13 +384,16 @@
         "title": {},
         "profil": 0,
         "global_name": "Ruinflex",
-        "avatar": "https://cdn.discordapp.com/avatars/326718702370291712/8b45a65f7fac4ec5bfc1fdd7817cbcea.png?size=1024"
+        "avatar": "https://cdn.discordapp.com/avatars/326718702370291712/8b45a65f7fac4ec5bfc1fdd7817cbcea.png?size=1024",
+        "!eveil": "2024-06-19 16:33:24.045487",
+        "last_daily": "2024-06-18 11:34:45.404720",
+        "max_daily": 500
     },
     "sitifen": {
         "id": 215558324811202560,
         "avenger": false,
         "rank": 0,
-        "place": 7,
+        "place": 10,
         "gold": 0,
         "!daily": "2024-01-01 11:11:11.111111",
         "!explore": "2024-01-01 11:11:11.111111",
@@ -396,12 +426,12 @@
     "junglepingouy": {
         "id": 518397017072992257,
         "avenger": true,
-        "rank": 0,
+        "rank": 1,
         "place": 5,
-        "gold": 9815,
-        "!daily": "2024-06-04 20:09:39.188547",
-        "!explore": "2024-06-04 23:17:54.632785",
-        "!train": "2024-06-04 23:17:57.505608",
+        "gold": 96536,
+        "!daily": "2024-06-19 09:37:49.989437",
+        "!explore": "2024-06-19 15:44:59.004657",
+        "!train": "2024-06-19 15:45:07.091622",
         "bag": {
             "Baskets": {
                 "quantity": 1,
@@ -411,20 +441,20 @@
             "Jean": {
                 "quantity": 1,
                 "icon": ":jeans:",
-                "rank": 3
+                "rank": 4
             },
             "Dague": {
                 "quantity": 1,
                 "icon": ":dagger:",
-                "rank": 3
+                "rank": 4
             },
             "Casquette": {
                 "quantity": 1,
                 "icon": ":billed_cap:",
-                "rank": 3
+                "rank": 4
             },
             "Feu": {
-                "quantity": 6,
+                "quantity": 14,
                 "icon": ":fire:"
             },
             "Terre": {
@@ -434,16 +464,20 @@
             "Eau": {
                 "quantity": 5,
                 "icon": ":droplet:"
+            },
+            "Rare": {
+                "quantity": -6,
+                "icon": "<:Rare:1222193217957662760>"
             }
         },
         "level": {
-            "lvl": 22,
-            "xp": 18400
+            "lvl": 25,
+            "xp": 42346
         },
         "stats": {
-            "pv": 9217,
-            "for": 83,
-            "def": 131
+            "pv": 12252,
+            "for": 114,
+            "def": 182
         },
         "deaths": 0,
         "penality": 0,
@@ -460,9 +494,12 @@
         },
         "title": {},
         "profil": 0,
-        "!compter": "2024-06-04 20:09:42.629027",
+        "!compter": "2024-06-19 09:37:56.703716",
         "global_name": "Jungouy",
-        "avatar": "https://cdn.discordapp.com/avatars/518397017072992257/8ac1d42c622fa4aee09505ab49c933f3.png?size=1024"
+        "avatar": "https://cdn.discordapp.com/avatars/518397017072992257/8ac1d42c622fa4aee09505ab49c933f3.png?size=1024",
+        "!eveil": "2024-06-19 09:35:44.871789",
+        "last_daily": "2024-06-16 22:45:15.995812",
+        "max_daily": 500
     },
     "kurayami6242": {
         "id": 711629884090351697,
@@ -500,22 +537,60 @@
     },
     "marylis": {
         "id": 483676930621571072,
-        "avenger": false,
+        "avenger": true,
         "rank": 0,
-        "place": 10,
-        "gold": 0,
-        "!daily": "2024-01-01 11:11:11.111111",
-        "!explore": "2024-01-01 11:11:11.111111",
-        "!train": "2024-01-01 11:11:11.111111",
-        "bag": {},
+        "place": 7,
+        "gold": 13326,
+        "!daily": "2024-06-19 12:25:09.593544",
+        "!explore": "2024-06-19 15:03:02.044489",
+        "!train": "2024-06-19 12:19:38.082399",
+        "bag": {
+            "Dague": {
+                "quantity": 1,
+                "icon": ":dagger:",
+                "rank": 3
+            },
+            "Tshirt": {
+                "quantity": 1,
+                "icon": ":shirt:",
+                "rank": 4
+            },
+            "Jean": {
+                "quantity": 1,
+                "icon": ":jeans:",
+                "rank": 4
+            },
+            "Baskets": {
+                "quantity": 1,
+                "icon": ":athletic_shoe:",
+                "rank": 4
+            },
+            "Casquette": {
+                "quantity": 1,
+                "icon": ":billed_cap:",
+                "rank": 4
+            },
+            "Terre": {
+                "quantity": 3,
+                "icon": ":seedling:"
+            },
+            "Eau": {
+                "quantity": 4,
+                "icon": ":droplet:"
+            },
+            "Feu": {
+                "quantity": 2,
+                "icon": ":fire:"
+            }
+        },
         "level": {
-            "lvl": 0,
-            "xp": 0
+            "lvl": 20,
+            "xp": 16975
         },
         "stats": {
-            "pv": 1000,
-            "for": 10,
-            "def": 10
+            "pv": 9068,
+            "for": 68,
+            "def": 157
         },
         "deaths": 0,
         "penality": 0,
@@ -530,64 +605,77 @@
             "Demon": 0,
             "Devoreur": 0
         },
-        "title": {}
+        "title": {},
+        "global_name": "Maryl\u00efs",
+        "avatar": "https://cdn.discordapp.com/avatars/483676930621571072/e950c8498afc827c6b48536b9746381a.png?size=1024",
+        "profil": 0,
+        "last_daily": "2024-06-18 12:25:02.215953",
+        "max_daily": 500
     },
     "akastukye": {
         "id": 619654294160932896,
         "avenger": true,
-        "rank": 0,
+        "rank": 4,
         "place": 2,
-        "gold": 5606,
-        "!daily": "2024-06-05 16:07:28.338169",
-        "!explore": "2024-06-05 16:07:23.022822",
-        "!train": "2024-06-05 16:07:20.459563",
+        "gold": 6281,
+        "!daily": "2024-06-19 15:09:32.565232",
+        "!explore": "2024-06-19 21:24:58.496775",
+        "!train": "2024-06-19 20:16:23.789007",
         "bag": {
             "Casquette": {
                 "quantity": 1,
                 "icon": ":billed_cap:",
-                "rank": 4
+                "rank": 6
             },
             "Tshirt": {
                 "quantity": 1,
                 "icon": ":shirt:",
-                "rank": 4
+                "rank": 5
             },
             "Baskets": {
                 "quantity": 1,
                 "icon": ":athletic_shoe:",
-                "rank": 4
+                "rank": 5
             },
             "Dague": {
                 "quantity": 1,
                 "icon": ":dagger:",
-                "rank": 4
+                "rank": 5
             },
             "Jean": {
                 "quantity": 1,
                 "icon": ":jeans:",
-                "rank": 4
+                "rank": 5
             },
             "Feu": {
-                "quantity": 6,
+                "quantity": 20,
                 "icon": ":fire:"
             },
             "Eau": {
-                "quantity": 4,
+                "quantity": 20,
                 "icon": ":droplet:"
             },
             "Terre": {
-                "quantity": 9,
+                "quantity": 20,
                 "icon": ":seedling:"
+            },
+            "Rare": {
+                "quantity": 0,
+                "icon": "<:Rare:1222193217957662760>"
+            },
+            "Epique": {
+                "quantity": 0,
+                "icon": "<:Epique:1222193241022136491>"
             }
         },
         "level": {
-            "lvl": 23,
-            "xp": 8348
+            "lvl": 29,
+            "xp": 98665
         },
         "stats": {
-            "pv": 10089,
-            "for": 83,
-            "def": 200
+            "pv": 43737,
+            "for": 247,
+            "def": 545
         },
         "deaths": 0,
         "penality": 0,
@@ -604,9 +692,12 @@
         },
         "title": {},
         "profil": 0,
-        "!compter": "2024-06-05 16:07:31.603621",
+        "!compter": "2024-06-18 15:03:08.798879",
         "global_name": "Akastukye",
-        "avatar": "https://cdn.discordapp.com/avatars/619654294160932896/d250811354d20948601e5a302fb55e2a.png?size=1024"
+        "avatar": "https://cdn.discordapp.com/avatars/619654294160932896/d250811354d20948601e5a302fb55e2a.png?size=1024",
+        "!eveil": "2024-06-19 20:57:17.743734",
+        "last_daily": "2024-06-18 15:03:06.070411",
+        "max_daily": 500
     },
     "lyfia_": {
         "id": 337296485463097344,
@@ -759,6 +850,187 @@
         "level": {
             "lvl": 0,
             "xp": 0
+        },
+        "stats": {
+            "pv": 1000,
+            "for": 10,
+            "def": 10
+        },
+        "deaths": 0,
+        "penality": 0,
+        "mobs_kill": {
+            "Slime": 0,
+            "Squelette": 0,
+            "Loup": 0,
+            "Gobelin": 0,
+            "Troll": 0,
+            "Serpent": 0,
+            "Dragon": 0,
+            "Demon": 0,
+            "Devoreur": 0
+        },
+        "title": {}
+    },
+    "zelef4507": {
+        "id": 406908190274617364,
+        "global_name": "zelef",
+        "avatar": "https://cdn.discordapp.com/avatars/406908190274617364/eefef9123ebbda7cf5f4cad363675336.png?size=1024",
+        "avenger": false,
+        "rank": 0,
+        "place": 17,
+        "gold": 0,
+        "!daily": "2024-01-01 11:11:11.111111",
+        "!explore": "2024-01-01 11:11:11.111111",
+        "!train": "2024-01-01 11:11:11.111111",
+        "bag": {},
+        "level": {
+            "lvl": 0,
+            "xp": 0
+        },
+        "stats": {
+            "pv": 1000,
+            "for": 10,
+            "def": 10
+        },
+        "deaths": 0,
+        "penality": 0,
+        "mobs_kill": {
+            "Slime": 0,
+            "Squelette": 0,
+            "Loup": 0,
+            "Gobelin": 0,
+            "Troll": 0,
+            "Serpent": 0,
+            "Dragon": 0,
+            "Demon": 0,
+            "Devoreur": 0
+        },
+        "title": {}
+    },
+    "l0nely_ninjaa": {
+        "id": 755765421021331497,
+        "global_name": "\ud83c\uddf3 \ud83c\uddee \ud83c\uddf3 \ud83c\uddef \ud83c\udde6 \ud83c\udde6",
+        "avatar": "https://cdn.discordapp.com/avatars/755765421021331497/6c22d38beca0aa6d1140f9499ffc6765.png?size=1024",
+        "avenger": false,
+        "rank": 0,
+        "place": 18,
+        "gold": 0,
+        "!daily": "2024-01-01 11:11:11.111111",
+        "!explore": "2024-01-01 11:11:11.111111",
+        "!train": "2024-01-01 11:11:11.111111",
+        "bag": {},
+        "level": {
+            "lvl": 0,
+            "xp": 0
+        },
+        "stats": {
+            "pv": 1000,
+            "for": 10,
+            "def": 10
+        },
+        "deaths": 0,
+        "penality": 0,
+        "mobs_kill": {
+            "Slime": 0,
+            "Squelette": 0,
+            "Loup": 0,
+            "Gobelin": 0,
+            "Troll": 0,
+            "Serpent": 0,
+            "Dragon": 0,
+            "Demon": 0,
+            "Devoreur": 0
+        },
+        "title": {}
+    },
+    "alxscar": {
+        "id": 860863257689587753,
+        "global_name": "\ud835\udc77\ud835\udc93\ud835\udc8a\ud835\udc8f\ud835\udc84\ud835\udc86\ud835\udc94\ud835\udc94\ud835\udc86 \ud83e\udee6",
+        "avatar": "https://cdn.discordapp.com/avatars/860863257689587753/d1ad3773e578d875abcd79a14111252e.png?size=1024",
+        "avenger": true,
+        "rank": 0,
+        "place": 19,
+        "gold": 8669,
+        "!daily": "2024-06-11 16:32:25.218314",
+        "!explore": "2024-06-11 21:13:49.198612",
+        "!train": "2024-06-11 21:14:03.645487",
+        "bag": {},
+        "level": {
+            "lvl": 8,
+            "xp": 160
+        },
+        "stats": {
+            "pv": 1015,
+            "for": 18,
+            "def": 18
+        },
+        "deaths": 0,
+        "penality": 0,
+        "mobs_kill": {
+            "Slime": 0,
+            "Squelette": 0,
+            "Loup": 0,
+            "Gobelin": 0,
+            "Troll": 0,
+            "Serpent": 0,
+            "Dragon": 0,
+            "Demon": 0,
+            "Devoreur": 0
+        },
+        "title": {},
+        "profil": 0
+    },
+    "loubinho": {
+        "id": 632272834395242533,
+        "global_name": "Hibana\u2728",
+        "avatar": "https://cdn.discordapp.com/avatars/632272834395242533/a_512cbc17a6b79701f418a8d452db64c6.gif?size=1024",
+        "avenger": false,
+        "rank": 0,
+        "place": 20,
+        "gold": 0,
+        "!daily": "2024-01-01 11:11:11.111111",
+        "!explore": "2024-01-01 11:11:11.111111",
+        "!train": "2024-01-01 11:11:11.111111",
+        "bag": {},
+        "level": {
+            "lvl": 0,
+            "xp": 0
+        },
+        "stats": {
+            "pv": 1000,
+            "for": 10,
+            "def": 10
+        },
+        "deaths": 0,
+        "penality": 0,
+        "mobs_kill": {
+            "Slime": 0,
+            "Squelette": 0,
+            "Loup": 0,
+            "Gobelin": 0,
+            "Troll": 0,
+            "Serpent": 0,
+            "Dragon": 0,
+            "Demon": 0,
+            "Devoreur": 0
+        },
+        "title": {}
+    },
+    "mattlvn": {
+        "id": 1166430466988068907,
+        "global_name": "Mattlvn",
+        "avatar": "https://cdn.discordapp.com/avatars/1166430466988068907/4a595465c8e5824b0a276a3e76d98f93.png?size=1024",
+        "avenger": false,
+        "rank": 0,
+        "place": 21,
+        "gold": 293,
+        "!daily": "2024-01-01 11:11:11.111111",
+        "!explore": "2024-01-01 11:11:11.111111",
+        "!train": "2024-01-01 11:11:11.111111",
+        "bag": {},
+        "level": {
+            "lvl": 0,
+            "xp": 366
         },
         "stats": {
             "pv": 1000,

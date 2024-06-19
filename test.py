@@ -338,38 +338,40 @@ class EnchereView(discord.ui.View):
             json.dump(log_data, file, indent=4)
 
 class EveilView(discord.ui.View):
-    def __init__(self, timeout, nbr_gem, gem_type):
+    def __init__(self, timeout, nbr_gem, gem_type, author_name):
         super().__init__(timeout=timeout)
         self.nbr_gem = nbr_gem
         self.gem_type = gem_type
         self.message = None
+        self.author_name = author_name
 
     @discord.ui.button(label="M'éveiller", style=discord.ButtonStyle.green, custom_id="btn_eveil")
     async def btn_eveil(self, interaction: discord.Interaction, button: discord.ui.Button):
-        rank = ['Pas d\'éveil', ':regional_indicator_f:', ':regional_indicator_e:', ':regional_indicator_d:', ':regional_indicator_c:', ':regional_indicator_b:', ':regional_indicator_a:', ':regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s: :regional_indicator_s:', '???']
-        self.timeout = 0
-        if self.message is None:
-            self.message = interaction.message
+        if interaction.user.name == self.author_name:
+            rank = ['Pas d\'éveil', ':regional_indicator_f:', ':regional_indicator_e:', ':regional_indicator_d:', ':regional_indicator_c:', ':regional_indicator_b:', ':regional_indicator_a:', ':regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s: :regional_indicator_s:', '???']
+            self.timeout = 0
+            if self.message is None:
+                self.message = interaction.message
 
-        if interaction.user.name not in log_data:
-            max_place = max((player["place"] for player in log_data.values()), default=0)
-            place = max_place + 1
-            log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}}
-        else:
-            if 'global_name' not in log_data[interaction.user.name] or 'avatar' not in log_data[interaction.user.name]:
-                log_data[interaction.user.name]['global_name'] = interaction.user.global_name
-                log_data[interaction.user.name]['avatar'] = str(interaction.user.avatar)
+            if interaction.user.name not in log_data:
+                max_place = max((player["place"] for player in log_data.values()), default=0)
+                place = max_place + 1
+                log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}}
+            else:
+                if 'global_name' not in log_data[interaction.user.name] or 'avatar' not in log_data[interaction.user.name]:
+                    log_data[interaction.user.name]['global_name'] = interaction.user.global_name
+                    log_data[interaction.user.name]['avatar'] = str(interaction.user.avatar)
 
-        log_data[interaction.user.name]['rank'] += 1
-        log_data[interaction.user.name]['bag'][self.gem_type]['quantity'] -= self.nbr_gem
-        await interaction.response.send_message("Vous vous êtes éveillé au rang : " + rank[log_data[interaction.user.name]['rank']] + ', félicitations !', ephemeral=True)
+            log_data[interaction.user.name]['rank'] += 1
+            log_data[interaction.user.name]['bag'][self.gem_type]['quantity'] -= self.nbr_gem
+            await interaction.response.send_message("Vous vous êtes éveillé au rang : " + rank[log_data[interaction.user.name]['rank']] + ', félicitations !', ephemeral=True)
 
-        for child in self.children:
-            child.disabled = True
-            await interaction.message.edit(view=self)
+            for child in self.children:
+                child.disabled = True
+                await interaction.message.edit(view=self)
 
-        with open("log.json", "w") as file:
-            json.dump(log_data, file, indent=4)
+            with open("log.json", "w") as file:
+                json.dump(log_data, file, indent=4)
 
     async def on_timeout(self):
         for child in self.children:
@@ -458,7 +460,7 @@ async def on_message(message):
         await message.channel.send(embed=embed)
         
     if message.content.startswith("!eveil"):
-        if await time_command(message, "!eveil", 0.0125):
+        if await time_command(message, "!eveil", 0.0025):
             embed, view = eveil_action(message.author.name, message.author.avatar, message.author.global_name)
             if view is not None:
                 view.message = await message.channel.send(embed=embed, view=view)
@@ -610,7 +612,7 @@ async def on_message(message):
                     enchere[lot]['join_player'] = {}
 
                     embed = create_embed(title=title, description=description, color=color, image=image)
-                    view = EnchereView(timeout=10, lot=lot) #a1b2
+                    view = EnchereView(timeout=3600, lot=lot)
                     view.message = await channel.send(embed=embed, view=view)
 
                     with open("enchere.json", "w") as file:
@@ -844,7 +846,7 @@ def eveil_action(author_name, author_icon, global_name):
     if owned:
         title = 'Éveil'
         color = discord.Color.blue()
-        view = EveilView(timeout=30, nbr_gem=nbr_gem, gem_type=gem_type) 
+        view = EveilView(timeout=6, nbr_gem=nbr_gem, gem_type=gem_type, author_name=author_name) 
     else:
         title = 'Gemmes d\'éveil manquantes'
         color = discord.Color.red()
