@@ -1,5 +1,6 @@
 {
     "lotusia19": {
+    "lotusia19": {
         "id": 701782195844546662,
         "avenger": true,
         "rank": 5,
@@ -94,6 +95,7 @@
             "Casquette": {
                 "quantity": 1,
                 "icon": ":billed_cap:",
+                "rank": 6
                 "rank": 6
             },
             "Baskets": {
