@@ -2,13 +2,13 @@
     "Slime": {
         "name": "Slime",
         "stats": {
-            "pv": 100,
+            "pv": 1941,
             "for": 1,
-            "def": 1
+            "def": 2
         },
         "loot": {
-            "gold": 55,
-            "xp": 85,
+            "gold": 80,
+            "xp": 100,
             "special_0": {
                 "nom": "Gelée revigorante",
                 "description": "Augmente vos PV, +100 PV max",
@@ -26,20 +26,20 @@
             }
         },
         "image": "https://i.imgur.com/tLYX58K.jpeg",
-        "spawn_rate": 0.24,
-        "min_level": 10,
+        "spawn_rate": 0.14,
+        "min_level": 1,
         "max_level": 50
     },
     "Squelette": {
         "name": "Squelette",
         "stats": {
-            "pv": 500,
-            "for": 9,
-            "def": 9
+            "pv": 728,
+            "for": 6,
+            "def": 13
         },
         "loot": {
-            "gold": 100,
-            "xp": 175,
+            "gold": 130,
+            "xp": 130,
             "special_0": {
                 "nom": "Epée osseuse",
                 "description": "Epée scultée dans un os ancien, For+3",
@@ -57,20 +57,20 @@
             }
         },
         "image": "https://i.imgur.com/Ckt7V81.jpeg",
-        "spawn_rate": 0.39,
-        "min_level": 2,
-        "max_level": 25
+        "spawn_rate": 0.28,
+        "min_level": 1,
+        "max_level": 50
     },
     "Meute_de_loups": {
         "name": "Meute de loups",
         "stats": {
-            "pv": 420,
+            "pv": 485,
             "for": 10,
-            "def": 7
+            "def": 9
         },
         "loot": {
-            "gold": 96,
-            "xp": 196,
+            "gold": 100,
+            "xp": 160,
             "special_0": {
                 "nom": "Peau de loup",
                 "description": "Matériau de défense léger, Def+3",
@@ -88,20 +88,20 @@
             }
         },
         "image": "https://i.imgur.com/esNGY0j.jpeg",
-        "spawn_rate": 0.54,
+        "spawn_rate": 0.42,
         "min_level": 1,
-        "max_level": 25
+        "max_level": 50
     },
     "Gobelin": {
         "name": "Gobelin",
         "stats": {
-            "pv": 450,
+            "pv": 485,
             "for": 4,
-            "def": 16
+            "def": 22
         },
         "loot": {
-            "gold": 99,
-            "xp": 180,
+            "gold": 160,
+            "xp": 100,
             "special_0": {
                 "nom": "Pièces d'or'",
                 "description": "Le butin d'un gobelin, Gold+500",
@@ -119,20 +119,20 @@
             }
         },
         "image": "https://i.imgur.com/bLXiOQs.jpeg",
-        "spawn_rate": 0.69,
-        "min_level": 2,
-        "max_level": 25
+        "spawn_rate": 0.56,
+        "min_level": 1,
+        "max_level": 50
     },
     "Grand_gobelin": {
         "name": "Grand gobelin",
         "stats": {
-            "pv": 500,
-            "for": 10,
-            "def": 15
+            "pv": 700,
+            "for": 5,
+            "def": 26
         },
         "loot": {
-            "gold": 300,
-            "xp": 200,
+            "gold": 200,
+            "xp": 150,
             "special_0": {
                 "nom": "Sang de gobelin",
                 "description": "Une substance revitalisante, PV+1000",
@@ -150,20 +150,51 @@
             }
         },
         "image": "https://i.imgur.com/6G7k698.jpeg",
-        "spawn_rate": 0.73,
+        "spawn_rate": 0.64,
+        "min_level": 50,
+        "max_level": 100
+    },
+    "Zombi_demon": {
+        "name": "Zombi démon",
+        "stats": {
+            "pv": 725,
+            "for": 18,
+            "def": 0
+        },
+        "loot": {
+            "gold": 202,
+            "xp": 177,
+            "special_0": {
+                "nom": "Sang de gobelin",
+                "description": "Une substance revitalisante, PV+1000",
+                "taux": 0.1
+            },
+            "special_1": {
+                "nom": "Armure en cuir renforcé",
+                "description": "Une épaisse armure de cuir, Def+25",
+                "taux": 0.01
+            },
+            "special_2": {
+                "nom": "Amulette de protection",
+                "description": "Amulette vous offrant un shield au début d'un combat",
+                "taux": 0.001
+            }
+        },
+        "image": "https://i.imgur.com/IL043c6.jpeg",
+        "spawn_rate": 0.72,
         "min_level": 50,
         "max_level": 100
     },
     "Roi_des_slimes": {
         "name": "Roi des slimes",
         "stats": {
-            "pv": 1000,
-            "for": 10,
-            "def": 10
+            "pv": 3000,
+            "for": 1,
+            "def": 1
         },
         "loot": {
             "gold": 200,
-            "xp": 500,
+            "xp": 300,
             "special_0": {
                 "nom": "Gelée de vie",
                 "description": "Une gelée de vitalité, PV+1500",
@@ -189,11 +220,11 @@
         "name": "Démon intermédiaire",
         "stats": {
             "pv": 500,
-            "for": 30,
+            "for": 20,
             "def": 10
         },
         "loot": {
-            "gold": 666,
+            "gold": 333,
             "xp": 666,
             "special_0": {
                 "nom": "Corne de démon",
@@ -224,7 +255,7 @@
             "def": 20
         },
         "loot": {
-            "gold": 700,
+            "gold": 400,
             "xp": 500,
             "special_0": {
                 "nom": "Ecaille de bébé dragon",
@@ -255,8 +286,8 @@
             "def": 20
         },
         "loot": {
-            "gold": 400,
-            "xp": 800,
+            "gold": 350,
+            "xp": 600,
             "special_0": {
                 "nom": "Peau de serpent",
                 "description": "Une peau résistante et flexible à la fois, For+10 Def+10",
@@ -282,12 +313,12 @@
         "name": "Troll des neiges",
         "stats": {
             "pv": 600,
-            "for": 22,
+            "for": 20,
             "def": 20
         },
         "loot": {
-            "gold": 600,
-            "xp": 600,
+            "gold": 375,
+            "xp": 375,
             "special_0": {
                 "nom": "Fourrure de troll",
                 "description": "Résistance augmentée face au froid",
@@ -344,8 +375,8 @@
         "name": "Goldy",
         "stats": {
             "pv": 10,
-            "for": 10,
-            "def": 100
+            "for": 1,
+            "def": 75
         },
         "loot": {
             "gold": 1500,
@@ -374,9 +405,9 @@
     "Arthur": {
         "name": "Arthur",
         "stats": {
-            "pv": 10000,
-            "for": 10,
-            "def": 10
+            "pv": 5000,
+            "for": 1,
+            "def": 1
         },
         "loot": {
             "gold": 0,
@@ -407,7 +438,7 @@
         "stats": {
             "pv": 5000,
             "for": 50,
-            "def": 100
+            "def": 200
         },
         "loot": {
             "gold": 2000,
@@ -438,7 +469,7 @@
         "stats": {
             "pv": 5000,
             "for": 100,
-            "def": 50
+            "def": 100
         },
         "loot": {
             "gold": 2000,

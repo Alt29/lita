@@ -114,36 +114,36 @@
         "requirements": 0
     },
     "Feu": {
-        "price": 5000,
+        "price": 2000,
         "stats": {
-            "for": 1
+            "for": 2
         },
         "icon": ":fire:"
     },
     "Terre": {
-        "price": 5000,
+        "price": 2000,
         "stats": {
-            "def": 1
+            "def": 4
         },
         "icon": ":seedling:"
     },
     "Eau": {
-        "price": 5000,
+        "price": 2000,
         "stats": {
-            "pv": 100
+            "pv": 250
         },
         "icon": ":droplet:"
     },
     "Legendaire": {
         "price": 500000,
-        "icon": ":Legendaire:"
+        "icon": "<:Legendaire:1222193258403336222>"
     },
     "Epique": {
         "price": 50000,
-        "icon": ":Epique:"
+        "icon": "<:Epique:1222193241022136491>"
     },
     "Rare": {
         "price": 5000,
-        "icon": ":Rare:"
+        "icon": "<:Rare:1222193217957662760>"
     }
 }

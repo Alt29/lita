@@ -1,0 +1,16 @@
+{
+    "1": {
+        "name": "Transfert de coins",
+        "image": "https://i.imgur.com/P8Bt3Qo.jpeg",
+        "quantity": 0,
+        "start_price": 0,
+        "last_price": 46500,
+        "last_player": "ruinflex",
+        "join_player": {
+            "ruinflex": 46500,
+            "akastukye": 5500,
+            "lotusia19": 46000
+        },
+        "is_played": true
+    }
+}
