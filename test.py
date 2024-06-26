@@ -1303,6 +1303,7 @@ def explore_action(author_name, author_icon, global_name):
                             alea = random.randint(1, 2500)
     
     alea = alea * (log_data[author_name]['rank'] + 1) * (log_data[author_name]['rank'] + 1)
+    alea = alea // 2
     
     if author_name in log_data:
         if 'gold' in log_data[author_name]:
