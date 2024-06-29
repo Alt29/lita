@@ -145,5 +145,9 @@
     "Rare": {
         "price": 5000,
         "icon": "<:Rare:1222193217957662760>"
+    },
+    "Ticket": {
+        "price": 60000,
+        "icon": ":tickets:"
     }
 }

@@ -4,9 +4,9 @@
         "avenger": true,
         "rank": 7,
         "place": 2,
-        "gold": 215749,
-        "!daily": "2024-06-28 15:31:44.126836",
-        "!explore": "2024-06-29 13:04:50.190115",
+        "gold": 258165,
+        "!daily": "2024-06-29 15:48:21.615366",
+        "!explore": "2024-06-29 15:48:27.856660",
         "!train": "2024-06-29 13:04:47.512939",
         "bag": {
             "Casquette": {
@@ -49,7 +49,7 @@
         },
         "level": {
             "lvl": 38,
-            "xp": 252103
+            "xp": 279443
         },
         "stats": {
             "pv": 92238,
@@ -72,10 +72,10 @@
         "title": {},
         "profil": 0,
         "!eveil": "2024-06-28 08:52:49.982451",
-        "global_name": "MarlaBis",
-        "avatar": "https://cdn.discordapp.com/avatars/701782195844546662/73c50aaa59aa58c2aff6efc48c1bb8ce.png?size=1024",
-        "last_daily": "2024-06-27 15:17:31.180998",
-        "max_daily": 4500
+        "last_daily": "2024-06-28 15:31:44.126836",
+        "max_daily": 5000,
+        "global_name": "Altan",
+        "avatar": "https://cdn.discordapp.com/avatars/701782195844546662/c9743b50aca8d5f64919bfb8fa655230.png?size=1024"
     },
     "slashoroide": {
         "id": 503247209165357066,
@@ -194,9 +194,9 @@
         "avenger": true,
         "rank": 4,
         "place": 5,
-        "gold": 87814,
+        "gold": 90738,
         "!daily": "2024-06-29 03:09:39.403825",
-        "!explore": "2024-06-29 13:35:13.564369",
+        "!explore": "2024-06-29 15:49:51.791268",
         "!train": "2024-06-29 13:35:12.407569",
         "bag": {
             "Casquette": {
@@ -235,11 +235,15 @@
             "Terre": {
                 "quantity": 15,
                 "icon": ":seedling:"
+            },
+            "Ticket": {
+                "quantity": 1,
+                "icon": ":tickets:"
             }
         },
         "level": {
             "lvl": 31,
-            "xp": 3823
+            "xp": 3983
         },
         "stats": {
             "pv": 42552,
@@ -306,10 +310,10 @@
         "avenger": true,
         "rank": 5,
         "place": 1,
-        "gold": 23232,
+        "gold": 37252,
         "!daily": "2024-06-28 22:34:44.525747",
-        "!explore": "2024-06-29 10:13:23.326725",
-        "!train": "2024-06-29 10:13:30.991188",
+        "!explore": "2024-06-29 15:44:24.102732",
+        "!train": "2024-06-29 15:44:26.524552",
         "bag": {
             "Baskets": {
                 "quantity": 1,
@@ -355,7 +359,7 @@
         },
         "level": {
             "lvl": 35,
-            "xp": 196047
+            "xp": 218883
         },
         "stats": {
             "pv": 76241,

@@ -982,13 +982,15 @@ def market_action():
     material_items = ':regional_indicator_s: Étherium • 360000 :coin:\n:regional_indicator_a: Adamantium • 120000 :coin:\n:regional_indicator_b: Orichalque • 40000 :coin:\n:regional_indicator_c: Mithril • 13000 :coin:\n:regional_indicator_d: Argent • 4500 :coin:\n:regional_indicator_e: Fer • 1500 :coin:\n:regional_indicator_f: Cuir • 500 :coin:'
     rune_items = ':fire: Feu • For+2 • 2000 :coin:\n:seedling: Terre • Def+4 • 2000 :coin:\n:droplet: Eau • PV+250 • 2000 :coin:'
     rank_items = '<:Legendaire:1222193258403336222> Légendaire • 500000 :coin:\n<:Epique:1222193241022136491> Épique • 50000 :coin:\n<:Rare:1222193217957662760> Rare • 5000 :coin:'
+    other_items = ':tickets: Ticket • 60000 :coin:'
     
     tabFields = {
         'Pour acheter : ' : '!purchase nom_item',
         'Équipements de base : ' : base_items,
         'Matériaux : ' : material_items,
         'Runes : ' : rune_items,
-        'Gemmes d\'éveil : :new:' : rank_items,
+        'Gemmes d\'éveil :' : rank_items,
+        'Autres : :new:' : other_items
     }
     color = discord.Color.lighter_grey()
     title = 'Boutique'
