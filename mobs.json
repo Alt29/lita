@@ -26,7 +26,7 @@
             }
         },
         "image": "https://i.imgur.com/tLYX58K.jpeg",
-        "spawn_rate": 0.14,
+        "spawn_rate": 0.10,
         "min_level": 1,
         "max_level": 50
     },
@@ -57,7 +57,7 @@
             }
         },
         "image": "https://i.imgur.com/Ckt7V81.jpeg",
-        "spawn_rate": 0.28,
+        "spawn_rate": 0.20,
         "min_level": 1,
         "max_level": 50
     },
@@ -88,7 +88,7 @@
             }
         },
         "image": "https://i.imgur.com/esNGY0j.jpeg",
-        "spawn_rate": 0.42,
+        "spawn_rate": 0.30,
         "min_level": 1,
         "max_level": 50
     },
@@ -119,7 +119,7 @@
             }
         },
         "image": "https://i.imgur.com/bLXiOQs.jpeg",
-        "spawn_rate": 0.56,
+        "spawn_rate": 0.40,
         "min_level": 1,
         "max_level": 50
     },
@@ -131,8 +131,8 @@
             "def": 26
         },
         "loot": {
-            "gold": 200,
-            "xp": 150,
+            "gold": 266,
+            "xp": 200,
             "special_0": {
                 "nom": "Sang de gobelin",
                 "description": "Une substance revitalisante, PV+1000",
@@ -150,7 +150,7 @@
             }
         },
         "image": "https://i.imgur.com/6G7k698.jpeg",
-        "spawn_rate": 0.64,
+        "spawn_rate": 0.45,
         "min_level": 50,
         "max_level": 100
     },
@@ -162,8 +162,8 @@
             "def": 0
         },
         "loot": {
-            "gold": 202,
-            "xp": 177,
+            "gold": 222,
+            "xp": 233,
             "special_0": {
                 "nom": "Sang de gobelin",
                 "description": "Une substance revitalisante, PV+1000",
@@ -181,7 +181,39 @@
             }
         },
         "image": "https://i.imgur.com/IL043c6.jpeg",
-        "spawn_rate": 0.72,
+        "spawn_rate": 0.50,
+        "min_level": 50,
+        "max_level": 100
+    },
+    "Golem": {
+        "name": "Golem",
+        "stats": {
+            "pv": 1500,
+            "for": 2,
+            "def": 20
+        },
+        "loot": {
+            "gold": 245,
+            "xp": 248
+        },
+        "image": "https://i.imgur.com/6rEU6fp.jpeg",
+        "spawn_rate": 0.55,
+        "min_level": 50,
+        "max_level": 100
+    },
+    "Chien_enrage": {
+        "name": "Chien enragé",
+        "stats": {
+            "pv": 500,
+            "for": 16,
+            "def": 8
+        },
+        "loot": {
+            "gold": 250,
+            "xp": 277
+        },
+        "image": "https://i.imgur.com/Hazhsdj.jpeg",
+        "spawn_rate": 0.60,
         "min_level": 50,
         "max_level": 100
     },
@@ -193,8 +225,8 @@
             "def": 1
         },
         "loot": {
-            "gold": 200,
-            "xp": 300,
+            "gold": 300,
+            "xp": 400,
             "special_0": {
                 "nom": "Gelée de vie",
                 "description": "Une gelée de vitalité, PV+1500",
@@ -212,16 +244,144 @@
             }
         },
         "image": "https://i.imgur.com/hokqDoB.jpeg",
-        "spawn_rate": 0.768,
+        "spawn_rate": 0.64,
         "min_level": 100,
         "max_level": 200
+    },
+    "Golem_de_vent": {
+        "name": "Golem de vent",
+        "stats": {
+            "pv": 250,
+            "for": 12,
+            "def": 33
+        },
+        "loot": {
+            "gold": 275,
+            "xp": 450
+        },
+        "image": "https://i.imgur.com/U84IKSU.jpeg",
+        "spawn_rate": 0.68,
+        "min_level": 100,
+        "max_level": 200
+    },
+    "Golem_de_feu": {
+        "name": "Golem de feu",
+        "stats": {
+            "pv": 1000,
+            "for": 16,
+            "def": 13
+        },
+        "loot": {
+            "gold": 350,
+            "xp": 300
+        },
+        "image": "https://i.imgur.com/CBvQJY6.jpeg",
+        "spawn_rate": 0.72,
+        "min_level": 100,
+        "max_level": 200
+    },
+    "Golem_d_eau": {
+        "name": "Golem d'eau",
+        "stats": {
+            "pv": 3250,
+            "for": 4,
+            "def": 1
+        },
+        "loot": {
+            "gold": 200,
+            "xp": 600
+        },
+        "image": "https://i.imgur.com/ii9x4pk.jpeg",
+        "spawn_rate": 0.76,
+        "min_level": 100,
+        "max_level": 200
+    },
+    "Golem_de_plante": {
+        "name": "Golem de plante",
+        "stats": {
+            "pv": 2000,
+            "for": 2,
+            "def": 19
+        },
+        "loot": {
+            "gold": 250,
+            "xp": 500
+        },
+        "image": "https://i.imgur.com/hxgDuW7.jpeg",
+        "spawn_rate": 0.80,
+        "min_level": 100,
+        "max_level": 200
+    },
+    "Golem_de_foudre": {
+        "name": "Golem de foudre",
+        "stats": {
+            "pv": 1000,
+            "for": 20,
+            "def": 5
+        },
+        "loot": {
+            "gold": 325,
+            "xp": 250
+        },
+        "image": "https://i.imgur.com/ND7LgNf.jpeg",
+        "spawn_rate": 0.84,
+        "min_level": 100,
+        "max_level": 200
+    },
+    "Phenix_de_feu": {
+        "name": "Phenix de feu",
+        "stats": {
+            "pv": 1250,
+            "for": 24,
+            "def": 13
+        },
+        "loot": {
+            "gold": 400,
+            "xp": 300
+        },
+        "image": "https://i.imgur.com/cmsTck3.jpeg",
+        "spawn_rate": 0.86,
+        "min_level": 150,
+        "max_level": 250
+    },
+    "Phenix_de_glace": {
+        "name": "Phenix de glace",
+        "stats": {
+            "pv": 2250,
+            "for": 10,
+            "def": 25
+        },
+        "loot": {
+            "gold": 350,
+            "xp": 630
+        },
+        "image": "https://i.imgur.com/GoP2ssy.jpeg",
+        "spawn_rate": 0.88,
+        "min_level": 150,
+        "max_level": 250
+    },
+    "Phenix_de_foudre": {
+        "name": "Phenix de foudre",
+        "stats": {
+            "pv": 1000,
+            "for": 20,
+            "def": 5
+        },
+        "loot": {
+            "gold": 375,
+            "xp": 500
+        },
+        "image": "https://i.imgur.com/8syNSUj.jpeg",
+        "spawn_rate": 0.90,
+        "min_level": 150,
+        "max_level": 250
     },
     "Demon_intermediaire": {
         "name": "Démon intermédiaire",
         "stats": {
-            "pv": 500,
-            "for": 20,
-            "def": 10
+            "pv": 1000,
+            "for": 26,
+            "def": 17
         },
         "loot": {
             "gold": 333,
@@ -243,16 +403,16 @@
             }
         },
         "image": "https://i.imgur.com/TwKBVxH.jpeg",
-        "spawn_rate": 0.8,
+        "spawn_rate": 0.915,
         "min_level": 200,
         "max_level": 300
     },
     "Bebe_dragon": {
         "name": "Bébé dragon",
         "stats": {
-            "pv": 800,
-            "for": 15,
-            "def": 20
+            "pv": 2000,
+            "for": 16,
+            "def": 21
         },
         "loot": {
             "gold": 400,
@@ -274,7 +434,7 @@
             }
         },
         "image": "https://i.imgur.com/ht0JGST.jpeg",
-        "spawn_rate": 0.832,
+        "spawn_rate": 0.93,
         "min_level": 200,
         "max_level": 300
     },
@@ -282,8 +442,8 @@
         "name": "Serpent géant",
         "stats": {
             "pv": 500,
-            "for": 18,
-            "def": 20
+            "for": 20,
+            "def": 33
         },
         "loot": {
             "gold": 350,
@@ -305,16 +465,16 @@
             }
         },
         "image": "https://i.imgur.com/FWu1jW3.jpeg",
-        "spawn_rate": 0.864,
+        "spawn_rate": 0.945,
         "min_level": 200,
         "max_level": 300
     },
     "Troll_des_neiges": {
         "name": "Troll des neiges",
         "stats": {
-            "pv": 600,
+            "pv": 1250,
             "for": 20,
-            "def": 20
+            "def": 21
         },
         "loot": {
             "gold": 375,
@@ -336,7 +496,7 @@
             }
         },
         "image": "https://i.imgur.com/pDBNZzB.jpeg",
-        "spawn_rate": 0.896,
+        "spawn_rate": 0.96,
         "min_level": 200,
         "max_level": 300
     },
@@ -367,7 +527,7 @@
             }
         },
         "image": "https://i.imgur.com/OcjMGWV.jpeg",
-        "spawn_rate": 0.912,
+        "spawn_rate": 0.961,
         "min_level": 0,
         "max_level": 0
     },
@@ -398,7 +558,7 @@
             }
         },
         "image": "https://i.imgur.com/I0jligj.jpeg",
-        "spawn_rate": 0.928,
+        "spawn_rate": 0.971,
         "min_level": 300,
         "max_level": 500
     },
@@ -429,7 +589,7 @@
             }
         },
         "image": "https://i.imgur.com/8eTUsRr.jpeg",
-        "spawn_rate": 0.944,
+        "spawn_rate": 0.981,
         "min_level": 300,
         "max_level": 500
     },
@@ -460,7 +620,7 @@
             }
         },
         "image": "https://i.imgur.com/vjSsklY.jpeg",
-        "spawn_rate": 0.952,
+        "spawn_rate": 0.986,
         "min_level": 500,
         "max_level": 900
     },
@@ -491,7 +651,7 @@
             }
         },
         "image": "https://i.imgur.com/udGJJ6U.jpeg",
-        "spawn_rate": 0.96,
+        "spawn_rate": 0.991,
         "min_level": 500,
         "max_level": 900
     },
@@ -508,7 +668,7 @@
             "gentil": 1
         },
         "image": "https://i.imgur.com/OcjMGWV.jpeg",
-        "spawn_rate": 0.9984,
+        "spawn_rate": 0.992,
         "min_level": 0,
         "max_level": 0
     },
