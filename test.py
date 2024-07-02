@@ -797,16 +797,25 @@ async def on_message(message):
         updated = True
     
     if message.content.startswith("!purchase"):
-        command_and_argument = message.content.split(maxsplit=1)
+        command_and_argument = message.content.split(maxsplit=2)
         
-        if len(command_and_argument) == 2:
-            command, item = command_and_argument
+        if len(command_and_argument) == 2 or len(command_and_argument) == 3 :
+            if len(command_and_argument) == 2:
+                command, item = command_and_argument
+                quantity = 1
+            else:
+                command, item, quantity = command_and_argument
+                if is_integer(quantity):
+                    quantity = int(quantity)
+                else:
+                    quantity = 1
+                    print(quantity);
             item = item.title()
-            embed = purchase_action(message.author.name, message.author.avatar, message.author.global_name, item)
+            embed = purchase_action(message.author.name, message.author.avatar, message.author.global_name, item, quantity)
             updated = True
         else:
             title = 'Achat'
-            tabFields = {'Faites !purchase nom_item' : ''}
+            tabFields = {'Faites !purchase nom_item optionnel_quantité' : ''}
             color = discord.Color.red()
             embed = create_embed(title=title, color=color, author_name=message.author.global_name, author_icon=message.author.avatar, tabFields=tabFields)
         
@@ -1415,7 +1424,7 @@ def ranking(type, author_name):
     ranking_position = target_index + 1
     return str(ranking_position) + '/' + str(len(sorted_authors))
 
-def purchase_action(author_name, author_icon, global_name, item):
+def purchase_action(author_name, author_icon, global_name, item, quantity):
     title = 'Achat'
     if item in items:
         if author_name in log_data:
@@ -1426,8 +1435,11 @@ def purchase_action(author_name, author_icon, global_name, item):
         
         gold = log_data[author_name]['gold']
         
-        if gold < items[item]['price']:
-            manque = items[item]['price'] - gold
+        if 'unique' in items[item] or 'requirements' in items[item]:
+            quantity = 1
+        
+        if gold < items[item]['price'] * quantity:
+            manque = items[item]['price'] * quantity - gold
             tabFields = {'Vous n\'avez pas assez de gold, il vous manque : ' : str(manque) + ' :coin:'}
             color = discord.Color.red()
         else:
@@ -1460,26 +1472,26 @@ def purchase_action(author_name, author_icon, global_name, item):
                 color = discord.Color.red()
             else:
                 if upgrade:
-                    log_data[author_name]['gold'] = log_data[author_name]['gold'] - items[item]['price']
+                    log_data[author_name]['gold'] = log_data[author_name]['gold'] - items[item]['price'] * quantity
                     if 'stats' in items[item]:
                         if 'pv' in items[item]['stats']:
-                            log_data[author_name]['stats']['pv'] += items[item]['stats']['pv']
+                            log_data[author_name]['stats']['pv'] += items[item]['stats']['pv'] * quantity
                         if 'for' in items[item]['stats']:
-                            log_data[author_name]['stats']['for'] += items[item]['stats']['for']
+                            log_data[author_name]['stats']['for'] += items[item]['stats']['for'] * quantity
                         if 'def' in items[item]['stats']:
-                            log_data[author_name]['stats']['def'] += items[item]['stats']['def']
-                    tabFields = {'Vous venez d\'acheter : ' : items[item]['icon'] + ' ' + item}
+                            log_data[author_name]['stats']['def'] += items[item]['stats']['def'] * quantity
+                    tabFields = {'Vous venez d\'acheter : ' : items[item]['icon'] + ' ' + item + " x" + str(quantity)}
                     color = discord.Color.green()
                     
                     materiaux = ['Cuir', 'Fer', 'Argent', 'Mithril', 'Orichalque', 'Adamantium', 'Étherium']
                     if item not in materiaux:
                         if item in log_data[author_name]['bag']:
-                            log_data[author_name]['bag'][item]['quantity'] += 1
+                            log_data[author_name]['bag'][item]['quantity'] += quantity
                         else:
                             if 'rank' in items[item]:
-                                log_data[author_name]['bag'][item] = {'quantity': 1, 'icon': items[item]['icon'], 'rank': items[item]['rank']}
+                                log_data[author_name]['bag'][item] = {'quantity': quantity, 'icon': items[item]['icon'], 'rank': items[item]['rank']}
                             else:
-                                log_data[author_name]['bag'][item] = {'quantity': 1, 'icon': items[item]['icon']}
+                                log_data[author_name]['bag'][item] = {'quantity': quantity, 'icon': items[item]['icon']}
                 else:
                     rank = ['Basique', ':regional_indicator_f:', ':regional_indicator_e:', ':regional_indicator_d:', ':regional_indicator_c:', ':regional_indicator_b:', ':regional_indicator_a:', ':regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s:']
                     tabFields = {'L\'achat est impossible vérifie si vous avez au moins 1 équipement de rang ' + rank[items[item]['requirements']] : ''}
