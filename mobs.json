@@ -26,7 +26,7 @@
             }
         },
         "image": "https://i.imgur.com/tLYX58K.jpeg",
-        "spawn_rate": 0.10,
+        "spawn_rate": 0.05,
         "min_level": 1,
         "max_level": 50
     },
@@ -57,7 +57,7 @@
             }
         },
         "image": "https://i.imgur.com/Ckt7V81.jpeg",
-        "spawn_rate": 0.20,
+        "spawn_rate": 0.10,
         "min_level": 1,
         "max_level": 50
     },
@@ -88,7 +88,7 @@
             }
         },
         "image": "https://i.imgur.com/esNGY0j.jpeg",
-        "spawn_rate": 0.30,
+        "spawn_rate": 0.15,
         "min_level": 1,
         "max_level": 50
     },
@@ -119,7 +119,7 @@
             }
         },
         "image": "https://i.imgur.com/bLXiOQs.jpeg",
-        "spawn_rate": 0.40,
+        "spawn_rate": 0.20,
         "min_level": 1,
         "max_level": 50
     },
@@ -150,7 +150,7 @@
             }
         },
         "image": "https://i.imgur.com/6G7k698.jpeg",
-        "spawn_rate": 0.45,
+        "spawn_rate": 0.30,
         "min_level": 50,
         "max_level": 100
     },
@@ -181,7 +181,7 @@
             }
         },
         "image": "https://i.imgur.com/IL043c6.jpeg",
-        "spawn_rate": 0.50,
+        "spawn_rate": 0.40,
         "min_level": 50,
         "max_level": 100
     },
@@ -197,7 +197,7 @@
             "xp": 248
         },
         "image": "https://i.imgur.com/6rEU6fp.jpeg",
-        "spawn_rate": 0.55,
+        "spawn_rate": 0.50,
         "min_level": 50,
         "max_level": 100
     },
@@ -244,7 +244,7 @@
             }
         },
         "image": "https://i.imgur.com/hokqDoB.jpeg",
-        "spawn_rate": 0.64,
+        "spawn_rate": 0.65,
         "min_level": 100,
         "max_level": 200
     },
@@ -260,7 +260,7 @@
             "xp": 450
         },
         "image": "https://i.imgur.com/U84IKSU.jpeg",
-        "spawn_rate": 0.68,
+        "spawn_rate": 0.70,
         "min_level": 100,
         "max_level": 200
     },
@@ -276,7 +276,7 @@
             "xp": 300
         },
         "image": "https://i.imgur.com/CBvQJY6.jpeg",
-        "spawn_rate": 0.72,
+        "spawn_rate": 0.75,
         "min_level": 100,
         "max_level": 200
     },
@@ -292,7 +292,7 @@
             "xp": 600
         },
         "image": "https://i.imgur.com/ii9x4pk.jpeg",
-        "spawn_rate": 0.76,
+        "spawn_rate": 0.80,
         "min_level": 100,
         "max_level": 200
     },
@@ -308,7 +308,7 @@
             "xp": 500
         },
         "image": "https://i.imgur.com/hxgDuW7.jpeg",
-        "spawn_rate": 0.80,
+        "spawn_rate": 0.85,
         "min_level": 100,
         "max_level": 200
     },
@@ -324,7 +324,7 @@
             "xp": 250
         },
         "image": "https://i.imgur.com/ND7LgNf.jpeg",
-        "spawn_rate": 0.84,
+        "spawn_rate": 0.90,
         "min_level": 100,
         "max_level": 200
     },
@@ -340,7 +340,7 @@
             "xp": 300
         },
         "image": "https://i.imgur.com/cmsTck3.jpeg",
-        "spawn_rate": 0.86,
+        "spawn_rate": 0.92,
         "min_level": 150,
         "max_level": 250
     },
@@ -356,7 +356,7 @@
             "xp": 630
         },
         "image": "https://i.imgur.com/GoP2ssy.jpeg",
-        "spawn_rate": 0.88,
+        "spawn_rate": 0.94,
         "min_level": 150,
         "max_level": 250
     },
@@ -372,7 +372,7 @@
             "xp": 500
         },
         "image": "https://i.imgur.com/8syNSUj.jpeg",
-        "spawn_rate": 0.90,
+        "spawn_rate": 0.96,
         "min_level": 150,
         "max_level": 250
     },
@@ -403,7 +403,7 @@
             }
         },
         "image": "https://i.imgur.com/TwKBVxH.jpeg",
-        "spawn_rate": 0.915,
+        "spawn_rate": 0.965,
         "min_level": 200,
         "max_level": 300
     },
@@ -434,7 +434,7 @@
             }
         },
         "image": "https://i.imgur.com/ht0JGST.jpeg",
-        "spawn_rate": 0.93,
+        "spawn_rate": 0.97,
         "min_level": 200,
         "max_level": 300
     },
@@ -465,7 +465,7 @@
             }
         },
         "image": "https://i.imgur.com/FWu1jW3.jpeg",
-        "spawn_rate": 0.945,
+        "spawn_rate": 0.975,
         "min_level": 200,
         "max_level": 300
     },
@@ -496,7 +496,7 @@
             }
         },
         "image": "https://i.imgur.com/pDBNZzB.jpeg",
-        "spawn_rate": 0.96,
+        "spawn_rate": 0.98,
         "min_level": 200,
         "max_level": 300
     },
@@ -527,7 +527,7 @@
             }
         },
         "image": "https://i.imgur.com/OcjMGWV.jpeg",
-        "spawn_rate": 0.961,
+        "spawn_rate": 0.981,
         "min_level": 0,
         "max_level": 0
     },
@@ -558,7 +558,7 @@
             }
         },
         "image": "https://i.imgur.com/I0jligj.jpeg",
-        "spawn_rate": 0.971,
+        "spawn_rate": 0.986,
         "min_level": 300,
         "max_level": 500
     },
@@ -589,7 +589,7 @@
             }
         },
         "image": "https://i.imgur.com/8eTUsRr.jpeg",
-        "spawn_rate": 0.981,
+        "spawn_rate": 0.991,
         "min_level": 300,
         "max_level": 500
     },
@@ -620,7 +620,7 @@
             }
         },
         "image": "https://i.imgur.com/vjSsklY.jpeg",
-        "spawn_rate": 0.986,
+        "spawn_rate": 0.996,
         "min_level": 500,
         "max_level": 900
     },
@@ -651,7 +651,7 @@
             }
         },
         "image": "https://i.imgur.com/udGJJ6U.jpeg",
-        "spawn_rate": 0.991,
+        "spawn_rate": 0.999,
         "min_level": 500,
         "max_level": 900
     },
@@ -668,7 +668,7 @@
             "gentil": 1
         },
         "image": "https://i.imgur.com/OcjMGWV.jpeg",
-        "spawn_rate": 0.992,
+        "spawn_rate": 0.9991,
         "min_level": 0,
         "max_level": 0
     },
