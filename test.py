@@ -47,6 +47,12 @@ try:
         battle = json.load(file)
 except FileNotFoundError:
     battle = {}
+    
+try:
+    with open("wheel.json", "r") as file:
+        wheel = json.load(file)
+except FileNotFoundError:
+    wheel = {}
 
 @client.event
 async def on_ready():
@@ -383,6 +389,125 @@ class EveilView(discord.ui.View):
         if self.message:
             await self.message.edit(view=self)
 
+class WheelView(discord.ui.View):
+    def __init__(self, timeout, author_name):
+        super().__init__(timeout=timeout)
+        self.message = None
+        self.author_name = author_name
+
+    @discord.ui.button(label="Tenter ma chance", style=discord.ButtonStyle.green, custom_id="btn_wheel")
+    async def btn_wheel(self, interaction: discord.Interaction, button: discord.ui.Button):
+        if interaction.user.name == self.author_name:
+            self.timeout = 0
+            if self.message is None:
+                self.message = interaction.message
+
+            if interaction.user.name not in log_data:
+                max_place = max((player["place"] for player in log_data.values()), default=0)
+                place = max_place + 1
+                log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}}
+            else:
+                if 'global_name' not in log_data[interaction.user.name] or 'avatar' not in log_data[interaction.user.name]:
+                    log_data[interaction.user.name]['global_name'] = interaction.user.global_name
+                    log_data[interaction.user.name]['avatar'] = str(interaction.user.avatar)
+            
+            id = str(log_data[interaction.user.name]['id'])
+
+            if 'Ticket' in log_data[interaction.user.name]['bag']:
+                log_data[interaction.user.name]['bag']['Ticket']['quantity'] -= 1
+                if log_data[interaction.user.name]['bag']['Ticket']['quantity'] == 0:
+                    del log_data[interaction.user.name]['bag']['Ticket']
+                    
+                alea = random.randint(1, 100)
+                if alea <= 1:
+                    lot = 1
+                else:
+                    if alea <= 7:
+                        lot = 2
+                    else:
+                        if alea <= 16:
+                            lot = 3
+                        else:
+                            if alea <= 25:
+                                lot = 4
+                            else:
+                                if alea <= 34:
+                                    lot = 5
+                                else:
+                                    if alea <= 47:
+                                        lot = 6
+                                    else:
+                                        if alea <= 52:
+                                            lot = 7
+                                        else:
+                                            if alea <= 65:
+                                                lot = 8
+                                            else:
+                                                if alea <= 81:
+                                                    lot = 9
+                                                else:
+                                                    if alea <= 90:
+                                                        lot = 10
+                                                    else:
+                                                        if alea <= 93:
+                                                            lot = 11
+                                                        else:
+                                                            lot = 12
+                    
+                await interaction.response.send_message(wheel['gain_' + str(lot)]['url'])
+                
+                price = wheel['gain_' + str(lot)]['price']['title']
+                
+                item = wheel['gain_' + str(lot)]['price']['item']
+                
+                if item in items:
+                    price += ' ' + items[item]['icon']
+                
+                    if item in log_data[interaction.user.name]['bag']:
+                        log_data[interaction.user.name]['bag'][item]['quantity'] += wheel['gain_' + str(lot)]['price']['quantity']
+                    else:
+                        log_data[interaction.user.name]['bag'][item] = {'quantity': wheel['gain_' + str(lot)]['price']['quantity'], 'icon': items[item]['icon']}
+                    
+                    if 'stats' in items[item]:
+                        if 'pv' in items[item]['stats']:
+                            log_data[interaction.user.name]['stats']['pv'] += items[item]['stats']['pv'] * wheel['gain_' + str(lot)]['price']['quantity']
+                        if 'for' in items[item]['stats']:
+                            log_data[interaction.user.name]['stats']['for'] += items[item]['stats']['for'] * wheel['gain_' + str(lot)]['price']['quantity']
+                        if 'def' in items[item]['stats']:
+                            log_data[interaction.user.name]['stats']['def'] += items[item]['stats']['def'] * wheel['gain_' + str(lot)]['price']['quantity']
+                
+                else:
+                    if item == 'Gold':
+                        log_data[interaction.user.name]['gold'] += 50000
+                    else:
+                        if item == 'Rien':
+                            price = 'absolument rien'
+                        else:
+                            if item == 'Classe':
+                                price = 'le déblocage de sa classe ! !'
+                                if 'classe' in log_data[interaction.user.name]:
+                                    log_data[interaction.user.name]['classe']['quantity'] += 1
+                                else:
+                                    log_data[interaction.user.name]['classe'] = {'unlock': True, 'quantity': 1}
+                    
+                await interaction.followup.send("|| " + "<@" + id + ">" + " remporte " + price + " ! ||")
+            else:
+                await interaction.response.send_message("<@" + id + ">" + ", reviens lorsque tu auras des tickets.")
+
+            for child in self.children:
+                child.disabled = True
+                await interaction.message.edit(view=self)
+
+            with open("log.json", "w") as file:
+                json.dump(log_data, file, indent=4)
+
+    async def on_timeout(self):
+        for child in self.children:
+            child.disabled = True
+        if self.message:
+            await self.message.edit(view=self)
+
+
 async def hourly_mob():
     await client.wait_until_ready()
     channel = client.get_channel(SAKURA_CHANNEL_ID)
@@ -496,6 +621,12 @@ async def on_message(message):
                 await message.channel.send(embed=embed)
             updated = True
         
+    if message.content.startswith("!sw"):
+        if await time_command(message, "!sw", 0.0025):
+            embed, view = wheel_action(message.author.name, message.author.avatar, message.author.global_name)
+            view.message = await message.channel.send(embed=embed, view=view)
+            updated = True
+            
     if message.content.startswith("!materiaux") or message.content.startswith("!matériaux"):
         embed = materiaux_action()
         await message.channel.send(embed=embed)
@@ -809,7 +940,6 @@ async def on_message(message):
                     quantity = int(quantity)
                 else:
                     quantity = 1
-                    print(quantity);
             item = item.title()
             embed = purchase_action(message.author.name, message.author.avatar, message.author.global_name, item, quantity)
             updated = True
@@ -841,13 +971,13 @@ def info_action():
     tabFields = {
         '!gold :' : 'Pour voir combien de gold vous avez.',
         '!profil :' : 'Pour voir vos stats.',
-        '!daily :' : 'Pour récupérer des golds toutes les 24h, ne perdez pas votre série. :new:',
+        '!daily :' : 'Pour récupérer des golds toutes les 24h, ne perdez pas votre série.',
         '!compter :' : 'Pour les tenants du record dans #compter.',
-        '!explore :' : 'Explorez les profondeurs pour des golds toutes les heures. :new:',
-        '!train :' : 'Pour un entraînement digne des plus grand, gagnez de l\'xp toutes les 3h. :new:',
-        '!cd :' : 'Pour voir vos cooldown. :new:',
+        '!explore :' : 'Explorez les profondeurs pour des golds toutes les heures.',
+        '!train :' : 'Pour un entraînement digne des plus grand, gagnez de l\'xp toutes les 3h.',
+        '!cd :' : 'Pour voir vos cooldown.',
         '!market :' : 'Pour acheter de quoi devenir plus fort.',
-        '!materiaux :' : 'Pour voir les stats des matériaux. :new:',
+        '!materiaux :' : 'Pour voir les stats des matériaux.',
         '!top-rank :' : 'Pour voir le classement général.',
         '!top-gold :' : 'Pour voir le classement en Gold.',
         '!top-eveil' : 'Pour voir le classement en Eveil.',
@@ -860,7 +990,8 @@ def info_action():
         '!purchase :' : 'Pour acheter un item au market.',
         '!notif :' : "Pour rejoindre la liste des chads notifiés lors d'une demande d'aide",
         '!send :' : "Pour envoyer de l'argent",
-        '!eveil :' : 'Brisez vos limites ! :new:',
+        '!eveil :' : 'Brisez vos limites !',
+        '!sw :' : 'Tenter votre chance à la Sakura Wheel ! :new:',
         '!dungeon :' : '[En travaux]',
     }
     color = discord.Color.blue()
@@ -939,6 +1070,16 @@ def eveil_action(author_name, author_icon, global_name):
     
     return embed, view
 
+def wheel_action(author_name, author_icon, global_name):
+    title = 'Sakura Wheel'
+    description = 'Faites tourner la roue contre un ticket :tickets: !'
+    color = discord.Color.blue()
+    view = WheelView(timeout=6, author_name=author_name) 
+    
+    embed = create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, description=description)
+    
+    return embed, view
+
 def gems_required(author_name, rank):
     gem_rank = (rank-1) // 3
     nbr_gem = rank % 3
@@ -991,7 +1132,7 @@ def market_action():
     material_items = ':regional_indicator_s: Étherium • 360000 :coin:\n:regional_indicator_a: Adamantium • 120000 :coin:\n:regional_indicator_b: Orichalque • 40000 :coin:\n:regional_indicator_c: Mithril • 13000 :coin:\n:regional_indicator_d: Argent • 4500 :coin:\n:regional_indicator_e: Fer • 1500 :coin:\n:regional_indicator_f: Cuir • 500 :coin:'
     rune_items = ':fire: Feu • For+2 • 2000 :coin:\n:seedling: Terre • Def+4 • 2000 :coin:\n:droplet: Eau • PV+250 • 2000 :coin:'
     rank_items = '<:Legendaire:1222193258403336222> Légendaire • 500000 :coin:\n<:Epique:1222193241022136491> Épique • 50000 :coin:\n<:Rare:1222193217957662760> Rare • 5000 :coin:'
-    other_items = ':tickets: Ticket • 60000 :coin:'
+    other_items = ':tickets: Ticket • 60000 :coin:\n:diamond_shape_with_a_dot_inside: Boost_Xp_24 • 50000 :coin:'
     
     tabFields = {
         'Pour acheter : ' : '!purchase nom_item',

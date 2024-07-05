@@ -149,5 +149,9 @@
     "Ticket": {
         "price": 60000,
         "icon": ":tickets:"
+    },
+    "Boost_Xp_24": {
+        "price": 50000,
+        "icon": ":diamond_shape_with_a_dot_inside:"
     }
 }

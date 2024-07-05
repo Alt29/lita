@@ -1,0 +1,110 @@
+{
+    "gain_1" : {
+        "url": "https://i.imgur.com/XWO6ZF6.mp4",
+        "price": {
+            "title": "Débloquer sa classe",
+            "item": "Classe",
+            "quantity": 1
+        },
+        "proba": 1
+    },
+    "gain_2" : {
+        "url": "https://i.imgur.com/IR7KMEB.mp4",
+        "price": {
+            "title": "1 Ticket",
+            "item": "Ticket",
+            "quantity": 1
+        },
+        "proba": 7
+    },
+    "gain_3" : {
+        "url": "https://i.imgur.com/dB1xdgb.mp4",
+        "price": {
+            "title": "10 Runes eau",
+            "item": "Eau",
+            "quantity": 10
+        },
+        "proba": 16
+    },
+    "gain_4" : {
+        "url": "https://i.imgur.com/Q29h491.mp4",
+        "price": {
+            "title": "10 Runes terre",
+            "item": "Terre",
+            "quantity": 10
+        },
+        "proba": 25
+    },
+    "gain_5" : {
+        "url": "https://i.imgur.com/3u6KqdM.mp4",
+        "price": {
+            "title": "10 Runes feu",
+            "item": "Feu",
+            "quantity": 10
+        },
+        "proba": 34
+    },
+    "gain_6" : {
+        "url": "https://i.imgur.com/0XszJHz.mp4",
+        "price": {
+            "title": "Boost XP 24h",
+            "item": "Boost_Xp_24",
+            "quantity": 1
+        },
+        "proba": 47
+    },
+    "gain_7" : {
+        "url": "https://i.imgur.com/9irFZEl.mp4",
+        "price": {
+            "title": "3 Tickets",
+            "item": "Ticket",
+            "quantity": 3
+        },
+        "proba": 52
+    },
+    "gain_8" : {
+        "url": "https://i.imgur.com/lDhWhVx.mp4",
+        "price": {
+            "title": "50 000 Gold",
+            "item": "Gold",
+            "quantity": 50000
+        },
+        "proba": 65
+    },
+    "gain_9" : {
+        "url": "https://i.imgur.com/jkhZexB.mp4",
+        "price": {
+            "title": "5 Runes rares",
+            "item": "Rare",
+            "quantity": 5
+        },
+        "proba": 81
+    },
+    "gain_10" : {
+        "url": "https://i.imgur.com/dELaqFI.mp4",
+        "price": {
+            "title": "3 Rune épiques",
+            "item": "Epique",
+            "quantity": 3
+        },
+        "proba": 90
+    },
+    "gain_11" : {
+        "url": "https://i.imgur.com/UUZvY9O.mp4",
+        "price": {
+            "title": "1 Rune légendaire",
+            "item": "Legendaire",
+            "quantity": 1
+        },
+        "proba": 93
+    },
+    "gain_12" : {
+        "url": "https://i.imgur.com/Te7G76O.mp4",
+        "price": {
+            "title": "Rien",
+            "item": "Rien",
+            "quantity": 0
+        },
+        "proba": 100
+    }
+}
