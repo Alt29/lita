@@ -153,5 +153,41 @@
     "Boost_Xp_24": {
         "price": 50000,
         "icon": ":diamond_shape_with_a_dot_inside:"
+    },
+    "Brasier": {
+        "stats": {
+            "for": 30
+        },
+        "icon": ":boom:"
+    },
+    "Volcan": {
+        "stats": {
+            "for": 350
+        },
+        "icon": ":volcano:"
+    },
+    "Branche": {
+        "stats": {
+            "def": 60
+        },
+        "icon": ":herb:"
+    },
+    "Arbre": {
+        "stats": {
+            "def": 700
+        },
+        "icon": ":deciduous_tree:"
+    },
+    "Mer": {
+        "stats": {
+            "pv": 3750
+        },
+        "icon": ":sweat_drops:"
+    },
+    "Ocean": {
+        "stats": {
+            "pv": 43750
+        },
+        "icon": ":ocean:"
     }
 }

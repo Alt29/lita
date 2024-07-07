@@ -729,7 +729,7 @@ async def on_message(message):
                     updated = True
             else:
                 title = 'Craft'
-                tabFields = {'Faites !craft nom_item optionnel_quantité' : '', 'Liste des crafts disponibles : ' : '', 'Gemmes d\'éveil :' : '<:Epique:1222193241022136491> Epique\n<:Legendaire:1222193258403336222> Legendaire\n', 'Runes améliorées :' : ':boom: Brasier\n:volcano: Volcan\n:herb: Branche\n:deciduous_tree: Arbre\n:sweat_drops: Mer\n:ocean: Ocean'}
+                tabFields = {'Faites !craft nom_item optionnel_quantité' : '', 'Liste des crafts disponibles : ' : '', 'Gemmes d\'éveil :' : '<:Epique:1222193241022136491> Epique\n<:Legendaire:1222193258403336222> Legendaire\n', 'Runes améliorées :' : ':boom: Brasier • For+30\n:volcano: Volcan • For+350\n:herb: Branche • Def+60\n:deciduous_tree: Arbre • Def+700\n:sweat_drops: Mer • PV+3750\n:ocean: Ocean • PV+43750'}
                 color = discord.Color.lighter_grey()
                 embed = create_embed(title=title, color=color, tabFields=tabFields)
                 await message.channel.send(embed=embed)
@@ -1088,6 +1088,7 @@ def info_action():
         '!train :' : 'Pour un entraînement digne des plus grand, gagnez de l\'xp toutes les 3h.',
         '!cd :' : 'Pour voir vos cooldown.',
         '!market :' : 'Pour acheter de quoi devenir plus fort.',
+        '!craft :' : 'Pour crafter des items. :new:',
         '!materiaux :' : 'Pour voir les stats des matériaux.',
         '!top-rank :' : 'Pour voir le classement général.',
         '!top-gold :' : 'Pour voir le classement en Gold.',
