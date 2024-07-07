@@ -1,0 +1,106 @@
+{
+    "Epique": {
+        "craft": {
+            "image": "https://i.imgur.com/bSDZLWq.jpeg",
+            "item": {
+                "Rare" : 10
+            }
+        },
+        "quantity": 1,
+        "icon": "<:Epique:1222193241022136491>"
+    },
+    "Legendaire": {
+        "craft": {
+            "image": "https://i.imgur.com/DalFj2r.jpeg",
+            "item": {
+                "Epique" : 10
+            }
+        },
+        "quantity": 1,
+        "icon": "<:Legendaire:1222193258403336222>"
+    },
+    "Brasier": {
+        "craft": {
+            "image": "https://i.imgur.com/jcpbUyu.jpeg",
+            "item": {
+                "Feu" : 8,
+                "Rare" : 1
+            }
+        },
+        "stats": {
+            "for": 30
+        },
+        "quantity": 1,
+        "icon": ":boom:"
+    },
+    "Volcan": {
+        "craft": {
+            "image": "https://i.imgur.com/e1oNNYM.jpeg",
+            "item": {
+                "Brasier" : 8,
+                "Epique" : 1
+            }
+        },
+        "stats": {
+            "for": 350
+        },
+        "quantity": 1,
+        "icon": ":volcano:"
+    },
+    "Branche": {
+        "craft": {
+            "image": "https://i.imgur.com/fHIXPaN.jpeg",
+            "item": {
+                "Plante" : 8,
+                "Rare" : 1
+            }
+        },
+        "stats": {
+            "def": 60
+        },
+        "quantity": 1,
+        "icon": ":herb:"
+    },
+    "Arbre": {
+        "craft": {
+            "image": "https://i.imgur.com/G66d3M6.jpeg",
+            "item": {
+                "Branche" : 8,
+                "Epique" : 1
+            }
+        },
+        "stats": {
+            "def": 700
+        },
+        "quantity": 1,
+        "icon": ":deciduous_tree:"
+    },
+    "Mer": {
+        "craft": {
+            "image": "https://i.imgur.com/Tlmli34.jpeg",
+            "item": {
+                "Eau" : 8,
+                "Rare" : 1
+            }
+        },
+        "stats": {
+            "pv": 3750
+        },
+        "quantity": 1,
+        "icon": ":sweat_drops:"
+    },
+    "Ocean": {
+        "craft": {
+            "image": "https://i.imgur.com/G6UDI6T.jpeg",
+            "item": {
+                "Mer" : 8,
+                "Epique" : 1
+            }
+        },
+        "stats": {
+            "pv": 43750
+        },
+        "quantity": 1,
+        "icon": ":ocean:"
+    }
+}

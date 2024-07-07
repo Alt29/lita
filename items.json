@@ -120,7 +120,7 @@
         },
         "icon": ":fire:"
     },
-    "Terre": {
+    "Plante": {
         "price": 2000,
         "stats": {
             "def": 4

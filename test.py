@@ -54,6 +54,12 @@ try:
 except FileNotFoundError:
     wheel = {}
 
+try:
+    with open("craft.json", "r") as file:
+        craft = json.load(file)
+except FileNotFoundError:
+    craft = {}
+
 @client.event
 async def on_ready():
     print("Bot is ready.")
@@ -86,10 +92,6 @@ class BattleView(discord.ui.View):
                 log_data[interaction.user.name]['global_name'] = interaction.user.global_name
                 log_data[interaction.user.name]['avatar'] = str(interaction.user.avatar)
 
-        #if log_data[interaction.user.name]["penality"] > 0:
-            # await interaction.response.send_message("Vous avez échoué lors de votre dernier combat, vous devez donc vous reposez encore", ephemeral=True)
-            # battle["players"][interaction.user.name] = interaction.user.name        
-        #else:
         await interaction.response.send_message("Vous partez affronter le monstre", ephemeral=True)
         battle["players"][interaction.user.name] = interaction.user.name
 
@@ -374,7 +376,7 @@ class EveilView(discord.ui.View):
             if log_data[interaction.user.name]['bag'][self.gem_type]['quantity'] == 0:
                 del log_data[interaction.user.name]['bag'][self.gem_type]
                 
-            await interaction.response.send_message("Vous vous êtes éveillé au rang : " + rank[log_data[interaction.user.name]['rank']] + ', félicitations !', ephemeral=True)
+            await interaction.response.send_message("Vous vous êtes éveillé au rang : " + rank[log_data[interaction.user.name]['rank']] + ', félicitations !')
 
             for child in self.children:
                 child.disabled = True
@@ -507,6 +509,73 @@ class WheelView(discord.ui.View):
         if self.message:
             await self.message.edit(view=self)
 
+class CraftView(discord.ui.View):
+    def __init__(self, timeout, item, quantity, author_name):
+        super().__init__(timeout=timeout)
+        self.message = None
+        self.item = item
+        self.quantity = quantity
+        self.author_name = author_name
+
+    @discord.ui.button(label="Crafter", style=discord.ButtonStyle.green, custom_id="btn_craft")
+    async def btn_craft(self, interaction: discord.Interaction, button: discord.ui.Button):
+        if interaction.user.name == self.author_name:
+            self.timeout = 0
+            if self.message is None:
+                self.message = interaction.message
+
+            if interaction.user.name not in log_data:
+                max_place = max((player["place"] for player in log_data.values()), default=0)
+                place = max_place + 1
+                log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}}
+            else:
+                if 'global_name' not in log_data[interaction.user.name] or 'avatar' not in log_data[interaction.user.name]:
+                    log_data[interaction.user.name]['global_name'] = interaction.user.global_name
+                    log_data[interaction.user.name]['avatar'] = str(interaction.user.avatar)
+            
+            id = str(log_data[interaction.user.name]['id'])
+
+            for item in craft[self.item]['craft']['item']:
+                log_data[interaction.user.name]['bag'][item]['quantity'] -= craft[self.item]['craft']['item'][item] * self.quantity
+                if log_data[interaction.user.name]['bag'][item]['quantity'] == 0:
+                    del log_data[interaction.user.name]['bag'][item]
+                    
+                if 'stats' in items[item]:
+                    if 'pv' in items[item]['stats']:
+                        log_data[interaction.user.name]['stats']['pv'] -= items[item]['stats']['pv'] * craft[self.item]['craft']['item'][item] * self.quantity
+                    if 'for' in items[item]['stats']:
+                        log_data[interaction.user.name]['stats']['for'] -= items[item]['stats']['for'] * craft[self.item]['craft']['item'][item] * self.quantity
+                    if 'def' in items[item]['stats']:
+                        log_data[interaction.user.name]['stats']['def'] -= items[item]['stats']['def'] * craft[self.item]['craft']['item'][item] * self.quantity
+                
+            if self.item in log_data[interaction.user.name]['bag']:
+                log_data[interaction.user.name]['bag'][self.item]['quantity'] += craft[self.item]['quantity'] * self.quantity
+            else:
+                log_data[interaction.user.name]['bag'][self.item] = {"quantity": craft[self.item]['quantity'] * self.quantity, "icon": craft[self.item]['icon']}
+                
+            if 'stats' in craft[self.item]:
+                if 'pv' in craft[self.item]['stats']:
+                    log_data[interaction.user.name]['stats']['pv'] += craft[self.item]['stats']['pv'] * craft[self.item]['quantity'] * self.quantity
+                if 'for' in craft[self.item]['stats']:
+                    log_data[interaction.user.name]['stats']['for'] += craft[self.item]['stats']['for'] * craft[self.item]['quantity'] * self.quantity
+                if 'def' in craft[self.item]['stats']:
+                    log_data[interaction.user.name]['stats']['def'] += craft[self.item]['stats']['def'] * craft[self.item]['quantity'] * self.quantity
+                
+            await interaction.response.send_message("<@" + id + ">" + " vient de crafter " + str(craft[self.item]['quantity'] * self.quantity) + ' ' + self.item + ' ' + craft[self.item]['icon'])    
+
+            for child in self.children:
+                child.disabled = True
+                await interaction.message.edit(view=self)
+
+            with open("log.json", "w") as file:
+                json.dump(log_data, file, indent=4)
+
+    async def on_timeout(self):
+        for child in self.children:
+            child.disabled = True
+        if self.message:
+            await self.message.edit(view=self)
+
 
 async def hourly_mob():
     await client.wait_until_ready()
@@ -522,7 +591,7 @@ async def hourly_mob():
         await asyncio.sleep(wait_time)
 
         
-    # Récompenses Loot Partage récompenses compteur de kill = titre = stats bonus / retire des pv et en cas de defaite repos 3h pv 0 to 100% / regen pv stat regen / 10min max pv max / stats de degat crit chance crit precision esquive degat brut saignement
+    # Récompenses Loot compteur de kill = titre = stats bonus / stats de degat crit chance crit precision esquive degat brut saignement
         random_number = random.randint(1, 100)
         for mob in mobs:
             spawn_rate = round(random.random(), 4)
@@ -626,6 +695,48 @@ async def on_message(message):
             embed, view = wheel_action(message.author.name, message.author.avatar, message.author.global_name)
             view.message = await message.channel.send(embed=embed, view=view)
             updated = True
+    
+    if message.content.startswith("!craft"):
+        if await time_command(message, "!craft", 0.0025):
+            command_and_argument = message.content.split(maxsplit=2)
+        
+            if len(command_and_argument) == 2 or len(command_and_argument) == 3 :
+                if len(command_and_argument) == 2:
+                    command, item = command_and_argument
+                    quantity = 1
+                else:
+                    command, item, quantity = command_and_argument
+                    if is_integer(quantity) and int(quantity) > 0:
+                        quantity = int(quantity)
+                    else:
+                        quantity = 1
+                item = item.title()
+                
+                if item not in craft:
+                    title = 'Vérifiez l\'appélation de ce que vous voulez crafter.'
+                    tabFields = {'Faites !craft pour voir la liste des crafts disponibles.' : ''}
+                    color = discord.Color.red()
+                    embed = create_embed(title=title, color=color, tabFields=tabFields)
+                    await message.channel.send(embed=embed)
+                else:
+                    embed, view = craft_action(message.author.name, message.author.avatar, message.author.global_name, item, quantity)
+
+                    if view is not None:
+                        view.message = await message.channel.send(embed=embed, view=view)
+                    else:
+                        await message.channel.send(embed=embed)
+
+                    updated = True
+            else:
+                title = 'Craft'
+                tabFields = {'Faites !craft nom_item optionnel_quantité' : '', 'Liste des crafts disponibles : ' : '', 'Gemmes d\'éveil :' : '<:Epique:1222193241022136491> Epique\n<:Legendaire:1222193258403336222> Legendaire\n', 'Runes améliorées :' : ':boom: Brasier\n:volcano: Volcan\n:herb: Branche\n:deciduous_tree: Arbre\n:sweat_drops: Mer\n:ocean: Ocean'}
+                color = discord.Color.lighter_grey()
+                embed = create_embed(title=title, color=color, tabFields=tabFields)
+                await message.channel.send(embed=embed)
+        
+        
+        
+        
             
     if message.content.startswith("!materiaux") or message.content.startswith("!matériaux"):
         embed = materiaux_action()
@@ -828,7 +939,7 @@ async def on_message(message):
     if message.content.startswith("!compter"):
         if message.author.id == 518397017072992257 or message.author.id == 619654294160932896:
             if await time_command(message, "!compter", 24):
-                embed = compter_action(message.author.name, message.author.avatar, message.author.global_name, 421)
+                embed = compter_action(message.author.name, message.author.avatar, message.author.global_name, 421 * 100)
                 await message.channel.send(embed=embed)
             updated = True
         else:
@@ -936,7 +1047,7 @@ async def on_message(message):
                 quantity = 1
             else:
                 command, item, quantity = command_and_argument
-                if is_integer(quantity):
+                if is_integer(quantity) and int(quantity) > 0:
                     quantity = int(quantity)
                 else:
                     quantity = 1
@@ -1080,6 +1191,32 @@ def wheel_action(author_name, author_icon, global_name):
     
     return embed, view
 
+def craft_action(author_name, author_icon, global_name, item, quantity):
+    view = None
+    description = 'Modèle du craft unitaire :'
+    image = craft[item]['craft']['image']
+    
+    owned = item_required(author_name, item, quantity)
+    
+    if owned:
+        title = 'Craft de ' + str(quantity) + ' ' + item + ' ' + craft[item]['icon']
+        color = discord.Color.blue()
+        view = CraftView(timeout=6, item=item, quantity=quantity, author_name=author_name) 
+    else:
+        title = 'Vous n\'avez pas de quoi crafter ' + str(quantity) + ' ' + item + ' ' + craft[item]['icon']
+        color = discord.Color.red()
+        
+    embed = create_embed(title=title, color=color, image=image, author_name=global_name, author_icon=author_icon, description=description)
+    
+    return embed, view
+
+def item_required(author_name, item, quantity):
+    for item_required in craft[item]['craft']['item']:
+        if item_required not in log_data[author_name]['bag'] or craft[item]['craft']['item'][item_required] * quantity > log_data[author_name]['bag'][item_required]['quantity']:
+            return False
+    
+    return True
+
 def gems_required(author_name, rank):
     gem_rank = (rank-1) // 3
     nbr_gem = rank % 3
@@ -1092,11 +1229,11 @@ def gems_required(author_name, rank):
         gem_type = 'Rare'
     else:
         if gem_rank == 1:
-            gem = '<:Epique:1222193241022136491> Épique'
+            gem = '<:Epique:1222193241022136491> Epique'
             gem_type = 'Epique'
         else:
             if gem_rank == 2:
-                gem = '<:Legendaire:1222193258403336222> Légendaire'
+                gem = '<:Legendaire:1222193258403336222> Legendaire'
                 gem_type = 'Legendaire'
     
     if gem_type in log_data[author_name]['bag']:
@@ -1130,8 +1267,8 @@ def materiaux_action():
 def market_action():
     base_items = ':billed_cap: Casquette • Def+1 • 500 :coin:\n:shirt: Tshirt • Def+2 • 1000 :coin:\n:jeans: Jean • Def+2 • 1000 :coin:\n:athletic_shoe: Baskets • Def+1 • 500 :coin:\n:dagger: Dague • For+3 • 1500 :coin:'
     material_items = ':regional_indicator_s: Étherium • 360000 :coin:\n:regional_indicator_a: Adamantium • 120000 :coin:\n:regional_indicator_b: Orichalque • 40000 :coin:\n:regional_indicator_c: Mithril • 13000 :coin:\n:regional_indicator_d: Argent • 4500 :coin:\n:regional_indicator_e: Fer • 1500 :coin:\n:regional_indicator_f: Cuir • 500 :coin:'
-    rune_items = ':fire: Feu • For+2 • 2000 :coin:\n:seedling: Terre • Def+4 • 2000 :coin:\n:droplet: Eau • PV+250 • 2000 :coin:'
-    rank_items = '<:Legendaire:1222193258403336222> Légendaire • 500000 :coin:\n<:Epique:1222193241022136491> Épique • 50000 :coin:\n<:Rare:1222193217957662760> Rare • 5000 :coin:'
+    rune_items = ':fire: Feu • For+2 • 2000 :coin:\n:seedling: Plante • Def+4 • 2000 :coin:\n:droplet: Eau • PV+250 • 2000 :coin:'
+    rank_items = '<:Legendaire:1222193258403336222> Legendaire • 500000 :coin:\n<:Epique:1222193241022136491> Epique • 50000 :coin:\n<:Rare:1222193217957662760> Rare • 5000 :coin:'
     other_items = ':tickets: Ticket • 60000 :coin:\n:diamond_shape_with_a_dot_inside: Boost_Xp_24 • 50000 :coin:'
     
     tabFields = {
@@ -1428,30 +1565,30 @@ def daily_action(author_name, author_icon, global_name):
 def explore_action(author_name, author_icon, global_name):
     random_number = random.randint(1, 1270)
     if random_number < 640:
-        title = 'L\'Antre de l\'Ours'
+        title = 'I • L\'Antre de l\'Ours'
         alea = random.randint(50, 200)
     else:
         if random_number <= 960:
-            title = 'La Forêt des Tentations'
+            title = 'II • La Forêt des Tentations'
             alea = random.randint(150, 300)
         else:
             if random_number <= 1120:
-                title = 'Les Grandes Falaises'
+                title = 'III • Les Grandes Falaises'
                 alea = random.randint(250, 400)
             else:
                 if random_number <= 1200:
-                    title = 'Les Profondeurs de la Coupe'
+                    title = 'IV • Les Profondeurs de la Coupe'
                     alea = random.randint(350, 500)
                 else:
                     if random_number <= 1240:
-                        title = 'La Mer des Cadavres'
+                        title = 'V • La Mer des Cadavres'
                         alea = random.randint(450, 600)
                     else:
                         if random_number <= 1260:
-                            title = 'La Capitale des Non-Retournés'
+                            title = 'VI • La Capitale des Non-Retournés'
                             alea = random.randint(550, 700)
                         else:
-                            title = 'La Dernière Épreuve'
+                            title = 'VII • La Dernière Épreuve'
                             alea = random.randint(1, 2500)
     
     alea = alea * (log_data[author_name]['rank'] + 1) * (log_data[author_name]['rank'] + 1)
@@ -1485,34 +1622,34 @@ def train_action(author_name, author_icon, global_name):
     
     random_number = random.randint(1, 2550)
     if random_number < 1280:
-        title = 'La Porte de l\'Ouverture'
+        title = 'I • La Porte de l\'Ouverture'
         alea = random.randint(250, 400)
     else:
         if random_number < 1920:
-            title = 'La Porte de l\'Énergie'
+            title = 'II • La Porte de l\'Énergie'
             alea = random.randint(350, 500)
         else:
             if random_number <= 2240:
-                title = 'La Porte de la Vie'
+                title = 'III • La Porte de la Vie'
                 alea = random.randint(450, 600)
             else:
                 if random_number <= 2400:
-                    title = 'La Porte de la Douleur'
+                    title = 'IV • La Porte de la Douleur'
                     alea = random.randint(550, 700)
                 else:
                     if random_number <= 2480:
-                        title = 'La Porte de la Forêt'
+                        title = 'V • La Porte de la Forêt'
                         alea = random.randint(650, 800)
                     else:
                         if random_number <= 2520:
-                            title = 'La Porte de la Vision'
+                            title = 'VI • La Porte de la Vision'
                             alea = random.randint(750, 900)
                         else:
                             if random_number <= 2540:
-                                title = 'La Porte de l\'Insanité'
+                                title = 'VII • La Porte de l\'Insanité'
                                 alea = random.randint(850, 1000)
                             else:
-                                title = 'La Porte de la Mort'
+                                title = 'VIII • La Porte de la Mort'
                                 alea = random.randint(1, 3700)
     
     alea = alea * (log_data[author_name]['rank'] + 1) * (log_data[author_name]['rank'] + 1)
