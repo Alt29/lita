@@ -1705,7 +1705,7 @@ def ranking(type, author_name):
 
 def purchase_action(author_name, author_icon, global_name, item, quantity):
     title = 'Achat'
-    if item in items:
+    if item in items and 'price' in items[item]:
         if author_name in log_data:
             if 'gold' not in log_data[author_name]:
                 log_data[author_name]['gold'] = 0
