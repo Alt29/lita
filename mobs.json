@@ -26,9 +26,9 @@
             }
         },
         "image": "https://i.imgur.com/tLYX58K.jpeg",
-        "spawn_rate": 0.03,
+        "spawn_rate": 0.25,
         "min_level": 1,
-        "max_level": 50
+        "max_level": 15
     },
     "Squelette": {
         "name": "Squelette",
@@ -57,9 +57,9 @@
             }
         },
         "image": "https://i.imgur.com/Ckt7V81.jpeg",
-        "spawn_rate": 0.06,
+        "spawn_rate": 0.40,
         "min_level": 1,
-        "max_level": 50
+        "max_level": 15
     },
     "Meute_de_loups": {
         "name": "Meute de loups",
@@ -88,9 +88,9 @@
             }
         },
         "image": "https://i.imgur.com/esNGY0j.jpeg",
-        "spawn_rate": 0.09,
+        "spawn_rate": 0.60,
         "min_level": 1,
-        "max_level": 50
+        "max_level": 15
     },
     "Gobelin": {
         "name": "Gobelin",
@@ -119,9 +119,9 @@
             }
         },
         "image": "https://i.imgur.com/bLXiOQs.jpeg",
-        "spawn_rate": 0.12,
+        "spawn_rate": 0.80,
         "min_level": 1,
-        "max_level": 50
+        "max_level": 15
     },
     "Grand_gobelin": {
         "name": "Grand gobelin",
@@ -150,7 +150,7 @@
             }
         },
         "image": "https://i.imgur.com/6G7k698.jpeg",
-        "spawn_rate": 0.19,
+        "spawn_rate": 0.85,
         "min_level": 50,
         "max_level": 100
     },
@@ -181,7 +181,7 @@
             }
         },
         "image": "https://i.imgur.com/IL043c6.jpeg",
-        "spawn_rate": 0.26,
+        "spawn_rate": 0.90,
         "min_level": 50,
         "max_level": 100
     },
@@ -197,7 +197,7 @@
             "xp": 248
         },
         "image": "https://i.imgur.com/6rEU6fp.jpeg",
-        "spawn_rate": 0.33,
+        "spawn_rate": 0.95,
         "min_level": 50,
         "max_level": 100
     },
@@ -213,7 +213,7 @@
             "xp": 277
         },
         "image": "https://i.imgur.com/Hazhsdj.jpeg",
-        "spawn_rate": 0.40,
+        "spawn_rate": 0.99,
         "min_level": 50,
         "max_level": 100
     },

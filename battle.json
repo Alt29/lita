@@ -1,7 +1,10 @@
 {
     "mob": {
-        "name": "Grand_gobelin",
-        "lvl": 95
+        "name": "Squelette",
+        "lvl": 15
     },
-    "players": {}
+    "players": {
+        "slashoroide": "slashoroide",
+        "ruinflex": "ruinflex"
+    }
 }

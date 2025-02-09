@@ -939,7 +939,9 @@ async def on_message(message):
     if message.content.startswith("!compter"):
         if message.author.id == 518397017072992257 or message.author.id == 619654294160932896:
             if await time_command(message, "!compter", 24):
-                embed = compter_action(message.author.name, message.author.avatar, message.author.global_name, 421 * 100)
+                gain = 421 * (log_data[message.author.name]['rank'] + 1) * (log_data[message.author.name]['rank'] + 1)
+                gain = gain // 2
+                embed = compter_action(message.author.name, message.author.avatar, message.author.global_name, gain)
                 await message.channel.send(embed=embed)
             updated = True
         else:
