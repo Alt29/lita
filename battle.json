@@ -1,11 +1,13 @@
 {
     "mob": {
-        "name": "Squelette",
-        "lvl": 24
+        "name": "Gobelin",
+        "lvl": 22
     },
     "players": {
+        "akastukye": "akastukye",
         "ruinflex": "ruinflex",
         "marylis": "marylis",
+        "slashoroide": "slashoroide",
         "altan3062": "altan3062"
     },
     "status": "defaite"
