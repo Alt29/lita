@@ -1,7 +1,12 @@
 {
     "mob": {
-        "name": "Slime",
-        "lvl": 2
+        "name": "Squelette",
+        "lvl": 24
     },
-    "players": {}
+    "players": {
+        "ruinflex": "ruinflex",
+        "marylis": "marylis",
+        "altan3062": "altan3062"
+    },
+    "status": "defaite"
 }

@@ -59,6 +59,12 @@ try:
         craft = json.load(file)
 except FileNotFoundError:
     craft = {}
+    
+try:
+    with open("classes.json", "r") as file:
+        classes = json.load(file)
+except FileNotFoundError:
+    classes = {}
 
 @client.event
 async def on_ready():
@@ -609,14 +615,17 @@ async def hourly_mob():
         old_lvl = battle['mob']['lvl']
         
         if status == 'victoire':
-            mob_lvl = random.randint(old_lvl+1, old_lvl+old_lvl//2+3)
+            mob_lvl = random.randint(old_lvl+1, old_lvl+old_lvl//2+1)
         else:
-            mob_lvl = random.randint(old_lvl//2, old_lvl+3)
+            mob_lvl = random.randint(old_lvl//2, old_lvl+1)
 
         if mob_lvl < 1:
             mob_lvl = 1
             
-        if mob_lvl > 1000:
+        if mob_lvl >= 749 and mob_lvl < 1124:
+            mob_lvl = 749
+            
+        if mob_lvl >= 1124:
             mob_lvl = 1000
         
         spawn_rate = round(random.random(), 4)
@@ -1098,8 +1107,9 @@ async def on_message(message):
         await message.channel.send(embed=embed)
         updated = True
 
-    if message.content.startswith("!dungeon"):
-        pass #dungeon_action
+    if message.content.startswith("!classe"):
+        embed = classe_action()
+        await message.channel.send(embed=embed)
 
     if updated:
         with open("log.json", "w") as file:
@@ -1115,7 +1125,7 @@ def info_action():
         '!train :' : 'Pour un entraînement digne des plus grand, gagnez de l\'xp toutes les 3h.',
         '!cd :' : 'Pour voir vos cooldown.',
         '!market :' : 'Pour acheter de quoi devenir plus fort.',
-        '!craft :' : 'Pour crafter des items. :new:',
+        '!craft :' : 'Pour crafter des items.',
         '!materiaux :' : 'Pour voir les stats des matériaux.',
         '!top-rank :' : 'Pour voir le classement général.',
         '!top-gold :' : 'Pour voir le classement en Gold.',
@@ -1130,8 +1140,8 @@ def info_action():
         '!notif :' : "Pour rejoindre la liste des chads notifiés lors d'une demande d'aide",
         '!send :' : "Pour envoyer de l'argent",
         '!eveil :' : 'Brisez vos limites !',
-        '!sw :' : 'Tenter votre chance à la Sakura Wheel ! :new:',
-        '!dungeon :' : '[En travaux]',
+        '!sw :' : 'Tenter votre chance à la Sakura Wheel !',
+        '!classe :' : '[En travaux] :new:',
     }
     color = discord.Color.blue()
     title = 'Informations'
@@ -1305,10 +1315,21 @@ def market_action():
         'Matériaux : ' : material_items,
         'Runes : ' : rune_items,
         'Gemmes d\'éveil :' : rank_items,
-        'Autres : :new:' : other_items
+        'Autres :' : other_items
     }
     color = discord.Color.lighter_grey()
     title = 'Boutique'
+    return create_embed(title=title, color=color, tabFields=tabFields)
+
+def classe_action():
+    listes_classes = ""
+    for classe in classes:
+        listes_classes = listes_classes + classes[classe]["icon"] + " " + classes[classe]["name"] + "\n"
+
+    tabFields = {'' : listes_classes}
+    
+    color = discord.Color.lighter_grey()
+    title = 'Classes'
     return create_embed(title=title, color=color, tabFields=tabFields)
 
 def get_time(author_name, command):

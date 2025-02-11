@@ -1,0 +1,134 @@
+{
+    "assassin": {
+        "name": "Assassin",
+        "icon": ":dagger:",
+        "description": "",
+        "evolved": false,
+
+        "evolve": {
+            "name": "Faucheur d'âmes",
+            "icon": ":cyclone:",
+            "description": ""
+        }
+    },
+    "econome": {
+        "name": "Économe",
+        "icon": ":mouse:",
+        "description": "",
+        "evolved": false,
+
+        "evolve": {
+            "name": "Midas",
+            "icon": ":coin:",
+            "description": ""
+        }
+    },
+    "chanceux": {
+        "name": "Chanceux",
+        "icon": ":four_leaf_clover:",
+        "description": "",
+        "evolved": false,
+
+        "evolve": {
+            "name": "Main du destin",
+            "icon": ":black_joker:",
+            "description": ""
+        }
+    },
+    "guerrier": {
+        "name": "Guerrier",
+        "icon": ":crossed_swords:",
+        "description": "",
+        "evolved": false,
+
+        "evolve": {
+            "name": "Berserker sanglant",
+            "icon": ":heart_on_fire:",
+            "description": ""
+        }
+    },
+    "gardien": {
+        "name": "Gardien",
+        "icon": ":shield:",
+        "description": "",
+        "evolved": false,
+
+        "evolve": {
+            "name": "Sentinelle oubliée",
+            "icon": ":moyai:",
+            "description": ""
+        }
+    },
+    "druide": {
+        "name": "Druide",
+        "icon": ":coral:",
+        "description": "",
+        "evolved": false,
+
+        "evolve": {
+            "name": "Spécialiste runique",
+            "icon": ":Legendaire:",
+            "description": ""
+        }
+    },
+    "buffer": {
+        "name": "Buffer",
+        "icon": ":low_brightness:",
+        "description": "",
+        "evolved": false,
+
+        "evolve": {
+            "name": "Ange béni",
+            "icon": ":angel:",
+            "description": ""
+        }
+    },
+    "debuffer": {
+        "name": "Débuffer",
+        "icon": ":chains:",
+        "description": "",
+        "evolved": false,
+
+        "evolve": {
+            "name": "Démon maudit",
+            "icon": ":japanese_ogre:",
+            "description": ""
+        }
+    },
+    "alchimiste": {
+        "name": "Alchimiste",
+        "icon": ":alembic:",
+        "description": "",
+        "evolved": false,
+
+        "evolve": {
+            "name": "Savant fou",
+            "icon": ":dna:",
+            "description": ""
+        }
+    },
+    "paysan": {
+        "name": "Paysan",
+        "icon": ":farmer:",
+        "description": "",
+        "evolved": false,
+
+        "evolve": {
+            "name": "Roi tyran",
+            "icon": ":crown:",
+            "description": ""
+        }
+    },
+    "forgeron": {
+        "name": "Forgeron",
+        "icon": ":hammer_pick:",
+        "description": "",
+        "evolved": false,
+
+        "evolve": {
+            "name": "Créateur",
+            "icon": ":fleur_de_lis:",
+            "description": ""
+        }
+    }
+}
