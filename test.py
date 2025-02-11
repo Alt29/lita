@@ -23,7 +23,7 @@ try:
         log_data = json.load(file)
 except FileNotFoundError:
     log_data = {}
-    
+
 try:
     with open("items.json", "r") as file:
         items = json.load(file)
@@ -47,7 +47,7 @@ try:
         battle = json.load(file)
 except FileNotFoundError:
     battle = {}
-    
+
 try:
     with open("wheel.json", "r") as file:
         wheel = json.load(file)
@@ -76,7 +76,7 @@ class BattleView(discord.ui.View):
         self.timeout = 0
         if self.message is None:
             self.message = interaction.message
-        
+
         try:
             with open("battle.json", "r") as file:
                 battle = json.load(file)
@@ -105,7 +105,7 @@ class BattleView(discord.ui.View):
             total_for += log_data[player]['stats']['for']
             total_def += log_data[player]['stats']['def']
         attaquant += '\n**PV : ' + str(total_pv) + ' :hearts:   For : ' + str(total_for) + ' :crossed_swords:   Def : ' + str(total_def) + ' :shield:**'
-        
+
         embed = interaction.message.embeds[0]
         new_fields = []
         for field in embed.fields:
@@ -180,7 +180,7 @@ class BattleView(discord.ui.View):
             total_pv += log_data[player]['stats']['pv']
             total_for += log_data[player]['stats']['for']
             total_def += log_data[player]['stats']['def']
-        
+
         color = discord.Color.red()
 
         if len(players) == 0:
@@ -214,18 +214,23 @@ class BattleView(discord.ui.View):
                 title = "Victoire !"
                 color = discord.Color.green()
                 tabFields = {"Récompenses à se partager :" : res}
+                battle['status'] = 'victoire'
             else:
                 title = "Défaite !"
                 tabFields = {} #Penality
+                battle['status'] = 'defaite'
 
             mentions = " ".join([f"<@{user_id}>" for user_id in players])
             description = mentions
             embed = create_embed(title=title, description=description, color=color, tabFields=tabFields)
-        
+
         await channel.send(embed=embed)
 
         with open("log.json", "w") as file:
             json.dump(log_data, file, indent=4)
+
+        with open("battle.json", "w") as file:
+            json.dump(battle, file, indent=4)
 
 class EnchereView(discord.ui.View):
     def __init__(self, timeout, lot):
@@ -238,7 +243,7 @@ class EnchereView(discord.ui.View):
         self.timeout = 0
         if self.message is None:
             self.message = interaction.message
-        
+
         try:
             with open("enchere.json", "r") as file:
                 enchere = json.load(file)
@@ -275,7 +280,7 @@ class EnchereView(discord.ui.View):
         self.timeout = 0
         if self.message is None:
             self.message = interaction.message
-        
+
         try:
             with open("enchere.json", "r") as file:
                 enchere = json.load(file)
@@ -338,7 +343,7 @@ class EnchereView(discord.ui.View):
                 participants += '<@' + str(log_data[player]['id']) + '> ' + str(enchere[lot]['join_player'][player]) + ' <:sakura_coin:1217220808083247154>\n'
             tabFields = {"Vainqueur des enchères :" : winner, "Gains :" : gain, "Mise :" : mise, "Participants :" : participants}
             embed = create_embed(title=title, color=color, tabFields=tabFields)
-            
+
             log_data[enchere[lot]['last_player']]['gold'] += enchere[lot]['quantity']
 
         await channel.send(embed=embed)
@@ -375,7 +380,7 @@ class EveilView(discord.ui.View):
             log_data[interaction.user.name]['bag'][self.gem_type]['quantity'] -= self.nbr_gem
             if log_data[interaction.user.name]['bag'][self.gem_type]['quantity'] == 0:
                 del log_data[interaction.user.name]['bag'][self.gem_type]
-                
+
             await interaction.response.send_message("Vous vous êtes éveillé au rang : " + rank[log_data[interaction.user.name]['rank']] + ', félicitations !')
 
             for child in self.children:
@@ -412,14 +417,14 @@ class WheelView(discord.ui.View):
                 if 'global_name' not in log_data[interaction.user.name] or 'avatar' not in log_data[interaction.user.name]:
                     log_data[interaction.user.name]['global_name'] = interaction.user.global_name
                     log_data[interaction.user.name]['avatar'] = str(interaction.user.avatar)
-            
+
             id = str(log_data[interaction.user.name]['id'])
 
             if 'Ticket' in log_data[interaction.user.name]['bag']:
                 log_data[interaction.user.name]['bag']['Ticket']['quantity'] -= 1
                 if log_data[interaction.user.name]['bag']['Ticket']['quantity'] == 0:
                     del log_data[interaction.user.name]['bag']['Ticket']
-                    
+
                 alea = random.randint(1, 100)
                 if alea <= 1:
                     lot = 1
@@ -455,21 +460,21 @@ class WheelView(discord.ui.View):
                                                             lot = 11
                                                         else:
                                                             lot = 12
-                    
+
                 await interaction.response.send_message(wheel['gain_' + str(lot)]['url'])
-                
+
                 price = wheel['gain_' + str(lot)]['price']['title']
-                
+
                 item = wheel['gain_' + str(lot)]['price']['item']
-                
+
                 if item in items:
                     price += ' ' + items[item]['icon']
-                
+
                     if item in log_data[interaction.user.name]['bag']:
                         log_data[interaction.user.name]['bag'][item]['quantity'] += wheel['gain_' + str(lot)]['price']['quantity']
                     else:
                         log_data[interaction.user.name]['bag'][item] = {'quantity': wheel['gain_' + str(lot)]['price']['quantity'], 'icon': items[item]['icon']}
-                    
+
                     if 'stats' in items[item]:
                         if 'pv' in items[item]['stats']:
                             log_data[interaction.user.name]['stats']['pv'] += items[item]['stats']['pv'] * wheel['gain_' + str(lot)]['price']['quantity']
@@ -477,7 +482,7 @@ class WheelView(discord.ui.View):
                             log_data[interaction.user.name]['stats']['for'] += items[item]['stats']['for'] * wheel['gain_' + str(lot)]['price']['quantity']
                         if 'def' in items[item]['stats']:
                             log_data[interaction.user.name]['stats']['def'] += items[item]['stats']['def'] * wheel['gain_' + str(lot)]['price']['quantity']
-                
+
                 else:
                     if item == 'Gold':
                         log_data[interaction.user.name]['gold'] += 50000
@@ -491,7 +496,7 @@ class WheelView(discord.ui.View):
                                     log_data[interaction.user.name]['classe']['quantity'] += 1
                                 else:
                                     log_data[interaction.user.name]['classe'] = {'unlock': True, 'quantity': 1}
-                    
+
                 await interaction.followup.send("|| " + "<@" + id + ">" + " remporte " + price + " ! ||")
             else:
                 await interaction.response.send_message("<@" + id + ">" + ", reviens lorsque tu auras des tickets.")
@@ -532,14 +537,14 @@ class CraftView(discord.ui.View):
                 if 'global_name' not in log_data[interaction.user.name] or 'avatar' not in log_data[interaction.user.name]:
                     log_data[interaction.user.name]['global_name'] = interaction.user.global_name
                     log_data[interaction.user.name]['avatar'] = str(interaction.user.avatar)
-            
+
             id = str(log_data[interaction.user.name]['id'])
 
             for item in craft[self.item]['craft']['item']:
                 log_data[interaction.user.name]['bag'][item]['quantity'] -= craft[self.item]['craft']['item'][item] * self.quantity
                 if log_data[interaction.user.name]['bag'][item]['quantity'] == 0:
                     del log_data[interaction.user.name]['bag'][item]
-                    
+
                 if 'stats' in items[item]:
                     if 'pv' in items[item]['stats']:
                         log_data[interaction.user.name]['stats']['pv'] -= items[item]['stats']['pv'] * craft[self.item]['craft']['item'][item] * self.quantity
@@ -547,12 +552,12 @@ class CraftView(discord.ui.View):
                         log_data[interaction.user.name]['stats']['for'] -= items[item]['stats']['for'] * craft[self.item]['craft']['item'][item] * self.quantity
                     if 'def' in items[item]['stats']:
                         log_data[interaction.user.name]['stats']['def'] -= items[item]['stats']['def'] * craft[self.item]['craft']['item'][item] * self.quantity
-                
+
             if self.item in log_data[interaction.user.name]['bag']:
                 log_data[interaction.user.name]['bag'][self.item]['quantity'] += craft[self.item]['quantity'] * self.quantity
             else:
                 log_data[interaction.user.name]['bag'][self.item] = {"quantity": craft[self.item]['quantity'] * self.quantity, "icon": craft[self.item]['icon']}
-                
+
             if 'stats' in craft[self.item]:
                 if 'pv' in craft[self.item]['stats']:
                     log_data[interaction.user.name]['stats']['pv'] += craft[self.item]['stats']['pv'] * craft[self.item]['quantity'] * self.quantity
@@ -560,8 +565,8 @@ class CraftView(discord.ui.View):
                     log_data[interaction.user.name]['stats']['for'] += craft[self.item]['stats']['for'] * craft[self.item]['quantity'] * self.quantity
                 if 'def' in craft[self.item]['stats']:
                     log_data[interaction.user.name]['stats']['def'] += craft[self.item]['stats']['def'] * craft[self.item]['quantity'] * self.quantity
-                
-            await interaction.response.send_message("<@" + id + ">" + " vient de crafter " + str(craft[self.item]['quantity'] * self.quantity) + ' ' + self.item + ' ' + craft[self.item]['icon'])    
+
+            await interaction.response.send_message("<@" + id + ">" + " vient de crafter " + str(craft[self.item]['quantity'] * self.quantity) + ' ' + self.item + ' ' + craft[self.item]['icon'])
 
             for child in self.children:
                 child.disabled = True
@@ -590,49 +595,69 @@ async def hourly_mob():
 
         await asyncio.sleep(wait_time)
 
+        try:
+            with open("battle.json", "r") as file:
+                battle = json.load(file)
+        except FileNotFoundError:
+            battle = {}
         
-    # Récompenses Loot compteur de kill = titre = stats bonus / stats de degat crit chance crit precision esquive degat brut saignement
-        random_number = random.randint(1, 100)
-        for mob in mobs:
-            spawn_rate = round(random.random(), 4)
-            if(spawn_rate <= mobs[mob]['spawn_rate']):
-                lvl = random.randint(mobs[mob]['min_level'], mobs[mob]['max_level'])
-                title = mobs[mob]['name'] + ' LVL ' + str(lvl)
-                tabFields = {'PV : ' + str(lvl * mobs[mob]['stats']['pv']) + ' :hearts:   For : ' + str(lvl * mobs[mob]['stats']['for']) + ' :crossed_swords:   Def : ' + str(lvl * mobs[mob]['stats']['def']) + ' :shield:' : '', 'Combattez ce monstre !' : ''}
-                image = mobs[mob]['image']
-                mob_name = mob
+        if 'status' in battle:
+            status = battle['status']
+        else:
+            status = 'defaite'
+        
+        old_lvl = battle['mob']['lvl']
+        
+        if status == 'victoire':
+            mob_lvl = random.randint(old_lvl+1, old_lvl+old_lvl//2+3)
+        else:
+            mob_lvl = random.randint(old_lvl//2, old_lvl+3)
 
-                if(lvl <= 0):
-                    color = discord.Color.blue()
-                else:
-                    if(lvl <= 20):
+        if mob_lvl < 1:
+            mob_lvl = 1
+            
+        if mob_lvl > 1000:
+            mob_lvl = 1000
+        
+        spawn_rate = round(random.random(), 4)
+
+        for mob in mobs:
+            if mobs[mob]['min_level'] <= mob_lvl and mobs[mob]['max_level'] > mob_lvl:
+                if(spawn_rate <= mobs[mob]['spawn_rate']):
+                    lvl = mob_lvl
+                    title = mobs[mob]['name'] + ' LVL ' + str(lvl)
+                    tabFields = {'PV : ' + str(lvl * mobs[mob]['stats']['pv']) + ' :hearts:   For : ' + str(lvl * mobs[mob]['stats']['for']) + ' :crossed_swords:   Def : ' + str(lvl * mobs[mob]['stats']['def']) + ' :shield:' : '', 'Combattez ce monstre !' : ''}
+                    image = mobs[mob]['image']
+                    mob_name = mob
+
+                    if(lvl <= 50):
                         color = discord.Color.green()
                     else:
-                        if(lvl <= 50):
-                            color = discord.Color.green()
+                        if(lvl <= 100):
+                            color = discord.Color.yellow()
                         else:
-                            if(lvl <= 200):
-                                color = discord.Color.yellow()
+                            if(lvl <= 250):
+                                color = discord.Color.orange()
                             else:
-                                if(lvl <= 300):
-                                    color = discord.Color.orange()
+                                if(lvl <= 500):
+                                    color = discord.Color.red()
                                 else:
-                                    if(lvl <= 500):
-                                        color = discord.Color.red()
+                                    if(lvl <= 750):
+                                        color = discord.Color.purple()
                                     else:
                                         if(lvl <= 1000):
                                             color = discord.Color.white()
-                
-                embed = create_embed(title=title, color=color, image=image, tabFields=tabFields)
-                break;
+
+                    embed = create_embed(title=title, color=color, image=image, tabFields=tabFields)
+                    break;
 
         view = BattleView(timeout=600) #a1b2
         view.message = await channel.send(embed=embed, view=view)
 
-        battle = {"mob": {"name": mob_name, "lvl": lvl}, "players": {}}
+        battles = {"mob": {"name": mob_name, "lvl": lvl}, "players": {}}
 
         with open("battle.json", "w") as file:
-            json.dump(battle, file, indent=4)
+            json.dump(battles, file, indent=4)
 
 @client.event
 async def on_message(message):
@@ -655,7 +680,7 @@ async def on_message(message):
     if message.content.startswith("!info"):
         embed = info_action()
         await message.channel.send(embed=embed)
-        
+
     if message.content.startswith("!cd"):
         name = message.author.name
         avatar = message.author.avatar
@@ -680,7 +705,7 @@ async def on_message(message):
 
         embed = cd_action(name, avatar, global_name)
         await message.channel.send(embed=embed)
-        
+
     if message.content.startswith("!eveil"):
         if await time_command(message, "!eveil", 0.0025):
             embed, view = eveil_action(message.author.name, message.author.avatar, message.author.global_name)
@@ -689,17 +714,17 @@ async def on_message(message):
             else:
                 await message.channel.send(embed=embed)
             updated = True
-        
+
     if message.content.startswith("!sw"):
         if await time_command(message, "!sw", 0.0025):
             embed, view = wheel_action(message.author.name, message.author.avatar, message.author.global_name)
             view.message = await message.channel.send(embed=embed, view=view)
             updated = True
-    
+
     if message.content.startswith("!craft"):
         if await time_command(message, "!craft", 0.0025):
             command_and_argument = message.content.split(maxsplit=2)
-        
+
             if len(command_and_argument) == 2 or len(command_and_argument) == 3 :
                 if len(command_and_argument) == 2:
                     command, item = command_and_argument
@@ -711,7 +736,7 @@ async def on_message(message):
                     else:
                         quantity = 1
                 item = item.title()
-                
+
                 if item not in craft:
                     title = 'Vérifiez l\'appélation de ce que vous voulez crafter.'
                     tabFields = {'Faites !craft pour voir la liste des crafts disponibles.' : ''}
@@ -733,15 +758,15 @@ async def on_message(message):
                 color = discord.Color.lighter_grey()
                 embed = create_embed(title=title, color=color, tabFields=tabFields)
                 await message.channel.send(embed=embed)
-        
-        
-        
-        
-            
+
+
+
+
+
     if message.content.startswith("!materiaux") or message.content.startswith("!matériaux"):
         embed = materiaux_action()
         await message.channel.send(embed=embed)
-        
+
     if message.content.startswith("!donates"):
         if message.author.id == 701782195844546662:
             command_and_argument = message.content.split(maxsplit=2)
@@ -762,17 +787,17 @@ async def on_message(message):
             title = "Commande non autorisée"
             description = "Vous n'avait pas les droits requis pour cette commande"
             color = discord.Color.orange()
-        
+
         embed = create_embed(title=title, description=description, color=color)
         await message.channel.send(embed=embed)
-        
+
     if message.content.startswith("!removes"):
         if message.author.id == 701782195844546662:
             command_and_argument = message.content.split(maxsplit=2)
             title = "Commande erronée"
             description = "Voici un exemple : !removes @user 123"
             color = discord.Color.orange()
-            
+
             if len(command_and_argument) == 3:
                 command, cible, montant = command_and_argument
                 for player in log_data:
@@ -786,16 +811,16 @@ async def on_message(message):
             title = "Commande non autorisée"
             description = "Vous n'avait pas les droits requis pour cette commande"
             color = discord.Color.orange()
-            
+
         embed = create_embed(title=title, description=description, color=color)
         await message.channel.send(embed=embed)
-                        
+
     if message.content.startswith("!send"):
         command_and_argument = message.content.split(maxsplit=2)
         title = "Commande erronée"
         description = "Voici un exemple : !send @user 123"
         color = discord.Color.orange()
-        
+
         if len(command_and_argument) == 3:
             command, cible, montant = command_and_argument
             for player in log_data:
@@ -820,7 +845,7 @@ async def on_message(message):
         title = "Commande erronée"
         description = "Voici un exemple : !fight @user"
         color = discord.Color.orange()
-        
+
         if len(command_and_argument) == 2:
             command, cible = command_and_argument
             for player in log_data:
@@ -844,8 +869,8 @@ async def on_message(message):
                         else:
                             title = "Vous ne pouvez pas défier quelqu'un qui est plus bas au classement !top-rank que vous"
                             description = "Visez plus haut"
-                        
-        footer = "Classement rank : " + str(log_data[message.author.name]['place']) + '/' + str(len(log_data))      
+
+        footer = "Classement rank : " + str(log_data[message.author.name]['place']) + '/' + str(len(log_data))
         embed = create_embed(title=title, description=description, color=color, footer=footer)
         await message.channel.send(embed=embed)
 
@@ -857,7 +882,7 @@ async def on_message(message):
             title = "Commande erronée"
             description = "Voici un exemple : !enchere numéro-lot quantité mise-à-prix"
             color = discord.Color.orange()
-            
+
             if len(command_and_argument) == 4:
                 try:
                     with open("enchere.json", "r") as file:
@@ -929,18 +954,18 @@ async def on_message(message):
             embed = daily_action(message.author.name, message.author.avatar, message.author.global_name)
             await message.channel.send(embed=embed)
         updated = True
-    
+
     if message.content.startswith("!explore"):
         if await time_command(message, "!explore", 1):
             embed = explore_action(message.author.name, message.author.avatar, message.author.global_name)
             await message.channel.send(embed=embed)
         updated = True
-        
+
     if message.content.startswith("!compter"):
         if message.author.id == 518397017072992257 or message.author.id == 619654294160932896:
             if await time_command(message, "!compter", 24):
                 gain = 421 * (log_data[message.author.name]['rank'] + 1) * (log_data[message.author.name]['rank'] + 1)
-                gain = gain // 2
+                gain = gain // 4
                 embed = compter_action(message.author.name, message.author.avatar, message.author.global_name, gain)
                 await message.channel.send(embed=embed)
             updated = True
@@ -950,13 +975,13 @@ async def on_message(message):
             color = discord.Color.orange()
             embed = create_embed(title=title, description=description, color=color)
             await message.channel.send(embed=embed)
-              
+
     if message.content.startswith("!train"):
         if await time_command(message, "!train", 3):
             embed = train_action(message.author.name, message.author.avatar, message.author.global_name)
             await message.channel.send(embed=embed)
         updated = True
-        
+
     if message.content.startswith("!profil"):
         name = message.author.name
         avatar = message.author.avatar
@@ -980,7 +1005,7 @@ async def on_message(message):
         embed = me_action(name, avatar, global_name, 'profil')
         await message.channel.send(embed=embed)
         updated = True
-    
+
     if message.content.startswith("!top-rank"):
         embed = top_action(message.author.name, 'place')
         await message.channel.send(embed=embed)
@@ -990,12 +1015,12 @@ async def on_message(message):
         embed = top_action(message.author.name, 'rank')
         await message.channel.send(embed=embed)
         updated = True
-    
+
     if message.content.startswith("!top-gold"):
         embed = top_action(message.author.name, 'gold')
         await message.channel.send(embed=embed)
         updated = True
-        
+
     if message.content.startswith("!top-level"):
         embed = top_action(message.author.name, 'level')
         await message.channel.send(embed=embed)
@@ -1015,7 +1040,7 @@ async def on_message(message):
         embed = top_action(message.author.name, 'def')
         await message.channel.send(embed=embed)
         updated = True
-    
+
     if message.content.startswith("!bag"):
         name = message.author.name
         avatar = message.author.avatar
@@ -1039,10 +1064,10 @@ async def on_message(message):
         embed = me_action(name, avatar, global_name, 'bag')
         await message.channel.send(embed=embed)
         updated = True
-    
+
     if message.content.startswith("!purchase"):
         command_and_argument = message.content.split(maxsplit=2)
-        
+
         if len(command_and_argument) == 2 or len(command_and_argument) == 3 :
             if len(command_and_argument) == 2:
                 command, item = command_and_argument
@@ -1061,9 +1086,9 @@ async def on_message(message):
             tabFields = {'Faites !purchase nom_item optionnel_quantité' : ''}
             color = discord.Color.red()
             embed = create_embed(title=title, color=color, author_name=message.author.global_name, author_icon=message.author.avatar, tabFields=tabFields)
-        
+
         await message.channel.send(embed=embed)
-    
+
     if message.content.startswith("!market"):
         embed = market_action()
         await message.channel.send(embed=embed)
@@ -1072,7 +1097,7 @@ async def on_message(message):
         embed = notif_action(message.author.name)
         await message.channel.send(embed=embed)
         updated = True
-           
+
     if message.content.startswith("!dungeon"):
         pass #dungeon_action
 
@@ -1116,25 +1141,25 @@ def cd_action(author_name, author_icon, global_name):
     daily_check, daily_waiting_time = check_time(author_name, '!daily', 24)
     train_check, train_waiting_time = check_time(author_name, '!train', 3)
     explore_check, explore_waiting_time = check_time(author_name, '!explore', 1)
-    
+
     if daily_check:
         daily_waiting_time = ":white_check_mark: Vous pouvez faire la commande dès à présent !"
     else:
         daily_waiting_time = ":x: " + daily_waiting_time
-    
+
     if explore_check:
         explore_waiting_time = ":white_check_mark: Vous pouvez faire la commande dès à présent !"
     else:
         explore_waiting_time = ":x: " + explore_waiting_time
-        
+
     if train_check:
         train_waiting_time = ":white_check_mark: Vous pouvez faire la commande dès à présent !"
     else:
         train_waiting_time = ":x: " + train_waiting_time
-    
+
     if '!compter' in log_data[author_name]:
         compter_check,compter_waiting_time = check_time(author_name, '!compter', 24)
-        
+
         if compter_check:
             compter_waiting_time = ":white_check_mark: Vous pouvez faire la commande dès à présent !"
         else:
@@ -1152,7 +1177,7 @@ def cd_action(author_name, author_icon, global_name):
             '!train :' : train_waiting_time,
             '!explore :' : explore_waiting_time
         }
-    
+
     color = discord.Color.blue()
     title = 'Cooldown'
     embed = create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, tabFields=tabFields)
@@ -1164,69 +1189,69 @@ def eveil_action(author_name, author_icon, global_name):
     rank = ['Pas d\'éveil', ':regional_indicator_f:', ':regional_indicator_e:', ':regional_indicator_d:', ':regional_indicator_c:', ':regional_indicator_b:', ':regional_indicator_a:', ':regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s: :regional_indicator_s:', '???']
     current_rank = rank[player_rank]
     next_rank = rank[player_rank + 1]
-    
+
     res, owned, nbr_gem, gem_type = gems_required(author_name, player_rank + 1)
-    
+
     tabFields = {
         'Rang d\'éveil' : current_rank + ' :arrow_right: ' + next_rank,
         'Gemmes d\'éveil : ' : res,
     }
-    
+
     if owned:
         title = 'Éveil'
         color = discord.Color.blue()
-        view = EveilView(timeout=6, nbr_gem=nbr_gem, gem_type=gem_type, author_name=author_name) 
+        view = EveilView(timeout=6, nbr_gem=nbr_gem, gem_type=gem_type, author_name=author_name)
     else:
         title = 'Gemmes d\'éveil manquantes'
         color = discord.Color.red()
-    
+
     embed = create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, tabFields=tabFields)
-    
+
     return embed, view
 
 def wheel_action(author_name, author_icon, global_name):
     title = 'Sakura Wheel'
     description = 'Faites tourner la roue contre un ticket :tickets: !'
     color = discord.Color.blue()
-    view = WheelView(timeout=6, author_name=author_name) 
-    
+    view = WheelView(timeout=6, author_name=author_name)
+
     embed = create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, description=description)
-    
+
     return embed, view
 
 def craft_action(author_name, author_icon, global_name, item, quantity):
     view = None
     description = 'Modèle du craft unitaire :'
     image = craft[item]['craft']['image']
-    
+
     owned = item_required(author_name, item, quantity)
-    
+
     if owned:
         title = 'Craft de ' + str(quantity) + ' ' + item + ' ' + craft[item]['icon']
         color = discord.Color.blue()
-        view = CraftView(timeout=6, item=item, quantity=quantity, author_name=author_name) 
+        view = CraftView(timeout=6, item=item, quantity=quantity, author_name=author_name)
     else:
         title = 'Vous n\'avez pas de quoi crafter ' + str(quantity) + ' ' + item + ' ' + craft[item]['icon']
         color = discord.Color.red()
-        
+
     embed = create_embed(title=title, color=color, image=image, author_name=global_name, author_icon=author_icon, description=description)
-    
+
     return embed, view
 
 def item_required(author_name, item, quantity):
     for item_required in craft[item]['craft']['item']:
         if item_required not in log_data[author_name]['bag'] or craft[item]['craft']['item'][item_required] * quantity > log_data[author_name]['bag'][item_required]['quantity']:
             return False
-    
+
     return True
 
 def gems_required(author_name, rank):
     gem_rank = (rank-1) // 3
     nbr_gem = rank % 3
-    
+
     if nbr_gem == 0:
         nbr_gem = 3
-    
+
     if gem_rank == 0:
         gem = '<:Rare:1222193217957662760> Rare'
         gem_type = 'Rare'
@@ -1238,7 +1263,7 @@ def gems_required(author_name, rank):
             if gem_rank == 2:
                 gem = '<:Legendaire:1222193258403336222> Legendaire'
                 gem_type = 'Legendaire'
-    
+
     if gem_type in log_data[author_name]['bag']:
         quantity = log_data[author_name]['bag'][gem_type]['quantity']
     else:
@@ -1250,7 +1275,7 @@ def gems_required(author_name, rank):
         owned = True
     else:
         owned = False
-    
+
     return res, owned, nbr_gem, gem_type
 
 def materiaux_action():
@@ -1273,7 +1298,7 @@ def market_action():
     rune_items = ':fire: Feu • For+2 • 2000 :coin:\n:seedling: Plante • Def+4 • 2000 :coin:\n:droplet: Eau • PV+250 • 2000 :coin:'
     rank_items = '<:Legendaire:1222193258403336222> Legendaire • 500000 :coin:\n<:Epique:1222193241022136491> Epique • 50000 :coin:\n<:Rare:1222193217957662760> Rare • 5000 :coin:'
     other_items = ':tickets: Ticket • 60000 :coin:\n:diamond_shape_with_a_dot_inside: Boost_Xp_24 • 50000 :coin:'
-    
+
     tabFields = {
         'Pour acheter : ' : '!purchase nom_item',
         'Équipements de base : ' : base_items,
@@ -1288,34 +1313,34 @@ def market_action():
 
 def get_time(author_name, command):
     time = None
-    
+
     if author_name in log_data and command in log_data[author_name]:
         time = log_data[author_name][command]
 
     return time
-        
+
 def check_time(author_name, command, cooldown: int):
     now = datetime.now()
     time = get_time(author_name, command)
-    
+
     if time is None:
         time = str(now)
-        
+
         if author_name in log_data:
             log_data[author_name][command] = time
         else:
             log_data[author_name] = {command: time}
-        
+
         return True, None
 
     time = datetime.strptime(time, "%Y-%m-%d %H:%M:%S.%f")
 
     cooldown = timedelta(hours=cooldown)
-    
+
     cooldown_time = time + cooldown
     check = cooldown_time < now
     waiting_time = None
-    
+
     if not check:
         difference = cooldown_time - now
         waiting_time = string_time(difference)
@@ -1324,20 +1349,20 @@ def check_time(author_name, command, cooldown: int):
 
 def string_time(difference):
     waiting_time = None
-    
+
     minutes, seconds = divmod(difference.total_seconds(), 60)
     hours, minutes = divmod(minutes, 60)
-    
+
     hours = int(hours)
     minutes = int(minutes)
     seconds = int(seconds)
-    
+
     if hours > 1:
         waiting_time = f"{hours} heures"
     else:
         if hours == 1:
             waiting_time = "1 heure"
-            
+
     if minutes > 1:
         if waiting_time is None:
             waiting_time = f"{minutes} minutes"
@@ -1361,31 +1386,31 @@ def string_time(difference):
                 waiting_time = "1 seconde"
             else:
                 waiting_time = waiting_time + " et 1 seconde"
-    
+
     if waiting_time is None:
         waiting_time = "0 seconde."
     else:
         waiting_time = waiting_time + "."
-        
+
     return waiting_time
 
 async def time_command(message, command, cooldown):
     author_name = message.author.name
     check, waiting_time = check_time(author_name, command, cooldown)
-    
+
     if check:
         if command == '!daily':
             log_data[author_name]['last_daily'] = log_data[author_name][command]
-            
+
         log_data[author_name][command] = str(datetime.now())
-        
+
         return True
     else:
         await message.channel.send("Vous devez attendre encore " + waiting_time)
         return False
 
 def me_action(author_name, author_icon, global_name, type):
-    
+
     if author_name in log_data:
         if type not in log_data[author_name]:
             if type == 'bag':
@@ -1397,12 +1422,12 @@ def me_action(author_name, author_icon, global_name, type):
             log_data[author_name] = {type: {}}
         else:
             log_data[author_name] = {type: 0}
-    
+
     if type == 'profil':
         res = log_data[author_name]['rank']
     else:
         res = log_data[author_name][type]
-    
+
     if type == 'gold':
         tabFields = {'Gold :' : str(res) + ' :coin:'}
         color = discord.Color.gold()
@@ -1432,7 +1457,7 @@ def me_action(author_name, author_icon, global_name, type):
                                     else:
                                         if item == 'Baskets':
                                             baskets = log_data[author_name][type][item]['icon'] + rank[log_data[author_name][type][item]['rank']] + ' ' + item + ' • ' + str(log_data[author_name][type][item]['quantity']) + '\n';
-                                        else:  
+                                        else:
                                             bag += log_data[author_name][type][item]['icon'] + rank[log_data[author_name][type][item]['rank']] + ' ' + item + ' • ' + str(log_data[author_name][type][item]['quantity']) + '\n'
                         else:
                             bag += log_data[author_name][type][item]['icon'] + ' ' + item + ' • ' + str(log_data[author_name][type][item]['quantity']) + '\n'
@@ -1441,7 +1466,7 @@ def me_action(author_name, author_icon, global_name, type):
                     bag = 'Rien'
                 tabFields = {'Vous avez :' : bag}
                 color = discord.Color.dark_teal()
-    
+
     footer = None
     if type != 'bag':
         if type == 'profil':
@@ -1458,7 +1483,7 @@ def top_action(author_name, type):
     filtered_authors_id = []
     for author in filtered_authors:
         filtered_authors_id.append("<@" + str(log_data[author]['id']) + ">")
-    
+
     if type == 'level':
         sorted_authors = sorted(filtered_authors, key=lambda x: log_data[x][type]['lvl'], reverse=True)
     else:
@@ -1524,10 +1549,10 @@ def top_action(author_name, type):
                                                 tabFields[''] += str(i+1) + '. <@' + str(log_data[sorted_authors[i]]['id']) + '>  •  :third_place:\n'
                                             else:
                                                 tabFields[''] += str(i+1) + '. <@' + str(log_data[sorted_authors[i]]['id']) + '>\n'
-                                
+
     target_index = sorted_authors.index(author_name)
     ranking_position = target_index + 1
-    
+
     tabFields[''] += '**'
     if type == 'rank' :
         title = 'Classement éveil'
@@ -1550,7 +1575,7 @@ def daily_action(author_name, author_icon, global_name):
                 log_data[author_name]['max_daily'] = 500
         else:
             log_data[author_name]['max_daily'] = 500
-            
+
         if 'gold' in log_data[author_name]:
             log_data[author_name]['gold'] += log_data[author_name]['max_daily']
         else:
@@ -1593,10 +1618,10 @@ def explore_action(author_name, author_icon, global_name):
                         else:
                             title = 'VII • La Dernière Épreuve'
                             alea = random.randint(1, 2500)
-    
+
     alea = alea * (log_data[author_name]['rank'] + 1) * (log_data[author_name]['rank'] + 1)
-    alea = alea // 2
-    
+    alea = alea // 4
+
     if author_name in log_data:
         if 'gold' in log_data[author_name]:
             log_data[author_name]['gold'] += alea
@@ -1605,7 +1630,7 @@ def explore_action(author_name, author_icon, global_name):
     else:
         log_data[author_name] = {'gold': alea}
 
-    
+
     tabFields = {'Vous récupérez : ' : str(alea) + ' :coin:'}
     color = discord.Color.green()
     footer = 'Revenez dans 1 heure !'
@@ -1622,7 +1647,7 @@ def compter_action(author_name, author_icon, global_name, record):
 
 def train_action(author_name, author_icon, global_name):
     level_xp = [500, 600, 720, 864, 1036, 1243, 1492, 1791, 2149, 2578, 3093, 3711, 4453, 5343, 6411, 7693, 9231, 11077, 13293, 15951, 19141, 22969, 27563, 33075, 39690, 47628, 57153, 68584, 82300, 98760, 118512, 142214, 170657, 204788, 245746, 294895, 353873, 424647, 509576, 611491, 733790, 880548, 1056657, 1267989, 1521587, 1825904, 2191085, 2629302, 3155163, 3786195, 4543434, 5452120, 6542544, 7851052, 9421262, 11305514, 13566617, 16279940, 19535928, 23443113, 28131736, 33758083, 40509700, 48611640, 58333968, 70000762, 84000914, 100801096, 120961315, 145153578, 174184293, 209021151, 250825381, 301090457, 361308548, 433570258, 520284309, 624341171, 749209405, 899051286, 1078861543, 1294633852, 1553560622, 1864272746, 2237127295, 2684552754, 3221463305, 3865755966, 4638907159, 5566688591, 6680026309, 8016031570, 9619237884, 11543158461, 13851790153, 16622148183, 19946577820, 23935893384, 28723072061, 34467686474, 41361223769, 49633468522, 59560162226, 71472194671, 85766633605, 102919960326, 123503952391, 148204742869, 177845691442, 213414829731]
-    
+
     random_number = random.randint(1, 2550)
     if random_number < 1280:
         title = 'I • La Porte de l\'Ouverture'
@@ -1654,8 +1679,9 @@ def train_action(author_name, author_icon, global_name):
                             else:
                                 title = 'VIII • La Porte de la Mort'
                                 alea = random.randint(1, 3700)
-    
+
     alea = alea * (log_data[author_name]['rank'] + 1) * (log_data[author_name]['rank'] + 1)
+    alea = alea // 2
     log_data[author_name]['level']['xp'] += alea
 
     for lvl_xp in level_xp[log_data[author_name]['level']['lvl']:]:
@@ -1679,16 +1705,16 @@ def create_embed(title = None, description = None, color = None, author_name = N
         description = description,
         color = color
     )
-    
+
     if tabFields is not None:
         for name, value in tabFields.items():
             embed.add_field(name = name, value = value, inline = False)
-            
+
     if image is not None:
         embed.set_image(url = image)
-    
+
     if author_name is not None and author_icon is not None :
-        embed.set_author(name = author_name, icon_url = author_icon)  
+        embed.set_author(name = author_name, icon_url = author_icon)
 
     if footer is not None:
         embed.set_footer(text = footer)
@@ -1713,12 +1739,12 @@ def purchase_action(author_name, author_icon, global_name, item, quantity):
                 log_data[author_name]['gold'] = 0
         else:
             log_data[author_name] = {'gold': 0}
-        
+
         gold = log_data[author_name]['gold']
-        
+
         if 'unique' in items[item] or 'requirements' in items[item]:
             quantity = 1
-        
+
         if gold < items[item]['price'] * quantity:
             manque = items[item]['price'] * quantity - gold
             tabFields = {'Vous n\'avez pas assez de gold, il vous manque : ' : str(manque) + ' :coin:'}
@@ -1747,7 +1773,7 @@ def purchase_action(author_name, author_icon, global_name, item, quantity):
                                     upgrade = True
                                 else:
                                     upgrade = False
-            
+
             if 'unique' in items[item] and item in log_data[author_name]['bag']:
                 tabFields = {'Ceci est un item unique, vous le possédez déjà.' : ''}
                 color = discord.Color.red()
@@ -1763,7 +1789,7 @@ def purchase_action(author_name, author_icon, global_name, item, quantity):
                             log_data[author_name]['stats']['def'] += items[item]['stats']['def'] * quantity
                     tabFields = {'Vous venez d\'acheter : ' : items[item]['icon'] + ' ' + item + " x" + str(quantity)}
                     color = discord.Color.green()
-                    
+
                     materiaux = ['Cuir', 'Fer', 'Argent', 'Mithril', 'Orichalque', 'Adamantium', 'Étherium']
                     if item not in materiaux:
                         if item in log_data[author_name]['bag']:
@@ -1780,7 +1806,7 @@ def purchase_action(author_name, author_icon, global_name, item, quantity):
     else:
         tabFields = {'Vérifiez l\'appélation de ce que vous voulez acheter.' : ''}
         color = discord.Color.red()
-    
+
     return create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, tabFields=tabFields)
 
 def combat(mob_name, mob_lvl, total_pv, total_for, total_def):
@@ -1802,7 +1828,7 @@ def notif_action(author_name):
     else:
         log_data[author_name]['avenger'] = True
         title = "Desormais vous serez notifié lorsqu'une personne demande de l'aide"
-    
+
     for player in log_data:
         if(log_data[player]['avenger']):
             chad += "<@" + str(log_data[player]['id']) + ">" + " "

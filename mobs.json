@@ -2,15 +2,15 @@
     "Slime": {
         "name": "Slime",
         "stats": {
-            "pv": 1941,
+            "pv": 1150,
             "for": 1,
-            "def": 2
+            "def": 1
         },
         "loot": {
-            "gold": 80,
-            "xp": 100,
+            "gold": 90,
+            "xp": 90,
             "special_0": {
-                "nom": "Gelée revigorante",
+                "nom": "Gelée",
                 "description": "Augmente vos PV, +100 PV max",
                 "taux": 0.1
             },
@@ -28,21 +28,21 @@
         "image": "https://i.imgur.com/tLYX58K.jpeg",
         "spawn_rate": 0.25,
         "min_level": 1,
-        "max_level": 15
+        "max_level": 50
     },
     "Squelette": {
         "name": "Squelette",
         "stats": {
-            "pv": 728,
-            "for": 6,
-            "def": 13
+            "pv": 750,
+            "for": 3,
+            "def": 10
         },
         "loot": {
-            "gold": 130,
-            "xp": 130,
+            "gold": 120,
+            "xp": 120,
             "special_0": {
-                "nom": "Epée osseuse",
-                "description": "Epée scultée dans un os ancien, For+3",
+                "nom": "Os de squelette",
+                "description": "",
                 "taux": 0.1
             },
             "special_1": {
@@ -57,16 +57,16 @@
             }
         },
         "image": "https://i.imgur.com/Ckt7V81.jpeg",
-        "spawn_rate": 0.40,
+        "spawn_rate": 0.50,
         "min_level": 1,
-        "max_level": 15
+        "max_level": 50
     },
     "Meute_de_loups": {
         "name": "Meute de loups",
         "stats": {
-            "pv": 485,
-            "for": 10,
-            "def": 9
+            "pv": 400,
+            "for": 8,
+            "def": 6
         },
         "loot": {
             "gold": 100,
@@ -88,59 +88,59 @@
             }
         },
         "image": "https://i.imgur.com/esNGY0j.jpeg",
-        "spawn_rate": 0.60,
+        "spawn_rate": 0.75,
         "min_level": 1,
-        "max_level": 15
+        "max_level": 50
     },
     "Gobelin": {
         "name": "Gobelin",
         "stats": {
-            "pv": 485,
+            "pv": 550,
             "for": 4,
-            "def": 22
+            "def": 12
         },
         "loot": {
-            "gold": 160,
+            "gold": 130,
             "xp": 100,
             "special_0": {
-                "nom": "Pièces d'or'",
-                "description": "Le butin d'un gobelin, Gold+500",
+                "nom": "Silex",
+                "description": "",
                 "taux": 0.1
             },
             "special_1": {
-                "nom": "Sang de gobelin",
-                "description": "Une substance revitalisante, PV+1000",
+                "nom": "Butin bonus",
+                "description": "Le butin d'un gobelin, Gold+500",
                 "taux": 0.01
             },
             "special_2": {
-                "nom": "Lance de pierre",
-                "description": "Une lance qui vise les points faibles des ennemis",
+                "nom": "Sang de gobelin",
+                "description": "",
                 "taux": 0.001
             }
         },
         "image": "https://i.imgur.com/bLXiOQs.jpeg",
-        "spawn_rate": 0.80,
+        "spawn_rate": 1,
         "min_level": 1,
-        "max_level": 15
+        "max_level": 50
     },
     "Grand_gobelin": {
         "name": "Grand gobelin",
         "stats": {
-            "pv": 700,
-            "for": 5,
-            "def": 26
+            "pv": 750,
+            "for": 6,
+            "def": 20
         },
         "loot": {
-            "gold": 266,
-            "xp": 200,
+            "gold": 300,
+            "xp": 500,
             "special_0": {
-                "nom": "Sang de gobelin",
-                "description": "Une substance revitalisante, PV+1000",
+                "nom": "Tissu",
+                "description": "",
                 "taux": 0.1
             },
             "special_1": {
-                "nom": "Armure en cuir renforcé",
-                "description": "Une épaisse armure de cuir, Def+25",
+                "nom": "Cuir renforcé",
+                "description": "",
                 "taux": 0.01
             },
             "special_2": {
@@ -150,54 +150,69 @@
             }
         },
         "image": "https://i.imgur.com/6G7k698.jpeg",
-        "spawn_rate": 0.85,
+        "spawn_rate": 0.25,
         "min_level": 50,
         "max_level": 100
     },
     "Zombi_demon": {
         "name": "Zombi démon",
         "stats": {
-            "pv": 725,
-            "for": 18,
+            "pv": 666,
+            "for": 17,
             "def": 0
         },
         "loot": {
-            "gold": 222,
-            "xp": 233,
+            "gold": 250,
+            "xp": 600,
             "special_0": {
-                "nom": "Sang de gobelin",
-                "description": "Une substance revitalisante, PV+1000",
+                "nom": "Chair putrifiée",
+                "description": "",
                 "taux": 0.1
             },
             "special_1": {
-                "nom": "Armure en cuir renforcé",
-                "description": "Une épaisse armure de cuir, Def+25",
+                "nom": "Aile de démon",
+                "description": "",
                 "taux": 0.01
             },
             "special_2": {
-                "nom": "Amulette de protection",
-                "description": "Amulette vous offrant un shield au début d'un combat",
+                "nom": "Ceinture maudite",
+                "description": "",
                 "taux": 0.001
             }
         },
         "image": "https://i.imgur.com/IL043c6.jpeg",
-        "spawn_rate": 0.90,
+        "spawn_rate": 0.50,
         "min_level": 50,
         "max_level": 100
     },
     "Golem": {
         "name": "Golem",
         "stats": {
-            "pv": 1500,
-            "for": 2,
-            "def": 20
+            "pv": 1000,
+            "for": 3,
+            "def": 23
         },
         "loot": {
-            "gold": 245,
-            "xp": 248
+            "gold": 350,
+            "xp": 425,
+            "special_0": {
+                "nom": "Pierre",
+                "description": "",
+                "taux": 0.1
+            },
+            "special_1": {
+                "nom": "Gem",
+                "description": "",
+                "taux": 0.01
+            },
+            "special_2": {
+                "nom": "Noyau",
+                "description": "",
+                "taux": 0.001
+            }
         },
         "image": "https://i.imgur.com/6rEU6fp.jpeg",
-        "spawn_rate": 0.95,
+        "spawn_rate": 0.75,
         "min_level": 50,
         "max_level": 100
     },
@@ -209,26 +224,41 @@
             "def": 8
         },
         "loot": {
-            "gold": 250,
-            "xp": 277
+            "gold": 300,
+            "xp": 600,
+            "special_0": {
+                "nom": "Peau carbonisée",
+                "description": "",
+                "taux": 0.1
+            },
+            "special_1": {
+                "nom": "Salive enflammée",
+                "description": "",
+                "taux": 0.01
+            },
+            "special_2": {
+                "nom": "Enragement",
+                "description": "",
+                "taux": 0.001
+            }
         },
         "image": "https://i.imgur.com/Hazhsdj.jpeg",
-        "spawn_rate": 0.99,
+        "spawn_rate": 1,
         "min_level": 50,
         "max_level": 100
     },
     "Roi_des_slimes": {
         "name": "Roi des slimes",
         "stats": {
-            "pv": 3000,
+            "pv": 4500,
             "for": 1,
             "def": 1
         },
         "loot": {
-            "gold": 300,
-            "xp": 400,
+            "gold": 1000,
+            "xp": 1000,
             "special_0": {
-                "nom": "Gelée de vie",
+                "nom": "Gelée",
                 "description": "Une gelée de vitalité, PV+1500",
                 "taux": 0.1
             },
@@ -244,156 +274,276 @@
             }
         },
         "image": "https://i.imgur.com/hokqDoB.jpeg",
-        "spawn_rate": 0.48,
+        "spawn_rate": 0.16,
         "min_level": 100,
-        "max_level": 200
+        "max_level": 250
     },
     "Golem_de_vent": {
         "name": "Golem de vent",
         "stats": {
-            "pv": 250,
-            "for": 12,
+            "pv": 400,
+            "for": 18,
             "def": 33
         },
         "loot": {
-            "gold": 275,
-            "xp": 450
+            "gold": 700,
+            "xp": 1600,
+            "special_0": {
+                "nom": "Pierre vent",
+                "description": "",
+                "taux": 0.1
+            },
+            "special_1": {
+                "nom": "Gem vent",
+                "description": "",
+                "taux": 0.01
+            },
+            "special_2": {
+                "nom": "Noyau vent",
+                "description": "",
+                "taux": 0.001
+            }
         },
         "image": "https://i.imgur.com/U84IKSU.jpeg",
-        "spawn_rate": 0.56,
+        "spawn_rate": 0.32,
         "min_level": 100,
-        "max_level": 200
+        "max_level": 250
     },
     "Golem_de_feu": {
         "name": "Golem de feu",
         "stats": {
-            "pv": 1000,
-            "for": 16,
-            "def": 13
+            "pv": 1200,
+            "for": 20,
+            "def": 17
         },
         "loot": {
-            "gold": 350,
-            "xp": 300
+            "gold": 900,
+            "xp": 1300,
+            "special_0": {
+                "nom": "Pierre feu",
+                "description": "",
+                "taux": 0.1
+            },
+            "special_1": {
+                "nom": "Gem feu",
+                "description": "",
+                "taux": 0.01
+            },
+            "special_2": {
+                "nom": "Noyau feu",
+                "description": "",
+                "taux": 0.001
+            }
         },
         "image": "https://i.imgur.com/CBvQJY6.jpeg",
-        "spawn_rate": 0.64,
+        "spawn_rate": 0.48,
         "min_level": 100,
-        "max_level": 200
+        "max_level": 250
     },
     "Golem_d_eau": {
         "name": "Golem d'eau",
         "stats": {
-            "pv": 3250,
-            "for": 4,
+            "pv": 4000,
+            "for": 6,
             "def": 1
         },
         "loot": {
-            "gold": 200,
-            "xp": 600
+            "gold": 500,
+            "xp": 2200,
+            "special_0": {
+                "nom": "Pierre eau",
+                "description": "",
+                "taux": 0.1
+            },
+            "special_1": {
+                "nom": "Gem eau",
+                "description": "",
+                "taux": 0.01
+            },
+            "special_2": {
+                "nom": "Noyau eau",
+                "description": "",
+                "taux": 0.001
+            }
         },
         "image": "https://i.imgur.com/ii9x4pk.jpeg",
-        "spawn_rate": 0.72,
+        "spawn_rate": 0.64,
         "min_level": 100,
-        "max_level": 200
+        "max_level": 250
     },
     "Golem_de_plante": {
         "name": "Golem de plante",
         "stats": {
-            "pv": 2000,
+            "pv": 3000,
             "for": 2,
-            "def": 19
+            "def": 25
         },
         "loot": {
-            "gold": 250,
-            "xp": 500
+            "gold": 200,
+            "xp": 3000,
+            "special_0": {
+                "nom": "Pierre plante",
+                "description": "",
+                "taux": 0.1
+            },
+            "special_1": {
+                "nom": "Gem plante",
+                "description": "",
+                "taux": 0.01
+            },
+            "special_2": {
+                "nom": "Noyau plante",
+                "description": "",
+                "taux": 0.001
+            }
         },
         "image": "https://i.imgur.com/hxgDuW7.jpeg",
         "spawn_rate": 0.80,
         "min_level": 100,
-        "max_level": 200
+        "max_level": 250
     },
     "Golem_de_foudre": {
         "name": "Golem de foudre",
         "stats": {
-            "pv": 1000,
-            "for": 20,
+            "pv": 750,
+            "for": 30,
             "def": 5
         },
         "loot": {
-            "gold": 325,
-            "xp": 250
+            "gold": 600,
+            "xp": 1900,
+            "special_0": {
+                "nom": "Pierre foudre",
+                "description": "",
+                "taux": 0.1
+            },
+            "special_1": {
+                "nom": "Gem foudre",
+                "description": "",
+                "taux": 0.01
+            },
+            "special_2": {
+                "nom": "Noyau foudre",
+                "description": "",
+                "taux": 0.001
+            }
         },
         "image": "https://i.imgur.com/ND7LgNf.jpeg",
-        "spawn_rate": 0.88,
+        "spawn_rate": 1,
         "min_level": 100,
-        "max_level": 200
+        "max_level": 250
     },
     "Phenix_de_feu": {
         "name": "Phenix de feu",
         "stats": {
-            "pv": 1250,
-            "for": 24,
-            "def": 13
+            "pv": 2000,
+            "for": 30,
+            "def": 28
         },
         "loot": {
-            "gold": 400,
-            "xp": 300
+            "gold": 1400,
+            "xp": 4100,
+            "special_0": {
+                "nom": "Cendre feu",
+                "description": "",
+                "taux": 0.1
+            },
+            "special_1": {
+                "nom": "Plume feu",
+                "description": "",
+                "taux": 0.01
+            },
+            "special_2": {
+                "nom": "Coeur feu",
+                "description": "",
+                "taux": 0.001
+            }
         },
         "image": "https://i.imgur.com/cmsTck3.jpeg",
-        "spawn_rate": 0.91,
-        "min_level": 150,
-        "max_level": 250
+        "spawn_rate": 0.14,
+        "min_level": 250,
+        "max_level": 500
     },
     "Phenix_de_glace": {
         "name": "Phenix de glace",
         "stats": {
-            "pv": 2250,
-            "for": 10,
-            "def": 25
+            "pv": 2750,
+            "for": 15,
+            "def": 46
         },
         "loot": {
-            "gold": 350,
-            "xp": 630
+            "gold": 1200,
+            "xp": 4500,
+            "special_0": {
+                "nom": "Cendre glace",
+                "description": "",
+                "taux": 0.1
+            },
+            "special_1": {
+                "nom": "Plume glace",
+                "description": "",
+                "taux": 0.01
+            },
+            "special_2": {
+                "nom": "Coeur glace",
+                "description": "",
+                "taux": 0.001
+            }
         },
         "image": "https://i.imgur.com/GoP2ssy.jpeg",
-        "spawn_rate": 0.94,
-        "min_level": 150,
-        "max_level": 250
+        "spawn_rate": 0.28,
+        "min_level": 250,
+        "max_level": 500
     },
     "Phenix_de_foudre": {
         "name": "Phenix de foudre",
         "stats": {
             "pv": 1000,
-            "for": 20,
-            "def": 5
+            "for": 50,
+            "def": 4
         },
         "loot": {
-            "gold": 375,
-            "xp": 500
+            "gold": 1300,
+            "xp": 4300,
+            "special_0": {
+                "nom": "Cendre foudre",
+                "description": "",
+                "taux": 0.1
+            },
+            "special_1": {
+                "nom": "Plume foudre",
+                "description": "",
+                "taux": 0.01
+            },
+            "special_2": {
+                "nom": "Coeur foudre",
+                "description": "",
+                "taux": 0.001
+            }
         },
         "image": "https://i.imgur.com/8syNSUj.jpeg",
-        "spawn_rate": 0.97,
-        "min_level": 150,
-        "max_level": 250
+        "spawn_rate": 0.42,
+        "min_level": 250,
+        "max_level": 500
     },
     "Demon_intermediaire": {
         "name": "Démon intermédiaire",
         "stats": {
-            "pv": 1000,
-            "for": 26,
-            "def": 17
+            "pv": 3333,
+            "for": 33,
+            "def": 3
         },
         "loot": {
-            "gold": 333,
-            "xp": 666,
+            "gold": 1666,
+            "xp": 3700,
             "special_0": {
                 "nom": "Corne de démon",
                 "description": "Corne renfermant un pouvoir démoniaque, For+20",
                 "taux": 0.1
             },
             "special_1": {
-                "nom": "Feu infernal",
-                "description": "Vos attaque inflige un effet de brûlure",
+                "nom": "Soif de sang",
+                "description": "",
                 "taux": 0.01
             },
             "special_2": {
@@ -403,20 +553,20 @@
             }
         },
         "image": "https://i.imgur.com/TwKBVxH.jpeg",
-        "spawn_rate": 0.972,
-        "min_level": 200,
-        "max_level": 300
+        "spawn_rate": 0.56,
+        "min_level": 250,
+        "max_level": 500
     },
     "Bebe_dragon": {
         "name": "Bébé dragon",
         "stats": {
-            "pv": 2000,
+            "pv": 4000,
             "for": 16,
-            "def": 21
+            "def": 26
         },
         "loot": {
-            "gold": 400,
-            "xp": 500,
+            "gold": 1700,
+            "xp": 3600,
             "special_0": {
                 "nom": "Ecaille de bébé dragon",
                 "description": "Petite écaille de dragon, Def+20",
@@ -434,20 +584,20 @@
             }
         },
         "image": "https://i.imgur.com/ht0JGST.jpeg",
-        "spawn_rate": 0.974,
-        "min_level": 200,
-        "max_level": 300
+        "spawn_rate": 0.70,
+        "min_level": 250,
+        "max_level": 500
     },
     "Serpent_geant": {
         "name": "Serpent géant",
         "stats": {
             "pv": 500,
-            "for": 20,
+            "for": 40,
             "def": 33
         },
         "loot": {
-            "gold": 350,
-            "xp": 600,
+            "gold": 1100,
+            "xp": 4800,
             "special_0": {
                 "nom": "Peau de serpent",
                 "description": "Une peau résistante et flexible à la fois, For+10 Def+10",
@@ -465,20 +615,20 @@
             }
         },
         "image": "https://i.imgur.com/FWu1jW3.jpeg",
-        "spawn_rate": 0.976,
-        "min_level": 200,
-        "max_level": 300
+        "spawn_rate": 0.84,
+        "min_level": 250,
+        "max_level": 500
     },
     "Troll_des_neiges": {
         "name": "Troll des neiges",
         "stats": {
-            "pv": 1250,
-            "for": 20,
-            "def": 21
+            "pv": 3000,
+            "for": 25,
+            "def": 25
         },
         "loot": {
-            "gold": 375,
-            "xp": 375,
+            "gold": 1500,
+            "xp": 4100,
             "special_0": {
                 "nom": "Fourrure de troll",
                 "description": "Résistance augmentée face au froid",
@@ -496,192 +646,82 @@
             }
         },
         "image": "https://i.imgur.com/pDBNZzB.jpeg",
-        "spawn_rate": 0.978,
-        "min_level": 200,
-        "max_level": 300
-    },
-    "Tresor": {
-        "name": "Trésor",
-        "stats": {
-            "pv": 300,
-            "for": 10,
-            "def": 7
-        },
-        "loot": {
-            "gold": 1000,
-            "xp": 1000,
-            "special_0": {
-                "nom": "Chanceux",
-                "description": "Double le contenu de ce coffre",
-                "taux": 0.1
-            },
-            "special_1": {
-                "nom": "Super chanceux",
-                "description": "Contenu de ce coffre x10",
-                "taux": 0.01
-            },
-            "special_2": {
-                "nom": "Méga chanceux",
-                "description": "Contenu de ce coffre x100",
-                "taux": 0.001
-            }
-        },
-        "image": "https://i.imgur.com/OcjMGWV.jpeg",
-        "spawn_rate": 0.979,
-        "min_level": 0,
-        "max_level": 0
-    },
-    "Goldy": {
-        "name": "Goldy",
-        "stats": {
-            "pv": 10,
-            "for": 1,
-            "def": 75
-        },
-        "loot": {
-            "gold": 1500,
-            "xp": 0,
-            "special_0": {
-                "nom": "Bonus d'or I",
-                "description": "Gold+500000",
-                "taux": 0.1
-            },
-            "special_1": {
-                "nom": "Bonus d'or II",
-                "description": "Gold+5000000",
-                "taux": 0.01
-            },
-            "special_2": {
-                "nom": "Bonus d'or III",
-                "description": "Gold+50000000",
-                "taux": 0.001
-            }
-        },
-        "image": "https://i.imgur.com/I0jligj.jpeg",
-        "spawn_rate": 0.981,
-        "min_level": 300,
-        "max_level": 500
-    },
-    "Arthur": {
-        "name": "Arthur",
-        "stats": {
-            "pv": 5000,
-            "for": 1,
-            "def": 1
-        },
-        "loot": {
-            "gold": 0,
-            "xp": 1500,
-            "special_0": {
-                "nom": "Bonus d'xp I",
-                "description": "XP+500000",
-                "taux": 0.1
-            },
-            "special_1": {
-                "nom": "Bonus d'xp II",
-                "description": "XP+5000000",
-                "taux": 0.01
-            },
-            "special_2": {
-                "nom": "Bonus d'xp III",
-                "description": "XP+50000000",
-                "taux": 0.001
-            }
-        },
-        "image": "https://i.imgur.com/8eTUsRr.jpeg",
-        "spawn_rate": 0.983,
-        "min_level": 300,
+        "spawn_rate": 1,
+        "min_level": 250,
         "max_level": 500
     },
     "Dragone_de_glace": {
         "name": "Dragone de glace",
         "stats": {
-            "pv": 5000,
+            "pv": 6250,
             "for": 50,
             "def": 200
         },
         "loot": {
-            "gold": 2000,
-            "xp": 3000,
+            "gold": 5000,
+            "xp": 20000,
             "special_0": {
-                "nom": "Ecaille dragon",
-                "description": "Ecaille de dragon, Def+100",
+                "nom": "Ecaille du dragon de glace",
+                "description": "Ecaille du dragon de glace, Def+100",
                 "taux": 0.1
             },
             "special_1": {
-                "nom": "Os de dragon",
-                "description": "Os de dragon, For+200 Def+200",
+                "nom": "Os du dragon de glace",
+                "description": "Os du dragon de glace, For+200 Def+200",
                 "taux": 0.01
             },
             "special_2": {
-                "nom": "Coeur de dragon",
-                "description": "Petit coeur de dragon, PV+200000 For+300 Def+300",
+                "nom": "Coeur du dragon de glace",
+                "description": "Coeur du dragon de glace, PV+200000 For+300 Def+300",
                 "taux": 0.001
             }
         },
         "image": "https://i.imgur.com/vjSsklY.jpeg",
-        "spawn_rate": 0.99,
+        "spawn_rate": 0.50,
         "min_level": 500,
-        "max_level": 900
+        "max_level": 750
     },
     "Dragon_de_feu": {
         "name": "Dragon de feu",
         "stats": {
-            "pv": 5000,
+            "pv": 6250,
             "for": 100,
             "def": 100
         },
         "loot": {
-            "gold": 2000,
-            "xp": 3000,
+            "gold": 5000,
+            "xp": 20000,
             "special_0": {
-                "nom": "Ecaille dragon",
-                "description": "Ecaille de dragon, Def+100",
+                "nom": "Ecaille du dragon de feu",
+                "description": "Ecaille du dragon de feu, Def+100",
                 "taux": 0.1
             },
             "special_1": {
-                "nom": "Os de dragon",
-                "description": "Os de dragon, For+200 Def+200",
+                "nom": "Os du dragon de feu",
+                "description": "Os du dragon de feu, For+200 Def+200",
                 "taux": 0.01
             },
             "special_2": {
-                "nom": "Coeur de dragon",
-                "description": "Petit coeur de dragon, PV+200000 For+300 Def+300",
+                "nom": "Coeur du dragon de feu",
+                "description": "Coeur du dragon de feu, PV+200000 For+300 Def+300",
                 "taux": 0.001
             }
         },
         "image": "https://i.imgur.com/udGJJ6U.jpeg",
-        "spawn_rate": 0.998,
+        "spawn_rate": 1,
         "min_level": 500,
-        "max_level": 900
-    },
-    "Petite_fille": {
-        "name": "Petite fille",
-        "stats": {
-            "pv": 300,
-            "for": 10,
-            "def": 7
-        },
-        "loot": {
-            "gold": 800,
-            "xp": 800,
-            "gentil": 1
-        },
-        "image": "https://i.imgur.com/OcjMGWV.jpeg",
-        "spawn_rate": 0.999,
-        "min_level": 0,
-        "max_level": 0
+        "max_level": 750
     },
     "Devoreur_d_ames": {
         "name": "Dévoreur d'âmes",
         "stats": {
             "pv": 10000,
-            "for": 150,
-            "def": 100
+            "for": 200,
+            "def": 240
         },
         "loot": {
             "gold": 10000,
-            "xp": 15000,
+            "xp": 20000,
             "special_0": {
                 "nom": "Aura impossante",
                 "description": "Vous réduissez la force et la défence de vos ennemis",
@@ -701,6 +741,6 @@
         "image": "https://i.imgur.com/OcjMGWV.jpeg",
         "spawn_rate": 1,
         "min_level": 1000,
-        "max_level": 1000
+        "max_level": 1001
     }
 }

@@ -1,0 +1,112 @@
+{
+    "Tresor": {
+        "name": "Trésor",
+        "stats": {
+            "pv": 300,
+            "for": 10,
+            "def": 7
+        },
+        "loot": {
+            "gold": 1000,
+            "xp": 1000,
+            "special_0": {
+                "nom": "Chanceux",
+                "description": "Double le contenu de ce coffre",
+                "taux": 0.1
+            },
+            "special_1": {
+                "nom": "Super chanceux",
+                "description": "Contenu de ce coffre x10",
+                "taux": 0.01
+            },
+            "special_2": {
+                "nom": "Méga chanceux",
+                "description": "Contenu de ce coffre x100",
+                "taux": 0.001
+            }
+        },
+        "image": "https://i.imgur.com/OcjMGWV.jpeg",
+        "spawn_rate": 0.979,
+        "min_level": 0,
+        "max_level": 0
+    },
+    "Goldy": {
+        "name": "Goldy",
+        "stats": {
+            "pv": 10,
+            "for": 1,
+            "def": 75
+        },
+        "loot": {
+            "gold": 1500,
+            "xp": 0,
+            "special_0": {
+                "nom": "Bonus d'or I",
+                "description": "Gold+500000",
+                "taux": 0.1
+            },
+            "special_1": {
+                "nom": "Bonus d'or II",
+                "description": "Gold+5000000",
+                "taux": 0.01
+            },
+            "special_2": {
+                "nom": "Bonus d'or III",
+                "description": "Gold+50000000",
+                "taux": 0.001
+            }
+        },
+        "image": "https://i.imgur.com/I0jligj.jpeg",
+        "spawn_rate": 0.981,
+        "min_level": 300,
+        "max_level": 500
+    },
+    "Arthur": {
+        "name": "Arthur",
+        "stats": {
+            "pv": 5000,
+            "for": 1,
+            "def": 1
+        },
+        "loot": {
+            "gold": 0,
+            "xp": 1500,
+            "special_0": {
+                "nom": "Bonus d'xp I",
+                "description": "XP+500000",
+                "taux": 0.1
+            },
+            "special_1": {
+                "nom": "Bonus d'xp II",
+                "description": "XP+5000000",
+                "taux": 0.01
+            },
+            "special_2": {
+                "nom": "Bonus d'xp III",
+                "description": "XP+50000000",
+                "taux": 0.001
+            }
+        },
+        "image": "https://i.imgur.com/8eTUsRr.jpeg",
+        "spawn_rate": 0.983,
+        "min_level": 300,
+        "max_level": 500
+    },
+    "Petite_fille": {
+        "name": "Petite fille",
+        "stats": {
+            "pv": 300,
+            "for": 10,
+            "def": 7
+        },
+        "loot": {
+            "gold": 800,
+            "xp": 800,
+            "gentil": 1
+        },
+        "image": "https://i.imgur.com/OcjMGWV.jpeg",
+        "spawn_rate": 0.999,
+        "min_level": 0,
+        "max_level": 0
+    }
+}

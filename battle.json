@@ -1,10 +1,7 @@
 {
     "mob": {
-        "name": "Squelette",
-        "lvl": 15
+        "name": "Slime",
+        "lvl": 2
     },
-    "players": {
-        "slashoroide": "slashoroide",
-        "ruinflex": "ruinflex"
-    }
+    "players": {}
 }
