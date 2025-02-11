@@ -2,7 +2,7 @@
     "assassin": {
         "name": "Assassin",
         "icon": ":dagger:",
-        "description": "",
+        "description": "Spécialisé dans l'art de tuer, vous infligerez plus de dégats quand la cible à moins de 50% de sa vie",
         "evolved": false,
 
         "evolve": {
@@ -14,7 +14,7 @@
     "econome": {
         "name": "Économe",
         "icon": ":mouse:",
-        "description": "",
+        "description": "Il n'y a pas de petite économie, vous bénéficiez de -10% sur les prix du !market",
         "evolved": false,
 
         "evolve": {
@@ -26,7 +26,7 @@
     "chanceux": {
         "name": "Chanceux",
         "icon": ":four_leaf_clover:",
-        "description": "",
+        "description": "La chance vous sourit, vous avez +10% de chance de drop sur les monstres vaincus",
         "evolved": false,
 
         "evolve": {
@@ -38,7 +38,7 @@
     "guerrier": {
         "name": "Guerrier",
         "icon": ":crossed_swords:",
-        "description": "",
+        "description": "L'honneur d'un guerrier se trouve sur le champ de bataille, chaque monstre vaincu vous octroie 1% de sa force",
         "evolved": false,
 
         "evolve": {
@@ -50,7 +50,7 @@
     "gardien": {
         "name": "Gardien",
         "icon": ":shield:",
-        "description": "",
+        "description": "Protégez vos alliés est votre priorité, chaque monstre vaincu vous octroie 1% de sa défense",
         "evolved": false,
 
         "evolve": {
@@ -62,7 +62,7 @@
     "druide": {
         "name": "Druide",
         "icon": ":coral:",
-        "description": "",
+        "description": "Le langage runique n'a plus de secret pour vous, vous extrairez des runes aléatoires sur les monstres vaincus",
         "evolved": false,
 
         "evolve": {
@@ -74,7 +74,7 @@
     "buffer": {
         "name": "Buffer",
         "icon": ":low_brightness:",
-        "description": "",
+        "description": "Vous voulez vous rendre utile lors des combats, vous partager une partie de vos stats aux aventuriers qui vous accompagnent",
         "evolved": false,
 
         "evolve": {
@@ -86,7 +86,7 @@
     "debuffer": {
         "name": "Débuffer",
         "icon": ":chains:",
-        "description": "",
+        "description": "Vous voulez vous rendre utile lors des combats, vous réduissez une partie des stats des monstres ennemis",
         "evolved": false,
 
         "evolve": {
@@ -98,7 +98,7 @@
     "alchimiste": {
         "name": "Alchimiste",
         "icon": ":alembic:",
-        "description": "",
+        "description": "Vous aimez expérimenter, votre confection de potions est parfaite les rendant nettement plus fortes",
         "evolved": false,
 
         "evolve": {
@@ -110,7 +110,7 @@
     "paysan": {
         "name": "Paysan",
         "icon": ":farmer:",
-        "description": "",
+        "description": "Vous commencez en bas de l'échelle sociale, mais les autres aventuriers vous craindront, +500% d'xp sur les monstres vaincus",
         "evolved": false,
 
         "evolve": {
@@ -122,7 +122,7 @@
     "forgeron": {
         "name": "Forgeron",
         "icon": ":hammer_pick:",
-        "description": "",
+        "description": "Votre marteau sera votre meilleur compagnon, utilisez le pour forger des armes et armures de qualité supérieur",
         "evolved": false,
 
         "evolve": {

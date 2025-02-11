@@ -1108,7 +1108,14 @@ async def on_message(message):
         updated = True
 
     if message.content.startswith("!classe"):
-        embed = classe_action()
+        command_and_argument = message.content.split(maxsplit=2)
+
+        if len(command_and_argument) == 2:
+            command, classe = command_and_argument
+            embed = classe_info_action(classe)
+        else:
+            embed = classe_action()
+
         await message.channel.send(embed=embed)
 
     if updated:
@@ -1326,11 +1333,27 @@ def classe_action():
     for classe in classes:
         listes_classes = listes_classes + classes[classe]["icon"] + " " + classes[classe]["name"] + "\n"
 
-    tabFields = {'' : listes_classes}
+    tabFields = {'Classes :' : "**" + listes_classes + "**"}
     
     color = discord.Color.lighter_grey()
-    title = 'Classes'
-    return create_embed(title=title, color=color, tabFields=tabFields)
+    title = "Découvrez quelle classe vous convient le mieux !"
+    footer = "Plus d'info : !classe nom_classe"
+    return create_embed(title=title, color=color, tabFields=tabFields, footer=footer)
+
+def classe_info_action(info_classe):
+    for classe in classes:
+        if classes[classe]["name"] == info_classe or classe == info_classe:
+            description = classes[classe]["description"]
+            color = discord.Color.lighter_grey()
+            title = classes[classe]["icon"] + " " + classes[classe]["name"]
+            return create_embed(title=title, color=color, description=description)
+        
+    description = "Vérifiez l'orthographe de la classe, majuscule ou accent par exemple"
+    color = discord.Color.red()
+    title = 'Erreur dans la commande'
+    return create_embed(title=title, color=color, description=description)
+    
+    
 
 def get_time(author_name, command):
     time = None
