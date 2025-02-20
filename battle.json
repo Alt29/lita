@@ -1,12 +1,12 @@
 {
     "mob": {
-        "name": "Gobelin",
-        "lvl": 22
+        "name": "Grand_gobelin",
+        "lvl": 84
     },
     "players": {
+        "junglepingouy": "junglepingouy",
         "akastukye": "akastukye",
         "ruinflex": "ruinflex",
-        "marylis": "marylis",
         "slashoroide": "slashoroide",
         "altan3062": "altan3062"
     },

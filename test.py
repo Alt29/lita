@@ -971,9 +971,9 @@ async def on_message(message):
         updated = True
 
     if message.content.startswith("!compter"):
-        if message.author.id == 518397017072992257 or message.author.id == 619654294160932896:
+        if message.author.id == 518397017072992257 or message.author.id == 802116818134892545:
             if await time_command(message, "!compter", 24):
-                gain = 421 * (log_data[message.author.name]['rank'] * log_data[message.author.name]['rank'] + 1)
+                gain = 1072 * max(log_data[message.author.name]['rank'] * 4, 1)
                 gain = gain * 2
                 embed = compter_action(message.author.name, message.author.avatar, message.author.global_name, gain)
                 await message.channel.send(embed=embed)
@@ -1635,36 +1635,41 @@ def daily_action(author_name, author_icon, global_name):
     return create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, footer=footer, tabFields=tabFields)
 
 def explore_action(author_name, author_icon, global_name):
-    random_number = random.randint(1, 1270)
-    if random_number < 450:
+    rank = log_data[author_name]['rank']
+    num = (rank + 1) * 100
+    num_90 = (num * 90) // 100
+    num_110 = (num * 110) // 100
+    alea = random.randint(num_90, num_110)
+    
+    random_number = random.randint(1, 1000)
+    if random_number <= 300:
         title = 'I • L\'Antre de l\'Ours'
-        alea = random.randint(50, 350)
+        alea = alea + rank * 100
     else:
-        if random_number <= 700:
+        if random_number <= 550:
             title = 'II • La Forêt des Tentations'
-            alea = random.randint(350, 600)
+            alea = alea + 100 + rank * 100
         else:
-            if random_number <= 900:
+            if random_number <= 750:
                 title = 'III • Les Grandes Falaises'
-                alea = random.randint(600, 1000)
+                alea = alea + 200 + rank * 100
             else:
-                if random_number <= 1050:
+                if random_number <= 870:
                     title = 'IV • Les Profondeurs de la Coupe'
-                    alea = random.randint(1000, 1500)
+                    alea = alea + 300 + rank * 100
                 else:
-                    if random_number <= 1160:
+                    if random_number <= 950:
                         title = 'V • La Mer des Cadavres'
-                        alea = random.randint(1500, 2300)
+                        alea = alea + 400 + rank * 100
                     else:
-                        if random_number <= 1240:
+                        if random_number <= 990:
                             title = 'VI • La Capitale des Non-Retournés'
-                            alea = random.randint(2300, 3500)
+                            alea = alea + 500 + rank * 100
                         else:
                             title = 'VII • La Dernière Épreuve'
-                            alea = random.randint(3500, 15000)
+                            alea = alea + 900 + rank * 500
 
-    alea = alea * (log_data[author_name]['rank'] * log_data[author_name]['rank'] + 1)
-    alea = alea // 4
+    alea = alea * (rank + 1)
 
     if author_name in log_data:
         if 'gold' in log_data[author_name]:
@@ -1724,7 +1729,7 @@ def train_action(author_name, author_icon, global_name):
                                 title = 'VIII • La Porte de la Mort'
                                 alea = random.randint(6000, 7000)
 
-    alea = alea * (log_data[author_name]['rank'] * log_data[author_name]['rank'] + 1)
+    alea = alea * max(log_data[author_name]['rank'] * 4, 1)
     alea = alea // 4
     log_data[author_name]['level']['xp'] += alea
 
