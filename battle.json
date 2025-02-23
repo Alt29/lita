@@ -1,14 +1,14 @@
 {
     "mob": {
-        "name": "Grand_gobelin",
-        "lvl": 84
+        "name": "Golem_de_plante",
+        "lvl": 111
     },
     "players": {
-        "junglepingouy": "junglepingouy",
-        "akastukye": "akastukye",
+        "altan3062": "altan3062",
         "ruinflex": "ruinflex",
-        "slashoroide": "slashoroide",
-        "altan3062": "altan3062"
+        "junglepingouy": "junglepingouy",
+        "terminator850": "terminator850",
+        "slashoroide": "slashoroide"
     },
     "status": "defaite"
 }

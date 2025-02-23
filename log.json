@@ -6,10 +6,10 @@
         "avenger": true,
         "rank": 5,
         "place": 2,
-        "gold": 46104,
-        "!daily": "2025-02-20 11:58:15.329276",
-        "!explore": "2025-02-19 17:21:18.216308",
-        "!train": "2025-02-20 15:02:39.770387",
+        "gold": 221961,
+        "!daily": "2025-02-23 14:30:37.400101",
+        "!explore": "2025-02-23 17:05:06.851395",
+        "!train": "2025-02-23 17:05:05.512736",
         "bag": {
             "Casquette": {
                 "quantity": 1,
@@ -37,22 +37,46 @@
                 "rank": 5
             },
             "Boost_Xp_24": {
-                "quantity": 1,
+                "quantity": 4,
                 "icon": ":diamond_shape_with_a_dot_inside:"
             },
             "Eau": {
-                "quantity": 10,
+                "quantity": 2,
                 "icon": ":droplet:"
+            },
+            "Plante": {
+                "quantity": 2,
+                "icon": ":seedling:"
+            },
+            "Rare": {
+                "quantity": 2,
+                "icon": "<:Rare:1222193217957662760>"
+            },
+            "Feu": {
+                "quantity": 2,
+                "icon": ":fire:"
+            },
+            "Brasier": {
+                "quantity": 1,
+                "icon": ":boom:"
+            },
+            "Branche": {
+                "quantity": 1,
+                "icon": ":herb:"
+            },
+            "Mer": {
+                "quantity": 1,
+                "icon": ":sweat_drops:"
             }
         },
         "level": {
-            "lvl": 29,
-            "xp": 1729
+            "lvl": 33,
+            "xp": 25732
         },
         "stats": {
-            "pv": 29182,
-            "for": 177,
-            "def": 345
+            "pv": 31055,
+            "for": 215,
+            "def": 417
         },
         "deaths": 0,
         "penality": 0,
@@ -68,11 +92,12 @@
             "Devoreur": 0
         },
         "title": {},
-        "last_daily": "2025-02-19 11:53:12.972470",
-        "max_daily": 6000,
+        "last_daily": "2025-02-22 14:30:07.489708",
+        "max_daily": 7500,
         "profil": 0,
         "!eveil": "2025-02-20 12:49:24.579665",
-        "!sw": "2025-02-20 12:48:06.866268"
+        "!sw": "2025-02-22 17:14:37.272786",
+        "!craft": "2025-02-22 10:25:32.932206"
     },
     "junglepingouy": {
         "id": 518397017072992257,
@@ -81,45 +106,49 @@
         "avenger": true,
         "rank": 5,
         "place": 5,
-        "gold": 29712,
-        "!daily": "2025-02-20 14:48:03.745808",
-        "!explore": "2025-02-19 16:48:15.317408",
-        "!train": "2025-02-20 16:48:13.001370",
+        "gold": 175933,
+        "!daily": "2025-02-23 00:19:41.967518",
+        "!explore": "2025-02-23 00:19:44.909064",
+        "!train": "2025-02-23 00:19:47.291723",
         "bag": {
             "Casquette": {
                 "quantity": 1,
                 "icon": ":billed_cap:",
-                "rank": 2
+                "rank": 4
             },
             "Tshirt": {
                 "quantity": 1,
                 "icon": ":shirt:",
-                "rank": 2
+                "rank": 4
             },
             "Jean": {
                 "quantity": 1,
                 "icon": ":jeans:",
-                "rank": 2
+                "rank": 4
             },
             "Baskets": {
                 "quantity": 1,
                 "icon": ":athletic_shoe:",
-                "rank": 2
+                "rank": 4
             },
             "Dague": {
                 "quantity": 1,
                 "icon": ":dagger:",
-                "rank": 2
+                "rank": 4
+            },
+            "Rare": {
+                "quantity": 5,
+                "icon": "<:Rare:1222193217957662760>"
             }
         },
         "level": {
-            "lvl": 24,
-            "xp": 34450
+            "lvl": 28,
+            "xp": 28818
         },
         "stats": {
-            "pv": 2553,
-            "for": 42,
-            "def": 65
+            "pv": 9086,
+            "for": 76,
+            "def": 169
         },
         "deaths": 0,
         "penality": 0,
@@ -136,10 +165,12 @@
         },
         "title": {},
         "profil": 0,
-        "last_daily": "2025-02-19 14:34:42.602604",
-        "max_daily": 5000,
-        "!eveil": "2025-02-20 15:07:11.446097",
-        "!compter": "2025-02-20 14:48:09.322101"
+        "last_daily": "2025-02-21 15:00:57.515516",
+        "max_daily": 6000,
+        "!eveil": "2025-02-22 12:59:27.909424",
+        "!compter": "2025-02-23 00:19:49.484268",
+        "!sw": "2025-02-21 22:51:46.309501",
+        "!craft": "2025-02-21 22:52:34.776345"
     },
     "slashoroide": {
         "id": 503247209165357066,
@@ -148,19 +179,19 @@
         "avenger": true,
         "rank": 5,
         "place": 11,
-        "gold": 65110,
-        "!daily": "2025-02-19 17:44:39.105768",
-        "!explore": "2025-02-19 16:32:05.116457",
-        "!train": "2025-02-20 13:53:43.079131",
+        "gold": 431342,
+        "!daily": "2025-02-22 19:20:59.449540",
+        "!explore": "2025-02-23 17:45:52.290362",
+        "!train": "2025-02-23 15:42:28.940901",
         "bag": {},
         "level": {
-            "lvl": 25,
-            "xp": 42057
+            "lvl": 30,
+            "xp": 65812
         },
         "stats": {
-            "pv": 1049,
-            "for": 35,
-            "def": 35
+            "pv": 1059,
+            "for": 40,
+            "def": 40
         },
         "deaths": 0,
         "penality": 0,
@@ -176,8 +207,8 @@
             "Devoreur": 0
         },
         "title": {},
-        "last_daily": "2025-02-18 14:17:09.860508",
-        "max_daily": 5500,
+        "last_daily": "2025-02-21 18:26:08.967927",
+        "max_daily": 7000,
         "profil": 0,
         "!eveil": "2025-02-20 01:45:23.426088"
     },
@@ -186,17 +217,17 @@
         "global_name": "Ruinflex",
         "avatar": "https://cdn.discordapp.com/avatars/326718702370291712/8b45a65f7fac4ec5bfc1fdd7817cbcea.png?size=1024",
         "avenger": true,
-        "rank": 5,
+        "rank": 6,
         "place": 1,
-        "gold": 275748,
-        "!daily": "2025-02-19 23:26:06.369483",
-        "!explore": "2025-02-19 17:04:35.374999",
-        "!train": "2025-02-20 17:04:30.564979",
+        "gold": 25649,
+        "!daily": "2025-02-23 06:42:53.140753",
+        "!explore": "2025-02-23 17:50:37.812113",
+        "!train": "2025-02-23 15:50:20.207306",
         "bag": {
             "Dague": {
                 "quantity": 1,
                 "icon": ":dagger:",
-                "rank": 6
+                "rank": 7
             },
             "Baskets": {
                 "quantity": 1,
@@ -206,7 +237,7 @@
             "Casquette": {
                 "quantity": 1,
                 "icon": ":billed_cap:",
-                "rank": 5
+                "rank": 6
             },
             "Tshirt": {
                 "quantity": 1,
@@ -217,16 +248,20 @@
                 "quantity": 1,
                 "icon": ":jeans:",
                 "rank": 5
+            },
+            "Volcan": {
+                "quantity": 2,
+                "icon": ":volcano:"
             }
         },
         "level": {
-            "lvl": 32,
-            "xp": 58942
+            "lvl": 36,
+            "xp": 163420
         },
         "stats": {
-            "pv": 38785,
-            "for": 210,
-            "def": 468
+            "pv": 85988,
+            "for": 994,
+            "def": 942
         },
         "deaths": 0,
         "penality": 0,
@@ -242,23 +277,23 @@
             "Devoreur": 0
         },
         "title": {},
-        "last_daily": "2025-02-18 23:25:53.953312",
-        "max_daily": 6000,
+        "last_daily": "2025-02-21 23:31:14.455519",
+        "max_daily": 7500,
         "profil": 0,
-        "!eveil": "2025-02-17 07:41:11.943571",
-        "!craft": "2025-02-14 06:41:59.707458"
+        "!eveil": "2025-02-21 03:08:17.060780",
+        "!craft": "2025-02-23 17:51:55.733039"
     },
     "akastukye": {
         "id": 619654294160932896,
         "global_name": "Akastukye",
         "avatar": "https://cdn.discordapp.com/avatars/619654294160932896/e632f2f0d744abde9816d6f99e34cada.png?size=1024",
         "avenger": true,
-        "rank": 5,
-        "place": 3,
-        "gold": 288671,
-        "!daily": "2025-02-20 13:35:14.434307",
-        "!explore": "2025-02-19 17:33:28.395999",
-        "!train": "2025-02-20 15:23:59.173188",
+        "rank": 6,
+        "place": 4,
+        "gold": 223662,
+        "!daily": "2025-02-22 14:41:49.574754",
+        "!explore": "2025-02-23 00:32:32.840520",
+        "!train": "2025-02-22 22:14:46.457064",
         "bag": {
             "Casquette": {
                 "quantity": 1,
@@ -287,13 +322,13 @@
             }
         },
         "level": {
-            "lvl": 29,
-            "xp": 84847
+            "lvl": 32,
+            "xp": 64706
         },
         "stats": {
-            "pv": 9136,
-            "for": 77,
-            "def": 170
+            "pv": 9166,
+            "for": 80,
+            "def": 173
         },
         "deaths": 0,
         "penality": 0,
@@ -310,9 +345,9 @@
         },
         "title": {},
         "profil": 0,
-        "last_daily": "2025-02-19 13:10:24.825786",
-        "max_daily": 6000,
-        "!eveil": "2025-02-17 05:30:32.859261"
+        "last_daily": "2025-02-21 13:40:29.187239",
+        "max_daily": 7000,
+        "!eveil": "2025-02-21 10:32:09.663935"
     },
     "sayori0208": {
         "id": 848523042296168480,
@@ -431,12 +466,12 @@
         "global_name": "Maryl\u00efs",
         "avatar": "https://cdn.discordapp.com/avatars/483676930621571072/7fee7c5b682bfb23c958ac664aa3b6ab.png?size=1024",
         "avenger": true,
-        "rank": 2,
+        "rank": 4,
         "place": 9,
-        "gold": 30636,
-        "!daily": "2025-02-18 20:42:31.218331",
-        "!explore": "2025-02-19 20:40:53.693930",
-        "!train": "2025-02-19 18:31:02.713527",
+        "gold": 8001,
+        "!daily": "2025-02-23 14:23:15.656506",
+        "!explore": "2025-02-23 14:23:22.500517",
+        "!train": "2025-02-23 14:23:18.906900",
         "bag": {
             "Baskets": {
                 "quantity": 1,
@@ -446,7 +481,7 @@
             "Casquette": {
                 "quantity": 1,
                 "icon": ":billed_cap:",
-                "rank": 3
+                "rank": 4
             },
             "Dague": {
                 "quantity": 1,
@@ -477,13 +512,13 @@
             }
         },
         "level": {
-            "lvl": 19,
-            "xp": 7706
+            "lvl": 22,
+            "xp": 1272
         },
         "stats": {
-            "pv": 4301,
-            "for": 49,
-            "def": 84
+            "pv": 5317,
+            "for": 56,
+            "def": 103
         },
         "deaths": 0,
         "penality": 0,
@@ -499,9 +534,9 @@
             "Devoreur": 0
         },
         "title": {},
-        "last_daily": "2025-02-17 13:15:29.661413",
-        "max_daily": 4500,
-        "!eveil": "2025-02-17 16:00:07.357424"
+        "last_daily": "2025-02-22 13:38:39.564832",
+        "max_daily": 1500,
+        "!eveil": "2025-02-22 13:52:55.986015"
     },
     "takinette": {
         "id": 626451233430962206,
@@ -544,12 +579,12 @@
         "global_name": "Terminator",
         "avatar": "https://cdn.discordapp.com/avatars/802116818134892545/a_c4ee26e4322700a8cfcce025802f9309.gif?size=1024",
         "avenger": true,
-        "rank": 5,
-        "place": 4,
-        "gold": 40988,
-        "!daily": "2025-02-20 13:51:09.529223",
-        "!explore": "2025-02-19 16:52:08.674265",
-        "!train": "2025-02-20 16:52:28.397533",
+        "rank": 6,
+        "place": 3,
+        "gold": 224744,
+        "!daily": "2025-02-23 17:27:47.381434",
+        "!explore": "2025-02-23 17:27:56.212494",
+        "!train": "2025-02-23 17:28:02.633862",
         "bag": {
             "Casquette": {
                 "quantity": 1,
@@ -574,17 +609,17 @@
             "Dague": {
                 "quantity": 1,
                 "icon": ":dagger:",
-                "rank": 4
+                "rank": 5
             }
         },
         "level": {
-            "lvl": 28,
-            "xp": 16588
+            "lvl": 32,
+            "xp": 32266
         },
         "stats": {
-            "pv": 23130,
-            "for": 156,
-            "def": 309
+            "pv": 26738,
+            "for": 180,
+            "def": 348
         },
         "deaths": 0,
         "penality": 0,
@@ -601,9 +636,9 @@
         },
         "title": {},
         "profil": 0,
-        "last_daily": "2025-02-19 12:56:20.651781",
-        "max_daily": 3500,
-        "!eveil": "2025-02-19 12:49:11.467916",
-        "!compter": "2025-02-20 13:50:56.343078"
+        "last_daily": "2025-02-22 16:05:56.678750",
+        "max_daily": 5000,
+        "!eveil": "2025-02-22 20:32:10.367558",
+        "!compter": "2025-02-23 17:27:36.848738"
     }
 }
