@@ -1,14 +1,7 @@
 {
     "mob": {
-        "name": "Golem_de_plante",
-        "lvl": 111
+        "name": "Golem_de_feu",
+        "lvl": 107
     },
-    "players": {
-        "altan3062": "altan3062",
-        "ruinflex": "ruinflex",
-        "junglepingouy": "junglepingouy",
-        "terminator850": "terminator850",
-        "slashoroide": "slashoroide"
-    },
-    "status": "defaite"
+    "players": {}
 }
