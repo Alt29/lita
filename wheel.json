@@ -20,27 +20,27 @@
     "gain_3" : {
         "url": "https://i.imgur.com/dB1xdgb.mp4",
         "price": {
-            "title": "10 Runes eau",
+            "title": "20 Runes eau",
             "item": "Eau",
-            "quantity": 10
+            "quantity": 20
         },
         "proba": 16
     },
     "gain_4" : {
         "url": "https://i.imgur.com/Q29h491.mp4",
         "price": {
-            "title": "10 Runes plante",
+            "title": "20 Runes plante",
             "item": "Plante",
-            "quantity": 10
+            "quantity": 20
         },
         "proba": 25
     },
     "gain_5" : {
         "url": "https://i.imgur.com/3u6KqdM.mp4",
         "price": {
-            "title": "10 Runes feu",
+            "title": "20 Runes feu",
             "item": "Feu",
-            "quantity": 10
+            "quantity": 20
         },
         "proba": 34
     },
@@ -74,16 +74,16 @@
     "gain_9" : {
         "url": "https://i.imgur.com/jkhZexB.mp4",
         "price": {
-            "title": "5 Runes rares",
+            "title": "10 Gemmes rares",
             "item": "Rare",
-            "quantity": 5
+            "quantity": 10
         },
         "proba": 81
     },
     "gain_10" : {
         "url": "https://i.imgur.com/dELaqFI.mp4",
         "price": {
-            "title": "3 Rune épiques",
+            "title": "3 Gemmes épiques",
             "item": "Epique",
             "quantity": 3
         },
@@ -92,7 +92,7 @@
     "gain_11" : {
         "url": "https://i.imgur.com/UUZvY9O.mp4",
         "price": {
-            "title": "1 Rune légendaire",
+            "title": "1 Gemme légendaire",
             "item": "Legendaire",
             "quantity": 1
         },

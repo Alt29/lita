@@ -5,6 +5,7 @@ from datetime import datetime, timedelta
 import asyncio
 import os
 import random
+import unicodedata
 
 TOKEN = os.getenv('TOKEN')
 SAKURA_CHANNEL_ID = int(os.getenv('SAKURA_CHANNEL_ID'))
@@ -1108,13 +1109,14 @@ async def on_message(message):
         updated = True
 
     if message.content.startswith("!classe"):
-        command_and_argument = message.content.split(maxsplit=2)
-
-        if len(command_and_argument) == 2:
-            command, classe = command_and_argument
-            embed = classe_info_action(classe)
+        command_and_argument = message.content.split()
+        
+        if len(command_and_argument) == 1:
+            embed = classe_action("simple")
         else:
-            embed = classe_action()
+            classe = " ".join(command_and_argument[1:])
+            classe = normalize_text(classe)
+            embed = classe_info_action(classe) 
 
         await message.channel.send(embed=embed)
 
@@ -1134,14 +1136,8 @@ def info_action():
         '!market :' : 'Pour acheter de quoi devenir plus fort.',
         '!craft :' : 'Pour crafter des items.',
         '!materiaux :' : 'Pour voir les stats des matériaux.',
-        '!top-rank :' : 'Pour voir le classement général.',
-        '!top-gold :' : 'Pour voir le classement en Gold.',
-        '!top-eveil' : 'Pour voir le classement en Eveil.',
-        '!top-level :' : 'Pour voir le classement en Level.',
-        '!top-pv :' : 'Pour voir le classement en PV.',
-        '!top-for :' : 'Pour voir le classement en For.',
-        '!top-def :' : 'Pour voir le classement en Def.',
-        '!fight :' : 'Pour se disbuter le haut du classement !top-rank.',
+        '!top-[rank/gold/eveil/level/pv/for/def] :' : 'Pour voir un classement en particulier.',
+        '!fight :' : 'Pour se disputer le haut du classement !top-rank.',
         '!bag :' : 'Pour voir ce que vous avez dans votre sac.',
         '!purchase :' : 'Pour acheter un item au market.',
         '!notif :' : "Pour rejoindre la liste des chads notifiés lors d'une demande d'aide",
@@ -1328,29 +1324,49 @@ def market_action():
     title = 'Boutique'
     return create_embed(title=title, color=color, tabFields=tabFields)
 
-def classe_action():
+def classe_action(type):
+    
     listes_classes = ""
+    
     for classe in classes:
-        listes_classes = listes_classes + classes[classe]["icon"] + " " + classes[classe]["name"] + "\n"
-
-    tabFields = {'Classes :' : "**" + listes_classes + "**"}
+        if type == "simple":
+            listes_classes = listes_classes + classes[classe]["icon"] + " " + classes[classe]["name"] + "\n"
+        else:
+            listes_classes = listes_classes + classes[classe]["evolve"]["icon"] + " " + classes[classe]["evolve"]["name"] + "\n"
+            
+    if type == "simple":
+        title = "Découvrez quelle classe vous convient le mieux !"
+        tabFields = {'Classes :' : "**" + listes_classes + "**"}
+        footer = "Plus d'info : !classe nom_classe ou !classe exaltee"
+    else:
+        title = "Découvrez quelle classe exaltee vous convient le mieux !"
+        tabFields = {'Classes exaltées :' : "**" + listes_classes + "**"}
+        footer = "Plus d'info : !classe nom_classe ou !classe"
     
     color = discord.Color.lighter_grey()
-    title = "Découvrez quelle classe vous convient le mieux !"
-    footer = "Plus d'info : !classe nom_classe"
+    
     return create_embed(title=title, color=color, tabFields=tabFields, footer=footer)
 
 def classe_info_action(info_classe):
+    if info_classe == "exaltee":
+        return classe_action("exaltee")
+    
     for classe in classes:
-        if classes[classe]["name"] == info_classe or classe == info_classe:
+        color = discord.Color.lighter_grey()
+        if normalize_text(classes[classe]["name"]) == info_classe:
             description = classes[classe]["description"]
-            color = discord.Color.lighter_grey()
             title = classes[classe]["icon"] + " " + classes[classe]["name"]
             return create_embed(title=title, color=color, description=description)
-        
+        else:
+            if normalize_text(classes[classe]["evolve"]["name"]) == info_classe:
+                description = classes[classe]["evolve"]["description"]
+                title = classes[classe]["evolve"]["icon"] + " " + classes[classe]["evolve"]["name"]
+                return create_embed(title=title, color=color, description=description)
+      
     description = "Vérifiez l'orthographe de la classe, majuscule ou accent par exemple"
     color = discord.Color.red()
     title = 'Erreur dans la commande'
+               
     return create_embed(title=title, color=color, description=description)
     
     
@@ -1891,5 +1907,10 @@ def is_integer(s):
         return True
     except ValueError:
         return False
+
+def normalize_text(text):
+    text = text.lower()
+    text = ''.join(c for c in unicodedata.normalize('NFD', text) if unicodedata.category(c) != 'Mn')
+    return text
 
 client.run(TOKEN)

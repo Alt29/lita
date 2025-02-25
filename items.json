@@ -156,37 +156,37 @@
     },
     "Brasier": {
         "stats": {
-            "for": 30
+            "for": 40
         },
         "icon": ":boom:"
     },
     "Volcan": {
         "stats": {
-            "for": 350
+            "for": 600
         },
         "icon": ":volcano:"
     },
     "Branche": {
         "stats": {
-            "def": 60
+            "def": 80
         },
         "icon": ":herb:"
     },
     "Arbre": {
         "stats": {
-            "def": 700
+            "def": 1200
         },
         "icon": ":deciduous_tree:"
     },
     "Mer": {
         "stats": {
-            "pv": 3750
+            "pv": 5000
         },
         "icon": ":sweat_drops:"
     },
     "Ocean": {
         "stats": {
-            "pv": 43750
+            "pv": 75000
         },
         "icon": ":ocean:"
     }

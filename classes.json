@@ -2,13 +2,13 @@
     "assassin": {
         "name": "Assassin",
         "icon": ":dagger:",
-        "description": "Spécialisé dans l'art de tuer, vous infligerez plus de dégats quand la cible à moins de 50% de sa vie",
+        "description": "Spécialisé dans l'art de tuer, vous infligerez plus de dégâts quand la cible à moins de 50% de sa vie",
         "evolved": false,
 
         "evolve": {
             "name": "Faucheur d'âmes",
             "icon": ":cyclone:",
-            "description": ""
+            "description": "Maniant une faux imprégnée de l’essence des défunts, chaque âme fauchée renforce votre puissance. Plus vous semez la mort, plus votre arme devient redoutable."
         }
     },
     "econome": {
@@ -20,7 +20,7 @@
         "evolve": {
             "name": "Midas",
             "icon": ":coin:",
-            "description": ""
+            "description": "Doté du don de Midas, chaque monstre vaincu transforme ses drops en or. De plus, vous pouvez invoquer la fortune grâce à la commande !midas."
         }
     },
     "chanceux": {
@@ -32,7 +32,7 @@
         "evolve": {
             "name": "Main du destin",
             "icon": ":black_joker:",
-            "description": ""
+            "description": "La providence est de votre côté : vous avez plus de chances d’obtenir des butins de rareté supérieure sur les monstres vaincus. De plus, une mystérieuse faveur du destin peut empêcher vos tickets de la Sakura Wheel d’être consommés après utilisation."
         }
     },
     "guerrier": {
@@ -44,7 +44,7 @@
         "evolve": {
             "name": "Berserker sanglant",
             "icon": ":heart_on_fire:",
-            "description": ""
+            "description": "La rage du combat coule dans vos veines : en renonçant à votre armure, vous gagnez un bonus de 10% à votre attaque. Plus vos PV sont bas, plus votre puissance destructrice atteint son paroxysme."
         }
     },
     "gardien": {
@@ -56,7 +56,7 @@
         "evolve": {
             "name": "Sentinelle oubliée",
             "icon": ":moyai:",
-            "description": ""
+            "description": "Vous avez renoncé à l'offensive pour devenir une forteresse inébranlable. Votre défense augmente de 20%, et chaque coup reçu renvoie 10% de votre défense ainsi que 10% de l'attaque ennemie en dégâts."
         }
     },
     "druide": {
@@ -68,7 +68,7 @@
         "evolve": {
             "name": "Spécialiste runique",
             "icon": ":Legendaire:",
-            "description": ""
+            "description": "Maître des arcanes anciennes, votre affinité runique vous permet d'extraire 10% de pouvoir supplémentaire des runes. De plus, vous êtes désormais capable de matérialiser des runes ultimes, renfermant une puissance inégalée."
         }
     },
     "buffer": {
@@ -80,7 +80,7 @@
         "evolve": {
             "name": "Ange béni",
             "icon": ":angel:",
-            "description": ""
+            "description": "Messager divin du soutien, vous ne vous contentez plus de partager vos statistiques avec vos alliés : vous les renforcez également de 10%. À chaque combat remporté, une fraction de ce pouvoir demeure, vous octroyant un bonus permanent de 1% à vos statistiques."
         }
     },
     "debuffer": {
@@ -92,7 +92,7 @@
         "evolve": {
             "name": "Démon maudit",
             "icon": ":japanese_ogre:",
-            "description": ""
+            "description": "Maître des malédictions, votre présence affaiblit vos ennemis en réduisant leurs statistiques. Mais ce n’est plus suffisant : désormais, à chaque monstre vaincu, vous absorbez une partie de sa puissance pour renforcer la vôtre."
         }
     },
     "alchimiste": {
@@ -104,7 +104,7 @@
         "evolve": {
             "name": "Savant fou",
             "icon": ":dna:",
-            "description": ""
+            "description": "Prêt à repousser les limites de la science, vous modifiez votre propre ADN pour accroître votre puissance. Votre savoir inégalé vous permet de créer la légendaire potion ultime, inaccessible aux autres alchimistes."
         }
     },
     "paysan": {
@@ -116,7 +116,7 @@
         "evolve": {
             "name": "Roi tyran",
             "icon": ":crown:",
-            "description": ""
+            "description": "Au sommet de l'échelle sociale, vous imposez votre règne sur les autres. Vous imposez une taxe de 20% sur les pièces d'or reçu par les autres aventuriers lorsqu'un monstre est vaincu de plus votre croissance d'XP est multipliée par 1000% grâce à votre couronne. Personne ne pourra échapper à votre domination !"
         }
     },
     "forgeron": {
@@ -128,7 +128,7 @@
         "evolve": {
             "name": "Créateur",
             "icon": ":fleur_de_lis:",
-            "description": ""
+            "description": "Votre marteau devient un instrument de perfection, capable de façonner des pièces d'équipement qui surpassent tout ce qui existe. En tant que Créateur, vous pouvez désormais forger des armes et armures ultimes, d'une puissance inégalée."
         }
     }
 }
