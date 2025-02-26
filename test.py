@@ -764,7 +764,7 @@ async def on_message(message):
                     updated = True
             else:
                 title = 'Craft'
-                tabFields = {'Faites !craft nom_item optionnel_quantité' : '', 'Liste des crafts disponibles : ' : '', 'Gemmes d\'éveil :' : '<:Epique:1222193241022136491> Epique\n<:Legendaire:1222193258403336222> Legendaire\n', 'Runes améliorées :' : ':boom: Brasier • For+30\n:volcano: Volcan • For+350\n:herb: Branche • Def+60\n:deciduous_tree: Arbre • Def+700\n:sweat_drops: Mer • PV+3750\n:ocean: Ocean • PV+43750'}
+                tabFields = {'Faites !craft nom_item optionnel_quantité' : '', 'Liste des crafts disponibles : ' : '', 'Gemmes d\'éveil :' : '<:Epique:1222193241022136491> Epique\n<:Legendaire:1222193258403336222> Legendaire\n', 'Runes améliorées :' : ':boom: Brasier • For+40\n:volcano: Volcan • For+600\n:herb: Branche • Def+80\n:deciduous_tree: Arbre • Def+1200\n:sweat_drops: Mer • PV+5000\n:ocean: Ocean • PV+75000'}
                 color = discord.Color.lighter_grey()
                 embed = create_embed(title=title, color=color, tabFields=tabFields)
                 await message.channel.send(embed=embed)
