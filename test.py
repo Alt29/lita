@@ -208,17 +208,18 @@ class BattleView(discord.ui.View):
                     xp = battle['mob']['lvl'] * mobs[mob]['loot']['xp'] // len(players)
                     
                 player_levelup = ""
+                bonus_xp = ""
                 
                 for player in battle["players"]:
                     level_up = 0
                     log_data[player]['gold'] += gold
                     
                     now = datetime.now()
-                    
                     boosted_time = datetime.strptime(log_data[player]["xp_boosted"], "%Y-%m-%d %H:%M:%S.%f")
                     
-                    if boosted_time >= now:
+                    if boosted_time > now:
                         xp_win = xp*2
+                        bonus_xp = bonus_xp + "<@" + log_data[player]['id'] + "> + " + str(xp) + " :diamond_shape_with_a_dot_inside:\n"
                     else:
                         xp_win = xp
                         
@@ -234,13 +235,20 @@ class BattleView(discord.ui.View):
                             level_up += 1
                         else:
                             break
+                    
                     if level_up > 0:
                         player_levelup = player_levelup + "<@" + log_data[player]['id'] + "> + " + str(level_up) + " level\n"
                         
                 if player_levelup == "":
-                    tabFields = {"Récompenses à se partager :" : res}
+                    if bonus_xp == "":
+                        tabFields = {"Récompenses à se partager :" : res}
+                    else:
+                        tabFields = {"Récompenses à se partager :" : res, "Bonus boost XP :" : bonus_xp}
                 else:
-                    tabFields = {"Récompenses à se partager :" : res, "Level UP :" : player_levelup}
+                    if bonus_xp == "":
+                        tabFields = {"Récompenses à se partager :" : res, "Level UP :" : player_levelup}
+                    else:
+                        tabFields = {"Récompenses à se partager :" : res, "Bonus boost XP :" : bonus_xp, "Level UP :" : player_levelup}
 
                 title = "Victoire !"
                 color = discord.Color.green()
@@ -450,7 +458,7 @@ class BoostXPView(discord.ui.View):
             now = datetime.now()
             last_boosted_time = datetime.strptime(log_data[interaction.user.name]['xp_boosted'], "%Y-%m-%d %H:%M:%S.%f")
             
-            if last_boosted_time >= now:
+            if last_boosted_time > now:
                 choice_date = last_boosted_time
             else:
                 choice_date = now
@@ -1853,7 +1861,7 @@ def train_action(author_name, author_icon, global_name):
     
     now = datetime.now()
     boosted_time = datetime.strptime(log_data[author_name]["xp_boosted"], "%Y-%m-%d %H:%M:%S.%f")
-    if boosted_time >= now:
+    if boosted_time > now:
         xp_win = alea*2
     else:
         xp_win = alea
@@ -1872,12 +1880,17 @@ def train_action(author_name, author_icon, global_name):
             level_up += 1
         else:
             break
-        
+    
+    if xp_win == alea*2:
+        gain_xp = str(alea) + " :diamond_shape_with_a_dot_inside: + Bonus boost XP : " +  str(alea) + " :diamond_shape_with_a_dot_inside:"
+    else:
+        gain_xp = str(alea) + " :diamond_shape_with_a_dot_inside:"
+    
     if level_up > 0:
         player_levelup = "<@" + log_data[author_name]['id'] + "> + " + str(level_up) + " level"
-        tabFields = {'Vous gagnez : ' : str(xp_win) + ' :diamond_shape_with_a_dot_inside:0', "Level UP :" : player_levelup}
+        tabFields = {'Vous gagnez : ' : gain_xp, "Level UP :" : player_levelup}
     else:
-        tabFields = {'Vous gagnez : ' : str(xp_win) + ' :diamond_shape_with_a_dot_inside:'}
+        tabFields = {'Vous gagnez : ' : gain_xp}
         
 
     
