@@ -1,11 +1,13 @@
 {
     "mob": {
-        "name": "Zombi_demon",
-        "lvl": 59
+        "name": "Meute_de_loups",
+        "lvl": 30
     },
     "players": {
-        "junglepingouy": "junglepingouy",
         "altan3062": "altan3062",
-        "slashoroide": "slashoroide"
-    }
+        "akastukye": "akastukye",
+        "slashoroide": "slashoroide",
+        "terminator850": "terminator850"
+    },
+    "status": "victoire"
 }

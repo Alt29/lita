@@ -1773,26 +1773,26 @@ def explore_action(author_name, author_icon, global_name):
     else:
         if random_number <= 550:
             title = 'II • La Forêt des Tentations'
-            alea = alea + 50 + rank * 105
+            alea = alea + 50 + rank * 102
         else:
             if random_number <= 750:
                 title = 'III • Les Grandes Falaises'
-                alea = alea + 100 + rank * 115 
+                alea = alea + 100 + rank * 104 
             else:
                 if random_number <= 870:
                     title = 'IV • Les Profondeurs de la Coupe'
-                    alea = alea + 200 + rank * 135
+                    alea = alea + 200 + rank * 108
                 else:
                     if random_number <= 950:
                         title = 'V • La Mer des Cadavres'
-                        alea = alea + 400 + rank * 175
+                        alea = alea + 400 + rank * 116
                     else:
                         if random_number <= 990:
                             title = 'VI • La Capitale des Non-Retournés'
-                            alea = alea + 600 + rank * 250
+                            alea = alea + 800 + rank * 132
                         else:
                             title = 'VII • La Dernière Épreuve'
-                            alea = alea + 1000 + rank * 400
+                            alea = alea + 1600 + rank * 264
 
     alea = alea * (rank + 1)
 
@@ -1835,30 +1835,30 @@ def train_action(author_name, author_icon, global_name):
     else:
         if random_number <= 400:
             title = 'II • La Porte de l\'Énergie'
-            alea = alea + 50 + rank * 105
+            alea = alea + 50 + rank * 102
         else:
             if random_number <= 600:
                 title = 'III • La Porte de la Vie'
-                alea = alea + 100 + rank * 115 
+                alea = alea + 100 + rank * 104 
             else:
                 if random_number <= 750:
                     title = 'IV • La Porte de la Douleur'
-                    alea = alea + 200 + rank * 135
+                    alea = alea + 200 + rank * 108
                 else:
                     if random_number <= 870:
                         title = 'V • La Porte de la Forêt'
-                        alea = alea + 400 + rank * 175
+                        alea = alea + 400 + rank * 116
                     else:
                         if random_number <= 950:
                             title = 'VI • La Porte de la Vision'
-                            alea = alea + 600 + rank * 250
+                            alea = alea + 800 + rank * 132
                         else:
                             if random_number <= 990:
                                 title = 'VII • La Porte de l\'Insanité'
-                                alea = alea + 1000 + rank * 400
+                                alea = alea + 1600 + rank * 164
                             else:
                                 title = 'VIII • La Porte de la Mort'
-                                alea = alea + 1800 + rank * 700
+                                alea = alea + 3200 + rank * 328
 
     alea = alea * (rank + 1) * 5
     
