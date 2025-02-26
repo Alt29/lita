@@ -219,7 +219,7 @@ class BattleView(discord.ui.View):
                     
                     if boosted_time > now:
                         xp_win = xp*2
-                        bonus_xp = bonus_xp + "<@" + log_data[player]['id'] + "> + " + str(xp) + " :diamond_shape_with_a_dot_inside:\n"
+                        bonus_xp = bonus_xp + "<@" + str(log_data[player]['id']) + "> + " + str(xp) + " :diamond_shape_with_a_dot_inside:\n"
                     else:
                         xp_win = xp
                         
@@ -237,7 +237,7 @@ class BattleView(discord.ui.View):
                             break
                     
                     if level_up > 0:
-                        player_levelup = player_levelup + "<@" + log_data[player]['id'] + "> + " + str(level_up) + " level\n"
+                        player_levelup = player_levelup + "<@" + str(log_data[player]['id']) + "> + " + str(level_up) + " level\n"
                         
                 if player_levelup == "":
                     if bonus_xp == "":
@@ -781,21 +781,19 @@ async def on_message(message):
         global_name = message.author.global_name
         command_and_argument = message.content.split(maxsplit=1)
         if len(command_and_argument) == 2:
-            if name != 'slashoroide':
-                command, cible = command_and_argument
-                if cible != '<@' + str(log_data['slashoroide']['id']) + '>':
-                    for player in log_data:
-                        if cible == '<@' + str(log_data[player]['id']) + '>':
-                            name = player
-                            if 'avatar' in log_data[player]:
-                                avatar = log_data[player]['avatar']
-                            else:
-                                avatar = None
+            command, cible = command_and_argument
+            for player in log_data:
+                if cible == '<@' + str(log_data[player]['id']) + '>':
+                    name = player
+                    if 'avatar' in log_data[player]:
+                        avatar = log_data[player]['avatar']
+                    else:
+                        avatar = None
 
-                            if 'global_name' in log_data[player]:
-                                global_name = log_data[player]['global_name']
-                            else:
-                                global_name = None
+                    if 'global_name' in log_data[player]:
+                        global_name = log_data[player]['global_name']
+                    else:
+                        global_name = None
 
         embed = cd_action(name, avatar, global_name)
         await message.channel.send(embed=embed)
@@ -1771,30 +1769,30 @@ def explore_action(author_name, author_icon, global_name):
     random_number = random.randint(1, 1000)
     if random_number <= 300:
         title = 'I • L\'Antre de l\'Ours'
-        alea = alea + rank * 100
+        alea = alea + 25 + rank * 100
     else:
         if random_number <= 550:
             title = 'II • La Forêt des Tentations'
-            alea = alea + 100 + rank * 100
+            alea = alea + 50 + rank * 105
         else:
             if random_number <= 750:
                 title = 'III • Les Grandes Falaises'
-                alea = alea + 200 + rank * 100
+                alea = alea + 100 + rank * 115 
             else:
                 if random_number <= 870:
                     title = 'IV • Les Profondeurs de la Coupe'
-                    alea = alea + 300 + rank * 100
+                    alea = alea + 200 + rank * 135
                 else:
                     if random_number <= 950:
                         title = 'V • La Mer des Cadavres'
-                        alea = alea + 400 + rank * 100
+                        alea = alea + 400 + rank * 175
                     else:
                         if random_number <= 990:
                             title = 'VI • La Capitale des Non-Retournés'
-                            alea = alea + 500 + rank * 100
+                            alea = alea + 600 + rank * 250
                         else:
                             title = 'VII • La Dernière Épreuve'
-                            alea = alea + 900 + rank * 500
+                            alea = alea + 1000 + rank * 400
 
     alea = alea * (rank + 1)
 
@@ -1824,40 +1822,45 @@ def compter_action(author_name, author_icon, global_name, record):
 def train_action(author_name, author_icon, global_name):
     level_xp = [500, 600, 720, 864, 1036, 1243, 1492, 1791, 2149, 2578, 3093, 3711, 4453, 5343, 6411, 7693, 9231, 11077, 13293, 15951, 19141, 22969, 27563, 33075, 39690, 47628, 57153, 68584, 82300, 98760, 118512, 142214, 170657, 204788, 245746, 294895, 353873, 424647, 509576, 611491, 733790, 880548, 1056657, 1267989, 1521587, 1825904, 2191085, 2629302, 3155163, 3786195, 4543434, 5452120, 6542544, 7851052, 9421262, 11305514, 13566617, 16279940, 19535928, 23443113, 28131736, 33758083, 40509700, 48611640, 58333968, 70000762, 84000914, 100801096, 120961315, 145153578, 174184293, 209021151, 250825381, 301090457, 361308548, 433570258, 520284309, 624341171, 749209405, 899051286, 1078861543, 1294633852, 1553560622, 1864272746, 2237127295, 2684552754, 3221463305, 3865755966, 4638907159, 5566688591, 6680026309, 8016031570, 9619237884, 11543158461, 13851790153, 16622148183, 19946577820, 23935893384, 28723072061, 34467686474, 41361223769, 49633468522, 59560162226, 71472194671, 85766633605, 102919960326, 123503952391, 148204742869, 177845691442, 213414829731]
 
-    random_number = random.randint(1, 2550)
-    if random_number <= 770:
+    rank = log_data[author_name]['rank']
+    num = (rank + 1) * 100
+    num_90 = (num * 90) // 100
+    num_110 = (num * 110) // 100
+    alea = random.randint(num_90, num_110)
+
+    random_number = random.randint(1, 1000)
+    if random_number <= 200:
         title = 'I • La Porte de l\'Ouverture'
-        alea = random.randint(250, 450)
+        alea = alea + 25 + rank * 100
     else:
-        if random_number <= 1300:
+        if random_number <= 400:
             title = 'II • La Porte de l\'Énergie'
-            alea = random.randint(450, 700)
+            alea = alea + 50 + rank * 105
         else:
-            if random_number <= 1690:
+            if random_number <= 600:
                 title = 'III • La Porte de la Vie'
-                alea = random.randint(700, 1200)
+                alea = alea + 100 + rank * 115 
             else:
-                if random_number <= 1950:
+                if random_number <= 750:
                     title = 'IV • La Porte de la Douleur'
-                    alea = random.randint(1200, 2000)
+                    alea = alea + 200 + rank * 135
                 else:
-                    if random_number <= 2160:
+                    if random_number <= 870:
                         title = 'V • La Porte de la Forêt'
-                        alea = random.randint(2000, 2600)
+                        alea = alea + 400 + rank * 175
                     else:
-                        if random_number <= 2330:
+                        if random_number <= 950:
                             title = 'VI • La Porte de la Vision'
-                            alea = random.randint(2600, 3500)
+                            alea = alea + 600 + rank * 250
                         else:
-                            if random_number <= 2450:
+                            if random_number <= 990:
                                 title = 'VII • La Porte de l\'Insanité'
-                                alea = random.randint(3500, 6000)
+                                alea = alea + 1000 + rank * 400
                             else:
                                 title = 'VIII • La Porte de la Mort'
-                                alea = random.randint(6000, 7000)
+                                alea = alea + 1800 + rank * 700
 
-    alea = alea * max(log_data[author_name]['rank'] * 4, 1)
-    alea = alea // 4
+    alea = alea * (rank + 1) * 5
     
     now = datetime.now()
     boosted_time = datetime.strptime(log_data[author_name]["xp_boosted"], "%Y-%m-%d %H:%M:%S.%f")
@@ -1887,7 +1890,7 @@ def train_action(author_name, author_icon, global_name):
         gain_xp = str(alea) + " :diamond_shape_with_a_dot_inside:"
     
     if level_up > 0:
-        player_levelup = "<@" + log_data[author_name]['id'] + "> + " + str(level_up) + " level"
+        player_levelup = "<@" + str(log_data[author_name]['id']) + "> + " + str(level_up) + " level"
         tabFields = {'Vous gagnez : ' : gain_xp, "Level UP :" : player_levelup}
     else:
         tabFields = {'Vous gagnez : ' : gain_xp}

@@ -1,13 +1,11 @@
 {
     "mob": {
-        "name": "Golem",
-        "lvl": 50
+        "name": "Zombi_demon",
+        "lvl": 59
     },
     "players": {
+        "junglepingouy": "junglepingouy",
         "altan3062": "altan3062",
-        "slashoroide": "slashoroide",
-        "akastukye": "akastukye",
-        "terminator850": "terminator850"
-    },
-    "status": "victoire"
+        "slashoroide": "slashoroide"
+    }
 }
