@@ -1,13 +1,13 @@
 {
     "mob": {
-        "name": "Golem_de_vent",
-        "lvl": 143
+        "name": "Golem",
+        "lvl": 50
     },
     "players": {
-        "akastukye": "akastukye",
-        "junglepingouy": "junglepingouy",
         "altan3062": "altan3062",
-        "slashoroide": "slashoroide"
+        "slashoroide": "slashoroide",
+        "akastukye": "akastukye",
+        "terminator850": "terminator850"
     },
-    "status": "defaite"
+    "status": "victoire"
 }
