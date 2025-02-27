@@ -28,7 +28,7 @@
             }
         },
         "stats": {
-            "for": 30
+            "for": 40
         },
         "quantity": 1,
         "icon": ":boom:"
@@ -42,7 +42,7 @@
             }
         },
         "stats": {
-            "for": 350
+            "for": 600
         },
         "quantity": 1,
         "icon": ":volcano:"
@@ -56,7 +56,7 @@
             }
         },
         "stats": {
-            "def": 60
+            "def": 80
         },
         "quantity": 1,
         "icon": ":herb:"
@@ -70,7 +70,7 @@
             }
         },
         "stats": {
-            "def": 700
+            "def": 1200
         },
         "quantity": 1,
         "icon": ":deciduous_tree:"
@@ -84,7 +84,7 @@
             }
         },
         "stats": {
-            "pv": 3750
+            "pv": 5000
         },
         "quantity": 1,
         "icon": ":sweat_drops:"
@@ -98,7 +98,7 @@
             }
         },
         "stats": {
-            "pv": 43750
+            "pv": 75000
         },
         "quantity": 1,
         "icon": ":ocean:"

@@ -1767,32 +1767,32 @@ def explore_action(author_name, author_icon, global_name):
     alea = random.randint(num_90, num_110)
     
     random_number = random.randint(1, 1000)
-    if random_number <= 300:
+    if random_number <= 210:
         title = 'I • L\'Antre de l\'Ours'
-        alea = alea + 25 + rank * 100
+        alea = alea + 25 + rank * 70
     else:
-        if random_number <= 550:
+        if random_number <= 410:
             title = 'II • La Forêt des Tentations'
-            alea = alea + 50 + rank * 102
+            alea = alea + 50 + rank * 100
         else:
-            if random_number <= 750:
+            if random_number <= 590:
                 title = 'III • Les Grandes Falaises'
-                alea = alea + 100 + rank * 104 
+                alea = alea + 100 + rank * 130 
             else:
-                if random_number <= 870:
+                if random_number <= 750:
                     title = 'IV • Les Profondeurs de la Coupe'
-                    alea = alea + 200 + rank * 108
+                    alea = alea + 200 + rank * 160
                 else:
-                    if random_number <= 950:
+                    if random_number <= 890:
                         title = 'V • La Mer des Cadavres'
-                        alea = alea + 400 + rank * 116
+                        alea = alea + 400 + rank * 190
                     else:
-                        if random_number <= 990:
+                        if random_number <= 970:
                             title = 'VI • La Capitale des Non-Retournés'
-                            alea = alea + 800 + rank * 132
+                            alea = alea + 800 + rank * 250
                         else:
                             title = 'VII • La Dernière Épreuve'
-                            alea = alea + 1600 + rank * 264
+                            alea = alea + 1600 + rank * 400
 
     alea = alea * (rank + 1)
 
@@ -1829,36 +1829,36 @@ def train_action(author_name, author_icon, global_name):
     alea = random.randint(num_90, num_110)
 
     random_number = random.randint(1, 1000)
-    if random_number <= 200:
+    if random_number <= 220:
         title = 'I • La Porte de l\'Ouverture'
-        alea = alea + 25 + rank * 100
+        alea = alea + 25 + rank * 70
     else:
         if random_number <= 400:
             title = 'II • La Porte de l\'Énergie'
-            alea = alea + 50 + rank * 102
+            alea = alea + 50 + rank * 100
         else:
-            if random_number <= 600:
+            if random_number <= 560:
                 title = 'III • La Porte de la Vie'
-                alea = alea + 100 + rank * 104 
+                alea = alea + 100 + rank * 130 
             else:
-                if random_number <= 750:
+                if random_number <= 700:
                     title = 'IV • La Porte de la Douleur'
-                    alea = alea + 200 + rank * 108
+                    alea = alea + 200 + rank * 160
                 else:
-                    if random_number <= 870:
+                    if random_number <= 820:
                         title = 'V • La Porte de la Forêt'
-                        alea = alea + 400 + rank * 116
+                        alea = alea + 400 + rank * 190
                     else:
-                        if random_number <= 950:
+                        if random_number <= 910:
                             title = 'VI • La Porte de la Vision'
-                            alea = alea + 800 + rank * 132
+                            alea = alea + 800 + rank * 230
                         else:
-                            if random_number <= 990:
+                            if random_number <= 970:
                                 title = 'VII • La Porte de l\'Insanité'
-                                alea = alea + 1600 + rank * 164
+                                alea = alea + 1600 + rank * 300
                             else:
                                 title = 'VIII • La Porte de la Mort'
-                                alea = alea + 3200 + rank * 328
+                                alea = alea + 3200 + rank * 450
 
     alea = alea * (rank + 1) * 5
     
