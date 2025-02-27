@@ -60,6 +60,10 @@
             "Volcan": {
                 "quantity": 1,
                 "icon": ":volcano:"
+            },
+            "PointXP": {
+                "quantity": 40,
+                "icon": ":white_flower:"
             }
         },
         "level": {
@@ -67,9 +71,9 @@
             "xp": 221162
         },
         "stats": {
-            "pv": 31529,
-            "for": 458,
-            "def": 424
+            "pv": 32250,
+            "for": 745,
+            "def": 398
         },
         "deaths": 0,
         "penality": 0,
@@ -138,6 +142,10 @@
             "BoostXP": {
                 "quantity": 1,
                 "icon": ":diamond_shape_with_a_dot_inside:"
+            },
+            "PointXP": {
+                "quantity": 36,
+                "icon": ":white_flower:"
             }
         },
         "level": {
@@ -145,9 +153,9 @@
             "xp": 314743
         },
         "stats": {
-            "pv": 26778,
-            "for": 184,
-            "def": 352
+            "pv": 26500,
+            "for": 145,
+            "def": 310
         },
         "deaths": 0,
         "penality": 0,
@@ -183,15 +191,20 @@
         "!explore": "2025-02-27 10:52:59.308277",
         "!train": "2025-02-27 10:53:01.463192",
         "xp_boosted": "2024-01-01 11:11:11.111111",
-        "bag": {},
+        "bag": {
+            "PointXP": {
+                "quantity": 37,
+                "icon": ":white_flower:"
+            }
+        },
         "level": {
             "lvl": 37,
             "xp": 142051
         },
         "stats": {
-            "pv": 1073,
-            "for": 47,
-            "def": 47
+            "pv": 1000,
+            "for": 10,
+            "def": 10
         },
         "deaths": 0,
         "penality": 0,
@@ -253,6 +266,10 @@
             "Volcan": {
                 "quantity": 6,
                 "icon": ":volcano:"
+            },
+            "PointXP": {
+                "quantity": 42,
+                "icon": ":white_flower:"
             }
         },
         "level": {
@@ -260,9 +277,9 @@
             "xp": 851482
         },
         "stats": {
-            "pv": 157629,
-            "for": 2467,
-            "def": 1663
+            "pv": 156500,
+            "for": 3995,
+            "def": 1610
         },
         "deaths": 0,
         "penality": 0,
@@ -321,6 +338,10 @@
                 "quantity": 1,
                 "icon": ":dagger:",
                 "rank": 6
+            },
+            "PointXP": {
+                "quantity": 38,
+                "icon": ":white_flower:"
             }
         },
         "level": {
@@ -328,9 +349,9 @@
             "xp": 353057
         },
         "stats": {
-            "pv": 86910,
-            "for": 336,
-            "def": 954
+            "pv": 86500,
+            "for": 295,
+            "def": 910
         },
         "deaths": 0,
         "penality": 0,
@@ -519,6 +540,10 @@
             "Branche": {
                 "quantity": 2,
                 "icon": ":herb:"
+            },
+            "PointXP": {
+                "quantity": 29,
+                "icon": ":white_flower:"
             }
         },
         "level": {
@@ -636,6 +661,10 @@
             "Volcan": {
                 "quantity": 1,
                 "icon": ":volcano:"
+            },
+            "PointXP": {
+                "quantity": 39,
+                "icon": ":white_flower:"
             }
         },
         "level": {
@@ -643,9 +672,9 @@
             "xp": 116412
         },
         "stats": {
-            "pv": 122287,
-            "for": 657,
-            "def": 1307
+            "pv": 121500,
+            "for": 945,
+            "def": 1260
         },
         "deaths": 0,
         "penality": 0,

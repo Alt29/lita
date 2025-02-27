@@ -189,5 +189,8 @@
             "pv": 75000
         },
         "icon": ":ocean:"
+    },
+    "PointXP": {
+        "icon": ":white_flower:"
     }
 }

@@ -229,9 +229,12 @@ class BattleView(discord.ui.View):
                         if log_data[player]['level']['xp'] > lvl_xp:
                             log_data[player]['level']['xp'] -= lvl_xp
                             log_data[player]['level']['lvl'] += 1
-                            log_data[player]['stats']['pv'] = int(log_data[player]['stats']['pv'] * 1.001) + 1
-                            log_data[player]['stats']['for'] = int(log_data[player]['stats']['for'] * 1.001) + 1
-                            log_data[player]['stats']['def'] = int(log_data[player]['stats']['def'] * 1.001) + 1
+                            
+                            if "PointXP" in log_data[player]['bag']:
+                                log_data[player]['bag']['PointXP'] += 1
+                            else:
+                                log_data[player]['bag']['PointXP'] = 1
+                                
                             level_up += 1
                         else:
                             break
@@ -1877,9 +1880,12 @@ def train_action(author_name, author_icon, global_name):
         if log_data[author_name]['level']['xp'] > lvl_xp:
             log_data[author_name]['level']['xp'] -= lvl_xp
             log_data[author_name]['level']['lvl'] += 1
-            log_data[author_name]['stats']['pv'] = int(log_data[author_name]['stats']['pv'] * 1.001) + 1
-            log_data[author_name]['stats']['for'] = int(log_data[author_name]['stats']['for'] * 1.001) + 1
-            log_data[author_name]['stats']['def'] = int(log_data[author_name]['stats']['def'] * 1.001) + 1
+            
+            if "PointXP" in log_data[author_name]['bag']:
+                log_data[author_name]['bag']['PointXP'] += 1
+            else:
+                log_data[author_name]['bag']['PointXP'] = 1
+            
             level_up += 1
         else:
             break
