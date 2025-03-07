@@ -38,7 +38,7 @@
             "def": 10
         },
         "loot": {
-            "gold": 120,
+            "gold": 110,
             "xp": 120,
             "special_0": {
                 "nom": "Os de squelette",
@@ -100,7 +100,7 @@
             "def": 12
         },
         "loot": {
-            "gold": 130,
+            "gold": 120,
             "xp": 100,
             "special_0": {
                 "nom": "Silex",
@@ -127,11 +127,11 @@
         "name": "Grand gobelin",
         "stats": {
             "pv": 750,
-            "for": 6,
+            "for": 22,
             "def": 20
         },
         "loot": {
-            "gold": 300,
+            "gold": 195,
             "xp": 500,
             "special_0": {
                 "nom": "Tissu",
@@ -158,11 +158,11 @@
         "name": "Zombi démon",
         "stats": {
             "pv": 666,
-            "for": 17,
+            "for": 27,
             "def": 0
         },
         "loot": {
-            "gold": 250,
+            "gold": 180,
             "xp": 600,
             "special_0": {
                 "nom": "Chair putrifiée",
@@ -188,12 +188,12 @@
     "Golem": {
         "name": "Golem",
         "stats": {
-            "pv": 1000,
-            "for": 3,
-            "def": 23
+            "pv": 1200,
+            "for": 6,
+            "def": 52
         },
         "loot": {
-            "gold": 350,
+            "gold": 195,
             "xp": 425,
             "special_0": {
                 "nom": "Pierre",
@@ -220,11 +220,11 @@
         "name": "Chien enragé",
         "stats": {
             "pv": 500,
-            "for": 16,
+            "for": 30,
             "def": 8
         },
         "loot": {
-            "gold": 300,
+            "gold": 175,
             "xp": 600,
             "special_0": {
                 "nom": "Peau carbonisée",
@@ -250,12 +250,12 @@
     "Roi_des_slimes": {
         "name": "Roi des slimes",
         "stats": {
-            "pv": 4500,
+            "pv": 19000,
             "for": 1,
             "def": 1
         },
         "loot": {
-            "gold": 1000,
+            "gold": 265,
             "xp": 1000,
             "special_0": {
                 "nom": "Gelée",
@@ -281,12 +281,12 @@
     "Golem_de_vent": {
         "name": "Golem de vent",
         "stats": {
-            "pv": 400,
-            "for": 18,
-            "def": 33
+            "pv": 7000,
+            "for": 45,
+            "def": 46
         },
         "loot": {
-            "gold": 700,
+            "gold": 255,
             "xp": 1600,
             "special_0": {
                 "nom": "Pierre vent",
@@ -312,12 +312,12 @@
     "Golem_de_feu": {
         "name": "Golem de feu",
         "stats": {
-            "pv": 1200,
-            "for": 20,
-            "def": 17
+            "pv": 7800,
+            "for": 60,
+            "def": 40
         },
         "loot": {
-            "gold": 900,
+            "gold": 245,
             "xp": 1300,
             "special_0": {
                 "nom": "Pierre feu",
@@ -343,13 +343,13 @@
     "Golem_d_eau": {
         "name": "Golem d'eau",
         "stats": {
-            "pv": 4000,
-            "for": 6,
+            "pv": 16000,
+            "for": 18,
             "def": 1
         },
         "loot": {
-            "gold": 500,
-            "xp": 2200,
+            "gold": 235,
+            "xp": 2000,
             "special_0": {
                 "nom": "Pierre eau",
                 "description": "",
@@ -374,13 +374,13 @@
     "Golem_de_plante": {
         "name": "Golem de plante",
         "stats": {
-            "pv": 3000,
-            "for": 2,
-            "def": 25
+            "pv": 7000,
+            "for": 1,
+            "def": 125
         },
         "loot": {
-            "gold": 200,
-            "xp": 3000,
+            "gold": 225,
+            "xp": 4000,
             "special_0": {
                 "nom": "Pierre plante",
                 "description": "",
@@ -405,12 +405,12 @@
     "Golem_de_foudre": {
         "name": "Golem de foudre",
         "stats": {
-            "pv": 750,
-            "for": 30,
-            "def": 5
+            "pv": 5750,
+            "for": 95,
+            "def": 10
         },
         "loot": {
-            "gold": 600,
+            "gold": 400,
             "xp": 1900,
             "special_0": {
                 "nom": "Pierre foudre",
@@ -436,12 +436,12 @@
     "Phenix_de_feu": {
         "name": "Phenix de feu",
         "stats": {
-            "pv": 2000,
-            "for": 30,
-            "def": 28
+            "pv": 8000,
+            "for": 100,
+            "def": 170
         },
         "loot": {
-            "gold": 1400,
+            "gold": 560,
             "xp": 4100,
             "special_0": {
                 "nom": "Cendre feu",
@@ -467,12 +467,12 @@
     "Phenix_de_glace": {
         "name": "Phenix de glace",
         "stats": {
-            "pv": 2750,
-            "for": 15,
-            "def": 46
+            "pv": 11500,
+            "for": 60,
+            "def": 180
         },
         "loot": {
-            "gold": 1200,
+            "gold": 540,
             "xp": 4500,
             "special_0": {
                 "nom": "Cendre glace",
@@ -498,12 +498,12 @@
     "Phenix_de_foudre": {
         "name": "Phenix de foudre",
         "stats": {
-            "pv": 1000,
-            "for": 50,
-            "def": 4
+            "pv": 4500,
+            "for": 196,
+            "def": 64
         },
         "loot": {
-            "gold": 1300,
+            "gold": 580,
             "xp": 4300,
             "special_0": {
                 "nom": "Cendre foudre",
@@ -529,12 +529,12 @@
     "Demon_intermediaire": {
         "name": "Démon intermédiaire",
         "stats": {
-            "pv": 3333,
-            "for": 33,
-            "def": 3
+            "pv": 6666,
+            "for": 66,
+            "def": 333
         },
         "loot": {
-            "gold": 1666,
+            "gold": 500,
             "xp": 3700,
             "special_0": {
                 "nom": "Corne de démon",
@@ -560,12 +560,12 @@
     "Bebe_dragon": {
         "name": "Bébé dragon",
         "stats": {
-            "pv": 4000,
-            "for": 16,
-            "def": 26
+            "pv": 13500,
+            "for": 75,
+            "def": 150
         },
         "loot": {
-            "gold": 1700,
+            "gold": 575,
             "xp": 3600,
             "special_0": {
                 "nom": "Ecaille de bébé dragon",
@@ -591,12 +591,12 @@
     "Serpent_geant": {
         "name": "Serpent géant",
         "stats": {
-            "pv": 500,
-            "for": 40,
-            "def": 33
+            "pv": 5000,
+            "for": 85,
+            "def": 150
         },
         "loot": {
-            "gold": 1100,
+            "gold": 525,
             "xp": 4800,
             "special_0": {
                 "nom": "Peau de serpent",
@@ -622,12 +622,12 @@
     "Troll_des_neiges": {
         "name": "Troll des neiges",
         "stats": {
-            "pv": 3000,
-            "for": 25,
-            "def": 25
+            "pv": 12000,
+            "for": 100,
+            "def": 100
         },
         "loot": {
-            "gold": 1500,
+            "gold": 550,
             "xp": 4100,
             "special_0": {
                 "nom": "Fourrure de troll",
@@ -653,12 +653,12 @@
     "Dragone_de_glace": {
         "name": "Dragone de glace",
         "stats": {
-            "pv": 6250,
-            "for": 50,
-            "def": 200
+            "pv": 20000,
+            "for": 180,
+            "def": 350
         },
         "loot": {
-            "gold": 5000,
+            "gold": 1500,
             "xp": 20000,
             "special_0": {
                 "nom": "Ecaille du dragon de glace",
@@ -684,12 +684,12 @@
     "Dragon_de_feu": {
         "name": "Dragon de feu",
         "stats": {
-            "pv": 6250,
-            "for": 100,
-            "def": 100
+            "pv": 20000,
+            "for": 300,
+            "def": 200
         },
         "loot": {
-            "gold": 5000,
+            "gold": 1500,
             "xp": 20000,
             "special_0": {
                 "nom": "Ecaille du dragon de feu",
@@ -715,13 +715,13 @@
     "Devoreur_d_ames": {
         "name": "Dévoreur d'âmes",
         "stats": {
-            "pv": 10000,
-            "for": 200,
-            "def": 240
+            "pv": 75000,
+            "for": 750,
+            "def": 1500
         },
         "loot": {
-            "gold": 10000,
-            "xp": 20000,
+            "gold": 5000,
+            "xp": 30000,
             "special_0": {
                 "nom": "Aura impossante",
                 "description": "Vous réduissez la force et la défence de vos ennemis",

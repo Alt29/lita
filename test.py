@@ -231,9 +231,9 @@ class BattleView(discord.ui.View):
                             log_data[player]['level']['lvl'] += 1
                             
                             if "PointXP" in log_data[player]['bag']:
-                                log_data[player]['bag']['PointXP'] += 1
+                                log_data[player]['bag']['PointXP']["quantity"] += 1
                             else:
-                                log_data[player]['bag']['PointXP'] = 1
+                                log_data[player]['bag']['PointXP'] = {"quantity": 1, "icon": ":white_flower:"}
                                 
                             level_up += 1
                         else:
@@ -1772,30 +1772,30 @@ def explore_action(author_name, author_icon, global_name):
     random_number = random.randint(1, 1000)
     if random_number <= 210:
         title = 'I • L\'Antre de l\'Ours'
-        alea = alea + 25 + rank * 70
+        alea = alea + 25 + rank * 40
     else:
         if random_number <= 410:
             title = 'II • La Forêt des Tentations'
-            alea = alea + 50 + rank * 100
+            alea = alea + 50 + rank * 90
         else:
             if random_number <= 590:
                 title = 'III • Les Grandes Falaises'
-                alea = alea + 100 + rank * 130 
+                alea = alea + 100 + rank * 140 
             else:
                 if random_number <= 750:
                     title = 'IV • Les Profondeurs de la Coupe'
-                    alea = alea + 200 + rank * 160
+                    alea = alea + 200 + rank * 190
                 else:
                     if random_number <= 890:
                         title = 'V • La Mer des Cadavres'
-                        alea = alea + 400 + rank * 190
+                        alea = alea + 400 + rank * 240
                     else:
                         if random_number <= 970:
                             title = 'VI • La Capitale des Non-Retournés'
-                            alea = alea + 800 + rank * 250
+                            alea = alea + 800 + rank * 300
                         else:
                             title = 'VII • La Dernière Épreuve'
-                            alea = alea + 1600 + rank * 400
+                            alea = alea + 1600 + rank * 500
 
     alea = alea * (rank + 1)
 
@@ -1834,34 +1834,34 @@ def train_action(author_name, author_icon, global_name):
     random_number = random.randint(1, 1000)
     if random_number <= 220:
         title = 'I • La Porte de l\'Ouverture'
-        alea = alea + 25 + rank * 70
+        alea = alea + 25 + rank * 40
     else:
         if random_number <= 400:
             title = 'II • La Porte de l\'Énergie'
-            alea = alea + 50 + rank * 100
+            alea = alea + 50 + rank * 90
         else:
             if random_number <= 560:
                 title = 'III • La Porte de la Vie'
-                alea = alea + 100 + rank * 130 
+                alea = alea + 100 + rank * 140 
             else:
                 if random_number <= 700:
                     title = 'IV • La Porte de la Douleur'
-                    alea = alea + 200 + rank * 160
+                    alea = alea + 200 + rank * 190
                 else:
                     if random_number <= 820:
                         title = 'V • La Porte de la Forêt'
-                        alea = alea + 400 + rank * 190
+                        alea = alea + 400 + rank * 240
                     else:
                         if random_number <= 910:
                             title = 'VI • La Porte de la Vision'
-                            alea = alea + 800 + rank * 230
+                            alea = alea + 800 + rank * 290
                         else:
                             if random_number <= 970:
                                 title = 'VII • La Porte de l\'Insanité'
-                                alea = alea + 1600 + rank * 300
+                                alea = alea + 1600 + rank * 350
                             else:
                                 title = 'VIII • La Porte de la Mort'
-                                alea = alea + 3200 + rank * 450
+                                alea = alea + 3200 + rank * 500
 
     alea = alea * (rank + 1) * 5
     
@@ -1882,26 +1882,23 @@ def train_action(author_name, author_icon, global_name):
             log_data[author_name]['level']['lvl'] += 1
             
             if "PointXP" in log_data[author_name]['bag']:
-                log_data[author_name]['bag']['PointXP'] += 1
+                log_data[author_name]['bag']['PointXP']["quantity"] += 1
             else:
-                log_data[author_name]['bag']['PointXP'] = 1
-            
+                log_data[author_name]['bag']['PointXP'] = {"quantity": 1, "icon": ":white_flower:"}
+
             level_up += 1
         else:
             break
-    
-    if xp_win == alea*2:
-        gain_xp = str(alea) + " :diamond_shape_with_a_dot_inside: + Bonus boost XP : " +  str(alea) + " :diamond_shape_with_a_dot_inside:"
-    else:
-        gain_xp = str(alea) + " :diamond_shape_with_a_dot_inside:"
-    
-    if level_up > 0:
-        player_levelup = "<@" + str(log_data[author_name]['id']) + "> + " + str(level_up) + " level"
-        tabFields = {'Vous gagnez : ' : gain_xp, "Level UP :" : player_levelup}
-    else:
-        tabFields = {'Vous gagnez : ' : gain_xp}
         
+    gain_xp = f"{alea} :diamond_shape_with_a_dot_inside:"
+    player_levelup = f"<@{log_data[author_name]['id']}> + {level_up} level ({log_data[author_name]["level"]["lvl"]})" if level_up > 0 else None
 
+    tabFields = {"Vous gagnez :" : gain_xp}
+
+    if xp_win == alea * 2:
+        tabFields["Bonus boost XP :"] = gain_xp
+    if player_levelup:
+        tabFields["Level UP :"] = player_levelup
     
     color = discord.Color.green()
     footer = 'Revenez dans 3 heures !'

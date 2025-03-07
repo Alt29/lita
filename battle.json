@@ -1,12 +1,11 @@
 {
     "mob": {
-        "name": "Golem_de_vent",
-        "lvl": 109
+        "name": "Golem_de_feu",
+        "lvl": 183
     },
     "players": {
-        "ruinflex": "ruinflex",
-        "terminator850": "terminator850",
-        "altan3062": "altan3062"
+        "altan3062": "altan3062",
+        "ruinflex": "ruinflex"
     },
     "status": "victoire"
 }
