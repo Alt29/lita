@@ -1235,11 +1235,26 @@ async def cd_command(interaction: discord.Interaction, cible: str = None):
                 global_name = log_data[player].get("global_name", None)
                 break
         else:
-            await interaction.response.send_message("Il n'y a personne à appeler !", ephemeral=True)
+            await interaction.response.send_message("Cible non-trouvé !", ephemeral=True)
             return
 
     embed = cd_action(name, avatar, global_name)
     await interaction.response.send_message(embed=embed, ephemeral=True)
+
+async def time_command(message, command, cooldown):
+    author_name = message.author.name
+    check, waiting_time = check_time(author_name, command, cooldown)
+
+    if check:
+        if command == '!daily':
+            log_data[author_name]['last_daily'] = log_data[author_name][command]
+
+        log_data[author_name][command] = str(datetime.now())
+
+        return True
+    else:
+        await message.channel.send("Vous devez attendre encore " + waiting_time)
+        return False
 
 def info_action():
     tabFields = {
@@ -1587,21 +1602,6 @@ def string_time(difference):
 
     return waiting_time
 
-async def time_command(message, command, cooldown):
-    author_name = message.author.name
-    check, waiting_time = check_time(author_name, command, cooldown)
-
-    if check:
-        if command == '!daily':
-            log_data[author_name]['last_daily'] = log_data[author_name][command]
-
-        log_data[author_name][command] = str(datetime.now())
-
-        return True
-    else:
-        await message.channel.send("Vous devez attendre encore " + waiting_time)
-        return False
-
 def me_action(author_name, author_icon, global_name, type):
 
     if author_name in log_data:
@@ -1627,7 +1627,8 @@ def me_action(author_name, author_icon, global_name, type):
     else:
         rank = ['Pas d\'éveil', ':regional_indicator_f:', ':regional_indicator_e:', ':regional_indicator_d:', ':regional_indicator_c:', ':regional_indicator_b:', ':regional_indicator_a:', ':regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s: :regional_indicator_s:']
         if type == 'profil':
-            tabFields = {'Level :' : str(log_data[author_name]['level']['lvl']), 'Rang :' : rank[res], 'Stats :' : '', 'PV : ' + str(log_data[author_name]['stats']['pv']) + ' :hearts:': '', 'For : ' + str(log_data[author_name]['stats']['for']) + ' :crossed_swords:' : '', 'Def : ' + str(log_data[author_name]['stats']['def']) + ' :shield:': ''}
+            level_xp = [500, 600, 720, 864, 1036, 1243, 1492, 1791, 2149, 2578, 3093, 3711, 4453, 5343, 6411, 7693, 9231, 11077, 13293, 15951, 19141, 22969, 27563, 33075, 39690, 47628, 57153, 68584, 82300, 98760, 118512, 142214, 170657, 204788, 245746, 294895, 353873, 424647, 509576, 611491, 733790, 880548, 1056657, 1267989, 1521587, 1825904, 2191085, 2629302, 3155163, 3786195, 4543434, 5452120, 6542544, 7851052, 9421262, 11305514, 13566617, 16279940, 19535928, 23443113, 28131736, 33758083, 40509700, 48611640, 58333968, 70000762, 84000914, 100801096, 120961315, 145153578, 174184293, 209021151, 250825381, 301090457, 361308548, 433570258, 520284309, 624341171, 749209405, 899051286, 1078861543, 1294633852, 1553560622, 1864272746, 2237127295, 2684552754, 3221463305, 3865755966, 4638907159, 5566688591, 6680026309, 8016031570, 9619237884, 11543158461, 13851790153, 16622148183, 19946577820, 23935893384, 28723072061, 34467686474, 41361223769, 49633468522, 59560162226, 71472194671, 85766633605, 102919960326, 123503952391, 148204742869, 177845691442, 213414829731]
+            tabFields = {'Level :' : str(log_data[author_name]['level']['lvl']) + " [" + str(log_data[author_name]['level']['xp']) + "/" + str(level_xp[log_data[author_name]['level']['lvl']]) + "] (" + str(f"{log_data[author_name]['level']['xp'] * 100 / level_xp[log_data[author_name]['level']['lvl']]:.2f}") + " %)", 'Rang :' : rank[res], 'Stats :' : '', 'PV : ' + str(log_data[author_name]['stats']['pv']) + ' :hearts:': '', 'For : ' + str(log_data[author_name]['stats']['for']) + ' :crossed_swords:' : '', 'Def : ' + str(log_data[author_name]['stats']['def']) + ' :shield:': ''}
             color = discord.Color.dark_purple()
         else:
             bag = ''
