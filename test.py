@@ -1,5 +1,6 @@
 from pickle import FALSE
 import discord
+from discord import app_commands
 import json
 from datetime import datetime, timedelta
 import asyncio
@@ -18,6 +19,7 @@ intents.members = True
 intents.message_content = True
 
 client = discord.Client(intents=intents)
+tree = app_commands.CommandTree(client)
 
 try:
     with open("log.json", "r") as file:
@@ -70,6 +72,7 @@ except FileNotFoundError:
 @client.event
 async def on_ready():
     print("Bot is ready.")
+    await tree.sync()
     client.loop.create_task(hourly_mob())
 
 class BattleView(discord.ui.View):
@@ -1218,6 +1221,26 @@ async def on_message(message):
         with open("log.json", "w") as file:
             json.dump(log_data, file, indent=4)
 
+@tree.command(name="cd", description="Le joueur consulte ses cooldown.")
+async def cd_command(interaction: discord.Interaction, cible: str = None):
+    name = interaction.user.name
+    avatar = interaction.user.avatar
+    global_name = interaction.user.global_name
+
+    if cible:
+        for player in log_data:
+            if cible == f'<@{log_data[player]["id"]}>':
+                name = player
+                avatar = log_data[player].get("avatar", None)
+                global_name = log_data[player].get("global_name", None)
+                break
+        else:
+            await interaction.response.send_message("Il n'y a personne à appeler !", ephemeral=True)
+            return
+
+    embed = cd_action(name, avatar, global_name)
+    await interaction.response.send_message(embed=embed, ephemeral=True)
+
 def info_action():
     tabFields = {
         '!gold :' : 'Pour voir combien de gold vous avez.',
@@ -1481,8 +1504,6 @@ def classe_info_action(info_classe):
                
     return create_embed(title=title, color=color, description=description)
     
-    
-
 def get_time(author_name, command):
     time = None
 
