@@ -1,11 +1,10 @@
 {
     "mob": {
-        "name": "Golem_de_feu",
-        "lvl": 183
+        "name": "Golem",
+        "lvl": 65
     },
     "players": {
-        "altan3062": "altan3062",
-        "ruinflex": "ruinflex"
+        "altan3062": "altan3062"
     },
     "status": "victoire"
 }
