@@ -1,9 +1,10 @@
 {
     "mob": {
-        "name": "Golem",
-        "lvl": 65
+        "name": "Golem_d_eau",
+        "lvl": 212
     },
     "players": {
+        "ruinflex": "ruinflex",
         "altan3062": "altan3062"
     },
     "status": "victoire"
