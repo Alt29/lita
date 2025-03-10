@@ -69,10 +69,17 @@ try:
 except FileNotFoundError:
     classes = {}
 
+try:
+    with open("brocante.json", "r") as file:
+        brocante = json.load(file)
+except FileNotFoundError:
+    brocante = {}
+
 @client.event
 async def on_ready():
     print("Bot is ready.")
     await tree.sync()
+    print("Commandes synchronisées avec succès.")
     client.loop.create_task(hourly_mob())
 
 class BattleView(discord.ui.View):
@@ -678,7 +685,6 @@ class CraftView(discord.ui.View):
         if self.message:
             await self.message.edit(view=self)
 
-
 async def hourly_mob():
     await client.wait_until_ready()
     channel = client.get_channel(SAKURA_CHANNEL_ID)
@@ -865,10 +871,6 @@ async def on_message(message):
                 color = discord.Color.lighter_grey()
                 embed = create_embed(title=title, color=color, tabFields=tabFields)
                 await message.channel.send(embed=embed)
-
-
-
-
 
     if message.content.startswith("!materiaux") or message.content.startswith("!matériaux"):
         embed = materiaux_action()
@@ -1221,7 +1223,7 @@ async def on_message(message):
         with open("log.json", "w") as file:
             json.dump(log_data, file, indent=4)
 
-@tree.command(name="cd", description="Le joueur consulte ses cooldown.")
+@tree.command(name="cd", description="Voir les cooldown.")
 async def cd_command(interaction: discord.Interaction, cible: str = None):
     name = interaction.user.name
     avatar = interaction.user.avatar
@@ -1240,6 +1242,80 @@ async def cd_command(interaction: discord.Interaction, cible: str = None):
 
     embed = cd_action(name, avatar, global_name)
     await interaction.response.send_message(embed=embed, ephemeral=True)
+
+@tree.command(name="market", description="Voir le marché.")
+async def market_command(interaction: discord.Interaction):
+    embed = market_action()
+    await interaction.response.send_message(embed=embed, ephemeral=True)
+    
+@tree.command(name="info", description="Information sur les commandes.")
+async def info_command(interaction: discord.Interaction):
+    embed = info_action()
+    await interaction.response.send_message(embed=embed, ephemeral=True)
+
+@tree.command(name="sell", description="Vente d'items entre joueurs.")
+@app_commands.describe(item="Choisissez un item à mettre en vente", prix="Fixez un prix unitaire", quantité="Choisissez une quantité à mettre en vente")
+async def sell_command(interaction: discord.Interaction, item: str, prix: int, quantité: int = 1):
+    
+    if item == None:
+        await interaction.response.send_message("Vous n'avez pas d'items vendables.", ephemeral=True)
+        return
+    
+    if prix < 0 :
+        await interaction.response.send_message("Le prix ne peut être négatif.", ephemeral=True)
+        return
+    
+    if quantité <= 0 :
+        await interaction.response.send_message("La quantité doit être d'au moins 1.", ephemeral=True)
+        return
+    
+    if quantité > log_data[interaction.user.name]["bag"][item]["quantity"]:
+        await interaction.response.send_message("Vous n'avez pas autant d'exemplaires.", ephemeral=True)
+        return
+    else:
+        log_data[interaction.user.name]["bag"][item]["quantity"] -= quantité
+        
+        if log_data[interaction.user.name]["bag"][item]["quantity"] == 0:
+            del log_data[interaction.user.name]['bag'][item]
+        
+        if "stats" in items[item]:
+            if "pv" in items[item]["stats"]:
+                log_data[interaction.user.name]["stats"]["pv"] -= items[item]["stats"]["pv"] * quantité
+                
+            if "for" in items[item]["stats"]:
+                log_data[interaction.user.name]["stats"]["for"] -= items[item]["stats"]["for"] * quantité
+                
+            if "def" in items[item]["stats"]:
+                log_data[interaction.user.name]["stats"]["def"] -= items[item]["stats"]["def"] * quantité
+        
+        if interaction.user.name not in brocante:
+            brocante[interaction.user.name] = {"Vente 1": {"item": item, "price": prix, "quantity": quantité}}
+        else:
+            brocante[interaction.user.name]["Vente " + str(len(brocante[interaction.user.name]) + 1)] = {"item": item, "price": prix, "quantity": quantité}
+        
+    
+    with open("log.json", "w") as file:
+            json.dump(log_data, file, indent=4)
+            
+    with open("brocante.json", "w") as file:
+            json.dump(brocante, file, indent=4)
+    
+    await interaction.response.send_message(f"Vous avez mis en vente **{quantité}** **{item}** pour **{prix} pièces** !", ephemeral=True)
+
+@sell_command.autocomplete("item")
+async def item_autocomplete(interaction: discord.Interaction, current: str):
+    my_items = []
+
+    for item in log_data[interaction.user.name]["bag"]:
+        if item != "Casquette" and item != "Tshirt" and item != "Jean" and item != "Baskets" and item != "Dague" and item != "PointXP" :
+            my_items.append(item)
+    
+    suggestions = [
+        app_commands.Choice(name=item, value=item) 
+        for item in my_items if current.lower() in item.lower()
+    ][:25]
+    
+    return suggestions
 
 async def time_command(message, command, cooldown):
     author_name = message.author.name
@@ -1264,8 +1340,8 @@ def info_action():
         '!compter :' : 'Pour les tenants du record dans #compter.',
         '!explore :' : 'Explorez les profondeurs pour des golds toutes les heures.',
         '!train :' : 'Pour un entraînement digne des plus grand, gagnez de l\'xp toutes les 3h.',
-        '!cd :' : 'Pour voir vos cooldown.',
-        '!market :' : 'Pour acheter de quoi devenir plus fort.',
+        '!cd ou /cd :' : 'Pour voir vos cooldown.',
+        '!market ou /market :' : 'Pour acheter de quoi devenir plus fort.',
         '!craft :' : 'Pour crafter des items.',
         '!materiaux :' : 'Pour voir les stats des matériaux.',
         '!top-[rank/gold/eveil/level/pv/for/def] :' : 'Pour voir un classement en particulier.',
@@ -1276,8 +1352,9 @@ def info_action():
         '!send :' : "Pour envoyer de l'argent",
         '!eveil :' : 'Brisez vos limites !',
         '!sw :' : 'Tenter votre chance à la Sakura Wheel !',
-        '!classe :' : '[En travaux] :new:',
-        '!boostxp :' : 'Utilisez vos Boost XP ! :new:',
+        '!classe :' : '[En travaux] :construction:',
+        '!boostxp :' : 'Utilisez vos Boost XP !',
+        '/sell item prix quantié :' : 'Mettre en vente vos items à la brocante. :new:'
     }
     color = discord.Color.blue()
     title = 'Informations'
