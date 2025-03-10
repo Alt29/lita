@@ -1,12 +1,12 @@
 {
     "mob": {
-        "name": "Phenix_de_feu",
-        "lvl": 364
+        "name": "Golem_d_eau",
+        "lvl": 241
     },
     "players": {
         "slashoroide": "slashoroide",
-        "akastukye": "akastukye",
+        "ruinflex": "ruinflex",
         "altan3062": "altan3062"
     },
-    "status": "defaite"
+    "status": "victoire"
 }
