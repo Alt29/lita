@@ -1252,6 +1252,22 @@ async def market_command(interaction: discord.Interaction):
 async def info_command(interaction: discord.Interaction):
     embed = info_action()
     await interaction.response.send_message(embed=embed, ephemeral=True)
+    
+@tree.command(name="brocante", description="Voir la brocante.")
+async def brocante_command(interaction: discord.Interaction):
+    title = "Brocante"
+    description = "**Vente • Vendeur • Quantité • Item • Prix unitaire\n**"
+    for sale in brocante:
+        description += f" **{sale}** • <@{brocante[sale]["seller_id"]}> • {brocante[sale]["quantity"]} • {items[brocante[sale]["item"]]["icon"]} {brocante[sale]["item"]} • {brocante[sale]["price"]} :coin:\n"
+    
+    if description == "**Vente • Vendeur • Quantité • Item • Prix unitaire\n**":
+        description = "**Il n'y a pas d'item en vente.**"
+    
+    footer = "Faites /buy vente quantité, pour acheter des items de la brocante."
+    
+    embed = create_embed(title=title, color=discord.Color.blue(), description=description, footer=footer)
+
+    await interaction.response.send_message(embed=embed, ephemeral=True)
 
 @tree.command(name="sell", description="Vente d'items entre joueurs.")
 @app_commands.describe(item="Choisissez un item à mettre en vente", prix="Fixez un prix unitaire", quantité="Choisissez une quantité à mettre en vente")
@@ -1259,6 +1275,16 @@ async def sell_command(interaction: discord.Interaction, item: str, prix: int, q
     
     if item == None:
         await interaction.response.send_message("Vous n'avez pas d'items vendables.", ephemeral=True)
+        return
+    
+    my_items = []
+
+    for bag_item in log_data[interaction.user.name]["bag"]:
+        if bag_item != "Casquette" and bag_item != "Tshirt" and bag_item != "Jean" and bag_item != "Baskets" and bag_item != "Dague" and bag_item != "PointXP" :
+            my_items.append(bag_item)
+    
+    if item not in my_items:
+        await interaction.response.send_message("Vous ne pouvez pas vendre cet item.", ephemeral=True)
         return
     
     if prix < 0 :
@@ -1288,19 +1314,30 @@ async def sell_command(interaction: discord.Interaction, item: str, prix: int, q
             if "def" in items[item]["stats"]:
                 log_data[interaction.user.name]["stats"]["def"] -= items[item]["stats"]["def"] * quantité
         
-        if interaction.user.name not in brocante:
-            brocante[interaction.user.name] = {"Vente 1": {"item": item, "price": prix, "quantity": quantité}}
-        else:
-            brocante[interaction.user.name]["Vente " + str(len(brocante[interaction.user.name]) + 1)] = {"item": item, "price": prix, "quantity": quantité}
+        existing = None
         
+        for sale in brocante:
+            if brocante[sale]["seller_id"] == interaction.user.id and brocante[sale]["item"] == item and brocante[sale]["price"] == prix:
+                existing = sale 
+        
+        if existing:
+            brocante[existing]["quantity"] += quantité
+        else:
+            brocante["Vente " + str(len(brocante) + 1)] = {"seller_id": interaction.user.id, "seller_name": interaction.user.name, "item": item, "price": prix, "quantity": quantité}
     
     with open("log.json", "w") as file:
             json.dump(log_data, file, indent=4)
             
     with open("brocante.json", "w") as file:
             json.dump(brocante, file, indent=4)
+
+    title = "Mise en vente"
+    description = f"**Item • **{items[item]["icon"]} {item}\n **Quantité • **{quantité}\n **Prix unitaire • **{prix} :coin:"
+    footer = "Faites /brocante pour voir les items en vente."
     
-    await interaction.response.send_message(f"Vous avez mis en vente **{quantité}** **{item}** pour **{prix} pièces** !", ephemeral=True)
+    embed = create_embed(title=title, color=discord.Color.blue(), author_name=interaction.user.global_name, author_icon=interaction.user.avatar, description=description, footer=footer)
+
+    await interaction.response.send_message(embed=embed)
 
 @sell_command.autocomplete("item")
 async def item_autocomplete(interaction: discord.Interaction, current: str):
@@ -1313,6 +1350,93 @@ async def item_autocomplete(interaction: discord.Interaction, current: str):
     suggestions = [
         app_commands.Choice(name=item, value=item) 
         for item in my_items if current.lower() in item.lower()
+    ][:25]
+    
+    return suggestions
+
+@tree.command(name="buy", description="Achat d'items entre joueurs.")
+@app_commands.describe(vente="Choisissez une vente", quantité="Choisissez une quantité d'items à acheter")
+async def buy_command(interaction: discord.Interaction, vente: str, quantité: int = 1):
+    
+    if vente == None:
+        await interaction.response.send_message("Il n'y a pas d'item en vente.", ephemeral=True)
+        return
+    
+    if vente not in brocante:
+        await interaction.response.send_message("Cette vente n'est pas dans la brocante.", ephemeral=True)
+        return
+    
+    if quantité <= 0 :
+        await interaction.response.send_message("La quantité doit être d'au moins 1.", ephemeral=True)
+        return
+    
+    if quantité > brocante[vente]["quantity"]:
+        await interaction.response.send_message("Il n'a pas autant d'exemplaires en vente.", ephemeral=True)
+        return
+    else:
+        item = brocante[vente]["item"]
+        price = brocante[vente]["price"] * quantité
+        seller_name = brocante[vente]["seller_name"]
+        seller_id = brocante[vente]["seller_id"]
+        
+        if log_data[interaction.user.name]["gold"] >= price:
+            log_data[interaction.user.name]["gold"] -= price
+            log_data[seller_name]["gold"] += price
+            brocante[vente]["quantity"] -= quantité
+            
+            if brocante[vente]["quantity"] == 0:
+                keys_list = list(brocante.keys())
+                index_vente = keys_list.index(vente)
+                
+                for i in range(index_vente, len(keys_list) - 1):
+                    brocante[keys_list[i]] = brocante[keys_list[i + 1]]
+
+                del brocante[keys_list[-1]] 
+            
+            if item in log_data[interaction.user.name]["bag"]:
+                log_data[interaction.user.name]["bag"][item]["quantity"] += quantité
+            else:
+                log_data[interaction.user.name]["bag"][item] = {'quantity': quantité, 'icon': items[item]['icon']}
+        
+        
+            if "stats" in items[item]:
+                if "pv" in items[item]["stats"]:
+                    log_data[interaction.user.name]["stats"]["pv"] += items[item]["stats"]["pv"] * quantité
+                    
+                if "for" in items[item]["stats"]:
+                    log_data[interaction.user.name]["stats"]["for"] += items[item]["stats"]["for"] * quantité
+                    
+                if "def" in items[item]["stats"]:
+                    log_data[interaction.user.name]["stats"]["def"] += items[item]["stats"]["def"] * quantité
+        
+        else:
+            await interaction.response.send_message("Vous n'avez pas assez de gold.", ephemeral=True)
+            return
+
+    with open("log.json", "w") as file:
+            json.dump(log_data, file, indent=4)
+            
+    with open("brocante.json", "w") as file:
+            json.dump(brocante, file, indent=4)
+
+    title = "Achat"
+    description = f"<@{log_data[interaction.user.name]["id"]}> vient d'acheter {quantité} {items[item]['icon']} {item} à <@{seller_id}> pour {price} :coin:"
+    footer = "Faites /brocante pour voir les items en vente."
+    
+    embed = create_embed(title=title, color=discord.Color.green(), author_name=interaction.user.global_name, author_icon=interaction.user.avatar, description=description, footer=footer)
+
+    await interaction.response.send_message(embed=embed)
+
+@buy_command.autocomplete("vente")
+async def vente_autocomplete(interaction: discord.Interaction, current: str):
+    ventes = []
+    
+    for sale in brocante:
+        ventes.append(sale)
+    
+    suggestions = [
+        app_commands.Choice(name=vente, value=vente) 
+        for vente in ventes if current.lower() in vente.lower()
     ][:25]
     
     return suggestions
