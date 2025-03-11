@@ -78,7 +78,7 @@
                 "icon": ":herb:"
             },
             "Plante": {
-                "quantity": 4,
+                "quantity": 2,
                 "icon": ":seedling:"
             }
         },
@@ -89,7 +89,7 @@
         "stats": {
             "pv": 506500,
             "for": 1825,
-            "def": 4436
+            "def": 4428
         },
         "deaths": 0,
         "penality": 0,
