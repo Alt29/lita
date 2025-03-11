@@ -1,10 +1,9 @@
 {
     "mob": {
-        "name": "Golem_d_eau",
-        "lvl": 241
+        "name": "Slime",
+        "lvl": 48
     },
     "players": {
-        "slashoroide": "slashoroide",
         "ruinflex": "ruinflex",
         "altan3062": "altan3062"
     },
