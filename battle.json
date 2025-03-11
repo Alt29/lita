@@ -1,11 +1,9 @@
 {
     "mob": {
-        "name": "Slime",
-        "lvl": 48
+        "name": "Roi_des_slimes",
+        "lvl": 122
     },
     "players": {
-        "ruinflex": "ruinflex",
         "altan3062": "altan3062"
-    },
-    "status": "victoire"
+    }
 }
