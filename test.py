@@ -1691,6 +1691,11 @@ def gems_required(author_name, rank):
             if gem_rank == 2:
                 gem = '<:Legendaire:1222193258403336222> Legendaire'
                 gem_type = 'Legendaire'
+            else:
+                if gem_rank == 3:
+                    gem = ':octagonal_sign: Ultime'
+                    gem_type = 'Ultime'
+                 
 
     if gem_type in log_data[author_name]['bag']:
         quantity = log_data[author_name]['bag'][gem_type]['quantity']
