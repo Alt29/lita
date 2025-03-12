@@ -1597,7 +1597,7 @@ def cd_action(author_name, author_icon, global_name):
 def eveil_action(author_name, author_icon, global_name):
     view = None
     player_rank = log_data[author_name]['rank']
-    rank = ['Pas d\'éveil', ':regional_indicator_f:', ':regional_indicator_e:', ':regional_indicator_d:', ':regional_indicator_c:', ':regional_indicator_b:', ':regional_indicator_a:', ':regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s: :regional_indicator_s:', '???']
+    rank = ['Pas d\'éveil', ':regional_indicator_f:', ':regional_indicator_e:', ':regional_indicator_d:', ':regional_indicator_c:', ':regional_indicator_b:', ':regional_indicator_a:', ':regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s: :regional_indicator_s:', ':regional_indicator_z:', ':regional_indicator_z: :regional_indicator_z:', ':regional_indicator_z: :regional_indicator_z: :regional_indicator_z:']
     current_rank = rank[player_rank]
     next_rank = rank[player_rank + 1]
 
