@@ -1540,7 +1540,9 @@ def info_action():
         '!sw :' : 'Tenter votre chance à la Sakura Wheel !',
         '!classe :' : '[En travaux] :construction:',
         '!boostxp :' : 'Utilisez vos Boost XP !',
-        '/sell item prix quantié :' : 'Mettre en vente vos items à la brocante. :new:'
+        '/sell item prix quantité :' : 'Mettre en vente vos items à la brocante. :new:',
+        '/buy vente quantité :' : 'Achetez des items à la brocante. :new:',
+        '/brocante :' : 'Pour voir la brocante. :new:'
     }
     color = discord.Color.blue()
     title = 'Informations'
