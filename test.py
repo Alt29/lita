@@ -194,9 +194,14 @@ class BattleView(discord.ui.View):
 
         for player in battle["players"]:
             players.append(log_data[player]['id'])
-            total_pv += log_data[player]['stats']['pv']
-            total_for += log_data[player]['stats']['for']
-            total_def += log_data[player]['stats']['def']
+            if "classe" in log_data[player] and "name" in log_data[player]["classe"] and log_data[player]["classe"]["name"] == "Assassin":
+                total_pv += log_data[player]['stats']['pv'] * 2
+                total_for += log_data[player]['stats']['for'] * 2
+                total_def += log_data[player]['stats']['def'] * 2
+            else:
+                total_pv += log_data[player]['stats']['pv']
+                total_for += log_data[player]['stats']['for']
+                total_def += log_data[player]['stats']['def']
 
         color = discord.Color.red()
 
@@ -223,6 +228,9 @@ class BattleView(discord.ui.View):
                 for player in battle["players"]:
                     level_up = 0
                     log_data[player]['gold'] += gold
+                    
+                    if "classe" in log_data[player] and "name" in log_data[player]["classe"] and log_data[player]["classe"]["name"] == "Assassin":
+                        log_data[player]["classe"]["progression 1"] += 1
                     
                     now = datetime.now()
                     boosted_time = datetime.strptime(log_data[player]["xp_boosted"], "%Y-%m-%d %H:%M:%S.%f")
@@ -1219,6 +1227,45 @@ async def on_message(message):
 
         await message.channel.send(embed=embed)
 
+    if message.content.startswith("!select"):
+        if "classe" in log_data[message.author.name] and "name" not in log_data[message.author.name]["classe"]:
+            command_and_argument = message.content.split()
+            
+            if len(command_and_argument) == 1:
+                embed = create_embed(title="Choix de classe", color=discord.Color.red(), description="Pour choisir votre classe faites **!select nom de la classe**", footer="Pour voir les classes disponibles faites !classe")
+            else:
+                classe = " ".join(command_and_argument[1:])
+                classe = normalize_text(classe)
+
+                if classe in classes:
+                    log_data[message.author.name]["classe"]["name"] = classes[classe]["name"]
+                    log_data[message.author.name]["classe"]["icon"] = classes[classe]["icon"]
+                    
+                    if classe == "assassin":
+                        log_data[message.author.name]["classe"]["progression 1"] = 0
+                        log_data[message.author.name]["classe"]["progression 2"] = "Pas encore crafter" #a1b2 à faire
+                    
+                    updated = True
+                    
+                    title = "Félicitation !"
+                    description = f"<@{message.author.id}> vous êtes désormais un {classes[classe]["icon"]} {classes[classe]["name"]} !\n Vous pouvez désormais faire **/{classe}** pour obtenir des informations cachées sur votre classes !"
+                    color = discord.Color.green()
+                    embed = create_embed(title=title, description=description, color=color)
+                else:
+                    title = 'Erreur dans la commande'
+                    description = "Vérifiez l'orthographe de la classe (pas de classe exaltée ici), majuscule ou accent par exemple"
+                    color = discord.Color.red()
+                    embed = create_embed(title=title, color=color, description=description)
+        else:
+            title = "Commande non autorisée"
+            description = "Vous n'avait pas les droits requis pour cette commande"
+            color = discord.Color.orange()
+            footer = "Débloquez cette commande avec la Sakura Wheel (natsu)"
+            embed = create_embed(title=title, description=description, color=color, footer=footer)
+
+        
+        await message.channel.send(embed=embed)
+
     if updated:
         with open("log.json", "w") as file:
             json.dump(log_data, file, indent=4)
@@ -1246,6 +1293,21 @@ async def cd_command(interaction: discord.Interaction, cible: str = None):
 @tree.command(name="market", description="Voir le marché.")
 async def market_command(interaction: discord.Interaction):
     embed = market_action()
+    await interaction.response.send_message(embed=embed, ephemeral=True)
+
+@tree.command(name="assassin", description="Affiche des informations cachées sur la classe assassin.")
+async def assassin_command(interaction: discord.Interaction):
+    if "classe" in log_data[interaction.user.name] and "name" in log_data[interaction.user.name]["classe"] and log_data[interaction.user.name]["classe"]["name"] == "Assassin":
+        title = "Informations cachées sur la classe :dagger: Assassin"
+        description = "**Pour exalter votre classe :dagger: Assassin en la classe :cyclone: Faucheur d'âmes, réussissez ces quêtes :**\n\n**Quête 1 • **" + classes["assassin"]["details"]["Quete 1"]["quete"] + "\n**Récompense • **" + classes["assassin"]["details"]["Quete 1"]["recompense"] + "\n**Progression • **" + "[" + str(log_data[interaction.user.name]["classe"]["progression 1"]) + "/100]" + "\n\n**Quête 2 • **" + classes["assassin"]["details"]["Quete 2"]["quete"] + "\n **Récompense • **" + classes["assassin"]["details"]["Quete 2"]["recompense"] + "\n**Progression • **" + log_data[interaction.user.name]["classe"]["progression 2"]
+        embed = create_embed(title=title, description=description, color=discord.Color.blue())
+    else:
+        title = "Commande non autorisée"
+        description = "Vous n'avait pas les droits requis pour cette commande"
+        color = discord.Color.orange()
+
+        embed = create_embed(title=title, description=description, color=color)
+    
     await interaction.response.send_message(embed=embed, ephemeral=True)
     
 @tree.command(name="info", description="Information sur les commandes.")
@@ -1831,7 +1893,13 @@ def me_action(author_name, author_icon, global_name, type):
         rank = ['Pas d\'éveil', ':regional_indicator_f:', ':regional_indicator_e:', ':regional_indicator_d:', ':regional_indicator_c:', ':regional_indicator_b:', ':regional_indicator_a:', ':regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s: :regional_indicator_s:']
         if type == 'profil':
             level_xp = [500, 600, 720, 864, 1036, 1243, 1492, 1791, 2149, 2578, 3093, 3711, 4453, 5343, 6411, 7693, 9231, 11077, 13293, 15951, 19141, 22969, 27563, 33075, 39690, 47628, 57153, 68584, 82300, 98760, 118512, 142214, 170657, 204788, 245746, 294895, 353873, 424647, 509576, 611491, 733790, 880548, 1056657, 1267989, 1521587, 1825904, 2191085, 2629302, 3155163, 3786195, 4543434, 5452120, 6542544, 7851052, 9421262, 11305514, 13566617, 16279940, 19535928, 23443113, 28131736, 33758083, 40509700, 48611640, 58333968, 70000762, 84000914, 100801096, 120961315, 145153578, 174184293, 209021151, 250825381, 301090457, 361308548, 433570258, 520284309, 624341171, 749209405, 899051286, 1078861543, 1294633852, 1553560622, 1864272746, 2237127295, 2684552754, 3221463305, 3865755966, 4638907159, 5566688591, 6680026309, 8016031570, 9619237884, 11543158461, 13851790153, 16622148183, 19946577820, 23935893384, 28723072061, 34467686474, 41361223769, 49633468522, 59560162226, 71472194671, 85766633605, 102919960326, 123503952391, 148204742869, 177845691442, 213414829731]
-            tabFields = {'Level :' : str(log_data[author_name]['level']['lvl']) + " [" + str(log_data[author_name]['level']['xp']) + "/" + str(level_xp[log_data[author_name]['level']['lvl']]) + "] (" + str(f"{log_data[author_name]['level']['xp'] * 100 / level_xp[log_data[author_name]['level']['lvl']]:.2f}") + " %)", 'Rang :' : rank[res], 'Stats :' : '', 'PV : ' + str(log_data[author_name]['stats']['pv']) + ' :hearts:': '', 'For : ' + str(log_data[author_name]['stats']['for']) + ' :crossed_swords:' : '', 'Def : ' + str(log_data[author_name]['stats']['def']) + ' :shield:': ''}
+            
+            classe_name = "Aucune"
+            
+            if "classe" in log_data[author_name] and "name" in log_data[author_name]['classe'] and "icon" in log_data[author_name]['classe']:
+                classe_name = log_data[author_name]['classe']["icon"] + " " + log_data[author_name]['classe']["name"]
+
+            tabFields = {"Classe": classe_name, "Level :" : str(log_data[author_name]['level']['lvl']) + " [" + str(log_data[author_name]['level']['xp']) + "/" + str(level_xp[log_data[author_name]['level']['lvl']]) + "] (" + str(f"{log_data[author_name]['level']['xp'] * 100 / level_xp[log_data[author_name]['level']['lvl']]:.2f}") + " %)", 'Rang :' : rank[res], 'Stats :' : '', 'PV : ' + str(log_data[author_name]['stats']['pv']) + ' :hearts:': '', 'For : ' + str(log_data[author_name]['stats']['for']) + ' :crossed_swords:' : '', 'Def : ' + str(log_data[author_name]['stats']['def']) + ' :shield:': ''}
             color = discord.Color.dark_purple()
         else:
             bag = ''

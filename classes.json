@@ -3,6 +3,16 @@
         "name": "Assassin",
         "icon": ":dagger:",
         "description": "Spécialisé dans l'art de tuer, vous infligerez plus de dégâts quand la cible à moins de 50% de sa vie",
+        "details": {
+            "Quete 1": {
+                "quete": "Tuer 100 monstres",
+                "recompense": "Débloquage du craft de la faux."
+            },
+            "Quete 2": {
+                "quete": "Crafter la faux",
+                "recompense": "Exaltation de la classe :dagger: Assassin en la classe exaltée :cyclone: Faucheur d'âmes."
+            }
+        },
         "evolved": false,
 
         "evolve": {
