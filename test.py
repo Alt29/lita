@@ -1542,7 +1542,8 @@ def info_action():
         '!boostxp :' : 'Utilisez vos Boost XP !',
         '/sell item prix quantité :' : 'Mettre en vente vos items à la brocante. :new:',
         '/buy vente quantité :' : 'Achetez des items à la brocante. :new:',
-        '/brocante :' : 'Pour voir la brocante. :new:'
+        '/brocante :' : 'Pour voir la brocante. :new:',
+        '!select nom de la classe :' : 'Pour choisir votre classe. :new:'
     }
     color = discord.Color.blue()
     title = 'Informations'
