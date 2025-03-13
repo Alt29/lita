@@ -1248,7 +1248,7 @@ async def on_message(message):
                     updated = True
                     
                     title = "Félicitation !"
-                    description = f"<@{message.author.id}> vous êtes désormais un {classes[classe]["icon"]} {classes[classe]["name"]} !\n Vous pouvez désormais faire **/{classe}** pour obtenir des informations cachées sur votre classes !"
+                    description = f"<@{message.author.id}> vous êtes désormais un {classes[classe]["icon"]} {classes[classe]["name"]} !\n Vous pouvez désormais faire **/{classe}** pour obtenir des informations cachées sur votre classe !"
                     color = discord.Color.green()
                     embed = create_embed(title=title, description=description, color=color)
                 else:
