@@ -1,11 +1,9 @@
 {
     "mob": {
-        "name": "Meute_de_loups",
-        "lvl": 9
+        "name": "Roi_des_slimes",
+        "lvl": 234
     },
     "players": {
-        "ruinflex": "ruinflex",
-        "altan3062": "altan3062"
-    },
-    "status": "victoire"
+        "ruinflex": "ruinflex"
+    }
 }

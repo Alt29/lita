@@ -209,7 +209,16 @@ class BattleView(discord.ui.View):
             title = "Personne n'a eu le courage d'affronter ce monstre"
             embed = create_embed(title=title, color=color)
         else:
-            if combat(battle['mob']['name'], battle['mob']['lvl'], total_pv, total_for, total_def):
+            nbr_debuffer = 0
+            
+            for player in battle["players"]:
+                if "classe" in log_data[player] and "name" in log_data[player]["classe"] and log_data[player]["classe"]["name"] == "Débuffer":
+                    nbr_debuffer += 1
+                    log_data[player]["classe"]["progression 1"] += 1
+                    
+            res_combat = combat(battle['mob']['name'], battle['mob']['lvl'], total_pv, total_for, total_def, nbr_debuffer)
+            
+            if res_combat:
                 res = ''
                 gold = 0
                 xp = 0
@@ -1245,6 +1254,10 @@ async def on_message(message):
                         log_data[message.author.name]["classe"]["progression 1"] = 0
                         log_data[message.author.name]["classe"]["progression 2"] = "Pas encore crafter" #a1b2 à faire
                     
+                    if classe == "debuffer":
+                        log_data[message.author.name]["classe"]["progression 1"] = 0
+                        log_data[message.author.name]["classe"]["progression 2"] = "Pas encore crafter" #a1b2 à faire
+                    
                     updated = True
                     
                     title = "Félicitation !"
@@ -1295,11 +1308,26 @@ async def market_command(interaction: discord.Interaction):
     embed = market_action()
     await interaction.response.send_message(embed=embed, ephemeral=True)
 
-@tree.command(name="assassin", description="Affiche des informations cachées sur la classe assassin.")
+@tree.command(name="assassin", description="Affiche des informations cachées sur la classe Assassin.")
 async def assassin_command(interaction: discord.Interaction):
     if "classe" in log_data[interaction.user.name] and "name" in log_data[interaction.user.name]["classe"] and log_data[interaction.user.name]["classe"]["name"] == "Assassin":
         title = "Informations cachées sur la classe :dagger: Assassin"
         description = "**Pour exalter votre classe :dagger: Assassin en la classe :cyclone: Faucheur d'âmes, réussissez ces quêtes :**\n\n**Quête 1 • **" + classes["assassin"]["details"]["Quete 1"]["quete"] + "\n**Récompense • **" + classes["assassin"]["details"]["Quete 1"]["recompense"] + "\n**Progression • **" + "[" + str(log_data[interaction.user.name]["classe"]["progression 1"]) + "/100]" + "\n\n**Quête 2 • **" + classes["assassin"]["details"]["Quete 2"]["quete"] + "\n **Récompense • **" + classes["assassin"]["details"]["Quete 2"]["recompense"] + "\n**Progression • **" + log_data[interaction.user.name]["classe"]["progression 2"]
+        embed = create_embed(title=title, description=description, color=discord.Color.blue())
+    else:
+        title = "Commande non autorisée"
+        description = "Vous n'avait pas les droits requis pour cette commande"
+        color = discord.Color.orange()
+
+        embed = create_embed(title=title, description=description, color=color)
+    
+    await interaction.response.send_message(embed=embed, ephemeral=True)
+    
+@tree.command(name="debuffer", description="Affiche des informations cachées sur la classe Débuffer.")
+async def debuffer_command(interaction: discord.Interaction):
+    if "classe" in log_data[interaction.user.name] and "name" in log_data[interaction.user.name]["classe"] and log_data[interaction.user.name]["classe"]["name"] == "Débuffer":
+        title = "Informations cachées sur la classe :chains: Débuffer"
+        description = "**Pour exalter votre classe :chains: Débuffer en la classe :japanese_ogre: Démon maudit, réussissez ces quêtes :**\n\n**Quête 1 • **" + classes["debuffer"]["details"]["Quete 1"]["quete"] + "\n**Récompense • **" + classes["debuffer"]["details"]["Quete 1"]["recompense"] + "\n**Progression • **" + "[" + str(log_data[interaction.user.name]["classe"]["progression 1"]) + "/200]" + "\n\n**Quête 2 • **" + classes["debuffer"]["details"]["Quete 2"]["quete"] + "\n **Récompense • **" + classes["debuffer"]["details"]["Quete 2"]["recompense"] + "\n**Progression • **" + log_data[interaction.user.name]["classe"]["progression 2"]
         embed = create_embed(title=title, description=description, color=discord.Color.blue())
     else:
         title = "Commande non autorisée"
@@ -2313,10 +2341,15 @@ def purchase_action(author_name, author_icon, global_name, item, quantity):
 
     return create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, tabFields=tabFields)
 
-def combat(mob_name, mob_lvl, total_pv, total_for, total_def):
-    mob_pv = mob_lvl * mobs[mob_name]['stats']['pv']
-    mob_for = mob_lvl * mobs[mob_name]['stats']['for']
-    mob_def = mob_lvl * mobs[mob_name]['stats']['def']
+def combat(mob_name, mob_lvl, total_pv, total_for, total_def, nbr_debuffer):
+    if nbr_debuffer > 0:
+        debuff = 0.9 ** nbr_debuffer
+    else:
+        debuff = 1
+        
+    mob_pv = (mob_lvl * mobs[mob_name]['stats']['pv']) * debuff
+    mob_for = (mob_lvl * mobs[mob_name]['stats']['for']) * debuff
+    mob_def = (mob_lvl * mobs[mob_name]['stats']['def']) * debuff
 
     sum_mob_stats = int(mob_pv/250 + mob_for/2 + mob_def/4)
     sum_plaayers_stats = int(total_pv/250 + total_for/2 + total_def/4)

@@ -97,6 +97,16 @@
         "name": "Débuffer",
         "icon": ":chains:",
         "description": "Vous voulez vous rendre utile lors des combats, vous réduissez une partie des stats des monstres ennemis",
+        "details": {
+            "Quete 1": {
+                "quete": "Affaiblisser 200 monstres",
+                "recompense": "Débloquage du craft du grimoire maudit."
+            },
+            "Quete 2": {
+                "quete": "Crafter le grimoire maudit",
+                "recompense": "Exaltation de la classe :chains: Débuffer en la classe exaltée :japanese_ogre: Démon maudit."
+            }
+        },
         "evolved": false,
 
         "evolve": {
