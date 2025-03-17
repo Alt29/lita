@@ -134,6 +134,12 @@
         },
         "icon": ":droplet:"
     },
+    "Ultime": {
+        "icon": ":octagonal_sign:"
+    },
+    "Fragment": {
+        "icon": ":small_red_triangle:"
+    },
     "Legendaire": {
         "price": 500000,
         "icon": "<:Legendaire:1222193258403336222>"

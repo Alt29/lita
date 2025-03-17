@@ -1,4 +1,14 @@
 {
+    "Rare": {
+        "craft": {
+            "image": "https://i.imgur.com/Kn6rZL2.jpeg",
+            "item": {
+                "Epique" : 1
+            }
+        },
+        "quantity": 10,
+        "icon": "<:Rare:1222193217957662760>"
+    },
     "Epique": {
         "craft": {
             "image": "https://i.imgur.com/bSDZLWq.jpeg",
@@ -7,6 +17,16 @@
             }
         },
         "quantity": 1,
+        "icon": "<:Epique:1222193241022136491>"
+    },
+    "Epique2": {
+        "craft": {
+            "image": "https://i.imgur.com/G7uOVIC.jpeg",
+            "item": {
+                "Legendaire" : 1
+            }
+        },
+        "quantity": 10,
         "icon": "<:Epique:1222193241022136491>"
     },
     "Legendaire": {
@@ -18,6 +38,28 @@
         },
         "quantity": 1,
         "icon": "<:Legendaire:1222193258403336222>"
+    },
+    "Fragment": {
+        "craft": {
+            "image": "https://i.imgur.com/pYusGcf.jpeg",
+            "item": {
+                "Rare" : 16,
+                "Epique" : 8,
+                "Legendaire" : 1
+            }
+        },
+        "quantity": 1,
+        "icon": ":small_red_triangle:"
+    },
+    "Ultime": {
+        "craft": {
+            "image": "https://i.imgur.com/TGuXUyl.jpeg",
+            "item": {
+                "Fragment" : 10
+            }
+        },
+        "quantity": 1,
+        "icon": ":octagonal_sign:"
     },
     "Brasier": {
         "craft": {
