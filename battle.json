@@ -1,12 +1,13 @@
 {
     "mob": {
-        "name": "Golem_de_vent",
-        "lvl": 123
+        "name": "Phenix_de_foudre",
+        "lvl": 306
     },
     "players": {
         "ruinflex": "ruinflex",
-        "akastukye": "akastukye"
+        "marylis": "marylis",
+        "terminator850": "terminator850"
     },
     "debuff_time": 0,
-    "status": "victoire"
+    "status": "defaite"
 }
