@@ -150,5 +150,27 @@
             "icon": ":fleur_de_lis:",
             "description": "Votre marteau devient un instrument de perfection, capable de façonner des pièces d'équipement qui surpassent tout ce qui existe. En tant que Créateur, vous pouvez désormais forger des armes et armures ultimes, d'une puissance inégalée."
         }
+    },
+    "grenouille": {
+        "name": "Grenouille",
+        "icon": ":frog:",
+        "description": "Petite et insignifiante aux yeux du monde, vous excellez dans l’art de l’évasion et de la survie. Capable de bondir hors de portée du danger et d’esquiver avec agilité, vous attendez patiemment votre heure pour révéler votre véritable destin.",
+        "details": {
+            "Quete 1": {
+                "quete": "Survivre à 100 monstres",
+                "recompense": "Débloquage du craft de la bague étincelante."
+            },
+            "Quete 2": {
+                "quete": "Crafter la bague étincelante.",
+                "recompense": "Exaltation de la classe :frog: Grenouille en la classe exaltée :princess: Princesse royale."
+            }
+        },
+        "evolved": false,
+
+        "evolve": {
+            "name": "Princesse royale",
+            "icon": ":princess:",
+            "description": "Le destin vous a souri : d’une humble grenouille, vous êtes devenue une princesse d’exception. Protégée par un preux chevalier prêt à donner sa vie pour vous, chaque bataille devient un spectacle où il se bat avec une ferveur inébranlable, attirant les coups pendant que vous guidez le combat avec grâce et charisme."
+        }
     }
 }
