@@ -1,9 +1,7 @@
 {
     "mob": {
-        "name": "Roi_des_slimes",
-        "lvl": 234
+        "name": "Gobelin",
+        "lvl": 3
     },
-    "players": {
-        "ruinflex": "ruinflex"
-    }
+    "players": {}
 }

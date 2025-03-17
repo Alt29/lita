@@ -18,7 +18,7 @@
         "seller_name": "slashoroide",
         "item": "Plante",
         "price": 1900,
-        "quantity": 32
+        "quantity": 24
     },
     "Vente 4": {
         "seller_id": 503247209165357066,
@@ -30,15 +30,8 @@
     "Vente 5": {
         "seller_id": 503247209165357066,
         "seller_name": "slashoroide",
-        "item": "BoostXP",
-        "price": 4900,
-        "quantity": 2
-    },
-    "Vente 6": {
-        "seller_id": 503247209165357066,
-        "seller_name": "slashoroide",
         "item": "Epique",
         "price": 49000,
-        "quantity": 7
+        "quantity": 3
     }
 }

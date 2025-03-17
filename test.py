@@ -124,7 +124,7 @@ class BattleView(discord.ui.View):
         attaquant += '\n**PV : ' + str(total_pv) + ' :hearts:   For : ' + str(total_for) + ' :crossed_swords:   Def : ' + str(total_def) + ' :shield:**'
 
         embed = interaction.message.embeds[0]
-        new_fields = []
+        new_fields = [] #a1b2 affichage debuff
         for field in embed.fields:
             if field.name == "Combattez ce monstre !" or field.name == "Combat initié par":
                 new_fields.append({"name":"Combat initié par", "value":attaquant, "inline":False})
