@@ -7,6 +7,7 @@ import asyncio
 import os
 import random
 import unicodedata
+import re
 
 TOKEN = os.getenv('TOKEN')
 SAKURA_CHANNEL_ID = int(os.getenv('SAKURA_CHANNEL_ID'))
@@ -116,7 +117,12 @@ class BattleView(discord.ui.View):
         total_pv = 0
         total_for = 0
         total_def = 0
+        
+        nbr_debuffer = 0
+        
         for player in battle["players"]:
+            if "classe" in log_data[player] and "name" in log_data[player]["classe"] and log_data[player]["classe"]["name"] == "Débuffer":
+                nbr_debuffer += 1
             attaquant += "<@" + str(log_data[player]['id']) + "> "
             total_pv += log_data[player]['stats']['pv']
             total_for += log_data[player]['stats']['for']
@@ -124,15 +130,42 @@ class BattleView(discord.ui.View):
         attaquant += '\n**PV : ' + str(total_pv) + ' :hearts:   For : ' + str(total_for) + ' :crossed_swords:   Def : ' + str(total_def) + ' :shield:**'
 
         embed = interaction.message.embeds[0]
-        new_fields = [] #a1b2 affichage debuff
+        part_1, separator, part_2 = embed.title.partition(" • ")
+
+        if not separator:
+            part_2 = ""
+
+        if nbr_debuffer > 0:
+                if nbr_debuffer == 1:
+                    embed.title = part_1 + " • [Débuff]"
+                else:
+                    embed.title = part_1 + " • [" + str(nbr_debuffer) + " Débuff]"
+            
+        new_fields = []
+        
+        if "debuff_time" in battle:
+            debuff_time = battle["debuff_time"]
+        else:
+            debuff_time = 0
+
         for field in embed.fields:
-            if field.name == "Combattez ce monstre !" or field.name == "Combat initié par":
-                new_fields.append({"name":"Combat initié par", "value":attaquant, "inline":False})
-            else:
+            if field.name.startswith("PV") and nbr_debuffer > 0:
+                while debuff_time < nbr_debuffer:
+                    field.name, debuff_time = reduce_numbers_by_10_percent(field.name)
+                    battle["debuff_time"] = debuff_time
+                
                 new_fields.append({"name": field.name, "value": field.value, "inline": field.inline})
+            else:
+                if field.name == "Combattez ce monstre !" or field.name == "Combat initié par":
+                    new_fields.append({"name":"Combat initié par", "value":attaquant, "inline":False})
+                else:
+                    new_fields.append({"name": field.name, "value": field.value, "inline": field.inline})
+                
         embed.clear_fields()
+        
         for field in new_fields:
             embed.add_field(name=field["name"], value=field["value"], inline=field["inline"])
+            
         await interaction.followup.edit_message(message_id=interaction.message.id, embed=embed)
 
         with open("log.json", "w") as file:
@@ -293,6 +326,8 @@ class BattleView(discord.ui.View):
             embed = create_embed(title=title, description=description, color=color, tabFields=tabFields)
 
         await channel.send(embed=embed)
+
+        battle["debuff_time"] = 0
 
         with open("log.json", "w") as file:
             json.dump(log_data, file, indent=4)
@@ -710,7 +745,7 @@ async def hourly_mob():
 
     while not client.is_closed():
         now = datetime.now()
-        next_hour = (now + timedelta(minutes=15)).replace(second=0, microsecond=0) #a1b2
+        next_hour = (now + timedelta(minutes=1)).replace(second=0, microsecond=0) #a1b2
         wait_time = (next_hour - now).total_seconds()
 
         await asyncio.sleep(wait_time)
@@ -774,7 +809,7 @@ async def hourly_mob():
                     embed = create_embed(title=title, color=color, image=image, tabFields=tabFields)
                     break;
 
-        view = BattleView(timeout=600) #a1b2
+        view = BattleView(timeout=30) #a1b2
         view.message = await channel.send(embed=embed, view=view)
 
         battles = {"mob": {"name": mob_name, "lvl": lvl}, "players": {}}
@@ -2384,5 +2419,22 @@ def normalize_text(text):
     text = text.lower()
     text = ''.join(c for c in unicodedata.normalize('NFD', text) if unicodedata.category(c) != 'Mn')
     return text
+
+def reduce_numbers_by_10_percent(text):
+    try:
+        with open("battle.json", "r") as file:
+            battle = json.load(file)
+    except FileNotFoundError:
+        battle = {}
+    
+    if "debuff_time" in battle:
+        battle["debuff_time"] += 1
+    else:
+        battle["debuff_time"] = 1
+    
+    with open("battle.json", "w") as file:
+        json.dump(battle, file, indent=4)
+            
+    return re.sub(r"\d+", lambda m: str(round(int(m.group()) * 0.9)), text), battle["debuff_time"]
 
 client.run(TOKEN)

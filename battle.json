@@ -1,7 +1,12 @@
 {
     "mob": {
-        "name": "Gobelin",
-        "lvl": 3
+        "name": "Golem_de_vent",
+        "lvl": 123
     },
-    "players": {}
+    "players": {
+        "ruinflex": "ruinflex",
+        "akastukye": "akastukye"
+    },
+    "debuff_time": 0,
+    "status": "victoire"
 }
