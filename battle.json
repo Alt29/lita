@@ -1,13 +1,15 @@
 {
     "mob": {
-        "name": "Phenix_de_foudre",
-        "lvl": 306
+        "name": "Phenix_de_glace",
+        "lvl": 288
     },
     "players": {
+        "terminator850": "terminator850",
+        "altan3062": "altan3062",
+        "akastukye": "akastukye",
         "ruinflex": "ruinflex",
-        "marylis": "marylis",
-        "terminator850": "terminator850"
+        "marylis": "marylis"
     },
     "debuff_time": 0,
-    "status": "defaite"
+    "status": "victoire"
 }
