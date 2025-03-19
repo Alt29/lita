@@ -198,5 +198,37 @@
     },
     "PointXP": {
         "icon": ":white_flower:"
+    },
+    "Faux": {
+        "name": "Faux de la lune funeste",
+        "icon": ":crescent_moon:",
+        "unique": true,
+        "classe": "Assassin"
+    },
+    "Grimoire": {
+        "name": "Grimoire des murmures démoniaques",
+        "icon": ":hamsa:",
+        "unique": true,
+        "classe": "D\u00e9buffer"
+    },
+    "Pierre eau": {
+        "name": "Pierre eau",
+        "icon": ":small_blue_diamond:"
+    },
+    "Gemme eau": {
+        "name": "Gemme eau",
+        "icon": ":large_blue_diamond:"
+    },
+    "Fourrure de troll": {
+        "name": "Fourrure de troll",
+        "icon": ":mammoth:"
+    },
+    "Aile de demon": {
+        "name": "Aile de demon",
+        "icon": ":bat:"
+    },
+    "Ame corrompue": {
+        "name": "Ame corrompue",
+        "icon": ":ghost:"
     }
 }

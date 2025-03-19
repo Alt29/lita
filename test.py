@@ -136,10 +136,7 @@ class BattleView(discord.ui.View):
             part_2 = ""
 
         if nbr_debuffer > 0:
-                if nbr_debuffer == 1:
-                    embed.title = part_1 + " • [Débuff]"
-                else:
-                    embed.title = part_1 + " • [" + str(nbr_debuffer) + " Débuff]"
+            embed.title = part_1 + " • [Débuff -" + str(int((100 - 0.9**nbr_debuffer) * 100 - 9900)) + "%]"
             
         new_fields = []
         
@@ -148,18 +145,29 @@ class BattleView(discord.ui.View):
         else:
             debuff_time = 0
 
+        reduced_stats = []
+
         for field in embed.fields:
             if field.name.startswith("PV") and nbr_debuffer > 0:
                 while debuff_time < nbr_debuffer:
-                    field.name, debuff_time = reduce_numbers_by_10_percent(field.name)
+                    field.name, debuff_time, debuffed_stats = reduce_numbers_by_10_percent(field.name)
+                    reduced_stats.append(debuffed_stats)
                     battle["debuff_time"] = debuff_time
                 
                 new_fields.append({"name": field.name, "value": field.value, "inline": field.inline})
+                
+                if reduced_stats != []:
+                    reduced_stats = additionner_stats(reduced_stats)
+                    new_fields.append({"name": reduced_stats, "value": field.value, "inline": field.inline})
+                    
             else:
                 if field.name == "Combattez ce monstre !" or field.name == "Combat initié par":
                     new_fields.append({"name":"Combat initié par", "value":attaquant, "inline":False})
                 else:
-                    new_fields.append({"name": field.name, "value": field.value, "inline": field.inline})
+                    if field.name.startswith("Réduction"):
+                        pass
+                    else:
+                        new_fields.append({"name": field.name, "value": field.value, "inline": field.inline})
                 
         embed.clear_fields()
         
@@ -247,7 +255,8 @@ class BattleView(discord.ui.View):
             for player in battle["players"]:
                 if "classe" in log_data[player] and "name" in log_data[player]["classe"] and log_data[player]["classe"]["name"] == "Débuffer":
                     nbr_debuffer += 1
-                    log_data[player]["classe"]["progression 1"] += 1
+                    if log_data[player]["classe"]["progression 1"] != "completed":
+                        log_data[player]["classe"]["progression 1"] += 1
                     
             res_combat = combat(battle['mob']['name'], battle['mob']['lvl'], total_pv, total_for, total_def, nbr_debuffer)
             
@@ -271,7 +280,7 @@ class BattleView(discord.ui.View):
                     level_up = 0
                     log_data[player]['gold'] += gold
                     
-                    if "classe" in log_data[player] and "name" in log_data[player]["classe"] and log_data[player]["classe"]["name"] == "Assassin":
+                    if "classe" in log_data[player] and "name" in log_data[player]["classe"] and log_data[player]["classe"]["name"] == "Assassin" and log_data[player]["classe"]["progression 1"] != "completed":
                         log_data[player]["classe"]["progression 1"] += 1
                     
                     now = datetime.now()
@@ -719,6 +728,9 @@ class CraftView(discord.ui.View):
             else:
                 log_data[interaction.user.name]['bag'][same_item] = {"quantity": craft[self.item]['quantity'] * self.quantity, "icon": craft[self.item]['icon']}
 
+            if "classe" in items[self.item]:
+                log_data[interaction.user.name]["classe"]["progression 2"] = "Fabriqué" #a1b2 faire l'exaltation de la classe
+
             if 'stats' in craft[self.item]:
                 if 'pv' in craft[self.item]['stats']:
                     log_data[interaction.user.name]['stats']['pv'] += craft[self.item]['stats']['pv'] * craft[self.item]['quantity'] * self.quantity
@@ -907,6 +919,7 @@ async def on_message(message):
                         quantity = 1
                 item = item.title()
 
+                can_craft = True
                 if item not in craft:
                     title = 'Vérifiez l\'appélation de ce que vous voulez crafter.'
                     tabFields = {'Faites !craft pour voir la liste des crafts disponibles.' : ''}
@@ -914,17 +927,31 @@ async def on_message(message):
                     embed = create_embed(title=title, color=color, tabFields=tabFields)
                     await message.channel.send(embed=embed)
                 else:
-                    embed, view = craft_action(message.author.name, message.author.avatar, message.author.global_name, item, quantity)
-
-                    if view is not None:
-                        view.message = await message.channel.send(embed=embed, view=view)
+                    if "unique" in items[item] and "classe" in log_data[message.author.name] and "progression 1" in log_data[message.author.name]["classe"] and log_data[message.author.name]["classe"]["progression 1"] == "completed" and "classe" in items[item] and items[item]["classe"] == log_data[message.author.name]["classe"]["name"] and log_data[message.author.name]["classe"]["progression 2"] != "Fabriqué":
+                        can_craft = True
+                        quantity = 1
                     else:
-                        await message.channel.send(embed=embed)
+                        if "classe" in items[item]:
+                            can_craft = False
+                    
+                    if can_craft:
+                        embed, view = craft_action(message.author.name, message.author.avatar, message.author.global_name, item, quantity)
 
-                    updated = True
+                        if view is not None:
+                            view.message = await message.channel.send(embed=embed, view=view)
+                        else:
+                            await message.channel.send(embed=embed)
+
+                        updated = True
+                    else:
+                        title = f"Item de classe"
+                        tabFields = {"Vous n'avez pas accès à ce craft, c'est un craft unique à débloquer via sa classe." : ''}
+                        color = discord.Color.red()
+                        embed = create_embed(title=title, color=color, tabFields=tabFields)
+                        await message.channel.send(embed=embed)
             else:
                 title = 'Craft'
-                tabFields = {'Faites !craft nom_item optionnel_quantité' : '', 'Liste des crafts disponibles : ' : '', 'Gemmes d\'éveil :' : '<:Rare:1222193217957662760> Rare\n<:Epique:1222193241022136491> Epique\n<:Epique:1222193241022136491> Epique2\n<:Legendaire:1222193258403336222> Legendaire\n:small_red_triangle: Fragment\n:octagonal_sign: Ultime\n', 'Runes améliorées :' : ':boom: Brasier • For+40\n:volcano: Volcan • For+600\n:herb: Branche • Def+80\n:deciduous_tree: Arbre • Def+1200\n:sweat_drops: Mer • PV+5000\n:ocean: Ocean • PV+75000'}
+                tabFields = {'Faites !craft nom_item optionnel_quantité' : '', 'Liste des crafts disponibles : ' : '', 'Gemmes d\'éveil :' : '<:Rare:1222193217957662760> Rare\n<:Epique:1222193241022136491> Epique\n<:Epique:1222193241022136491> Epique2\n<:Legendaire:1222193258403336222> Legendaire\n:small_red_triangle: Fragment\n:octagonal_sign: Ultime\n', 'Runes améliorées :' : ':boom: Brasier • For+40\n:volcano: Volcan • For+600\n:herb: Branche • Def+80\n:deciduous_tree: Arbre • Def+1200\n:sweat_drops: Mer • PV+5000\n:ocean: Ocean • PV+75000', "Item de classe :" : ":crescent_moon: Faux de la lune funeste • Collecte des âmes\n:hamsa: Grimoire des murmures démoniaques • Absorption de puissance"}
                 color = discord.Color.lighter_grey()
                 embed = create_embed(title=title, color=color, tabFields=tabFields)
                 await message.channel.send(embed=embed)
@@ -1289,14 +1316,8 @@ async def on_message(message):
                 if classe in classes:
                     log_data[message.author.name]["classe"]["name"] = classes[classe]["name"]
                     log_data[message.author.name]["classe"]["icon"] = classes[classe]["icon"]
-                    
-                    if classe == "assassin":
-                        log_data[message.author.name]["classe"]["progression 1"] = 0
-                        log_data[message.author.name]["classe"]["progression 2"] = "Pas encore crafter" #a1b2 à faire
-                    
-                    if classe == "debuffer":
-                        log_data[message.author.name]["classe"]["progression 1"] = 0
-                        log_data[message.author.name]["classe"]["progression 2"] = "Pas encore crafter" #a1b2 à faire
+                    log_data[message.author.name]["classe"]["progression 1"] = 0
+                    log_data[message.author.name]["classe"]["progression 2"] = "Pas encore crafter"
                     
                     updated = True
                     
@@ -1352,7 +1373,13 @@ async def market_command(interaction: discord.Interaction):
 async def assassin_command(interaction: discord.Interaction):
     if "classe" in log_data[interaction.user.name] and "name" in log_data[interaction.user.name]["classe"] and log_data[interaction.user.name]["classe"]["name"] == "Assassin":
         title = "Informations cachées sur la classe :dagger: Assassin"
-        description = "**Pour exalter votre classe :dagger: Assassin en la classe :cyclone: Faucheur d'âmes, réussissez ces quêtes :**\n\n**Quête 1 • **" + classes["assassin"]["details"]["Quete 1"]["quete"] + "\n**Récompense • **" + classes["assassin"]["details"]["Quete 1"]["recompense"] + "\n**Progression • **" + "[" + str(log_data[interaction.user.name]["classe"]["progression 1"]) + "/100]" + "\n\n**Quête 2 • **" + classes["assassin"]["details"]["Quete 2"]["quete"] + "\n **Récompense • **" + classes["assassin"]["details"]["Quete 2"]["recompense"] + "\n**Progression • **" + log_data[interaction.user.name]["classe"]["progression 2"]
+        if log_data[interaction.user.name]["classe"]["progression 1"] == "completed" or log_data[interaction.user.name]["classe"]["progression 1"] >= 100:
+            progression_1 = "**Progression • Réussie**"
+            log_data[interaction.user.name]["classe"]["progression 1"] = "completed"
+        else:
+            progression_1 = "**Progression • **" + "[" + str(log_data[interaction.user.name]["classe"]["progression 1"]) + "/100]"
+        
+        description = "**Pour exalter votre classe :dagger: Assassin en la classe :cyclone: Faucheur d'âmes, réussissez ces quêtes :**\n\n**Quête 1 • **" + classes["assassin"]["details"]["Quete 1"]["quete"] + "\n**Récompense • **" + classes["assassin"]["details"]["Quete 1"]["recompense"] + "\n" + progression_1 + "\n\n**Quête 2 • **" + classes["assassin"]["details"]["Quete 2"]["quete"] + "\n **Récompense • **" + classes["assassin"]["details"]["Quete 2"]["recompense"] + "\n**Progression • **" + log_data[interaction.user.name]["classe"]["progression 2"]
         embed = create_embed(title=title, description=description, color=discord.Color.blue())
     else:
         title = "Commande non autorisée"
@@ -1367,7 +1394,13 @@ async def assassin_command(interaction: discord.Interaction):
 async def debuffer_command(interaction: discord.Interaction):
     if "classe" in log_data[interaction.user.name] and "name" in log_data[interaction.user.name]["classe"] and log_data[interaction.user.name]["classe"]["name"] == "Débuffer":
         title = "Informations cachées sur la classe :chains: Débuffer"
-        description = "**Pour exalter votre classe :chains: Débuffer en la classe :japanese_ogre: Démon maudit, réussissez ces quêtes :**\n\n**Quête 1 • **" + classes["debuffer"]["details"]["Quete 1"]["quete"] + "\n**Récompense • **" + classes["debuffer"]["details"]["Quete 1"]["recompense"] + "\n**Progression • **" + "[" + str(log_data[interaction.user.name]["classe"]["progression 1"]) + "/200]" + "\n\n**Quête 2 • **" + classes["debuffer"]["details"]["Quete 2"]["quete"] + "\n **Récompense • **" + classes["debuffer"]["details"]["Quete 2"]["recompense"] + "\n**Progression • **" + log_data[interaction.user.name]["classe"]["progression 2"]
+        if log_data[interaction.user.name]["classe"]["progression 1"] == "completed" or log_data[interaction.user.name]["classe"]["progression 1"] >= 200:
+            progression_1 = "**Progression • Réussie**"
+            log_data[interaction.user.name]["classe"]["progression 1"] = "completed"
+        else:
+            progression_1 = "**Progression • **" + "[" + str(log_data[interaction.user.name]["classe"]["progression 1"]) + "/200]"
+        
+        description = "**Pour exalter votre classe :chains: Débuffer en la classe :japanese_ogre: Démon maudit, réussissez ces quêtes :**\n\n**Quête 1 • **" + classes["debuffer"]["details"]["Quete 1"]["quete"] + "\n**Récompense • **" + classes["debuffer"]["details"]["Quete 1"]["recompense"] + "\n" + progression_1 + "\n\n**Quête 2 • **" + classes["debuffer"]["details"]["Quete 2"]["quete"] + "\n **Récompense • **" + classes["debuffer"]["details"]["Quete 2"]["recompense"] + "\n**Progression • **" + log_data[interaction.user.name]["classe"]["progression 2"]
         embed = create_embed(title=title, description=description, color=discord.Color.blue())
     else:
         title = "Commande non autorisée"
@@ -1410,7 +1443,7 @@ async def sell_command(interaction: discord.Interaction, item: str, prix: int, q
     my_items = []
 
     for bag_item in log_data[interaction.user.name]["bag"]:
-        if bag_item != "Casquette" and bag_item != "Tshirt" and bag_item != "Jean" and bag_item != "Baskets" and bag_item != "Dague" and bag_item != "PointXP" :
+        if not "unique" in items[bag_item] and bag_item != "PointXP" :
             my_items.append(bag_item)
     
     if item not in my_items:
@@ -1474,7 +1507,7 @@ async def item_autocomplete(interaction: discord.Interaction, current: str):
     my_items = []
 
     for item in log_data[interaction.user.name]["bag"]:
-        if item != "Casquette" and item != "Tshirt" and item != "Jean" and item != "Baskets" and item != "Dague" and item != "PointXP" :
+        if not "unique" in items[item] and item != "PointXP" :
             my_items.append(item)
     
     suggestions = [
@@ -2440,6 +2473,20 @@ def reduce_numbers_by_10_percent(text):
     with open("battle.json", "w") as file:
         json.dump(battle, file, indent=4)
             
-    return re.sub(r"\d+", lambda m: str(round(int(m.group()) * 0.9)), text), battle["debuff_time"]
+    return re.sub(r"\d+", lambda m: str(round(int(m.group()) * 0.9)), text), battle["debuff_time"], re.sub(r"\d+", lambda m: str(round(int(m.group()) * 0.1)), text)
+
+def additionner_stats(lignes):
+    total_pv = 0
+    total_for = 0
+    total_def = 0
+
+    for ligne in lignes:
+        chiffres = list(map(int, re.findall(r"\d+", ligne)))  # Extraction des nombres
+        if len(chiffres) == 3:  # Vérifier qu'on a bien les trois valeurs
+            total_pv += chiffres[0]
+            total_for += chiffres[1]
+            total_def += chiffres[2]
+
+    return f"Réduction :\nPV : {total_pv} :hearts:   For : {total_for} :crossed_swords:   Def : {total_def} :shield:"
 
 client.run(TOKEN)

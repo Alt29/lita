@@ -144,5 +144,37 @@
         },
         "quantity": 1,
         "icon": ":ocean:"
+    },
+    "Faux": {
+        "craft": {
+            "image": "https://i.imgur.com/PIpzNQg.jpeg",
+            "item": {
+                "Pierre eau" : 3,
+                "Gemme eau" : 1,
+                "Fourrure de troll" : 4,
+                "Aile de demon" : 2,
+                "Ame corrompue" : 1,
+                "Fragment" : 5,
+                "Ultime" : 1
+            }
+        },
+        "quantity": 1,
+        "icon": ":crescent_moon:"
+    },
+    "Grimoire": {
+        "craft": {
+            "image": "https://i.imgur.com/PIpzNQg.jpeg",
+            "item": {
+                "Pierre eau" : 3,
+                "Gemme eau" : 1,
+                "Fourrure de troll" : 4,
+                "Aile de demon" : 2,
+                "Ame corrompue" : 1,
+                "Fragment" : 5,
+                "Ultime" : 1
+            }
+        },
+        "quantity": 1,
+        "icon": ":hamsa:"
     }
 }

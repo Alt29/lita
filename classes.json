@@ -77,7 +77,7 @@
 
         "evolve": {
             "name": "Spécialiste runique",
-            "icon": "<:Legendaire:1222193258403336222>",
+            "icon": ":octagonal_sign:",
             "description": "Maître des arcanes anciennes, votre affinité runique vous permet d'extraire 10% de pouvoir supplémentaire des runes. De plus, vous êtes désormais capable de matérialiser des runes ultimes, renfermant une puissance inégalée."
         }
     },
