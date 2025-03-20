@@ -202,14 +202,86 @@
     "Faux": {
         "name": "Faux de la lune funeste",
         "icon": ":crescent_moon:",
+        "spe": "Collecte des Âmes",
         "unique": true,
         "classe": "Assassin"
+    },
+    "Main": {
+        "name": "Main de Midas",
+        "icon": ":index_pointing_at_the_viewer:",
+        "spe": "Don de Midas",
+        "unique": true,
+        "classe": "Rat"
+    },
+    "Jackpot": {
+        "name": "Jackpot 777",
+        "icon": ":slot_machine:",
+        "spe": "Faveur de la Providence",
+        "unique": true,
+        "classe": "Chanceux"
+    },
+    "Hache": {
+        "name": "Hache du Massacre Rouge",
+        "icon": ":axe:",
+        "spe": "Fureur du Berserker",
+        "unique": true,
+        "classe": "Guerrier"
+    },
+    "Egide": {
+        "name": "Égide Réfléchissante",
+        "icon": ":mirror:",
+        "spe": "Retour à l'envoyeur",
+        "unique": true,
+        "classe": "Gardien"
+    },
+    "Catalyseur": {
+        "name": "Catalyseur Runique",
+        "icon": ":amphora:",
+        "spe": "Affinité Runique",
+        "unique": true,
+        "classe": "Druide"
+    },
+    "Aureole": {
+        "name": "Auréole de la Grâce Divine",
+        "icon": ":dizzy:",
+        "spe": "Augmentation Cruciale",
+        "unique": true,
+        "classe": "Buffer"
     },
     "Grimoire": {
         "name": "Grimoire des murmures démoniaques",
         "icon": ":hamsa:",
+        "spe": "Absorption de puissance",
         "unique": true,
         "classe": "D\u00e9buffer"
+    },
+    "Memoires": {
+        "name": "Mémoires du Savant Fou",
+        "icon": ":brain:",
+        "spe": "Connaissances perdues",
+        "unique": true,
+        "classe": "Alchimiste"
+    },
+    "Balance": {
+        "name": "Balance des Opprimés",
+        "icon": ":scales:",
+        "spe": "Collecte des taxes",
+        "unique": true,
+        "classe": "Paysan"
+    },
+    "ZZZ": {
+        "name": "ZZZ Matière Ultime",
+        "icon": ":regional_indicator_z: :regional_indicator_z: :regional_indicator_z:",
+        "spe": "Créations Ultimes",
+        "unique": true,
+        "classe": "Forgeron"
+    },
+    "Bague": {
+        "name": "Bague Étincelante",
+        "icon": ":ring:",
+        "spe": "Ferveur du Chevalier",
+        "unique": true,
+        "classe": "Grenouille"
     },
     "Pierre eau": {
         "name": "Pierre eau",
