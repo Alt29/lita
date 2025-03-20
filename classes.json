@@ -6,10 +6,10 @@
         "details": {
             "Quete 1": {
                 "quete": "Tuer 100 monstres",
-                "recompense": "Débloquage du craft de la faux."
+                "recompense": "Débloquage du craft de la Faux de la lune funeste."
             },
             "Quete 2": {
-                "quete": "Crafter la faux",
+                "quete": "Crafter la Faux de la lune funeste",
                 "recompense": "Exaltation de la classe :dagger: Assassin en la classe exaltée :cyclone: Faucheur d'âmes."
             }
         },
@@ -21,10 +21,20 @@
             "description": "Maniant une faux imprégnée de l’essence des défunts, chaque âme fauchée renforce votre puissance. Plus vous semez la mort, plus votre arme devient redoutable."
         }
     },
-    "econome": {
-        "name": "Économe",
+    "rat": {
+        "name": "Rat",
         "icon": ":mouse:",
         "description": "Il n'y a pas de petite économie, vous bénéficiez de -10% sur les prix du !market",
+        "details": {
+            "Quete 1": {
+                "quete": "Gagner 10M :coin: en combattant des monstres",
+                "recompense": "Débloquage du craft de la Main de Midas."
+            },
+            "Quete 2": {
+                "quete": "Crafter la Main de Midas",
+                "recompense": "Exaltation de la classe :mouse: Rat en la classe exaltée :coin: Midas."
+            }
+        },
         "evolved": false,
 
         "evolve": {
@@ -37,6 +47,16 @@
         "name": "Chanceux",
         "icon": ":four_leaf_clover:",
         "description": "La chance vous sourit, vous avez +10% de chance de drop sur les monstres vaincus",
+        "details": {
+            "Quete 1": {
+                "quete": "Obtenir 100 drops de monstres en les combattants.",
+                "recompense": "Débloquage du craft du Jackpot 777."
+            },
+            "Quete 2": {
+                "quete": "Crafter le Jackpot 777",
+                "recompense": "Exaltation de la classe :four_leaf_clover: Chanceux en la classe exaltée :black_joker: Main du destin."
+            }
+        },
         "evolved": false,
 
         "evolve": {
@@ -49,6 +69,16 @@
         "name": "Guerrier",
         "icon": ":crossed_swords:",
         "description": "L'honneur d'un guerrier se trouve sur le champ de bataille, chaque monstre vaincu vous octroie 1% de sa force",
+        "details": {
+            "Quete 1": {
+                "quete": "Tuer 100 monstres",
+                "recompense": "Débloquage du craft de la Hache du Massacre Rouge."
+            },
+            "Quete 2": {
+                "quete": "Crafter la Hache du Massacre Rouge",
+                "recompense": "Exaltation de la classe :crossed_swords: Guerrier en la classe exaltée :heart_on_fire: Berserker sanglant."
+            }
+        },
         "evolved": false,
 
         "evolve": {
@@ -61,6 +91,16 @@
         "name": "Gardien",
         "icon": ":shield:",
         "description": "Protégez vos alliés est votre priorité, chaque monstre vaincu vous octroie 1% de sa défense",
+        "details": {
+            "Quete 1": {
+                "quete": "Protéger 100 alliés lors de combats de monstres",
+                "recompense": "Débloquage du craft de l'Égide Réfléchissante."
+            },
+            "Quete 2": {
+                "quete": "Crafter l'Égide Réfléchissante",
+                "recompense": "Exaltation de la classe :shield: Gardien en la classe exaltée :moyai: Sentinelle oubliée."
+            }
+        },
         "evolved": false,
 
         "evolve": {
@@ -73,11 +113,21 @@
         "name": "Druide",
         "icon": ":coral:",
         "description": "Le langage runique n'a plus de secret pour vous, vous extrairez des runes aléatoires sur les monstres vaincus",
+        "details": {
+            "Quete 1": {
+                "quete": "La somme de vos rubes Volcans, Arbres et Océans doit être de 45 ou plus",
+                "recompense": "Débloquage du craft du Catalyseur Runique."
+            },
+            "Quete 2": {
+                "quete": "Crafter le Catalyseur Runique",
+                "recompense": "Exaltation de la classe :coral: Druide en la classe exaltée :libra: Spécialiste runique."
+            }
+        },
         "evolved": false,
 
         "evolve": {
             "name": "Spécialiste runique",
-            "icon": ":octagonal_sign:",
+            "icon": ":libra:",
             "description": "Maître des arcanes anciennes, votre affinité runique vous permet d'extraire 10% de pouvoir supplémentaire des runes. De plus, vous êtes désormais capable de matérialiser des runes ultimes, renfermant une puissance inégalée."
         }
     },
@@ -85,6 +135,16 @@
         "name": "Buffer",
         "icon": ":low_brightness:",
         "description": "Vous voulez vous rendre utile lors des combats, vous partager une partie de vos stats aux aventuriers qui vous accompagnent",
+        "details": {
+            "Quete 1": {
+                "quete": "Renforcer 100 alliés lors des combats contre des monstres",
+                "recompense": "Débloquage du craft de l'Auréole de la Grâce Divine."
+            },
+            "Quete 2": {
+                "quete": "Crafter l'Auréole de la Grâce Divine",
+                "recompense": "Exaltation de la classe :low_brightness: Buffer en la classe exaltée :angel: Ange béni."
+            }
+        },
         "evolved": false,
 
         "evolve": {
@@ -100,10 +160,10 @@
         "details": {
             "Quete 1": {
                 "quete": "Affaiblisser 200 monstres",
-                "recompense": "Débloquage du craft du grimoire maudit."
+                "recompense": "Débloquage du craft du Grimoire des murmures démoniaques."
             },
             "Quete 2": {
-                "quete": "Crafter le grimoire maudit",
+                "quete": "Crafter le Grimoire des murmures démoniaques",
                 "recompense": "Exaltation de la classe :chains: Débuffer en la classe exaltée :japanese_ogre: Démon maudit."
             }
         },
@@ -119,6 +179,16 @@
         "name": "Alchimiste",
         "icon": ":alembic:",
         "description": "Vous aimez expérimenter, votre confection de potions est parfaite les rendant nettement plus fortes",
+        "details": {
+            "Quete 1": {
+                "quete": "Concocter 50 potions à effets aléatoires",
+                "recompense": "Débloquage du craft des Mémoires du Savant Fou."
+            },
+            "Quete 2": {
+                "quete": "Crafter les Mémoires du Savant Fou",
+                "recompense": "Exaltation de la classe :alembic: Alchimiste en la classe exaltée :dna: Savant fou."
+            }
+        },
         "evolved": false,
 
         "evolve": {
@@ -131,6 +201,16 @@
         "name": "Paysan",
         "icon": ":farmer:",
         "description": "Vous commencez en bas de l'échelle sociale, mais les autres aventuriers vous craindront, +500% d'xp sur les monstres vaincus",
+        "details": {
+            "Quete 1": {
+                "quete": "Atteindre le niveau 70",
+                "recompense": "Débloquage du craft de la Balance des Opprimés."
+            },
+            "Quete 2": {
+                "quete": "Crafter la Balance des Opprimés",
+                "recompense": "Exaltation de la classe :farmer: Paysan en la classe exaltée :crown: Roi tyran."
+            }
+        },
         "evolved": false,
 
         "evolve": {
@@ -143,6 +223,16 @@
         "name": "Forgeron",
         "icon": ":hammer_pick:",
         "description": "Votre marteau sera votre meilleur compagnon, utilisez le pour forger des armes et armures de qualité supérieur",
+        "details": {
+            "Quete 1": {
+                "quete": "Fabriquer 50 échantillons de matières aléatoires",
+                "recompense": "Débloquage du craft de la ZZZ Matière Ultime."
+            },
+            "Quete 2": {
+                "quete": "Crafter la ZZZ Matière Ultime",
+                "recompense": "Exaltation de la classe :hammer_pick: Forgeron en la classe exaltée :fleur_de_lis: Créateur."
+            }
+        },
         "evolved": false,
 
         "evolve": {
@@ -158,10 +248,10 @@
         "details": {
             "Quete 1": {
                 "quete": "Survivre à 100 monstres",
-                "recompense": "Débloquage du craft de la bague étincelante."
+                "recompense": "Débloquage du craft de la Bague Étincelante."
             },
             "Quete 2": {
-                "quete": "Crafter la bague étincelante.",
+                "quete": "Crafter la Bague Étincelante.",
                 "recompense": "Exaltation de la classe :frog: Grenouille en la classe exaltée :princess: Princesse royale."
             }
         },

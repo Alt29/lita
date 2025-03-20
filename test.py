@@ -955,8 +955,15 @@ async def on_message(message):
                         embed = create_embed(title=title, color=color, tabFields=tabFields)
                         await message.channel.send(embed=embed)
             else:
+                classe_item = ""
+                
+                for item in items:
+                    if "classe" in items[item]:
+                        classe_item +=  f"{items[item]["icon"]} {items[item]["name"]} • {items[item]["spe"]}\n"
+                
+                
                 title = 'Craft'
-                tabFields = {'Faites !craft nom_item optionnel_quantité' : '', 'Liste des crafts disponibles : ' : '', 'Gemmes d\'éveil :' : '<:Rare:1222193217957662760> Rare\n<:Epique:1222193241022136491> Epique\n<:Epique:1222193241022136491> Epique2\n<:Legendaire:1222193258403336222> Legendaire\n:small_red_triangle: Fragment\n:octagonal_sign: Ultime\n', 'Runes améliorées :' : ':boom: Brasier • For+40\n:volcano: Volcan • For+600\n:herb: Branche • Def+80\n:deciduous_tree: Arbre • Def+1200\n:sweat_drops: Mer • PV+5000\n:ocean: Ocean • PV+75000', "Item de classe :" : ":crescent_moon: Faux de la lune funeste • Collecte des âmes\n:hamsa: Grimoire des murmures démoniaques • Absorption de puissance"}
+                tabFields = {'Faites !craft nom_item optionnel_quantité' : '', 'Liste des crafts disponibles : ' : '', 'Gemmes d\'éveil :' : '<:Rare:1222193217957662760> Rare\n<:Epique:1222193241022136491> Epique\n<:Epique:1222193241022136491> Epique2\n<:Legendaire:1222193258403336222> Legendaire\n:small_red_triangle: Fragment\n:octagonal_sign: Ultime\n', 'Runes améliorées :' : ':boom: Brasier • For+40\n:volcano: Volcan • For+600\n:herb: Branche • Def+80\n:deciduous_tree: Arbre • Def+1200\n:sweat_drops: Mer • PV+5000\n:ocean: Ocean • PV+75000', "Item de classe :" : classe_item}
                 color = discord.Color.lighter_grey()
                 embed = create_embed(title=title, color=color, tabFields=tabFields)
                 await message.channel.send(embed=embed)
@@ -1394,7 +1401,133 @@ async def assassin_command(interaction: discord.Interaction):
         embed = create_embed(title=title, description=description, color=color)
     
     await interaction.response.send_message(embed=embed, ephemeral=True)
+
+@tree.command(name="rat", description="Affiche des informations cachées sur la classe Rat.")
+async def rat_command(interaction: discord.Interaction):
+    if "classe" in log_data[interaction.user.name] and "name" in log_data[interaction.user.name]["classe"] and log_data[interaction.user.name]["classe"]["name"] == "Rat":
+        title = "Informations cachées sur la classe :mouse: Rat"
+        if log_data[interaction.user.name]["classe"]["progression 1"] == "completed" or log_data[interaction.user.name]["classe"]["progression 1"] >= 10000000:
+            progression_1 = "**Progression • Réussie**"
+            log_data[interaction.user.name]["classe"]["progression 1"] = "completed"
+        else:
+            progression_1 = "**Progression • **" + "[" + str(log_data[interaction.user.name]["classe"]["progression 1"]) + "/10000000]"
+        
+        description = "**Pour exalter votre classe :mouse: Rat en la classe :coin: Midas, réussissez ces quêtes :**\n\n**Quête 1 • **" + classes["rat"]["details"]["Quete 1"]["quete"] + "\n**Récompense • **" + classes["rat"]["details"]["Quete 1"]["recompense"] + "\n" + progression_1 + "\n\n**Quête 2 • **" + classes["rat"]["details"]["Quete 2"]["quete"] + "\n **Récompense • **" + classes["rat"]["details"]["Quete 2"]["recompense"] + "\n**Progression • **" + log_data[interaction.user.name]["classe"]["progression 2"]
+        embed = create_embed(title=title, description=description, color=discord.Color.blue())
+    else:
+        title = "Commande non autorisée"
+        description = "Vous n'avait pas les droits requis pour cette commande"
+        color = discord.Color.orange()
+
+        embed = create_embed(title=title, description=description, color=color)
     
+    await interaction.response.send_message(embed=embed, ephemeral=True)
+
+@tree.command(name="chanceux", description="Affiche des informations cachées sur la classe Chanceux.")
+async def chanceux_command(interaction: discord.Interaction):
+    if "classe" in log_data[interaction.user.name] and "name" in log_data[interaction.user.name]["classe"] and log_data[interaction.user.name]["classe"]["name"] == "Chanceux":
+        title = "Informations cachées sur la classe :four_leaf_clover: Chanceux"
+        if log_data[interaction.user.name]["classe"]["progression 1"] == "completed" or log_data[interaction.user.name]["classe"]["progression 1"] >= 100:
+            progression_1 = "**Progression • Réussie**"
+            log_data[interaction.user.name]["classe"]["progression 1"] = "completed"
+        else:
+            progression_1 = "**Progression • **" + "[" + str(log_data[interaction.user.name]["classe"]["progression 1"]) + "/100]"
+        
+        description = "**Pour exalter votre classe :four_leaf_clover: Chanceux en la classe :black_joker: Main du destin, réussissez ces quêtes :**\n\n**Quête 1 • **" + classes["chanceux"]["details"]["Quete 1"]["quete"] + "\n**Récompense • **" + classes["chanceux"]["details"]["Quete 1"]["recompense"] + "\n" + progression_1 + "\n\n**Quête 2 • **" + classes["chanceux"]["details"]["Quete 2"]["quete"] + "\n **Récompense • **" + classes["chanceux"]["details"]["Quete 2"]["recompense"] + "\n**Progression • **" + log_data[interaction.user.name]["classe"]["progression 2"]
+        embed = create_embed(title=title, description=description, color=discord.Color.blue())
+    else:
+        title = "Commande non autorisée"
+        description = "Vous n'avait pas les droits requis pour cette commande"
+        color = discord.Color.orange()
+
+        embed = create_embed(title=title, description=description, color=color)
+    
+    await interaction.response.send_message(embed=embed, ephemeral=True)
+
+@tree.command(name="guerrier", description="Affiche des informations cachées sur la classe Guerrier.")
+async def guerrier_command(interaction: discord.Interaction):
+    if "classe" in log_data[interaction.user.name] and "name" in log_data[interaction.user.name]["classe"] and log_data[interaction.user.name]["classe"]["name"] == "Guerrier":
+        title = "Informations cachées sur la classe :crossed_swords: Guerrier"
+        if log_data[interaction.user.name]["classe"]["progression 1"] == "completed" or log_data[interaction.user.name]["classe"]["progression 1"] >= 100:
+            progression_1 = "**Progression • Réussie**"
+            log_data[interaction.user.name]["classe"]["progression 1"] = "completed"
+        else:
+            progression_1 = "**Progression • **" + "[" + str(log_data[interaction.user.name]["classe"]["progression 1"]) + "/100]"
+        
+        description = "**Pour exalter votre classe :crossed_swords: Guerrier en la classe :heart_on_fire: Berserker sanglant, réussissez ces quêtes :**\n\n**Quête 1 • **" + classes["guerrier"]["details"]["Quete 1"]["quete"] + "\n**Récompense • **" + classes["guerrier"]["details"]["Quete 1"]["recompense"] + "\n" + progression_1 + "\n\n**Quête 2 • **" + classes["guerrier"]["details"]["Quete 2"]["quete"] + "\n **Récompense • **" + classes["guerrier"]["details"]["Quete 2"]["recompense"] + "\n**Progression • **" + log_data[interaction.user.name]["classe"]["progression 2"]
+        embed = create_embed(title=title, description=description, color=discord.Color.blue())
+    else:
+        title = "Commande non autorisée"
+        description = "Vous n'avait pas les droits requis pour cette commande"
+        color = discord.Color.orange()
+
+        embed = create_embed(title=title, description=description, color=color)
+    
+    await interaction.response.send_message(embed=embed, ephemeral=True)
+
+@tree.command(name="gardien", description="Affiche des informations cachées sur la classe Gardien.")
+async def gardien_command(interaction: discord.Interaction):
+    if "classe" in log_data[interaction.user.name] and "name" in log_data[interaction.user.name]["classe"] and log_data[interaction.user.name]["classe"]["name"] == "Gardien":
+        title = "Informations cachées sur la classe :shield: Gardien"
+        if log_data[interaction.user.name]["classe"]["progression 1"] == "completed" or log_data[interaction.user.name]["classe"]["progression 1"] >= 100:
+            progression_1 = "**Progression • Réussie**"
+            log_data[interaction.user.name]["classe"]["progression 1"] = "completed"
+        else:
+            progression_1 = "**Progression • **" + "[" + str(log_data[interaction.user.name]["classe"]["progression 1"]) + "/100]"
+        
+        description = "**Pour exalter votre classe :shield: Gardien en la classe :moyai: Sentinelle oubliée, réussissez ces quêtes :**\n\n**Quête 1 • **" + classes["gardien"]["details"]["Quete 1"]["quete"] + "\n**Récompense • **" + classes["gardien"]["details"]["Quete 1"]["recompense"] + "\n" + progression_1 + "\n\n**Quête 2 • **" + classes["gardien"]["details"]["Quete 2"]["quete"] + "\n **Récompense • **" + classes["gardien"]["details"]["Quete 2"]["recompense"] + "\n**Progression • **" + log_data[interaction.user.name]["classe"]["progression 2"]
+        embed = create_embed(title=title, description=description, color=discord.Color.blue())
+    else:
+        title = "Commande non autorisée"
+        description = "Vous n'avait pas les droits requis pour cette commande"
+        color = discord.Color.orange()
+
+        embed = create_embed(title=title, description=description, color=color)
+    
+    await interaction.response.send_message(embed=embed, ephemeral=True)
+
+@tree.command(name="druide", description="Affiche des informations cachées sur la classe Druide.")
+async def druide_command(interaction: discord.Interaction):
+    if "classe" in log_data[interaction.user.name] and "name" in log_data[interaction.user.name]["classe"] and log_data[interaction.user.name]["classe"]["name"] == "Druide":
+        title = "Informations cachées sur la classe :coral: Druide"
+        if log_data[interaction.user.name]["classe"]["progression 1"] == "completed" or log_data[interaction.user.name]["classe"]["progression 1"] >= 45:
+            progression_1 = "**Progression • Réussie**"
+            log_data[interaction.user.name]["classe"]["progression 1"] = "completed"
+        else:
+            progression_1 = "**Progression • **" + "[" + str(log_data[interaction.user.name]["classe"]["progression 1"]) + "/45]"
+        
+        description = "**Pour exalter votre classe :coral: Druide en la classe :libra: Spécialiste runique, réussissez ces quêtes :**\n\n**Quête 1 • **" + classes["druide"]["details"]["Quete 1"]["quete"] + "\n**Récompense • **" + classes["druide"]["details"]["Quete 1"]["recompense"] + "\n" + progression_1 + "\n\n**Quête 2 • **" + classes["druide"]["details"]["Quete 2"]["quete"] + "\n **Récompense • **" + classes["druide"]["details"]["Quete 2"]["recompense"] + "\n**Progression • **" + log_data[interaction.user.name]["classe"]["progression 2"]
+        embed = create_embed(title=title, description=description, color=discord.Color.blue())
+    else:
+        title = "Commande non autorisée"
+        description = "Vous n'avait pas les droits requis pour cette commande"
+        color = discord.Color.orange()
+
+        embed = create_embed(title=title, description=description, color=color)
+    
+    await interaction.response.send_message(embed=embed, ephemeral=True)
+
+@tree.command(name="buffer", description="Affiche des informations cachées sur la classe Buffer.")
+async def buffer_command(interaction: discord.Interaction):
+    if "classe" in log_data[interaction.user.name] and "name" in log_data[interaction.user.name]["classe"] and log_data[interaction.user.name]["classe"]["name"] == "Buffer":
+        title = "Informations cachées sur la classe :low_brightness: Buffer"
+        if log_data[interaction.user.name]["classe"]["progression 1"] == "completed" or log_data[interaction.user.name]["classe"]["progression 1"] >= 100:
+            progression_1 = "**Progression • Réussie**"
+            log_data[interaction.user.name]["classe"]["progression 1"] = "completed"
+        else:
+            progression_1 = "**Progression • **" + "[" + str(log_data[interaction.user.name]["classe"]["progression 1"]) + "/100]"
+        
+        description = "**Pour exalter votre classe :low_brightness: Buffer en la classe :angel: Ange béni, réussissez ces quêtes :**\n\n**Quête 1 • **" + classes["buffer"]["details"]["Quete 1"]["quete"] + "\n**Récompense • **" + classes["buffer"]["details"]["Quete 1"]["recompense"] + "\n" + progression_1 + "\n\n**Quête 2 • **" + classes["buffer"]["details"]["Quete 2"]["quete"] + "\n **Récompense • **" + classes["buffer"]["details"]["Quete 2"]["recompense"] + "\n**Progression • **" + log_data[interaction.user.name]["classe"]["progression 2"]
+        embed = create_embed(title=title, description=description, color=discord.Color.blue())
+    else:
+        title = "Commande non autorisée"
+        description = "Vous n'avait pas les droits requis pour cette commande"
+        color = discord.Color.orange()
+
+        embed = create_embed(title=title, description=description, color=color)
+    
+    await interaction.response.send_message(embed=embed, ephemeral=True)
+
 @tree.command(name="debuffer", description="Affiche des informations cachées sur la classe Débuffer.")
 async def debuffer_command(interaction: discord.Interaction):
     if "classe" in log_data[interaction.user.name] and "name" in log_data[interaction.user.name]["classe"] and log_data[interaction.user.name]["classe"]["name"] == "Débuffer":
@@ -1415,7 +1548,91 @@ async def debuffer_command(interaction: discord.Interaction):
         embed = create_embed(title=title, description=description, color=color)
     
     await interaction.response.send_message(embed=embed, ephemeral=True)
+
+@tree.command(name="alchimiste", description="Affiche des informations cachées sur la classe Alchimiste.")
+async def alchimiste_command(interaction: discord.Interaction):
+    if "classe" in log_data[interaction.user.name] and "name" in log_data[interaction.user.name]["classe"] and log_data[interaction.user.name]["classe"]["name"] == "Alchimiste":
+        title = "Informations cachées sur la classe :alembic: Alchimiste"
+        if log_data[interaction.user.name]["classe"]["progression 1"] == "completed" or log_data[interaction.user.name]["classe"]["progression 1"] >= 50:
+            progression_1 = "**Progression • Réussie**"
+            log_data[interaction.user.name]["classe"]["progression 1"] = "completed"
+        else:
+            progression_1 = "**Progression • **" + "[" + str(log_data[interaction.user.name]["classe"]["progression 1"]) + "/50]"
+        
+        description = "**Pour exalter votre classe :alembic: Alchimiste en la classe :dna: Savant fou, réussissez ces quêtes :**\n\n**Quête 1 • **" + classes["alchimiste"]["details"]["Quete 1"]["quete"] + "\n**Récompense • **" + classes["alchimiste"]["details"]["Quete 1"]["recompense"] + "\n" + progression_1 + "\n\n**Quête 2 • **" + classes["alchimiste"]["details"]["Quete 2"]["quete"] + "\n **Récompense • **" + classes["alchimiste"]["details"]["Quete 2"]["recompense"] + "\n**Progression • **" + log_data[interaction.user.name]["classe"]["progression 2"]
+        embed = create_embed(title=title, description=description, color=discord.Color.blue())
+    else:
+        title = "Commande non autorisée"
+        description = "Vous n'avait pas les droits requis pour cette commande"
+        color = discord.Color.orange()
+
+        embed = create_embed(title=title, description=description, color=color)
     
+    await interaction.response.send_message(embed=embed, ephemeral=True)
+
+@tree.command(name="paysan", description="Affiche des informations cachées sur la classe Paysan.")
+async def paysan_command(interaction: discord.Interaction):
+    if "classe" in log_data[interaction.user.name] and "name" in log_data[interaction.user.name]["classe"] and log_data[interaction.user.name]["classe"]["name"] == "Paysan":
+        title = "Informations cachées sur la classe :farmer: Paysan"
+        if log_data[interaction.user.name]["classe"]["progression 1"] == "completed" or log_data[interaction.user.name]["classe"]["progression 1"] >= 70:
+            progression_1 = "**Progression • Réussie**"
+            log_data[interaction.user.name]["classe"]["progression 1"] = "completed"
+        else:
+            progression_1 = "**Progression • **" + "[" + str(log_data[interaction.user.name]["classe"]["progression 1"]) + "/70]"
+        
+        description = "**Pour exalter votre classe :farmer: Paysan en la classe :crown: Roi tyran, réussissez ces quêtes :**\n\n**Quête 1 • **" + classes["paysan"]["details"]["Quete 1"]["quete"] + "\n**Récompense • **" + classes["paysan"]["details"]["Quete 1"]["recompense"] + "\n" + progression_1 + "\n\n**Quête 2 • **" + classes["paysan"]["details"]["Quete 2"]["quete"] + "\n **Récompense • **" + classes["paysan"]["details"]["Quete 2"]["recompense"] + "\n**Progression • **" + log_data[interaction.user.name]["classe"]["progression 2"]
+        embed = create_embed(title=title, description=description, color=discord.Color.blue())
+    else:
+        title = "Commande non autorisée"
+        description = "Vous n'avait pas les droits requis pour cette commande"
+        color = discord.Color.orange()
+
+        embed = create_embed(title=title, description=description, color=color)
+    
+    await interaction.response.send_message(embed=embed, ephemeral=True)
+
+@tree.command(name="forgeron", description="Affiche des informations cachées sur la classe Forgeron.")
+async def forgeron_command(interaction: discord.Interaction):
+    if "classe" in log_data[interaction.user.name] and "name" in log_data[interaction.user.name]["classe"] and log_data[interaction.user.name]["classe"]["name"] == "Forgeron":
+        title = "Informations cachées sur la classe :hammer_pick: Forgeron"
+        if log_data[interaction.user.name]["classe"]["progression 1"] == "completed" or log_data[interaction.user.name]["classe"]["progression 1"] >= 50:
+            progression_1 = "**Progression • Réussie**"
+            log_data[interaction.user.name]["classe"]["progression 1"] = "completed"
+        else:
+            progression_1 = "**Progression • **" + "[" + str(log_data[interaction.user.name]["classe"]["progression 1"]) + "/50]"
+        
+        description = "**Pour exalter votre classe :hammer_pick: Forgeron en la classe :fleur_de_lis: Créateur, réussissez ces quêtes :**\n\n**Quête 1 • **" + classes["forgeron"]["details"]["Quete 1"]["quete"] + "\n**Récompense • **" + classes["forgeron"]["details"]["Quete 1"]["recompense"] + "\n" + progression_1 + "\n\n**Quête 2 • **" + classes["forgeron"]["details"]["Quete 2"]["quete"] + "\n **Récompense • **" + classes["forgeron"]["details"]["Quete 2"]["recompense"] + "\n**Progression • **" + log_data[interaction.user.name]["classe"]["progression 2"]
+        embed = create_embed(title=title, description=description, color=discord.Color.blue())
+    else:
+        title = "Commande non autorisée"
+        description = "Vous n'avait pas les droits requis pour cette commande"
+        color = discord.Color.orange()
+
+        embed = create_embed(title=title, description=description, color=color)
+    
+    await interaction.response.send_message(embed=embed, ephemeral=True)
+
+@tree.command(name="grenouille", description="Affiche des informations cachées sur la classe Grenouille.")
+async def grenouille_command(interaction: discord.Interaction):
+    if "classe" in log_data[interaction.user.name] and "name" in log_data[interaction.user.name]["classe"] and log_data[interaction.user.name]["classe"]["name"] == "Grenouille":
+        title = "Informations cachées sur la classe :frog: Grenouille"
+        if log_data[interaction.user.name]["classe"]["progression 1"] == "completed" or log_data[interaction.user.name]["classe"]["progression 1"] >= 100:
+            progression_1 = "**Progression • Réussie**"
+            log_data[interaction.user.name]["classe"]["progression 1"] = "completed"
+        else:
+            progression_1 = "**Progression • **" + "[" + str(log_data[interaction.user.name]["classe"]["progression 1"]) + "/100]"
+        
+        description = "**Pour exalter votre classe :frog: Grenouille en la classe :princess: Princesse royale, réussissez ces quêtes :**\n\n**Quête 1 • **" + classes["grenouille"]["details"]["Quete 1"]["quete"] + "\n**Récompense • **" + classes["grenouille"]["details"]["Quete 1"]["recompense"] + "\n" + progression_1 + "\n\n**Quête 2 • **" + classes["grenouille"]["details"]["Quete 2"]["quete"] + "\n **Récompense • **" + classes["grenouille"]["details"]["Quete 2"]["recompense"] + "\n**Progression • **" + log_data[interaction.user.name]["classe"]["progression 2"]
+        embed = create_embed(title=title, description=description, color=discord.Color.blue())
+    else:
+        title = "Commande non autorisée"
+        description = "Vous n'avait pas les droits requis pour cette commande"
+        color = discord.Color.orange()
+
+        embed = create_embed(title=title, description=description, color=color)
+    
+    await interaction.response.send_message(embed=embed, ephemeral=True)
+
 @tree.command(name="info", description="Information sur les commandes.")
 async def info_command(interaction: discord.Interaction):
     embed = info_action()

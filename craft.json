@@ -147,7 +147,7 @@
     },
     "Faux": {
         "craft": {
-            "image": "https://i.imgur.com/PIpzNQg.jpeg",
+            "image": "https://i.imgur.com/sPJ0Bfg.jpeg",
             "item": {
                 "Pierre eau" : 3,
                 "Gemme eau" : 1,
@@ -160,6 +160,102 @@
         },
         "quantity": 1,
         "icon": ":crescent_moon:"
+    },
+    "Main": {
+        "craft": {
+            "image": "https://i.imgur.com/sPJ0Bfg.jpeg",
+            "item": {
+                "Pierre eau" : 3,
+                "Gemme eau" : 1,
+                "Fourrure de troll" : 4,
+                "Aile de demon" : 2,
+                "Ame corrompue" : 1,
+                "Fragment" : 5,
+                "Ultime" : 1
+            }
+        },
+        "quantity": 1,
+        "icon": ":index_pointing_at_the_viewer:"
+    },
+    "Jackpot": {
+        "craft": {
+            "image": "https://i.imgur.com/sPJ0Bfg.jpeg",
+            "item": {
+                "Pierre eau" : 3,
+                "Gemme eau" : 1,
+                "Fourrure de troll" : 4,
+                "Aile de demon" : 2,
+                "Ame corrompue" : 1,
+                "Fragment" : 5,
+                "Ultime" : 1
+            }
+        },
+        "quantity": 1,
+        "icon": ":slot_machine:"
+    },
+    "Hache": {
+        "craft": {
+            "image": "https://i.imgur.com/sPJ0Bfg.jpeg",
+            "item": {
+                "Pierre eau" : 3,
+                "Gemme eau" : 1,
+                "Fourrure de troll" : 4,
+                "Aile de demon" : 2,
+                "Ame corrompue" : 1,
+                "Fragment" : 5,
+                "Ultime" : 1
+            }
+        },
+        "quantity": 1,
+        "icon": ":axe:"
+    },
+    "Egide": {
+        "craft": {
+            "image": "https://i.imgur.com/sPJ0Bfg.jpeg",
+            "item": {
+                "Pierre eau" : 3,
+                "Gemme eau" : 1,
+                "Fourrure de troll" : 4,
+                "Aile de demon" : 2,
+                "Ame corrompue" : 1,
+                "Fragment" : 5,
+                "Ultime" : 1
+            }
+        },
+        "quantity": 1,
+        "icon": ":mirror:"
+    },
+    "Catalyseur": {
+        "craft": {
+            "image": "https://i.imgur.com/sPJ0Bfg.jpeg",
+            "item": {
+                "Pierre eau" : 3,
+                "Gemme eau" : 1,
+                "Fourrure de troll" : 4,
+                "Aile de demon" : 2,
+                "Ame corrompue" : 1,
+                "Fragment" : 5,
+                "Ultime" : 1
+            }
+        },
+        "quantity": 1,
+        "icon": ":amphora:"
+    },
+    "Aureole": {
+        "craft": {
+            "image": "https://i.imgur.com/sPJ0Bfg.jpeg",
+            "item": {
+                "Pierre eau" : 3,
+                "Gemme eau" : 1,
+                "Fourrure de troll" : 4,
+                "Aile de demon" : 2,
+                "Ame corrompue" : 1,
+                "Fragment" : 5,
+                "Ultime" : 1
+            }
+        },
+        "quantity": 1,
+        "icon": ":dizzy:"
     },
     "Grimoire": {
         "craft": {
@@ -176,5 +272,69 @@
         },
         "quantity": 1,
         "icon": ":hamsa:"
+    },
+    "Memoires": {
+        "craft": {
+            "image": "https://i.imgur.com/sPJ0Bfg.jpeg",
+            "item": {
+                "Pierre eau" : 3,
+                "Gemme eau" : 1,
+                "Fourrure de troll" : 4,
+                "Aile de demon" : 2,
+                "Ame corrompue" : 1,
+                "Fragment" : 5,
+                "Ultime" : 1
+            }
+        },
+        "quantity": 1,
+        "icon": ":brain:"
+    },
+    "Balance": {
+        "craft": {
+            "image": "https://i.imgur.com/sPJ0Bfg.jpeg",
+            "item": {
+                "Pierre eau" : 3,
+                "Gemme eau" : 1,
+                "Fourrure de troll" : 4,
+                "Aile de demon" : 2,
+                "Ame corrompue" : 1,
+                "Fragment" : 5,
+                "Ultime" : 1
+            }
+        },
+        "quantity": 1,
+        "icon": ":scales:"
+    },
+    "ZZZ": {
+        "craft": {
+            "image": "https://i.imgur.com/sPJ0Bfg.jpeg",
+            "item": {
+                "Pierre eau" : 3,
+                "Gemme eau" : 1,
+                "Fourrure de troll" : 4,
+                "Aile de demon" : 2,
+                "Ame corrompue" : 1,
+                "Fragment" : 5,
+                "Ultime" : 1
+            }
+        },
+        "quantity": 1,
+        "icon": ":regional_indicator_z: :regional_indicator_z: :regional_indicator_z:"
+    },
+    "Bague": {
+        "craft": {
+            "image": "https://i.imgur.com/sPJ0Bfg.jpeg",
+            "item": {
+                "Pierre eau" : 3,
+                "Gemme eau" : 1,
+                "Fourrure de troll" : 4,
+                "Aile de demon" : 2,
+                "Ame corrompue" : 1,
+                "Fragment" : 5,
+                "Ultime" : 1
+            }
+        },
+        "quantity": 1,
+        "icon": ":ring:"
     }
 }
