@@ -1329,7 +1329,7 @@ async def on_message(message):
                     log_data[message.author.name]["classe"]["name"] = classes[classe]["name"]
                     log_data[message.author.name]["classe"]["icon"] = classes[classe]["icon"]
                     log_data[message.author.name]["classe"]["progression 1"] = 0
-                    log_data[message.author.name]["classe"]["progression 2"] = "Pas encore crafter"
+                    log_data[message.author.name]["classe"]["progression 2"] = "Pas encore crafté"
                     
                     updated = True
                     

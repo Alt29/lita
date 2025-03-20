@@ -126,7 +126,7 @@
             "name": "Paysan",
             "icon": ":farmer:",
             "progression 1": 0,
-            "progression 2": "Pas encore crafter"
+            "progression 2": "Pas encore crafté"
         }
     },
     "junglepingouy": {
@@ -233,7 +233,7 @@
             "name": "Alchimiste",
             "icon": ":alembic:",
             "progression 1": 0,
-            "progression 2": "Pas encore crafter"
+            "progression 2": "Pas encore crafté"
         }
     },
     "slashoroide": {
@@ -293,7 +293,7 @@
             "name": "Buffer",
             "icon": ":low_brightness:",
             "progression 1": 0,
-            "progression 2": "Pas encore crafter"
+            "progression 2": "Pas encore crafté"
         }
     },
     "ruinflex": {
@@ -306,7 +306,7 @@
         "gold": 660974,
         "!daily": "2025-03-20 01:57:32.094955",
         "!explore": "2025-03-20 21:26:45.610412",
-        "!train": "2025-03-20 18:47:47.709849",
+        "!train": "2025-03-20 22:15:26.940757",
         "xp_boosted": "2025-03-25 22:00:31.576829",
         "bag": {
             "Dague": {
@@ -361,7 +361,7 @@
         },
         "level": {
             "lvl": 63,
-            "xp": 22660935
+            "xp": 22831985
         },
         "stats": {
             "pv": 2211500,
@@ -395,7 +395,7 @@
             "name": "D\u00e9buffer",
             "icon": ":chains:",
             "progression 1": "completed",
-            "progression 2": "Pas encore crafter"
+            "progression 2": "Pas encore crafté"
         }
     },
     "akastukye": {
@@ -707,7 +707,7 @@
             "name": "Assassin",
             "icon": ":dagger:",
             "progression 1": 27,
-            "progression 2": "Pas encore crafter"
+            "progression 2": "Pas encore crafté"
         }
     },
     "takinette": {
