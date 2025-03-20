@@ -780,7 +780,7 @@ async def hourly_mob():
         
         old_lvl = battle['mob']['lvl']
         
-        random_number = random.randint(5, 15)
+        random_number = random.randint(20, 60)
         
         if status == 'victoire':    
             mob_lvl = random.randint(old_lvl, old_lvl+random_number)

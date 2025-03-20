@@ -1,13 +1,13 @@
 {
     "mob": {
-        "name": "Golem_de_foudre",
-        "lvl": 118
+        "name": "Golem_de_feu",
+        "lvl": 126
     },
     "players": {
+        "ruinflex": "ruinflex",
+        "slashoroide": "slashoroide",
         "terminator850": "terminator850",
-        "altan3062": "altan3062",
-        "marylis": "marylis",
-        "ruinflex": "ruinflex"
+        "altan3062": "altan3062"
     },
     "debuff_time": 0,
     "status": "victoire"
