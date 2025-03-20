@@ -122,7 +122,7 @@
         "!boostxp": "2025-03-18 20:44:22.725134",
         "classe": {
             "unlock": true,
-            "quantity": 1
+            "quantity": 2
         }
     },
     "junglepingouy": {
@@ -222,7 +222,11 @@
         "!compter": "2025-03-19 15:57:17.323201",
         "!sw": "2025-03-20 10:51:36.573844",
         "!craft": "2025-03-16 13:24:40.880894",
-        "!boostxp": "2025-03-20 10:49:11.394576"
+        "!boostxp": "2025-03-20 10:49:11.394576",
+        "classe": {
+            "unlock": true,
+            "quantity": 1
+        }
     },
     "slashoroide": {
         "id": 503247209165357066,
@@ -270,7 +274,11 @@
         "profil": 0,
         "!eveil": "2025-03-17 21:17:28.987152",
         "!sw": "2025-03-12 17:21:09.893098",
-        "!craft": "2025-03-17 21:16:03.574811"
+        "!craft": "2025-03-17 21:16:03.574811",
+        "classe": {
+            "unlock": true,
+            "quantity": 1
+        }
     },
     "ruinflex": {
         "id": 326718702370291712,
@@ -367,7 +375,7 @@
         "!sw": "2025-03-13 10:20:07.851202",
         "classe": {
             "unlock": true,
-            "quantity": 4,
+            "quantity": 5,
             "name": "D\u00e9buffer",
             "icon": ":chains:",
             "progression 1": "completed",
@@ -453,7 +461,11 @@
         "max_daily": 2000,
         "!eveil": "2025-02-26 17:22:54.654271",
         "!boostxp": "2025-02-27 13:15:12.967009",
-        "!craft": "2025-03-11 00:09:26.433318"
+        "!craft": "2025-03-11 00:09:26.433318",
+        "classe": {
+            "unlock": true,
+            "quantity": 1
+        }
     },
     "sayori0208": {
         "id": 848523042296168480,
@@ -492,7 +504,11 @@
         },
         "title": {},
         "last_daily": "2025-02-08 22:02:08.395641",
-        "max_daily": 1000
+        "max_daily": 1000,
+        "classe": {
+            "unlock": true,
+            "quantity": 1
+        }
     },
     "dekou216": {
         "id": 752965970666061864,
@@ -531,7 +547,11 @@
         },
         "title": {},
         "last_daily": "2024-01-01 11:11:11.111111",
-        "max_daily": 500
+        "max_daily": 500,
+        "classe": {
+            "unlock": true,
+            "quantity": 1
+        }
     },
     "hori_1605": {
         "id": 1282789349456482427,
@@ -568,7 +588,11 @@
             "Demon": 0,
             "Devoreur": 0
         },
-        "title": {}
+        "title": {},
+        "classe": {
+            "unlock": true,
+            "quantity": 1
+        }
     },
     "marylis": {
         "id": 483676930621571072,
@@ -663,7 +687,7 @@
         "!craft": "2025-03-15 19:50:11.559575",
         "classe": {
             "unlock": true,
-            "quantity": 1,
+            "quantity": 2,
             "name": "Assassin",
             "icon": ":dagger:",
             "progression 1": 27,
@@ -705,7 +729,11 @@
             "Demon": 0,
             "Devoreur": 0
         },
-        "title": {}
+        "title": {},
+        "classe": {
+            "unlock": true,
+            "quantity": 1
+        }
     },
     "terminator850": {
         "id": 802116818134892545,
@@ -808,7 +836,11 @@
         "!compter": "2025-03-19 23:53:13.643157",
         "!craft": "2025-03-19 22:51:01.500058",
         "!sw": "2025-03-20 10:47:36.913929",
-        "!boostxp": "2025-03-20 01:55:35.590335"
+        "!boostxp": "2025-03-20 01:55:35.590335",
+        "classe": {
+            "unlock": true,
+            "quantity": 1
+        }
     },
     "ratukli": {
         "id": 538812417044512778,
@@ -845,7 +877,11 @@
             "Demon": 0,
             "Devoreur": 0
         },
-        "title": {}
+        "title": {},
+        "classe": {
+            "unlock": true,
+            "quantity": 1
+        }
     },
     "his4e_": {
         "id": 1343704677895770232,
@@ -922,6 +958,10 @@
         "profil": 0,
         "!craft": "2025-03-15 00:24:15.615567",
         "!eveil": "2025-03-19 22:41:07.000546",
-        "!sw": "2025-03-16 15:29:27.975550"
+        "!sw": "2025-03-16 15:29:27.975550",
+        "classe": {
+            "unlock": true,
+            "quantity": 1
+        }
     }
 }
