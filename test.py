@@ -780,10 +780,17 @@ async def hourly_mob():
         
         old_lvl = battle['mob']['lvl']
         
-        if status == 'victoire':
-            mob_lvl = random.randint(old_lvl+1, old_lvl+old_lvl//2+1)
+        random_number = random.randint(5, 15)
+        
+        
+        
+        if status == 'victoire':    
+            mob_lvl = random.randint(old_lvl, old_lvl+random_number)
         else:
-            mob_lvl = random.randint(old_lvl//2, old_lvl+1)
+            min_lvl = old_lvl - random_number * 3
+            if min_lvl < 1 :
+                min_lvl = 1
+            mob_lvl = random.randint(min_lvl, old_lvl)
 
         if mob_lvl < 1:
             mob_lvl = 1

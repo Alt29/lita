@@ -1,14 +1,11 @@
 {
     "mob": {
-        "name": "Phenix_de_glace",
-        "lvl": 288
+        "name": "Zombi_demon",
+        "lvl": 84
     },
     "players": {
-        "terminator850": "terminator850",
-        "altan3062": "altan3062",
-        "akastukye": "akastukye",
         "ruinflex": "ruinflex",
-        "marylis": "marylis"
+        "terminator850": "terminator850"
     },
     "debuff_time": 0,
     "status": "victoire"
