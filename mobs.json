@@ -9,20 +9,17 @@
         "loot": {
             "gold": 90,
             "xp": 90,
-            "special_0": {
-                "nom": "Gelée",
-                "description": "Augmente vos PV, +100 PV max",
-                "taux": 0.1
-            },
             "special_1": {
-                "nom": "Essence de vie",
-                "description": "Augmente grandement vos PV, +2000 PV max",
-                "taux": 0.01
+                "name": "Gelée",
+                "taux": 0.20
             },
             "special_2": {
-                "nom": "Cristal de régénération",
-                "description": "Augmente grandement votre régénération de PV",
-                "taux": 0.001
+                "name": "Essence de vie",
+                "taux": 0.05
+            },
+            "special_3": {
+                "name": "Cristal de régénération",
+                "taux": 0.01
             }
         },
         "image": "https://i.imgur.com/tLYX58K.jpeg",
@@ -40,20 +37,17 @@
         "loot": {
             "gold": 110,
             "xp": 120,
-            "special_0": {
-                "nom": "Os de squelette",
-                "description": "",
-                "taux": 0.1
-            },
             "special_1": {
-                "nom": "Exo-squelette",
-                "description": "Un exo-squetelle qui se greffe à votre armure, Def+10",
-                "taux": 0.01
+                "name": "Os de squelette",
+                "taux": 0.20
             },
             "special_2": {
-                "nom": "Crâne maudit",
-                "description": "Annule la première attaque que vous devez subir",
-                "taux": 0.001
+                "name": "Exo-squelette",
+                "taux": 0.05
+            },
+            "special_3": {
+                "name": "Crâne maudit",
+                "taux": 0.01
             }
         },
         "image": "https://i.imgur.com/Ckt7V81.jpeg",
@@ -71,20 +65,17 @@
         "loot": {
             "gold": 100,
             "xp": 160,
-            "special_0": {
-                "nom": "Peau de loup",
-                "description": "Matériau de défense léger, Def+3",
-                "taux": 0.1
-            },
             "special_1": {
-                "nom": "Griffe de loup",
-                "description": "Griffe tranchante, Att+10",
-                "taux": 0.01
+                "name": "Peau de loup",
+                "taux": 0.20
             },
             "special_2": {
-                "nom": "Canine acérée",
-                "description": "Canine pointue vous offrant de la pénétration d'armure",
-                "taux": 0.001
+                "name": "Griffe de loup",
+                "taux": 0.05
+            },
+            "special_3": {
+                "name": "Canine acérée",
+                "taux": 0.01
             }
         },
         "image": "https://i.imgur.com/esNGY0j.jpeg",
@@ -102,20 +93,17 @@
         "loot": {
             "gold": 120,
             "xp": 100,
-            "special_0": {
-                "nom": "Silex",
-                "description": "",
-                "taux": 0.1
-            },
             "special_1": {
-                "nom": "Butin bonus",
-                "description": "Le butin d'un gobelin, Gold+500",
-                "taux": 0.01
+                "name": "Silex",
+                "taux": 0.20
             },
             "special_2": {
-                "nom": "Sang de gobelin",
-                "description": "",
-                "taux": 0.001
+                "name": "Butin bonus",
+                "taux": 0.05
+            },
+            "special_3": {
+                "name": "Sang de gobelin",
+                "taux": 0.01
             }
         },
         "image": "https://i.imgur.com/bLXiOQs.jpeg",
@@ -133,20 +121,17 @@
         "loot": {
             "gold": 195,
             "xp": 500,
-            "special_0": {
-                "nom": "Tissu",
-                "description": "",
-                "taux": 0.1
-            },
             "special_1": {
-                "nom": "Cuir renforcé",
-                "description": "",
-                "taux": 0.01
+                "name": "Tissu",
+                "taux": 0.20
             },
             "special_2": {
-                "nom": "Amulette de protection",
-                "description": "Amulette vous offrant un shield au début d'un combat",
-                "taux": 0.001
+                "name": "Cuir renforcé",
+                "taux": 0.05
+            },
+            "special_3": {
+                "name": "Amulette de protection",
+                "taux": 0.01
             }
         },
         "image": "https://i.imgur.com/6G7k698.jpeg",
@@ -164,20 +149,17 @@
         "loot": {
             "gold": 180,
             "xp": 600,
-            "special_0": {
-                "nom": "Chair putrifiée",
-                "description": "",
-                "taux": 0.1
-            },
             "special_1": {
-                "nom": "Aile de démon",
-                "description": "",
-                "taux": 0.01
+                "name": "Chair putrifiée",
+                "taux": 0.20
             },
             "special_2": {
-                "nom": "Ceinture maudite",
-                "description": "",
-                "taux": 0.001
+                "name": "Aile de démon",
+                "taux": 0.05
+            },
+            "special_3": {
+                "name": "Ceinture maudite",
+                "taux": 0.01
             }
         },
         "image": "https://i.imgur.com/IL043c6.jpeg",
@@ -195,20 +177,17 @@
         "loot": {
             "gold": 195,
             "xp": 425,
-            "special_0": {
-                "nom": "Pierre",
-                "description": "",
-                "taux": 0.1
-            },
             "special_1": {
-                "nom": "Gem",
-                "description": "",
-                "taux": 0.01
+                "name": "Pierre",
+                "taux": 0.20
             },
             "special_2": {
-                "nom": "Noyau",
-                "description": "",
-                "taux": 0.001
+                "name": "Gem",
+                "taux": 0.05
+            },
+            "special_3": {
+                "name": "Noyau",
+                "taux": 0.01
             }
         },
         "image": "https://i.imgur.com/6rEU6fp.jpeg",
@@ -226,20 +205,17 @@
         "loot": {
             "gold": 175,
             "xp": 600,
-            "special_0": {
-                "nom": "Peau carbonisée",
-                "description": "",
-                "taux": 0.1
-            },
             "special_1": {
-                "nom": "Salive enflammée",
-                "description": "",
-                "taux": 0.01
+                "name": "Peau carbonisée",
+                "taux": 0.20
             },
             "special_2": {
-                "nom": "Enragement",
-                "description": "",
-                "taux": 0.001
+                "name": "Salive enflammée",
+                "taux": 0.05
+            },
+            "special_3": {
+                "name": "Enragement",
+                "taux": 0.01
             }
         },
         "image": "https://i.imgur.com/Hazhsdj.jpeg",
@@ -257,20 +233,17 @@
         "loot": {
             "gold": 265,
             "xp": 1000,
-            "special_0": {
-                "nom": "Gelée",
-                "description": "Une gelée de vitalité, PV+1500",
-                "taux": 0.1
-            },
             "special_1": {
-                "nom": "Coeur de slime",
-                "description": "Un coeur concentrant une grande vitalité, PV+15000",
-                "taux": 0.01
+                "name": "Gelée royale",
+                "taux": 0.20
             },
             "special_2": {
-                "nom": "Couronne du roi",
-                "description": "Augmente vos stats, PV+30000 For+50 Def+50",
-                "taux": 0.001
+                "name": "Coeur de slime",
+                "taux": 0.05
+            },
+            "special_3": {
+                "name": "Couronne du roi",
+                "taux": 0.01
             }
         },
         "image": "https://i.imgur.com/hokqDoB.jpeg",
@@ -288,20 +261,17 @@
         "loot": {
             "gold": 255,
             "xp": 1600,
-            "special_0": {
-                "nom": "Pierre vent",
-                "description": "",
-                "taux": 0.1
-            },
             "special_1": {
-                "nom": "Gem vent",
-                "description": "",
-                "taux": 0.01
+                "name": "Pierre vent",
+                "taux": 0.20
             },
             "special_2": {
-                "nom": "Noyau vent",
-                "description": "",
-                "taux": 0.001
+                "name": "Gem vent",
+                "taux": 0.05
+            },
+            "special_3": {
+                "name": "Noyau vent",
+                "taux": 0.01
             }
         },
         "image": "https://i.imgur.com/U84IKSU.jpeg",
@@ -319,20 +289,17 @@
         "loot": {
             "gold": 245,
             "xp": 1300,
-            "special_0": {
-                "nom": "Pierre feu",
-                "description": "",
-                "taux": 0.1
-            },
             "special_1": {
-                "nom": "Gem feu",
-                "description": "",
-                "taux": 0.01
+                "name": "Pierre feu",
+                "taux": 0.20
             },
             "special_2": {
-                "nom": "Noyau feu",
-                "description": "",
-                "taux": 0.001
+                "name": "Gem feu",
+                "taux": 0.05
+            },
+            "special_3": {
+                "name": "Noyau feu",
+                "taux": 0.01
             }
         },
         "image": "https://i.imgur.com/CBvQJY6.jpeg",
@@ -350,20 +317,17 @@
         "loot": {
             "gold": 235,
             "xp": 2000,
-            "special_0": {
-                "nom": "Pierre eau",
-                "description": "",
-                "taux": 0.1
-            },
             "special_1": {
-                "nom": "Gem eau",
-                "description": "",
-                "taux": 0.01
+                "name": "Pierre eau",
+                "taux": 0.20
             },
             "special_2": {
-                "nom": "Noyau eau",
-                "description": "",
-                "taux": 0.001
+                "name": "Gem eau",
+                "taux": 0.05
+            },
+            "special_3": {
+                "name": "Noyau eau",
+                "taux": 0.01
             }
         },
         "image": "https://i.imgur.com/ii9x4pk.jpeg",
@@ -381,20 +345,17 @@
         "loot": {
             "gold": 225,
             "xp": 4000,
-            "special_0": {
-                "nom": "Pierre plante",
-                "description": "",
-                "taux": 0.1
-            },
             "special_1": {
-                "nom": "Gem plante",
-                "description": "",
-                "taux": 0.01
+                "name": "Pierre plante",
+                "taux": 0.20
             },
             "special_2": {
-                "nom": "Noyau plante",
-                "description": "",
-                "taux": 0.001
+                "name": "Gem plante",
+                "taux": 0.05
+            },
+            "special_3": {
+                "name": "Noyau plante",
+                "taux": 0.01
             }
         },
         "image": "https://i.imgur.com/hxgDuW7.jpeg",
@@ -412,20 +373,17 @@
         "loot": {
             "gold": 400,
             "xp": 1900,
-            "special_0": {
-                "nom": "Pierre foudre",
-                "description": "",
-                "taux": 0.1
-            },
             "special_1": {
-                "nom": "Gem foudre",
-                "description": "",
-                "taux": 0.01
+                "name": "Pierre foudre",
+                "taux": 0.20
             },
             "special_2": {
-                "nom": "Noyau foudre",
-                "description": "",
-                "taux": 0.001
+                "name": "Gem foudre",
+                "taux": 0.05
+            },
+            "special_3": {
+                "name": "Noyau foudre",
+                "taux": 0.01
             }
         },
         "image": "https://i.imgur.com/ND7LgNf.jpeg",
@@ -443,20 +401,17 @@
         "loot": {
             "gold": 560,
             "xp": 4100,
-            "special_0": {
-                "nom": "Cendre feu",
-                "description": "",
-                "taux": 0.1
-            },
             "special_1": {
-                "nom": "Plume feu",
-                "description": "",
-                "taux": 0.01
+                "name": "Cendre feu",
+                "taux": 0.20
             },
             "special_2": {
-                "nom": "Coeur feu",
-                "description": "",
-                "taux": 0.001
+                "name": "Plume feu",
+                "taux": 0.05
+            },
+            "special_3": {
+                "name": "Coeur feu",
+                "taux": 0.01
             }
         },
         "image": "https://i.imgur.com/cmsTck3.jpeg",
@@ -474,20 +429,17 @@
         "loot": {
             "gold": 540,
             "xp": 4500,
-            "special_0": {
-                "nom": "Cendre glace",
-                "description": "",
-                "taux": 0.1
-            },
             "special_1": {
-                "nom": "Plume glace",
-                "description": "",
-                "taux": 0.01
+                "name": "Cendre glace",
+                "taux": 0.20
             },
             "special_2": {
-                "nom": "Coeur glace",
-                "description": "",
-                "taux": 0.001
+                "name": "Plume glace",
+                "taux": 0.05
+            },
+            "special_3": {
+                "name": "Coeur glace",
+                "taux": 0.01
             }
         },
         "image": "https://i.imgur.com/GoP2ssy.jpeg",
@@ -505,20 +457,17 @@
         "loot": {
             "gold": 580,
             "xp": 4300,
-            "special_0": {
-                "nom": "Cendre foudre",
-                "description": "",
-                "taux": 0.1
-            },
             "special_1": {
-                "nom": "Plume foudre",
-                "description": "",
-                "taux": 0.01
+                "name": "Cendre foudre",
+                "taux": 0.20
             },
             "special_2": {
-                "nom": "Coeur foudre",
-                "description": "",
-                "taux": 0.001
+                "name": "Plume foudre",
+                "taux": 0.05
+            },
+            "special_3": {
+                "name": "Coeur foudre",
+                "taux": 0.01
             }
         },
         "image": "https://i.imgur.com/8syNSUj.jpeg",
@@ -536,20 +485,17 @@
         "loot": {
             "gold": 500,
             "xp": 3700,
-            "special_0": {
-                "nom": "Corne de démon",
-                "description": "Corne renfermant un pouvoir démoniaque, For+20",
-                "taux": 0.1
-            },
             "special_1": {
-                "nom": "Soif de sang",
-                "description": "",
-                "taux": 0.01
+                "name": "Corne de démon",
+                "taux": 0.20
             },
             "special_2": {
-                "nom": "Âme corrompue",
-                "description": "Lorsque recevez un coup fatal vous restez à 1PV un certain temps",
-                "taux": 0.001
+                "name": "Soif de sang",
+                "taux": 0.05
+            },
+            "special_3": {
+                "name": "Âme corrompue",
+                "taux": 0.01
             }
         },
         "image": "https://i.imgur.com/TwKBVxH.jpeg",
@@ -567,20 +513,17 @@
         "loot": {
             "gold": 575,
             "xp": 3600,
-            "special_0": {
-                "nom": "Ecaille de bébé dragon",
-                "description": "Petite écaille de dragon, Def+20",
-                "taux": 0.1
-            },
             "special_1": {
-                "nom": "Os de bébé dragon",
-                "description": "Petit os de dragon, For+50 Def+50",
-                "taux": 0.01
+                "name": "Ecaille de bébé dragon",
+                "taux": 0.20
             },
             "special_2": {
-                "nom": "Coeur de bébé dragon",
-                "description": "Petit coeur de dragon, PV+50000 For+75 Def+75",
-                "taux": 0.001
+                "name": "Os de bébé dragon",
+                "taux": 0.05
+            },
+            "special_3": {
+                "name": "Coeur de bébé dragon",
+                "taux": 0.01
             }
         },
         "image": "https://i.imgur.com/ht0JGST.jpeg",
@@ -598,20 +541,17 @@
         "loot": {
             "gold": 525,
             "xp": 4800,
-            "special_0": {
-                "nom": "Peau de serpent",
-                "description": "Une peau résistante et flexible à la fois, For+10 Def+10",
-                "taux": 0.1
-            },
             "special_1": {
-                "nom": "Brume affaiblissante",
-                "description": "Affaiblit l'ennemi présent dans cette brume",
-                "taux": 0.01
+                "name": "Peau de serpent",
+                "taux": 0.20
             },
             "special_2": {
-                "nom": "Venin mortel",
-                "description": "Empoisonne l'ennemi avec un poison mortel",
-                "taux": 0.001
+                "name": "Brume affaiblissante",
+                "taux": 0.05
+            },
+            "special_3": {
+                "name": "Venin mortel",
+                "taux": 0.01
             }
         },
         "image": "https://i.imgur.com/FWu1jW3.jpeg",
@@ -629,20 +569,17 @@
         "loot": {
             "gold": 550,
             "xp": 4100,
-            "special_0": {
-                "nom": "Fourrure de troll",
-                "description": "Résistance augmentée face au froid",
-                "taux": 0.1
-            },
             "special_1": {
-                "nom": "Ceinture imposante",
-                "description": "Ceinture au propriété défensive importante, Def+100",
-                "taux": 0.01
+                "name": "Fourrure de troll",
+                "taux": 0.20
             },
             "special_2": {
-                "nom": "Massue géante",
-                "description": "Massue pouvant étourdire les ennemis",
-                "taux": 0.001
+                "name": "Ceinture imposante",
+                "taux": 0.05
+            },
+            "special_3": {
+                "name": "Massue géante",
+                "taux": 0.01
             }
         },
         "image": "https://i.imgur.com/pDBNZzB.jpeg",
@@ -660,20 +597,17 @@
         "loot": {
             "gold": 1500,
             "xp": 20000,
-            "special_0": {
-                "nom": "Ecaille du dragon de glace",
-                "description": "Ecaille du dragon de glace, Def+100",
-                "taux": 0.1
-            },
             "special_1": {
-                "nom": "Os du dragon de glace",
-                "description": "Os du dragon de glace, For+200 Def+200",
-                "taux": 0.01
+                "name": "Ecaille du dragon de glace",
+                "taux": 0.20
             },
             "special_2": {
-                "nom": "Coeur du dragon de glace",
-                "description": "Coeur du dragon de glace, PV+200000 For+300 Def+300",
-                "taux": 0.001
+                "name": "Os du dragon de glace",
+                "taux": 0.05
+            },
+            "special_3": {
+                "name": "Coeur du dragon de glace",
+                "taux": 0.01
             }
         },
         "image": "https://i.imgur.com/vjSsklY.jpeg",
@@ -691,20 +625,17 @@
         "loot": {
             "gold": 1500,
             "xp": 20000,
-            "special_0": {
-                "nom": "Ecaille du dragon de feu",
-                "description": "Ecaille du dragon de feu, Def+100",
-                "taux": 0.1
-            },
             "special_1": {
-                "nom": "Os du dragon de feu",
-                "description": "Os du dragon de feu, For+200 Def+200",
-                "taux": 0.01
+                "name": "Ecaille du dragon de feu",
+                "taux": 0.20
             },
             "special_2": {
-                "nom": "Coeur du dragon de feu",
-                "description": "Coeur du dragon de feu, PV+200000 For+300 Def+300",
-                "taux": 0.001
+                "name": "Os du dragon de feu",
+                "taux": 0.05
+            },
+            "special_3": {
+                "name": "Coeur du dragon de feu",
+                "taux": 0.01
             }
         },
         "image": "https://i.imgur.com/udGJJ6U.jpeg",
@@ -722,20 +653,17 @@
         "loot": {
             "gold": 5000,
             "xp": 30000,
-            "special_0": {
-                "nom": "Aura impossante",
-                "description": "Vous réduissez la force et la défence de vos ennemis",
-                "taux": 0.1
-            },
             "special_1": {
-                "nom": "Coup double",
-                "description": "Chance d'attaquer de fois en une attaque",
-                "taux": 0.01
+                "name": "Aura impossante",
+                "taux": 0.20
             },
             "special_2": {
-                "nom": "Résurection",
-                "description": "Vous revenez à la vie après votre première mort",
-                "taux": 0.001
+                "name": "Coup double",
+                "taux": 0.05
+            },
+            "special_3": {
+                "name": "Résurection",
+                "taux": 0.01
             }
         },
         "image": "https://i.imgur.com/OcjMGWV.jpeg",

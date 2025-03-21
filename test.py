@@ -76,6 +76,13 @@ try:
 except FileNotFoundError:
     brocante = {}
 
+try:
+    with open("potions.json", "r") as file:
+        potions = json.load(file)
+except FileNotFoundError:
+    potions = {}
+
+
 @client.event
 async def on_ready():
     print("Bot is ready.")
@@ -119,14 +126,37 @@ class BattleView(discord.ui.View):
         total_def = 0
         
         nbr_debuffer = 0
+        buffers = []
+        buff_text = ""
+        buff_pv = 0
+        buff_for = 0
+        buff_def = 0
         
         for player in battle["players"]:
-            if "classe" in log_data[player] and "name" in log_data[player]["classe"] and log_data[player]["classe"]["name"] == "Débuffer":
-                nbr_debuffer += 1
+            if "classe" in log_data[player] and "name" in log_data[player]["classe"]:
+                if log_data[player]["classe"]["name"] == "Débuffer":
+                    nbr_debuffer += 1
+                if log_data[player]["classe"]["name"] == "Buffer":
+                    buffers.append(player)
+                    if len(battle["players"]) > 1:
+                        buff_pv += log_data[player]['stats']['pv']
+                        buff_for += log_data[player]['stats']['for']
+                        buff_def += log_data[player]['stats']['def']
+                        
             attaquant += "<@" + str(log_data[player]['id']) + "> "
             total_pv += log_data[player]['stats']['pv']
             total_for += log_data[player]['stats']['for']
             total_def += log_data[player]['stats']['def']
+            
+        if buff_pv + buff_for + buff_def > 0:
+            buff = (buff_pv * 100 / total_pv + buff_for * 100 / total_for + buff_def * 100 / total_def) / 3
+            buff = round(buff, 2)
+            buff_text = f" • [Buff +{buff}%]"
+            
+            total_pv += buff_pv
+            total_for += buff_for
+            total_def += buff_def
+        
         attaquant += '\n**PV : ' + str(total_pv) + ' :hearts:   For : ' + str(total_for) + ' :crossed_swords:   Def : ' + str(total_def) + ' :shield:**'
 
         embed = interaction.message.embeds[0]
@@ -161,8 +191,8 @@ class BattleView(discord.ui.View):
                     new_fields.append({"name": reduced_stats, "value": field.value, "inline": field.inline})
                     
             else:
-                if field.name == "Combattez ce monstre !" or field.name == "Combat initié par":
-                    new_fields.append({"name":"Combat initié par", "value":attaquant, "inline":False})
+                if field.name.startswith("Combat"):
+                    new_fields.append({"name":"Combat initié par" + buff_text, "value":attaquant, "inline":False})
                 else:
                     if field.name.startswith("Réduction"):
                         pass
@@ -236,13 +266,18 @@ class BattleView(discord.ui.View):
         for player in battle["players"]:
             players.append(log_data[player]['id'])
             if "classe" in log_data[player] and "name" in log_data[player]["classe"] and log_data[player]["classe"]["name"] == "Assassin":
-                total_pv += log_data[player]['stats']['pv'] * 2
-                total_for += log_data[player]['stats']['for'] * 2
-                total_def += log_data[player]['stats']['def'] * 2
+                total_pv += log_data[player]['stats']['pv'] * 3
+                total_for += log_data[player]['stats']['for'] * 3
+                total_def += log_data[player]['stats']['def'] * 3
             else:
-                total_pv += log_data[player]['stats']['pv']
-                total_for += log_data[player]['stats']['for']
-                total_def += log_data[player]['stats']['def']
+                if "classe" in log_data[player] and "name" in log_data[player]["classe"] and log_data[player]["classe"]["name"] == "Buffer" and len(players) > 1:
+                    total_pv += log_data[player]['stats']['pv'] * 2
+                    total_for += log_data[player]['stats']['for'] * 2
+                    total_def += log_data[player]['stats']['def'] * 2
+                else:
+                    total_pv += log_data[player]['stats']['pv']
+                    total_for += log_data[player]['stats']['for']
+                    total_def += log_data[player]['stats']['def']
 
         color = discord.Color.red()
 
@@ -253,10 +288,15 @@ class BattleView(discord.ui.View):
             nbr_debuffer = 0
             
             for player in battle["players"]:
-                if "classe" in log_data[player] and "name" in log_data[player]["classe"] and log_data[player]["classe"]["name"] == "Débuffer":
-                    nbr_debuffer += 1
-                    if log_data[player]["classe"]["progression 1"] != "completed":
-                        log_data[player]["classe"]["progression 1"] += 1
+                if "classe" in log_data[player] and "name" in log_data[player]["classe"]:
+                    if log_data[player]["classe"]["name"] == "Débuffer":
+                        nbr_debuffer += 1
+                        if log_data[player]["classe"]["progression 1"] != "completed":
+                            log_data[player]["classe"]["progression 1"] += 1
+                    else:
+                        if log_data[player]["classe"]["name"] == "Buffer":
+                            if log_data[player]["classe"]["progression 1"] != "completed":
+                                log_data[player]["classe"]["progression 1"] += len(players) - 1
                     
             res_combat = combat(battle['mob']['name'], battle['mob']['lvl'], total_pv, total_for, total_def, nbr_debuffer)
             
@@ -275,22 +315,83 @@ class BattleView(discord.ui.View):
                     
                 player_levelup = ""
                 bonus_xp = ""
+                drop_loot = ""
                 
                 for player in battle["players"]:
                     level_up = 0
                     log_data[player]['gold'] += gold
                     
-                    if "classe" in log_data[player] and "name" in log_data[player]["classe"] and log_data[player]["classe"]["name"] == "Assassin" and log_data[player]["classe"]["progression 1"] != "completed":
-                        log_data[player]["classe"]["progression 1"] += 1
+                    drop_chance_1 = random.random()
+                    drop_chance_2 = random.random()
+                    drop_chance_3 = random.random()
+
+                    if mobs[mob]["loot"]["special_1"]["taux"] >= drop_chance_1:
+                        drop_name = mobs[mob]["loot"]["special_1"]["name"]
+                        
+                        if drop_name in log_data[player]['bag']:
+                            log_data[player]['bag'][drop_name]["quantity"] += 1
+                        else:
+                            log_data[player]['bag'][drop_name] = {"quantity": 1, "icon": items[drop_name]["icon"]}
+                        
+                        drop_loot = drop_loot + "<@" + str(log_data[player]['id']) + "> + 1 " + items[drop_name]["icon"] + " " + drop_name + "\n"
+                    
+                    if mobs[mob]["loot"]["special_2"]["taux"] >= drop_chance_2:
+                        drop_name = mobs[mob]["loot"]["special_2"]["name"]
+                        
+                        if drop_name in log_data[player]['bag']:
+                            log_data[player]['bag'][drop_name]["quantity"] += 1
+                        else:
+                            log_data[player]['bag'][drop_name] = {"quantity": 1, "icon": items[drop_name]["icon"]}
+                            
+                        drop_loot = drop_loot + "<@" + str(log_data[player]['id']) + "> + 1 " + items[drop_name]["icon"] + " " + drop_name + "\n"
+                            
+                    if mobs[mob]["loot"]["special_3"]["taux"] >= drop_chance_3:
+                        drop_name = mobs[mob]["loot"]["special_3"]["name"]
+                        
+                        if drop_name in log_data[player]['bag']:
+                            log_data[player]['bag'][drop_name]["quantity"] += 1
+                        else:
+                            log_data[player]['bag'][drop_name] = {"quantity": 1, "icon": items[drop_name]["icon"]}
+                            
+                        drop_loot = drop_loot + "<@" + str(log_data[player]['id']) + "> + 1 " + items[drop_name]["icon"] + " " + drop_name + "\n"
+                    
+                    if "classe" in log_data[player] and "name" in log_data[player]["classe"] and log_data[player]["classe"]["progression 1"] != "completed":
+                        if log_data[player]["classe"]["name"] == "Assassin":
+                            log_data[player]["classe"]["progression 1"] += 1
+                        else:
+                            if log_data[player]["classe"]["name"] == "Guerrier": 
+                                log_data[player]["classe"]["progression 1"] += 1
+                                
+                                mob_for = (battle['mob']['lvl'] * battle['mob']['name']['stats']['for']) * (0.9 ** nbr_debuffer)
+                                
+                                if log_data[player]["stats"]["for"] > mob_for:
+                                    log_data[player]["stats"]["for"] += mob_for//100
+                            else:
+                                if log_data[player]["classe"]["name"] == "Gardien":
+                                    
+                                    log_data[player]["classe"]["progression 1"] += len(players) - 1
+                                    
+                                    mob_def = (battle['mob']['lvl'] * battle['mob']['name']['stats']['def']) * (0.9 ** nbr_debuffer)
+                                   
+                                    if log_data[player]["stats"]["def"] > mob_def:
+                                        log_data[player]["stats"]["def"] += mob_def//100
+                                
                     
                     now = datetime.now()
                     boosted_time = datetime.strptime(log_data[player]["xp_boosted"], "%Y-%m-%d %H:%M:%S.%f")
                     
                     if boosted_time > now:
                         xp_win = xp*2
-                        bonus_xp = bonus_xp + "<@" + str(log_data[player]['id']) + "> + " + str(xp) + " :diamond_shape_with_a_dot_inside:\n"
+                        if "classe" in log_data[player] and "name" in log_data[player]["classe"] and log_data[player]["classe"]["name"] == "Paysan":
+                            xp_win = xp_win * 5
+                            bonus_xp = bonus_xp + "<@" + str(log_data[player]['id']) + "> + " + str(xp*9) + " :diamond_shape_with_a_dot_inside:\n"
+                        else:
+                            bonus_xp = bonus_xp + "<@" + str(log_data[player]['id']) + "> + " + str(xp) + " :diamond_shape_with_a_dot_inside:\n"
                     else:
                         xp_win = xp
+                        if "classe" in log_data[player] and "name" in log_data[player]["classe"] and log_data[player]["classe"]["name"] == "Paysan":
+                            xp_win = xp_win * 5
+                            bonus_xp = bonus_xp + "<@" + str(log_data[player]['id']) + "> + " + str(xp*4) + " :diamond_shape_with_a_dot_inside:\n"
                         
                     log_data[player]['level']['xp'] += xp_win
                     
@@ -298,6 +399,12 @@ class BattleView(discord.ui.View):
                         if log_data[player]['level']['xp'] > lvl_xp:
                             log_data[player]['level']['xp'] -= lvl_xp
                             log_data[player]['level']['lvl'] += 1
+                            
+                            if "classe" in log_data[player] and "name" in log_data[player]["classe"] and log_data[player]["classe"]["name"] == "Paysan":
+                                if log_data[player]['level']['lvl'] >= 70:
+                                    log_data[player]["classe"]["progression 1"] = "completed"
+                                else:
+                                    log_data[player]["classe"]["progression 1"] = log_data[player]['level']['lvl']
                             
                             if "PointXP" in log_data[player]['bag']:
                                 log_data[player]['bag']['PointXP']["quantity"] += 1
@@ -309,19 +416,32 @@ class BattleView(discord.ui.View):
                             break
                     
                     if level_up > 0:
-                        player_levelup = player_levelup + "<@" + str(log_data[player]['id']) + "> + " + str(level_up) + " level\n"
+                        player_levelup = player_levelup + "<@" + str(log_data[player]['id']) + "> + " + str(level_up) + " level (" + str(log_data[player]['level']['lvl']) + ")\n"
                         
                 if player_levelup == "":
                     if bonus_xp == "":
-                        tabFields = {"Récompenses à se partager :" : res}
+                        if drop_loot == "":
+                            tabFields = {"Récompenses à se partager :" : res}
+                        else:
+                            tabFields = {"Récompenses à se partager :" : res, "Loot drop :" : drop_loot}
                     else:
-                        tabFields = {"Récompenses à se partager :" : res, "Bonus boost XP :" : bonus_xp}
+                        if drop_loot == "":
+                            tabFields = {"Récompenses à se partager :" : res, "Bonus boost XP :" : bonus_xp}
+                        else:
+                            tabFields = {"Récompenses à se partager :" : res, "Bonus boost XP :" : bonus_xp, "Loot drop :" : drop_loot}
+                        
                 else:
                     if bonus_xp == "":
-                        tabFields = {"Récompenses à se partager :" : res, "Level UP :" : player_levelup}
+                        if drop_loot == "":
+                            tabFields = {"Récompenses à se partager :" : res, "Level UP :" : player_levelup}
+                        else:
+                            tabFields = {"Récompenses à se partager :" : res, "Level UP :" : player_levelup, "Loot drop :" : drop_loot}
                     else:
-                        tabFields = {"Récompenses à se partager :" : res, "Bonus boost XP :" : bonus_xp, "Level UP :" : player_levelup}
-
+                        if drop_loot == "":
+                            tabFields = {"Récompenses à se partager :" : res, "Bonus boost XP :" : bonus_xp, "Level UP :" : player_levelup}
+                        else:
+                            tabFields = {"Récompenses à se partager :" : res, "Bonus boost XP :" : bonus_xp, "Level UP :" : player_levelup, "Loot drop :" : drop_loot}
+                                                        
                 title = "Victoire !"
                 color = discord.Color.green()
                 battle['status'] = 'victoire'
@@ -1574,6 +1694,7 @@ async def alchimiste_command(interaction: discord.Interaction):
 async def paysan_command(interaction: discord.Interaction):
     if "classe" in log_data[interaction.user.name] and "name" in log_data[interaction.user.name]["classe"] and log_data[interaction.user.name]["classe"]["name"] == "Paysan":
         title = "Informations cachées sur la classe :farmer: Paysan"
+        log_data[interaction.user.name]["classe"]["progression 1"] = log_data[interaction.user.name]["level"]["lvl"]
         if log_data[interaction.user.name]["classe"]["progression 1"] == "completed" or log_data[interaction.user.name]["classe"]["progression 1"] >= 70:
             progression_1 = "**Progression • Réussie**"
             log_data[interaction.user.name]["classe"]["progression 1"] = "completed"
@@ -1826,6 +1947,157 @@ async def vente_autocomplete(interaction: discord.Interaction, current: str):
     
     return suggestions
 
+@tree.command(name="potion", description="Concoction de potions.")
+@app_commands.describe(potion="Choisissez un type de potion à concocter", ingrédient_1="Premier ingrédient", ingrédient_2="Deuxième ingrédient", ingrédient_3="Troisième ingrédient")
+async def potion_command(interaction: discord.Interaction, potion: str, ingrédient_1: str, ingrédient_2: str, ingrédient_3: str):
+    
+    if potion == None:
+        await interaction.response.send_message("Il faut choissir une recette de potion.", ephemeral=True)
+        return
+    
+    existing = False
+    
+    for potion_list in potions:
+        if potion == potions[potion_list]["name"]:
+            existing = True
+    
+    if existing == False:
+        await interaction.response.send_message("Cette potion n'existe pas, vérifiez son appellation.", ephemeral=True)
+        return
+    
+    if ingrédient_1 == None or ingrédient_2 == None or ingrédient_3 == None:
+        await interaction.response.send_message("Il vous faut 3 ingrédients.", ephemeral=True)
+        return
+    
+    my_ingredients = []
+
+    for bag_item in log_data[interaction.user.name]["bag"]:
+        if "drop_grad" in items[bag_item] and items[bag_item]["drop_grad"] == 1 :
+            my_ingredients.append(bag_item)
+    
+    if ingrédient_1 not in my_ingredients or ingrédient_2 not in my_ingredients or ingrédient_3 not in my_ingredients:
+        await interaction.response.send_message("Vous ne pouvez pas faire cette potion avec ces ingrédients.", ephemeral=True)
+        return
+    
+    nbr_ingrédient_1 = 1
+    nbr_ingrédient_2 = 1
+    nbr_ingrédient_3 = 1
+    
+    if ingrédient_1 == ingrédient_2 == ingrédient_3:
+        nbr_ingrédient_1 = 3
+        nbr_ingrédient_2 = 3
+        nbr_ingrédient_3 = 3
+    else:
+        if ingrédient_1 == ingrédient_2:
+            nbr_ingrédient_1 = 2
+            nbr_ingrédient_2 = 2
+            nbr_ingrédient_3 = 1
+        else:
+            if ingrédient_1 == ingrédient_3:
+                nbr_ingrédient_1 = 2
+                nbr_ingrédient_2 = 1
+                nbr_ingrédient_3 = 2
+            else:
+                if ingrédient_2 == ingrédient_3:
+                    nbr_ingrédient_1 = 1
+                    nbr_ingrédient_2 = 2
+                    nbr_ingrédient_3 = 2
+    
+    if log_data[interaction.user.name]["bag"][ingrédient_1]["quantity"] - nbr_ingrédient_1 < 0 or log_data[interaction.user.name]["bag"][ingrédient_2]["quantity"] - nbr_ingrédient_2 < 0 or log_data[interaction.user.name]["bag"][ingrédient_3]["quantity"] - nbr_ingrédient_3 < 0:
+        await interaction.response.send_message("Vous n'avez pas assez d'exemplaire de ces ingrédients.", ephemeral=True)
+        return
+    else:
+        log_data[interaction.user.name]["bag"][ingrédient_1]["quantity"] -= 1
+        log_data[interaction.user.name]["bag"][ingrédient_2]["quantity"] -= 1
+        log_data[interaction.user.name]["bag"][ingrédient_3]["quantity"] -= 1
+        
+        if log_data[interaction.user.name]["bag"][ingrédient_1]["quantity"] == 0:
+            del log_data[interaction.user.name]["bag"][ingrédient_1]
+        
+        if log_data[interaction.user.name]["bag"][ingrédient_2]["quantity"] == 0:
+            del log_data[interaction.user.name]["bag"][ingrédient_2]
+
+        if log_data[interaction.user.name]["bag"][ingrédient_3]["quantity"] == 0:
+            del log_data[interaction.user.name]["bag"][ingrédient_3]
+            
+        if potion in log_data[interaction.user.name]['bag']:
+                log_data[interaction.user.name]['bag'][potion]["quantity"] += 1
+        else:
+            log_data[interaction.user.name]['bag'][potion] = {"quantity": 1, "icon": ":test_tube:"}
+
+        if "classe" in log_data[interaction.user.name] and "name" in log_data[interaction.user.name]["classe"] and log_data[interaction.user.name]["classe"]["name"] == "Alchimiste" and log_data[interaction.user.name]["classe"]["progression 1"] != "completed":
+            log_data[interaction.user.name]["classe"]["progression 1"] += 1
+
+    with open("log.json", "w") as file:
+            json.dump(log_data, file, indent=4)
+
+    title = "Création de 1 :test_tube: " + potion
+    description = potions[potion]["description"]
+    footer = "Prochainement utilisable." #a1b2 à faire
+    
+    embed = create_embed(title=title, color=discord.Color.blue(), author_name=interaction.user.global_name, author_icon=interaction.user.avatar, description=description, footer=footer)
+
+    await interaction.response.send_message(embed=embed)
+
+@potion_command.autocomplete("potion")
+async def potion_autocomplete(interaction: discord.Interaction, current: str):
+    existing_potions = []
+
+    for potion in potions:
+        existing_potions.append(potions[potion]["name"])
+    
+    suggestions = [
+        app_commands.Choice(name=potion, value=potion) 
+        for potion in existing_potions if current.lower() in potion.lower()
+    ][:25]
+
+    return suggestions
+
+@potion_command.autocomplete("ingrédient_1")
+async def ingrédient_1_autocomplete(interaction: discord.Interaction, current: str):
+    my_ingredients = []
+            
+    for bag_item in log_data[interaction.user.name]["bag"]:
+        if "drop_grad" in items[bag_item] and items[bag_item]["drop_grad"] == 1 :
+            my_ingredients.append(bag_item)
+    
+    suggestions = [
+        app_commands.Choice(name=ingredient, value=ingredient) 
+        for ingredient in my_ingredients if current.lower() in ingredient.lower()
+    ][:25]
+
+    return suggestions
+
+@potion_command.autocomplete("ingrédient_2")
+async def ingrédient_2_autocomplete(interaction: discord.Interaction, current: str):
+    my_ingredients = []
+            
+    for bag_item in log_data[interaction.user.name]["bag"]:
+        if "drop_grad" in items[bag_item] and items[bag_item]["drop_grad"] == 1 :
+            my_ingredients.append(bag_item)
+    
+    suggestions = [
+        app_commands.Choice(name=ingredient, value=ingredient) 
+        for ingredient in my_ingredients if current.lower() in ingredient.lower()
+    ][:25]
+
+    return suggestions
+
+@potion_command.autocomplete("ingrédient_3")
+async def ingrédient_3_autocomplete(interaction: discord.Interaction, current: str):
+    my_ingredients = []
+            
+    for bag_item in log_data[interaction.user.name]["bag"]:
+        if "drop_grad" in items[bag_item] and items[bag_item]["drop_grad"] == 1 :
+            my_ingredients.append(bag_item)
+    
+    suggestions = [
+        app_commands.Choice(name=ingredient, value=ingredient) 
+        for ingredient in my_ingredients if current.lower() in ingredient.lower()
+    ][:25]
+
+    return suggestions
+
 async def time_command(message, command, cooldown):
     author_name = message.author.name
     check, waiting_time = check_time(author_name, command, cooldown)
@@ -1863,10 +2135,11 @@ def info_action():
         '!sw :' : 'Tenter votre chance à la Sakura Wheel !',
         '!classe :' : '[En travaux] :construction:',
         '!boostxp :' : 'Utilisez vos Boost XP !',
-        '/sell item prix quantité :' : 'Mettre en vente vos items à la brocante. :new:',
-        '/buy vente quantité :' : 'Achetez des items à la brocante. :new:',
-        '/brocante :' : 'Pour voir la brocante. :new:',
-        '!select nom de la classe :' : 'Pour choisir votre classe. :new:'
+        '/sell item prix quantité :' : 'Mettre en vente vos items à la brocante.',
+        '/buy vente quantité :' : 'Achetez des items à la brocante.',
+        '/brocante :' : 'Pour voir la brocante.',
+        '!select nom de la classe :' : 'Pour choisir votre classe. :new:',
+        '/potion' : 'Pour concoter vos meilleures et pires idées. :new:',
     }
     color = discord.Color.blue()
     title = 'Informations'
@@ -2493,6 +2766,9 @@ def train_action(author_name, author_icon, global_name):
         xp_win = alea*2
     else:
         xp_win = alea
+        
+    if "classe" in log_data[author_name] and "name" in log_data[author_name]["classe"] and log_data[author_name]["classe"]["name"] == "Paysan":
+        xp_win = xp_win * 5
     
     log_data[author_name]['level']['xp'] += xp_win
     
@@ -2502,6 +2778,12 @@ def train_action(author_name, author_icon, global_name):
         if log_data[author_name]['level']['xp'] > lvl_xp:
             log_data[author_name]['level']['xp'] -= lvl_xp
             log_data[author_name]['level']['lvl'] += 1
+            
+            if "classe" in log_data[author_name] and "name" in log_data[author_name]["classe"] and log_data[author_name]["classe"]["name"] == "Paysan":
+                if log_data[author_name]['level']['lvl'] >= 70:
+                    log_data[author_name]["classe"]["progression 1"] = "completed"
+                else:
+                    log_data[author_name]["classe"]["progression 1"] = log_data[author_name]['level']['lvl']
             
             if "PointXP" in log_data[author_name]['bag']:
                 log_data[author_name]['bag']['PointXP']["quantity"] += 1
@@ -2517,8 +2799,10 @@ def train_action(author_name, author_icon, global_name):
 
     tabFields = {"Vous gagnez :" : gain_xp}
 
-    if xp_win == alea * 2:
+    if xp_win >= alea * 2:
+        gain_xp = f"{xp_win - alea} :diamond_shape_with_a_dot_inside:"
         tabFields["Bonus boost XP :"] = gain_xp
+            
     if player_levelup:
         tabFields["Level UP :"] = player_levelup
     
@@ -2647,8 +2931,8 @@ def combat(mob_name, mob_lvl, total_pv, total_for, total_def, nbr_debuffer):
     mob_def = (mob_lvl * mobs[mob_name]['stats']['def']) * debuff
 
     sum_mob_stats = int(mob_pv/250 + mob_for/2 + mob_def/4)
-    sum_plaayers_stats = int(total_pv/250 + total_for/2 + total_def/4)
-    if sum_mob_stats > sum_plaayers_stats:
+    sum_players_stats = int(total_pv/250 + total_for/2 + total_def/4)
+    if sum_mob_stats > sum_players_stats:
         return False
     return True
 
