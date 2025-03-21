@@ -182,7 +182,7 @@
                 "taux": 0.20
             },
             "special_2": {
-                "name": "Gem",
+                "name": "Gemme",
                 "taux": 0.05
             },
             "special_3": {
@@ -266,7 +266,7 @@
                 "taux": 0.20
             },
             "special_2": {
-                "name": "Gem vent",
+                "name": "Gemme vent",
                 "taux": 0.05
             },
             "special_3": {
@@ -294,7 +294,7 @@
                 "taux": 0.20
             },
             "special_2": {
-                "name": "Gem feu",
+                "name": "Gemme feu",
                 "taux": 0.05
             },
             "special_3": {
@@ -322,7 +322,7 @@
                 "taux": 0.20
             },
             "special_2": {
-                "name": "Gem eau",
+                "name": "Gemme eau",
                 "taux": 0.05
             },
             "special_3": {
@@ -350,7 +350,7 @@
                 "taux": 0.20
             },
             "special_2": {
-                "name": "Gem plante",
+                "name": "Gemme plante",
                 "taux": 0.05
             },
             "special_3": {
@@ -378,7 +378,7 @@
                 "taux": 0.20
             },
             "special_2": {
-                "name": "Gem foudre",
+                "name": "Gemme foudre",
                 "taux": 0.05
             },
             "special_3": {
