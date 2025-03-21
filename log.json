@@ -67,15 +67,15 @@
             },
             "Ecaille de b\u00e9b\u00e9 dragon": {
                 "quantity": 1,
-                "icon": ":construction:"
+                "icon": ":beginner::dragon:"
             },
             "Gemme plante": {
                 "quantity": 1,
-                "icon": ":construction:"
+                "icon": ":gem::seedling:"
             },
             "Pierre feu": {
                 "quantity": 1,
-                "icon": ":construction:"
+                "icon": ":rock::fire:"
             }
         },
         "level": {
@@ -181,7 +181,7 @@
             },
             "Pierre vent": {
                 "quantity": 1,
-                "icon": ":construction:"
+                "icon": ":rock::dash:"
             },
             "Mer": {
                 "quantity": 24,
@@ -189,7 +189,7 @@
             },
             "Pierre plante": {
                 "quantity": 1,
-                "icon": ":construction:"
+                "icon": ":rock::seedling:"
             }
         },
         "level": {
@@ -259,7 +259,7 @@
             },
             "Corne de d\u00e9mon": {
                 "quantity": 1,
-                "icon": ":construction:"
+                "icon": ":smiling_imp:"
             },
             "Fourrure de troll": {
                 "quantity": 1,
@@ -267,7 +267,7 @@
             },
             "Pierre": {
                 "quantity": 2,
-                "icon": ":construction:"
+                "icon": ":rock:"
             }
         },
         "level": {
@@ -384,19 +384,19 @@
             },
             "Cendre feu": {
                 "quantity": 1,
-                "icon": ":construction:"
+                "icon": ":fog::fire:"
             },
             "Pierre vent": {
                 "quantity": 1,
-                "icon": ":construction:"
+                "icon": ":rock::dash:"
             },
             "Pierre feu": {
                 "quantity": 1,
-                "icon": ":construction:"
+                "icon": ":rock::fire:"
             },
             "Cendre glace": {
                 "quantity": 1,
-                "icon": ":construction:"
+                "icon": ":fog::snowflake:"
             }
         },
         "level": {
@@ -863,15 +863,15 @@
             },
             "Corne de d\u00e9mon": {
                 "quantity": 1,
-                "icon": ":construction:"
+                "icon": ":smiling_imp:"
             },
             "Pierre": {
                 "quantity": 2,
-                "icon": ":construction:"
+                "icon": ":rock:"
             },
             "Pierre feu": {
                 "quantity": 1,
-                "icon": ":construction:"
+                "icon": ":rock::fire:"
             }
         },
         "level": {
