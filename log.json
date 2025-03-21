@@ -6,9 +6,9 @@
         "avenger": true,
         "rank": 8,
         "place": 3,
-        "gold": 3376585,
+        "gold": 3634206,
         "!daily": "2025-03-21 11:52:05.670617",
-        "!explore": "2025-03-21 17:21:44.914601",
+        "!explore": "2025-03-21 19:32:26.326661",
         "!train": "2025-03-21 16:57:02.029475",
         "xp_boosted": "2025-04-02 23:00:19.134490",
         "bag": {
@@ -42,7 +42,7 @@
                 "icon": ":volcano:"
             },
             "PointXP": {
-                "quantity": 59,
+                "quantity": 60,
                 "icon": ":white_flower:"
             },
             "Ocean": {
@@ -64,11 +64,15 @@
             "Branche": {
                 "quantity": 5,
                 "icon": ":herb:"
+            },
+            "Ecaille de b\u00e9b\u00e9 dragon": {
+                "quantity": 1,
+                "icon": ":construction:"
             }
         },
         "level": {
-            "lvl": 59,
-            "xp": 15591334
+            "lvl": 60,
+            "xp": 7567351
         },
         "stats": {
             "pv": 811500,
@@ -101,7 +105,7 @@
             "quantity": 2,
             "name": "Paysan",
             "icon": ":farmer:",
-            "progression 1": 0,
+            "progression 1": 60,
             "progression 2": "Pas encore craft\u00e9"
         }
     },
@@ -112,7 +116,7 @@
         "avenger": true,
         "rank": 8,
         "place": 5,
-        "gold": 182543,
+        "gold": 211743,
         "!daily": "2025-03-20 21:51:56.605106",
         "!explore": "2025-03-21 11:10:14.603114",
         "!train": "2025-03-21 10:00:15.883839",
@@ -174,7 +178,7 @@
         },
         "level": {
             "lvl": 50,
-            "xp": 1182844
+            "xp": 1615004
         },
         "stats": {
             "pv": 306500,
@@ -219,10 +223,10 @@
         "avenger": true,
         "rank": 9,
         "place": 13,
-        "gold": 4498596,
+        "gold": 4711077,
         "!daily": "2025-03-20 21:36:58.613076",
-        "!explore": "2025-03-21 16:46:08.144688",
-        "!train": "2025-03-21 16:46:10.228824",
+        "!explore": "2025-03-21 20:00:41.766866",
+        "!train": "2025-03-21 20:00:43.296755",
         "xp_boosted": "2024-01-01 11:11:11.111111",
         "bag": {
             "PointXP": {
@@ -236,11 +240,19 @@
             "Rare": {
                 "quantity": 2,
                 "icon": "<:Rare:1222193217957662760>"
+            },
+            "Corne de d\u00e9mon": {
+                "quantity": 1,
+                "icon": ":construction:"
+            },
+            "Fourrure de troll": {
+                "quantity": 1,
+                "icon": ":mammoth:"
             }
         },
         "level": {
             "lvl": 53,
-            "xp": 2346281
+            "xp": 3802627
         },
         "stats": {
             "pv": 1000,
@@ -272,7 +284,7 @@
             "quantity": 1,
             "name": "Buffer",
             "icon": ":low_brightness:",
-            "progression 1": 0,
+            "progression 1": 16,
             "progression 2": "Pas encore craft\u00e9"
         }
     },
@@ -283,10 +295,10 @@
         "avenger": true,
         "rank": 10,
         "place": 1,
-        "gold": 522470,
+        "gold": 792719,
         "!daily": "2025-03-21 01:58:09.118810",
-        "!explore": "2025-03-21 16:29:12.865327",
-        "!train": "2025-03-21 14:03:33.249590",
+        "!explore": "2025-03-21 19:31:19.573537",
+        "!train": "2025-03-21 19:31:24.265265",
         "xp_boosted": "2025-03-25 22:00:31.576829",
         "bag": {
             "Dague": {
@@ -349,11 +361,15 @@
             "Rare": {
                 "quantity": 112,
                 "icon": "<:Rare:1222193217957662760>"
+            },
+            "Cendre feu": {
+                "quantity": 1,
+                "icon": ":construction:"
             }
         },
         "level": {
             "lvl": 64,
-            "xp": 7754317
+            "xp": 11264959
         },
         "stats": {
             "pv": 2211500,
@@ -378,7 +394,7 @@
         "max_daily": 20000,
         "profil": 0,
         "!eveil": "2025-03-20 22:00:40.013828",
-        "!craft": "2025-03-20 16:20:15.609749",
+        "!craft": "2025-03-21 18:38:35.199687",
         "!boostxp": "2025-03-13 10:21:20.310743",
         "!sw": "2025-03-13 10:20:07.851202",
         "classe": {
@@ -609,9 +625,9 @@
         "avenger": true,
         "rank": 6,
         "place": 9,
-        "gold": 189841,
+        "gold": 328431,
         "!daily": "2025-03-20 22:47:42.233241",
-        "!explore": "2025-03-21 17:17:07.525312",
+        "!explore": "2025-03-21 18:25:33.439095",
         "!train": "2025-03-21 17:17:04.011768",
         "xp_boosted": "2024-01-01 11:11:11.111111",
         "bag": {
@@ -645,7 +661,7 @@
                 "icon": ":herb:"
             },
             "PointXP": {
-                "quantity": 43,
+                "quantity": 44,
                 "icon": ":white_flower:"
             },
             "Brasier": {
@@ -666,8 +682,8 @@
             }
         },
         "level": {
-            "lvl": 43,
-            "xp": 1135853
+            "lvl": 44,
+            "xp": 793264
         },
         "stats": {
             "pv": 48136,
@@ -698,7 +714,7 @@
             "quantity": 2,
             "name": "Assassin",
             "icon": ":dagger:",
-            "progression 1": 32,
+            "progression 1": 35,
             "progression 2": "Pas encore craft\u00e9"
         }
     },
@@ -750,7 +766,7 @@
         "avenger": true,
         "rank": 9,
         "place": 2,
-        "gold": 1026003,
+        "gold": 1082936,
         "!daily": "2025-03-20 21:19:41.484650",
         "!explore": "2025-03-21 16:23:16.098606",
         "!train": "2025-03-21 14:11:58.387231",
@@ -812,11 +828,15 @@
             "Rare": {
                 "quantity": 50,
                 "icon": "<:Rare:1222193217957662760>"
+            },
+            "Corne de d\u00e9mon": {
+                "quantity": 1,
+                "icon": ":construction:"
             }
         },
         "level": {
             "lvl": 58,
-            "xp": 1337905
+            "xp": 1770065
         },
         "stats": {
             "pv": 727500,
