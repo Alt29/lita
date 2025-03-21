@@ -5,12 +5,12 @@
         "avatar": "https://cdn.discordapp.com/avatars/701782195844546662/c9743b50aca8d5f64919bfb8fa655230.png?size=1024",
         "avenger": true,
         "rank": 8,
-        "place": 4,
-        "gold": 921719,
-        "!daily": "2025-03-20 11:44:41.582589",
-        "!explore": "2025-03-20 21:37:11.562870",
-        "!train": "2025-03-20 21:37:10.002917",
-        "xp_boosted": "2025-03-28 23:00:19.134490",
+        "place": 3,
+        "gold": 3376585,
+        "!daily": "2025-03-21 11:52:05.670617",
+        "!explore": "2025-03-21 17:21:44.914601",
+        "!train": "2025-03-21 16:57:02.029475",
+        "xp_boosted": "2025-04-02 23:00:19.134490",
         "bag": {
             "Casquette": {
                 "quantity": 1,
@@ -37,67 +37,43 @@
                 "icon": ":jeans:",
                 "rank": 7
             },
-            "Epique": {
-                "quantity": 17,
-                "icon": "<:Epique:1222193241022136491>"
-            },
             "Volcan": {
-                "quantity": 5,
+                "quantity": 7,
                 "icon": ":volcano:"
             },
             "PointXP": {
-                "quantity": 58,
+                "quantity": 59,
                 "icon": ":white_flower:"
             },
-            "Legendaire": {
-                "quantity": 2,
-                "icon": "<:Legendaire:1222193258403336222>"
-            },
             "Ocean": {
-                "quantity": 5,
+                "quantity": 7,
                 "icon": ":ocean:"
             },
             "Arbre": {
-                "quantity": 3,
+                "quantity": 7,
                 "icon": ":deciduous_tree:"
             },
-            "Rare": {
-                "quantity": 142,
-                "icon": "<:Rare:1222193217957662760>"
-            },
             "Mer": {
-                "quantity": 1,
+                "quantity": 5,
                 "icon": ":sweat_drops:"
             },
-            "Brasier": {
-                "quantity": 3,
-                "icon": ":boom:"
-            },
-            "Feu": {
-                "quantity": 64,
-                "icon": ":fire:"
-            },
             "Plante": {
-                "quantity": 184,
+                "quantity": 4,
                 "icon": ":seedling:"
             },
             "Branche": {
-                "quantity": 2,
+                "quantity": 5,
                 "icon": ":herb:"
-            },
-            "Eau": {
-                "quantity": 140,
-                "icon": ":droplet:"
             }
         },
         "level": {
-            "lvl": 58,
-            "xp": 18295928
+            "lvl": 59,
+            "xp": 15591334
         },
         "stats": {
-            "pv": 676500,
-            "for": 3793,
-            "def": 7156
+            "pv": 811500,
+            "for": 4745,
+            "def": 11476
         },
         "deaths": 0,
         "penality": 0,
@@ -113,20 +89,20 @@
             "Devoreur": 0
         },
         "title": {},
-        "last_daily": "2025-03-18 23:09:55.742347",
-        "max_daily": 19000,
+        "last_daily": "2025-03-20 11:44:41.582589",
+        "max_daily": 19500,
         "profil": 0,
         "!eveil": "2025-03-17 23:39:13.042432",
-        "!sw": "2025-03-18 18:26:17.121540",
-        "!craft": "2025-03-20 21:08:52.844443",
-        "!boostxp": "2025-03-18 20:44:22.725134",
+        "!sw": "2025-03-21 13:40:57.531457",
+        "!craft": "2025-03-21 13:47:46.744974",
+        "!boostxp": "2025-03-21 13:43:52.458493",
         "classe": {
             "unlock": true,
             "quantity": 2,
             "name": "Paysan",
             "icon": ":farmer:",
             "progression 1": 0,
-            "progression 2": "Pas encore crafté"
+            "progression 2": "Pas encore craft\u00e9"
         }
     },
     "junglepingouy": {
@@ -136,10 +112,10 @@
         "avenger": true,
         "rank": 8,
         "place": 5,
-        "gold": 133565,
+        "gold": 182543,
         "!daily": "2025-03-20 21:51:56.605106",
-        "!explore": "2025-03-20 10:45:23.411155",
-        "!train": "2025-03-20 10:45:15.331992",
+        "!explore": "2025-03-21 11:10:14.603114",
+        "!train": "2025-03-21 10:00:15.883839",
         "xp_boosted": "2025-03-27 10:46:14.314506",
         "bag": {
             "Casquette": {
@@ -198,7 +174,7 @@
         },
         "level": {
             "lvl": 50,
-            "xp": 821134
+            "xp": 1182844
         },
         "stats": {
             "pv": 306500,
@@ -233,7 +209,7 @@
             "name": "Alchimiste",
             "icon": ":alembic:",
             "progression 1": 0,
-            "progression 2": "Pas encore crafté"
+            "progression 2": "Pas encore craft\u00e9"
         }
     },
     "slashoroide": {
@@ -243,10 +219,10 @@
         "avenger": true,
         "rank": 9,
         "place": 13,
-        "gold": 4149661,
+        "gold": 4498596,
         "!daily": "2025-03-20 21:36:58.613076",
-        "!explore": "2025-03-20 21:36:57.370457",
-        "!train": "2025-03-20 21:37:01.286462",
+        "!explore": "2025-03-21 16:46:08.144688",
+        "!train": "2025-03-21 16:46:10.228824",
         "xp_boosted": "2024-01-01 11:11:11.111111",
         "bag": {
             "PointXP": {
@@ -256,11 +232,15 @@
             "Epique": {
                 "quantity": 3,
                 "icon": "<:Epique:1222193241022136491>"
+            },
+            "Rare": {
+                "quantity": 2,
+                "icon": "<:Rare:1222193217957662760>"
             }
         },
         "level": {
             "lvl": 53,
-            "xp": 360806
+            "xp": 2346281
         },
         "stats": {
             "pv": 1000,
@@ -293,7 +273,7 @@
             "name": "Buffer",
             "icon": ":low_brightness:",
             "progression 1": 0,
-            "progression 2": "Pas encore crafté"
+            "progression 2": "Pas encore craft\u00e9"
         }
     },
     "ruinflex": {
@@ -303,10 +283,10 @@
         "avenger": true,
         "rank": 10,
         "place": 1,
-        "gold": 660974,
-        "!daily": "2025-03-20 01:57:32.094955",
-        "!explore": "2025-03-20 21:26:45.610412",
-        "!train": "2025-03-20 22:15:26.940757",
+        "gold": 522470,
+        "!daily": "2025-03-21 01:58:09.118810",
+        "!explore": "2025-03-21 16:29:12.865327",
+        "!train": "2025-03-21 14:03:33.249590",
         "xp_boosted": "2025-03-25 22:00:31.576829",
         "bag": {
             "Dague": {
@@ -339,7 +319,7 @@
                 "icon": ":volcano:"
             },
             "PointXP": {
-                "quantity": 63,
+                "quantity": 64,
                 "icon": ":white_flower:"
             },
             "Ocean": {
@@ -357,11 +337,23 @@
             "Plante": {
                 "quantity": 220,
                 "icon": ":seedling:"
+            },
+            "Legendaire": {
+                "quantity": 3,
+                "icon": "<:Legendaire:1222193258403336222>"
+            },
+            "Epique": {
+                "quantity": 15,
+                "icon": "<:Epique:1222193241022136491>"
+            },
+            "Rare": {
+                "quantity": 112,
+                "icon": "<:Rare:1222193217957662760>"
             }
         },
         "level": {
-            "lvl": 63,
-            "xp": 22831985
+            "lvl": 64,
+            "xp": 7754317
         },
         "stats": {
             "pv": 2211500,
@@ -382,8 +374,8 @@
             "Devoreur": 0
         },
         "title": {},
-        "last_daily": "2025-03-19 01:56:09.413126",
-        "max_daily": 19500,
+        "last_daily": "2025-03-20 01:57:32.094955",
+        "max_daily": 20000,
         "profil": 0,
         "!eveil": "2025-03-20 22:00:40.013828",
         "!craft": "2025-03-20 16:20:15.609749",
@@ -395,7 +387,7 @@
             "name": "D\u00e9buffer",
             "icon": ":chains:",
             "progression 1": "completed",
-            "progression 2": "Pas encore crafté"
+            "progression 2": "Pas encore craft\u00e9"
         }
     },
     "akastukye": {
@@ -404,11 +396,11 @@
         "avatar": "https://cdn.discordapp.com/avatars/619654294160932896/e632f2f0d744abde9816d6f99e34cada.png?size=1024",
         "avenger": true,
         "rank": 7,
-        "place": 3,
-        "gold": 362409,
-        "!daily": "2025-03-19 12:23:02.651989",
-        "!explore": "2025-03-19 19:41:42.801882",
-        "!train": "2025-03-19 19:41:45.237881",
+        "place": 4,
+        "gold": 419141,
+        "!daily": "2025-03-21 12:17:17.996011",
+        "!explore": "2025-03-21 15:19:43.555471",
+        "!train": "2025-03-21 15:19:40.776618",
         "xp_boosted": "2024-01-01 11:11:11.111111",
         "bag": {
             "Casquette": {
@@ -451,7 +443,7 @@
         },
         "level": {
             "lvl": 50,
-            "xp": 3005912
+            "xp": 3305962
         },
         "stats": {
             "pv": 357500,
@@ -473,8 +465,8 @@
         },
         "title": {},
         "profil": 0,
-        "last_daily": "2025-03-18 12:11:15.068249",
-        "max_daily": 2000,
+        "last_daily": "2025-03-19 12:23:02.651989",
+        "max_daily": 2500,
         "!eveil": "2025-02-26 17:22:54.654271",
         "!boostxp": "2025-02-27 13:15:12.967009",
         "!craft": "2025-03-11 00:09:26.433318",
@@ -617,10 +609,10 @@
         "avenger": true,
         "rank": 6,
         "place": 9,
-        "gold": 99258,
-        "!daily": "2025-03-18 20:44:30.475021",
-        "!explore": "2025-03-20 18:58:40.591116",
-        "!train": "2025-03-20 18:58:37.365337",
+        "gold": 189841,
+        "!daily": "2025-03-20 22:47:42.233241",
+        "!explore": "2025-03-21 17:17:07.525312",
+        "!train": "2025-03-21 17:17:04.011768",
         "xp_boosted": "2024-01-01 11:11:11.111111",
         "bag": {
             "Baskets": {
@@ -675,7 +667,7 @@
         },
         "level": {
             "lvl": 43,
-            "xp": 517027
+            "xp": 1135853
         },
         "stats": {
             "pv": 48136,
@@ -696,9 +688,9 @@
             "Devoreur": 0
         },
         "title": {},
-        "last_daily": "2025-03-17 19:14:05.704225",
-        "max_daily": 5000,
-        "!eveil": "2025-03-19 09:18:30.860708",
+        "last_daily": "2025-03-18 20:44:30.475021",
+        "max_daily": 500,
+        "!eveil": "2025-03-20 22:49:23.109564",
         "!sw": "2025-03-19 20:03:13.978689",
         "!craft": "2025-03-15 19:50:11.559575",
         "classe": {
@@ -706,8 +698,8 @@
             "quantity": 2,
             "name": "Assassin",
             "icon": ":dagger:",
-            "progression 1": 27,
-            "progression 2": "Pas encore crafté"
+            "progression 1": 32,
+            "progression 2": "Pas encore craft\u00e9"
         }
     },
     "takinette": {
@@ -758,10 +750,10 @@
         "avenger": true,
         "rank": 9,
         "place": 2,
-        "gold": 305269,
+        "gold": 1026003,
         "!daily": "2025-03-20 21:19:41.484650",
-        "!explore": "2025-03-20 20:40:31.888067",
-        "!train": "2025-03-20 19:26:40.710908",
+        "!explore": "2025-03-21 16:23:16.098606",
+        "!train": "2025-03-21 14:11:58.387231",
         "xp_boosted": "2025-04-02 00:15:56.751132",
         "bag": {
             "Casquette": {
@@ -794,7 +786,7 @@
                 "icon": ":volcano:"
             },
             "PointXP": {
-                "quantity": 57,
+                "quantity": 58,
                 "icon": ":white_flower:"
             },
             "Ocean": {
@@ -823,8 +815,8 @@
             }
         },
         "level": {
-            "lvl": 57,
-            "xp": 9745601
+            "lvl": 58,
+            "xp": 1337905
         },
         "stats": {
             "pv": 727500,
@@ -849,7 +841,7 @@
         "last_daily": "2025-03-19 20:54:59.348462",
         "max_daily": 16000,
         "!eveil": "2025-03-19 22:51:07.392067",
-        "!compter": "2025-03-19 23:53:13.643157",
+        "!compter": "2025-03-21 00:38:30.548428",
         "!craft": "2025-03-19 22:51:01.500058",
         "!sw": "2025-03-20 10:47:36.913929",
         "!boostxp": "2025-03-20 01:55:35.590335",

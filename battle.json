@@ -1,12 +1,10 @@
 {
     "mob": {
-        "name": "Golem_de_feu",
-        "lvl": 126
+        "name": "Troll_des_neiges",
+        "lvl": 270
     },
     "players": {
         "ruinflex": "ruinflex",
-        "slashoroide": "slashoroide",
-        "terminator850": "terminator850",
         "altan3062": "altan3062"
     },
     "debuff_time": 0,
