@@ -1,12 +1,15 @@
 {
     "mob": {
-        "name": "Chien_enrage",
-        "lvl": 62
+        "name": "Phenix_de_glace",
+        "lvl": 263
     },
     "players": {
+        "junglepingouy": "junglepingouy",
+        "slashoroide": "slashoroide",
         "ruinflex": "ruinflex",
-        "altan3062": "altan3062",
-        "terminator850": "terminator850"
+        "terminator850": "terminator850",
+        "altan3062": "altan3062"
     },
-    "debuff_time": 1
+    "debuff_time": 0,
+    "status": "victoire"
 }

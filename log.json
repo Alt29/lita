@@ -6,10 +6,10 @@
         "avenger": true,
         "rank": 8,
         "place": 3,
-        "gold": 3634206,
+        "gold": 3859649,
         "!daily": "2025-03-21 11:52:05.670617",
-        "!explore": "2025-03-21 19:32:26.326661",
-        "!train": "2025-03-21 16:57:02.029475",
+        "!explore": "2025-03-21 23:27:51.296759",
+        "!train": "2025-03-21 23:27:49.651447",
         "xp_boosted": "2025-04-02 23:00:19.134490",
         "bag": {
             "Casquette": {
@@ -68,11 +68,19 @@
             "Ecaille de b\u00e9b\u00e9 dragon": {
                 "quantity": 1,
                 "icon": ":construction:"
+            },
+            "Gemme plante": {
+                "quantity": 1,
+                "icon": ":construction:"
+            },
+            "Pierre feu": {
+                "quantity": 1,
+                "icon": ":construction:"
             }
         },
         "level": {
             "lvl": 60,
-            "xp": 7567351
+            "xp": 21860751
         },
         "stats": {
             "pv": 811500,
@@ -116,10 +124,10 @@
         "avenger": true,
         "rank": 8,
         "place": 5,
-        "gold": 211743,
-        "!daily": "2025-03-20 21:51:56.605106",
-        "!explore": "2025-03-21 11:10:14.603114",
-        "!train": "2025-03-21 10:00:15.883839",
+        "gold": 380125,
+        "!daily": "2025-03-21 22:20:55.084054",
+        "!explore": "2025-03-21 22:20:56.900683",
+        "!train": "2025-03-21 22:21:03.445152",
         "xp_boosted": "2025-03-27 10:46:14.314506",
         "bag": {
             "Casquette": {
@@ -151,10 +159,6 @@
                 "quantity": 50,
                 "icon": ":white_flower:"
             },
-            "Eau": {
-                "quantity": 180,
-                "icon": ":droplet:"
-            },
             "Feu": {
                 "quantity": 120,
                 "icon": ":fire:"
@@ -172,16 +176,28 @@
                 "icon": "<:Legendaire:1222193258403336222>"
             },
             "Rare": {
-                "quantity": 30,
+                "quantity": 6,
                 "icon": "<:Rare:1222193217957662760>"
+            },
+            "Pierre vent": {
+                "quantity": 1,
+                "icon": ":construction:"
+            },
+            "Mer": {
+                "quantity": 24,
+                "icon": ":sweat_drops:"
+            },
+            "Pierre plante": {
+                "quantity": 1,
+                "icon": ":construction:"
             }
         },
         "level": {
             "lvl": 50,
-            "xp": 1615004
+            "xp": 3452746
         },
         "stats": {
-            "pv": 306500,
+            "pv": 381500,
             "for": 785,
             "def": 4020
         },
@@ -200,12 +216,12 @@
         },
         "title": {},
         "profil": 0,
-        "last_daily": "2025-03-19 15:57:13.103595",
-        "max_daily": 16500,
+        "last_daily": "2025-03-20 21:51:56.605106",
+        "max_daily": 17000,
         "!eveil": "2025-03-20 22:00:38.360529",
-        "!compter": "2025-03-20 21:51:58.682322",
+        "!compter": "2025-03-21 22:20:59.297422",
         "!sw": "2025-03-20 10:51:36.573844",
-        "!craft": "2025-03-16 13:24:40.880894",
+        "!craft": "2025-03-21 22:48:01.445946",
         "!boostxp": "2025-03-20 10:49:11.394576",
         "classe": {
             "unlock": true,
@@ -223,10 +239,10 @@
         "avenger": true,
         "rank": 9,
         "place": 13,
-        "gold": 4711077,
-        "!daily": "2025-03-20 21:36:58.613076",
-        "!explore": "2025-03-21 20:00:41.766866",
-        "!train": "2025-03-21 20:00:43.296755",
+        "gold": 4876813,
+        "!daily": "2025-03-21 22:21:26.537996",
+        "!explore": "2025-03-21 22:33:06.243499",
+        "!train": "2025-03-21 23:27:43.810907",
         "xp_boosted": "2024-01-01 11:11:11.111111",
         "bag": {
             "PointXP": {
@@ -248,11 +264,15 @@
             "Fourrure de troll": {
                 "quantity": 1,
                 "icon": ":mammoth:"
+            },
+            "Pierre": {
+                "quantity": 2,
+                "icon": ":construction:"
             }
         },
         "level": {
             "lvl": 53,
-            "xp": 3802627
+            "xp": 4887207
         },
         "stats": {
             "pv": 1000,
@@ -273,8 +293,8 @@
             "Devoreur": 0
         },
         "title": {},
-        "last_daily": "2025-03-19 18:59:20.140624",
-        "max_daily": 19000,
+        "last_daily": "2025-03-20 21:36:58.613076",
+        "max_daily": 19500,
         "profil": 0,
         "!eveil": "2025-03-17 21:17:28.987152",
         "!sw": "2025-03-12 17:21:09.893098",
@@ -284,7 +304,7 @@
             "quantity": 1,
             "name": "Buffer",
             "icon": ":low_brightness:",
-            "progression 1": 16,
+            "progression 1": 45,
             "progression 2": "Pas encore craft\u00e9"
         }
     },
@@ -295,10 +315,10 @@
         "avenger": true,
         "rank": 10,
         "place": 1,
-        "gold": 792719,
+        "gold": 925037,
         "!daily": "2025-03-21 01:58:09.118810",
-        "!explore": "2025-03-21 19:31:19.573537",
-        "!train": "2025-03-21 19:31:24.265265",
+        "!explore": "2025-03-21 23:24:01.283180",
+        "!train": "2025-03-21 22:36:36.960917",
         "xp_boosted": "2025-03-25 22:00:31.576829",
         "bag": {
             "Dague": {
@@ -365,11 +385,23 @@
             "Cendre feu": {
                 "quantity": 1,
                 "icon": ":construction:"
+            },
+            "Pierre vent": {
+                "quantity": 1,
+                "icon": ":construction:"
+            },
+            "Pierre feu": {
+                "quantity": 1,
+                "icon": ":construction:"
+            },
+            "Cendre glace": {
+                "quantity": 1,
+                "icon": ":construction:"
             }
         },
         "level": {
             "lvl": 64,
-            "xp": 11264959
+            "xp": 13001623
         },
         "stats": {
             "pv": 2211500,
@@ -625,7 +657,7 @@
         "avenger": true,
         "rank": 6,
         "place": 9,
-        "gold": 328431,
+        "gold": 347958,
         "!daily": "2025-03-20 22:47:42.233241",
         "!explore": "2025-03-21 18:25:33.439095",
         "!train": "2025-03-21 17:17:04.011768",
@@ -683,7 +715,7 @@
         },
         "level": {
             "lvl": 44,
-            "xp": 793264
+            "xp": 906180
         },
         "stats": {
             "pv": 48136,
@@ -714,7 +746,7 @@
             "quantity": 2,
             "name": "Assassin",
             "icon": ":dagger:",
-            "progression 1": 35,
+            "progression 1": 37,
             "progression 2": "Pas encore craft\u00e9"
         }
     },
@@ -766,10 +798,10 @@
         "avenger": true,
         "rank": 9,
         "place": 2,
-        "gold": 1082936,
-        "!daily": "2025-03-20 21:19:41.484650",
-        "!explore": "2025-03-21 16:23:16.098606",
-        "!train": "2025-03-21 14:11:58.387231",
+        "gold": 1326175,
+        "!daily": "2025-03-21 22:07:54.961739",
+        "!explore": "2025-03-21 23:24:42.809612",
+        "!train": "2025-03-21 23:24:36.942597",
         "xp_boosted": "2025-04-02 00:15:56.751132",
         "bag": {
             "Casquette": {
@@ -832,11 +864,19 @@
             "Corne de d\u00e9mon": {
                 "quantity": 1,
                 "icon": ":construction:"
+            },
+            "Pierre": {
+                "quantity": 2,
+                "icon": ":construction:"
+            },
+            "Pierre feu": {
+                "quantity": 1,
+                "icon": ":construction:"
             }
         },
         "level": {
             "lvl": 58,
-            "xp": 1770065
+            "xp": 4597625
         },
         "stats": {
             "pv": 727500,
@@ -858,11 +898,11 @@
         },
         "title": {},
         "profil": 0,
-        "last_daily": "2025-03-19 20:54:59.348462",
-        "max_daily": 16000,
+        "last_daily": "2025-03-20 21:19:41.484650",
+        "max_daily": 16500,
         "!eveil": "2025-03-19 22:51:07.392067",
         "!compter": "2025-03-21 00:38:30.548428",
-        "!craft": "2025-03-19 22:51:01.500058",
+        "!craft": "2025-03-21 20:21:42.309881",
         "!sw": "2025-03-20 10:47:36.913929",
         "!boostxp": "2025-03-20 01:55:35.590335",
         "classe": {
