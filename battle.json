@@ -1,11 +1,13 @@
 {
     "mob": {
-        "name": "Zombi_demon",
-        "lvl": 84
+        "name": "Golem_de_feu",
+        "lvl": 126
     },
     "players": {
         "ruinflex": "ruinflex",
-        "terminator850": "terminator850"
+        "slashoroide": "slashoroide",
+        "terminator850": "terminator850",
+        "altan3062": "altan3062"
     },
     "debuff_time": 0,
     "status": "victoire"

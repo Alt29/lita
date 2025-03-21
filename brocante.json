@@ -26,12 +26,5 @@
         "item": "Eau",
         "price": 1900,
         "quantity": 140
-    },
-    "Vente 5": {
-        "seller_id": 503247209165357066,
-        "seller_name": "slashoroide",
-        "item": "Epique",
-        "price": 49000,
-        "quantity": 3
     }
 }

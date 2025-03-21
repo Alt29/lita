@@ -900,7 +900,7 @@ async def hourly_mob():
         
         old_lvl = battle['mob']['lvl']
         
-        random_number = random.randint(5, 15)
+        random_number = random.randint(20, 60)
         
         if status == 'victoire':    
             mob_lvl = random.randint(old_lvl, old_lvl+random_number)
@@ -1449,7 +1449,7 @@ async def on_message(message):
                     log_data[message.author.name]["classe"]["name"] = classes[classe]["name"]
                     log_data[message.author.name]["classe"]["icon"] = classes[classe]["icon"]
                     log_data[message.author.name]["classe"]["progression 1"] = 0
-                    log_data[message.author.name]["classe"]["progression 2"] = "Pas encore crafter"
+                    log_data[message.author.name]["classe"]["progression 2"] = "Pas encore crafté"
                     
                     updated = True
                     
