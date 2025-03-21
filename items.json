@@ -283,24 +283,295 @@
         "unique": true,
         "classe": "Grenouille"
     },
-    "Pierre eau": {
-        "name": "Pierre eau",
-        "icon": ":small_blue_diamond:"
+    "Gelée": {
+        "icon": ":construction:",
+        "drop_grad": 1
     },
-    "Gemme eau": {
-        "name": "Gemme eau",
-        "icon": ":large_blue_diamond:"
+    "Os de squelette": {
+        "icon": ":construction:",
+        "drop_grad": 1
+    },
+    "Peau de loup": {
+        "icon": ":construction:",
+        "drop_grad": 1
+    },
+    "Silex": {
+        "icon": ":construction:",
+        "drop_grad": 1
+    },
+    "Tissu": {
+        "icon": ":construction:",
+        "drop_grad": 1
+    },
+    "Chair putrifiée": {
+        "icon": ":construction:",
+        "drop_grad": 1
+    },
+    "Pierre": {
+        "icon": ":construction:",
+        "drop_grad": 1
+    },
+    "Peau carbonisée": {
+        "icon": ":construction:",
+        "drop_grad": 1
+    },
+    "Gelée royale": {
+        "icon": ":construction:",
+        "drop_grad": 1
+    },
+    "Pierre vent": {
+        "icon": ":construction:",
+        "drop_grad": 1
+    },
+    "Pierre feu": {
+        "icon": ":construction:",
+        "drop_grad": 1
+    },
+    "Pierre eau": {
+        "icon": ":small_blue_diamond:",
+        "drop_grad": 1
+    },
+    "Pierre plante": {
+        "icon": ":construction:",
+        "drop_grad": 1
+    },
+    "Pierre foudre": {
+        "icon": ":construction:",
+        "drop_grad": 1
+    },
+    "Cendre feu": {
+        "icon": ":construction:",
+        "drop_grad": 1
+    },
+    "Cendre glace": {
+        "icon": ":construction:",
+        "drop_grad": 1
+    },
+    "Cendre foudre": {
+        "icon": ":construction:",
+        "drop_grad": 1
+    },
+    "Corne de démon": {
+        "icon": ":construction:",
+        "drop_grad": 1
+    },
+    "Ecaille de bébé dragon": {
+        "icon": ":construction:",
+        "drop_grad": 1
+    },
+    "Peau de serpent": {
+        "icon": ":construction:",
+        "drop_grad": 1
     },
     "Fourrure de troll": {
-        "name": "Fourrure de troll",
-        "icon": ":mammoth:"
+        "icon": ":mammoth:",
+        "drop_grad": 1
     },
-    "Aile de demon": {
-        "name": "Aile de demon",
-        "icon": ":bat:"
+    "Ecaille du dragon de glace": {
+        "icon": ":construction:",
+        "drop_grad": 1
     },
-    "Ame corrompue": {
-        "name": "Ame corrompue",
-        "icon": ":ghost:"
+    "Ecaille du dragon de feu": {
+        "icon": ":construction:",
+        "drop_grad": 1
+    },
+    "Aura impossante": {
+        "icon": ":construction:",
+        "drop_grad": 1
+    },
+    "Essence de vie": {
+        "icon": ":construction:",
+        "drop_grad": 2
+    },
+    "Exo-squelette": {
+        "icon": ":construction:",
+        "drop_grad": 2
+    },
+    "Griffe de loup": {
+        "icon": ":construction:",
+        "drop_grad": 2
+    },
+    "Butin bonus": {
+        "icon": ":construction:",
+        "drop_grad": 2
+    },
+    "Cuir renforcé": {
+        "icon": ":construction:",
+        "drop_grad": 2
+    },
+    "Aile de démon": {
+        "icon": ":bat:",
+        "drop_grad": 2
+    },
+    "Gemme": {
+        "icon": ":construction:",
+        "drop_grad": 2
+    },
+    "Salive enflammée": {
+        "icon": ":construction:",
+        "drop_grad": 2
+    },
+    "Coeur de slime": {
+        "icon": ":construction:",
+        "drop_grad": 2
+    },
+    "Gemme vent": {
+        "icon": ":construction:",
+        "drop_grad": 2
+    },
+    "Gemme feu": {
+        "icon": ":construction:",
+        "drop_grad": 2
+    },
+    "Gemme eau": {
+        "icon": ":large_blue_diamond:",
+        "drop_grad": 2
+    },
+    "Gemme plante": {
+        "icon": ":construction:",
+        "drop_grad": 2
+    },
+    "Gemme foudre": {
+        "icon": ":construction:",
+        "drop_grad": 2
+    },
+    "Plume feu": {
+        "icon": ":construction:",
+        "drop_grad": 2
+    },
+    "Plume glace": {
+        "icon": ":construction:",
+        "drop_grad": 2
+    },
+    "Plume foudre": {
+        "icon": ":construction:",
+        "drop_grad": 2
+    },
+    "Soif de sang": {
+        "icon": ":construction:",
+        "drop_grad": 2
+    },
+    "Os de bébé dragon": {
+        "icon": ":construction:",
+        "drop_grad": 2
+    },
+    "Brume affaiblissante": {
+        "icon": ":construction:",
+        "drop_grad": 2
+    },
+    "Ceinture imposante": {
+        "icon": ":construction:",
+        "drop_grad": 2
+    },
+    "Os du dragon de glace": {
+        "icon": ":construction:",
+        "drop_grad": 2
+    },
+    "Os du dragon de feu": {
+        "icon": ":construction:",
+        "drop_grad": 2
+    },
+    "Coup double": {
+        "icon": ":construction:",
+        "drop_grad": 2
+    },
+    "Cristal de régénération": {
+        "icon": ":construction:",
+        "drop_grad": 3
+    },
+    "Crâne maudit": {
+        "icon": ":construction:",
+        "drop_grad": 3
+    },
+    "Canine acérée": {
+        "icon": ":construction:",
+        "drop_grad": 3
+    },
+    "Sang de gobelin": {
+        "icon": ":construction:",
+        "drop_grad": 3
+    },
+    "Amulette de protection": {
+        "icon": ":construction:",
+        "drop_grad": 3
+    },
+    "Ceinture maudite": {
+        "icon": ":construction:",
+        "drop_grad": 3
+    },
+    "Noyau": {
+        "icon": ":construction:",
+        "drop_grad": 3
+    },
+    "Enragement": {
+        "icon": ":construction:",
+        "drop_grad": 3
+    },
+    "Couronne du roi": {
+        "icon": ":construction:",
+        "drop_grad": 3
+    },
+    "Noyau vent": {
+        "icon": ":construction:",
+        "drop_grad": 3
+    },
+    "Noyau feu": {
+        "icon": ":construction:",
+        "drop_grad": 3
+    },
+    "Noyau eau": {
+        "icon": ":construction:",
+        "drop_grad": 3
+    },
+    "Noyau plante": {
+        "icon": ":construction:",
+        "drop_grad": 3
+    },
+    "Noyau foudre": {
+        "icon": ":construction:",
+        "drop_grad": 3
+    },
+    "Coeur feu": {
+        "icon": ":construction:",
+        "drop_grad": 3
+    },
+    "Coeur glace": {
+        "icon": ":construction:",
+        "drop_grad": 3
+    },
+    "Coeur foudre": {
+        "icon": ":construction:",
+        "drop_grad": 3
+    },
+    "Âme corrompue": {
+        "icon": ":ghost:",
+        "drop_grad": 3
+    },
+    "Coeur de bébé dragon": {
+        "icon": ":construction:",
+        "drop_grad": 3
+    },
+    "Venin mortel": {
+        "icon": ":construction:",
+        "drop_grad": 3
+    },
+    "Massue géante": {
+        "icon": ":construction:",
+        "drop_grad": 3
+    },
+    "Coeur du dragon de glace": {
+        "icon": ":construction:",
+        "drop_grad": 3
+    },
+    "Coeur du dragon de feu": {
+        "icon": ":construction:",
+        "drop_grad": 3
+    },
+    "Résurection": {
+        "icon": ":construction:",
+        "drop_grad": 3
+    },
+    "Potion à effet aléatoire": {
+        "icon": ":test_tube:"
     }
 }

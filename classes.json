@@ -68,7 +68,7 @@
     "guerrier": {
         "name": "Guerrier",
         "icon": ":crossed_swords:",
-        "description": "L'honneur d'un guerrier se trouve sur le champ de bataille, chaque monstre vaincu vous octroie 1% de sa force",
+        "description": "L'honneur d'un guerrier se trouve sur le champ de bataille, chaque monstre vaincu vous octroie 1% de sa force si votre force est supérieure à la sienne.",
         "details": {
             "Quete 1": {
                 "quete": "Tuer 100 monstres",
@@ -90,7 +90,7 @@
     "gardien": {
         "name": "Gardien",
         "icon": ":shield:",
-        "description": "Protégez vos alliés est votre priorité, chaque monstre vaincu vous octroie 1% de sa défense",
+        "description": "Protégez vos alliés est votre priorité, chaque monstre vaincu vous octroie 1% de sa défense si votre défense est supérieure à la sienne",
         "details": {
             "Quete 1": {
                 "quete": "Protéger 100 alliés lors de combats de monstres",

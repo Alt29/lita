@@ -1,0 +1,224 @@
+{
+    "Potion à effet aléatoire": {
+        "name": "Potion à effet aléatoire",
+        "description": "Jusqu'où êtes-vous prêt à aller pour satisfaire votre curiosité ?",
+        "effets": {
+            "gold+": {
+                "grad": {
+                    "I": {
+                        "name": "Gold+ I",
+                        "description": "Potion bonus gold +100% durée 1h"
+                    },
+                    "II": {
+                        "name": "Gold+ II",
+                        "description": "Potion bonus gold +200% durée 1h"
+                    },
+                    "III": {
+                        "name": "Gold+ III",
+                        "description": "Potion bonus gold +300% durée 1h"
+                    },
+                    "IV": {
+                        "name": "Gold+ IV",
+                        "description": "Potion bonus gold +400% durée 1h"
+                    },
+                    "V": {
+                        "name": "Gold+ V",
+                        "description": "Potion bonus gold +500% durée 1h"
+                    }
+                }
+            },
+            "gold-": {
+                "grad": {
+                    "I": {
+                        "name": "Gold- I",
+                        "description": "Potion perte gold 5000"
+                    },
+                    "II": {
+                        "name": "Gold- II",
+                        "description": "Potion perte gold 10000"
+                    },
+                    "III": {
+                        "name": "Gold- III",
+                        "description": "Potion perte gold 15000"
+                    },
+                    "IV": {
+                        "name": "Gold- IV",
+                        "description": "Potion perte gold 20000"
+                    },
+                    "V": {
+                        "name": "Gold- V",
+                        "description": "Potion perte gold 25000"
+                    }
+                }
+            },
+            "pv+": {
+                "grad": {
+                    "I": {
+                        "name": "PV+ I",
+                        "description": "Potion gain PV 1000"
+                    },
+                    "II": {
+                        "name": "PV+ II",
+                        "description": "Potion gain PV 5000"
+                    },
+                    "III": {
+                        "name": "PV+ III",
+                        "description": "Potion gain PV 10000"
+                    },
+                    "IV": {
+                        "name": "PV+ IV",
+                        "description": "Potion gain PV 15000"
+                    },
+                    "V": {
+                        "name": "PV+ V",
+                        "description": "Potion gain PV 20000"
+                    }
+                }
+            },
+            "pv-": {
+                "grad": {
+                    "I": {
+                        "name": "PV- I",
+                        "description": "Potion perte PV 500"
+                    },
+                    "II": {
+                        "name": "PV- II",
+                        "description": "Potion perte PV 2500"
+                    },
+                    "III": {
+                        "name": "PV- III",
+                        "description": "Potion perte PV 5000"
+                    },
+                    "IV": {
+                        "name": "PV- IV",
+                        "description": "Potion perte PV 7500"
+                    },
+                    "V": {
+                        "name": "PV- V",
+                        "description": "Potion perte PV 10000"
+                    }
+                }
+            },
+            "for+": {
+                "grad": {
+                    "I": {
+                        "name": "For+ I",
+                        "description": "Potion gain For 8"
+                    },
+                    "II": {
+                        "name": "For+ II",
+                        "description": "Potion gain For 40"
+                    },
+                    "III": {
+                        "name": "For+ III",
+                        "description": "Potion gain For 80"
+                    },
+                    "IV": {
+                        "name": "For+ IV",
+                        "description": "Potion gain For 120"
+                    },
+                    "V": {
+                        "name": "For+ V",
+                        "description": "Potion gain For 160"
+                    }
+                }
+            },
+            "for-": {
+                "grad": {
+                    "I": {
+                        "name": "For- I",
+                        "description": "Potion perte For 4"
+                    },
+                    "II": {
+                        "name": "For- II",
+                        "description": "Potion perte For 20"
+                    },
+                    "III": {
+                        "name": "For- III",
+                        "description": "Potion perte For 40"
+                    },
+                    "IV": {
+                        "name": "For- IV",
+                        "description": "Potion perte For 60"
+                    },
+                    "V": {
+                        "name": "For- V",
+                        "description": "Potion perte For 80"
+                    }
+                }
+            },
+            "def+": {
+                "grad": {
+                    "I": {
+                        "name": "Def+ I",
+                        "description": "Potion gain Def 16"
+                    },
+                    "II": {
+                        "name": "Def+ II",
+                        "description": "Potion gain Def 80"
+                    },
+                    "III": {
+                        "name": "Def+ III",
+                        "description": "Potion gain Def 160"
+                    },
+                    "IV": {
+                        "name": "Def+ IV",
+                        "description": "Potion gain Def 240"
+                    },
+                    "V": {
+                        "name": "Def+ V",
+                        "description": "Potion gain Def 320"
+                    }
+                }
+            },
+            "def-": {
+                "grad": {
+                    "I": {
+                        "name": "Def- I",
+                        "description": "Potion perte Def 8"
+                    },
+                    "II": {
+                        "name": "Def- II",
+                        "description": "Potion perte Def 40"
+                    },
+                    "III": {
+                        "name": "Def- III",
+                        "description": "Potion perte Def 80"
+                    },
+                    "IV": {
+                        "name": "Def- IV",
+                        "description": "Potion perte Def 120"
+                    },
+                    "V": {
+                        "name": "Def- V",
+                        "description": "Potion perte Def 160"
+                    }
+                }
+            },
+            "rien": {
+                "grad": {
+                    "I": {
+                        "name": "Rien I",
+                        "description": "Potion inutile"
+                    },
+                    "II": {
+                        "name": "Rien II",
+                        "description": "Potion inutile"
+                    },
+                    "III": {
+                        "name": "Rien III",
+                        "description": "Potion inutile"
+                    },
+                    "IV": {
+                        "name": "Rien IV",
+                        "description": "Potion inutile"
+                    },
+                    "V": {
+                        "name": "Rien V",
+                        "description": "Potion inutile"
+                    }
+                }
+            }
+        }
+    }
+}
