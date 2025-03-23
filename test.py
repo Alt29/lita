@@ -362,7 +362,7 @@ class BattleView(discord.ui.View):
                             if log_data[player]["classe"]["name"] == "Guerrier": 
                                 log_data[player]["classe"]["progression 1"] += 1
                                 
-                                mob_for = (battle['mob']['lvl'] * battle['mob']['name']['stats']['for']) * (0.9 ** nbr_debuffer)
+                                mob_for = (battle['mob']['lvl'] * mobs[battle['mob']['name']]['stats']['for']) * (0.9 ** nbr_debuffer)
                                 
                                 if log_data[player]["stats"]["for"] > mob_for:
                                     log_data[player]["stats"]["for"] += mob_for//100
@@ -371,7 +371,7 @@ class BattleView(discord.ui.View):
                                     
                                     log_data[player]["classe"]["progression 1"] += len(players) - 1
                                     
-                                    mob_def = (battle['mob']['lvl'] * battle['mob']['name']['stats']['def']) * (0.9 ** nbr_debuffer)
+                                    mob_def = (battle['mob']['lvl'] * mobs[battle['mob']['name']]['stats']['def']) * (0.9 ** nbr_debuffer)
                                    
                                     if log_data[player]["stats"]["def"] > mob_def:
                                         log_data[player]["stats"]["def"] += mob_def//100
@@ -2008,15 +2008,17 @@ async def potion_command(interaction: discord.Interaction, potion: str, ingrédi
         return
     else:
         log_data[interaction.user.name]["bag"][ingrédient_1]["quantity"] -= 1
-        log_data[interaction.user.name]["bag"][ingrédient_2]["quantity"] -= 1
-        log_data[interaction.user.name]["bag"][ingrédient_3]["quantity"] -= 1
         
         if log_data[interaction.user.name]["bag"][ingrédient_1]["quantity"] == 0:
             del log_data[interaction.user.name]["bag"][ingrédient_1]
         
+        log_data[interaction.user.name]["bag"][ingrédient_2]["quantity"] -= 1
+        
         if log_data[interaction.user.name]["bag"][ingrédient_2]["quantity"] == 0:
             del log_data[interaction.user.name]["bag"][ingrédient_2]
-
+            
+        log_data[interaction.user.name]["bag"][ingrédient_3]["quantity"] -= 1
+        
         if log_data[interaction.user.name]["bag"][ingrédient_3]["quantity"] == 0:
             del log_data[interaction.user.name]["bag"][ingrédient_3]
             
