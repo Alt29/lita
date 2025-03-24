@@ -6,7 +6,7 @@
         "avenger": true,
         "rank": 8,
         "place": 3,
-        "gold": 1218711,
+        "gold": 1293711,
         "!daily": "2025-03-24 16:18:54.174103",
         "!explore": "2025-03-24 16:18:55.365956",
         "!train": "2025-03-24 14:09:50.028444",
@@ -108,10 +108,6 @@
             "Ceinture imposante": {
                 "quantity": 1,
                 "icon": ":loop:"
-            },
-            "Fourrure de troll": {
-                "quantity": 1,
-                "icon": ":mammoth:"
             },
             "Cendre feu": {
                 "quantity": 2,
@@ -443,7 +439,7 @@
         "avenger": true,
         "rank": 10,
         "place": 1,
-        "gold": 738961,
+        "gold": 663961,
         "!daily": "2025-03-24 02:49:49.776010",
         "!explore": "2025-03-24 15:54:48.944649",
         "!train": "2025-03-24 15:54:51.816722",
@@ -511,7 +507,7 @@
                 "icon": ":test_tube:"
             },
             "Fourrure de troll": {
-                "quantity": 3,
+                "quantity": 4,
                 "icon": ":mammoth:"
             },
             "Ceinture imposante": {
@@ -566,7 +562,7 @@
         "max_daily": 21500,
         "profil": 0,
         "!eveil": "2025-03-23 04:12:11.593882",
-        "!craft": "2025-03-24 15:17:17.348380",
+        "!craft": "2025-03-24 16:51:08.080742",
         "!boostxp": "2025-03-13 10:21:20.310743",
         "!sw": "2025-03-13 10:20:07.851202",
         "classe": {
