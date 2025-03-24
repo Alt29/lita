@@ -1,13 +1,12 @@
 {
     "mob": {
-        "name": "Phenix_de_feu",
-        "lvl": 452
+        "name": "Golem_de_feu",
+        "lvl": 222
     },
     "players": {
         "altan3062": "altan3062",
-        "terminator850": "terminator850",
-        "sorberas": "sorberas",
-        "ruinflex": "ruinflex"
+        "ruinflex": "ruinflex",
+        "sorberas": "sorberas"
     },
     "debuff_time": 0,
     "status": "victoire"
