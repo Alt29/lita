@@ -242,14 +242,12 @@
     },
     "Aureole": {
         "craft": {
-            "image": "https://i.imgur.com/sPJ0Bfg.jpeg",
+            "image": "https://i.imgur.com/7o1y2L3.jpeg",
             "item": {
-                "Pierre eau" : 3,
-                "Gemme eau" : 1,
-                "Fourrure de troll" : 4,
-                "Aile de demon" : 2,
-                "Ame corrompue" : 1,
-                "Fragment" : 5,
+                "Tissu" : 4,
+                "Amulette de protection" : 1,
+                "Coeur de bébé dragon" : 1,
+                "Fragment" : 4,
                 "Ultime" : 1
             }
         },
