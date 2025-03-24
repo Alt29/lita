@@ -195,14 +195,13 @@
     },
     "Hache": {
         "craft": {
-            "image": "https://i.imgur.com/sPJ0Bfg.jpeg",
+            "image": "https://i.imgur.com/CzY9zVn.jpeg",
             "item": {
-                "Pierre eau" : 3,
-                "Gemme eau" : 1,
-                "Fourrure de troll" : 4,
-                "Aile de demon" : 2,
-                "Ame corrompue" : 1,
-                "Fragment" : 5,
+                "Enragement" : 1,
+                "Massue géante" : 1,
+                "Soif de sang" : 3,
+                "Coeur feu" : 1,
+                "Fragment" : 4,
                 "Ultime" : 1
             }
         },
@@ -259,7 +258,7 @@
     },
     "Grimoire": {
         "craft": {
-            "image": "https://i.imgur.com/PIpzNQg.jpeg",
+            "image": "https://i.imgur.com/g6KpQtx.jpeg",
             "item": {
                 "Pierre eau" : 3,
                 "Gemme eau" : 1,
