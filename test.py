@@ -2025,20 +2025,14 @@ async def potion_command(interaction: discord.Interaction, potion: str, ingrédi
         nbr_potion = 1
         
         if "classe" in log_data[interaction.user.name] and "name" in log_data[interaction.user.name]["classe"] and log_data[interaction.user.name]["classe"]["name"] == "Alchimiste":
-            bonus = random.randint(0, 4)
+            bonus = random.randint(0, 2)
             
             msg_bonus = ""
             if bonus == 1:
-                msg_bonus = "Confection agréable • "
+                msg_bonus = "Confection chirurgicale • "
             else:
                 if bonus == 2:
-                    msg_bonus = "Confection précise • "
-                else:
-                    if bonus == 3:
-                        msg_bonus = "Confection chirurgicale • "
-                    else:
-                        if bonus == 4:
-                            msg_bonus = "Confection parfaite • "
+                    msg_bonus = "Confection parfaite • "
             
             nbr_potion += bonus
         
