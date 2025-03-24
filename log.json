@@ -6,9 +6,9 @@
         "avenger": true,
         "rank": 8,
         "place": 3,
-        "gold": 1148847,
-        "!daily": "2025-03-23 15:47:02.823193",
-        "!explore": "2025-03-24 14:09:52.735553",
+        "gold": 1218711,
+        "!daily": "2025-03-24 16:18:54.174103",
+        "!explore": "2025-03-24 16:18:55.365956",
         "!train": "2025-03-24 14:09:50.028444",
         "xp_boosted": "2025-04-30 23:00:19.134490",
         "bag": {
@@ -94,7 +94,7 @@
                 "icon": ":microbe::crown:"
             },
             "Pierre vent": {
-                "quantity": 1,
+                "quantity": 2,
                 "icon": ":rock::dash:"
             },
             "Tissu": {
@@ -120,11 +120,15 @@
             "Corne de d\u00e9mon": {
                 "quantity": 1,
                 "icon": ":smiling_imp:"
+            },
+            "Rare": {
+                "quantity": 35,
+                "icon": "<:Rare:1222193217957662760>"
             }
         },
         "level": {
             "lvl": 64,
-            "xp": 53776582
+            "xp": 55929982
         },
         "stats": {
             "pv": 1086500,
@@ -145,12 +149,12 @@
             "Devoreur": 0
         },
         "title": {},
-        "last_daily": "2025-03-22 12:57:37.622109",
-        "max_daily": 20500,
+        "last_daily": "2025-03-23 15:47:02.823193",
+        "max_daily": 21000,
         "profil": 0,
         "!eveil": "2025-03-17 23:39:13.042432",
         "!sw": "2025-03-22 11:32:25.106657",
-        "!craft": "2025-03-24 02:19:14.106580",
+        "!craft": "2025-03-24 16:29:49.396523",
         "!boostxp": "2025-03-24 01:47:01.696737",
         "classe": {
             "unlock": true,
@@ -168,9 +172,9 @@
         "avenger": true,
         "rank": 8,
         "place": 5,
-        "gold": 847866,
+        "gold": 817239,
         "!daily": "2025-03-24 11:24:08.443792",
-        "!explore": "2025-03-24 14:01:39.826989",
+        "!explore": "2025-03-24 16:29:17.939791",
         "!train": "2025-03-24 14:40:16.963544",
         "xp_boosted": "2025-03-29 10:46:14.314506",
         "bag": {
@@ -276,7 +280,7 @@
                 "icon": ":green_heart:"
             },
             "Pierre": {
-                "quantity": 1,
+                "quantity": 4,
                 "icon": ":rock:"
             },
             "Brume affaiblissante": {
@@ -294,7 +298,7 @@
         },
         "level": {
             "lvl": 53,
-            "xp": 6058784
+            "xp": 6489464
         },
         "stats": {
             "pv": 562750,
@@ -339,7 +343,7 @@
         "avenger": true,
         "rank": 9,
         "place": 13,
-        "gold": 6674974,
+        "gold": 6704074,
         "!daily": "2025-03-24 11:28:01.851033",
         "!explore": "2025-03-24 15:54:33.900033",
         "!train": "2025-03-24 15:54:55.744339",
@@ -358,7 +362,7 @@
                 "icon": "<:Rare:1222193217957662760>"
             },
             "Corne de d\u00e9mon": {
-                "quantity": 1,
+                "quantity": 2,
                 "icon": ":smiling_imp:"
             },
             "Pierre": {
@@ -396,7 +400,7 @@
         },
         "level": {
             "lvl": 54,
-            "xp": 4467863
+            "xp": 4683203
         },
         "stats": {
             "pv": 1000,
@@ -422,7 +426,7 @@
         "profil": 0,
         "!eveil": "2025-03-17 21:17:28.987152",
         "!sw": "2025-03-12 17:21:09.893098",
-        "!craft": "2025-03-24 15:55:32.882549",
+        "!craft": "2025-03-24 16:37:09.360883",
         "classe": {
             "unlock": true,
             "quantity": 1,
@@ -439,7 +443,7 @@
         "avenger": true,
         "rank": 10,
         "place": 1,
-        "gold": 809861,
+        "gold": 738961,
         "!daily": "2025-03-24 02:49:49.776010",
         "!explore": "2025-03-24 15:54:48.944649",
         "!train": "2025-03-24 15:54:51.816722",
@@ -523,7 +527,7 @@
                 "icon": ":fog::snowflake:"
             },
             "Pierre eau": {
-                "quantity": 1,
+                "quantity": 4,
                 "icon": ":rock::droplet:"
             },
             "Cendre feu": {
@@ -537,7 +541,7 @@
         },
         "level": {
             "lvl": 65,
-            "xp": 3063973
+            "xp": 3494653
         },
         "stats": {
             "pv": 2211500,
@@ -942,7 +946,7 @@
         "avenger": true,
         "rank": 9,
         "place": 2,
-        "gold": 1710249,
+        "gold": 2036749,
         "!daily": "2025-03-24 01:11:39.320977",
         "!explore": "2025-03-24 16:07:30.110887",
         "!train": "2025-03-24 13:45:05.011516",
@@ -1065,12 +1069,8 @@
                 "quantity": 2,
                 "icon": ":fog::fire:"
             },
-            "Pierre": {
-                "quantity": 3,
-                "icon": ":rock:"
-            },
             "Pierre eau": {
-                "quantity": 2,
+                "quantity": 1,
                 "icon": ":rock::droplet:"
             },
             "Tissu": {
@@ -1255,7 +1255,7 @@
         "avenger": true,
         "rank": 7,
         "place": 6,
-        "gold": 150924,
+        "gold": 28524,
         "!daily": "2025-03-24 01:32:26.978063",
         "!explore": "2025-03-24 15:55:51.129986",
         "!train": "2025-03-24 14:09:20.172940",
@@ -1366,10 +1366,6 @@
                 "quantity": 1,
                 "icon": "<:Legendaire:1222193258403336222>"
             },
-            "Plante": {
-                "quantity": 20,
-                "icon": ":seedling:"
-            },
             "Soif de sang": {
                 "quantity": 1,
                 "icon": ":drop_of_blood:"
@@ -1382,19 +1378,19 @@
                 "quantity": 1,
                 "icon": ":ocean:"
             },
-            "Pierre eau": {
-                "quantity": 2,
-                "icon": ":rock::droplet:"
+            "Rare": {
+                "quantity": 50,
+                "icon": "<:Rare:1222193217957662760>"
             }
         },
         "level": {
             "lvl": 53,
-            "xp": 1761040
+            "xp": 2191720
         },
         "stats": {
             "pv": 135500,
             "for": 5664.0,
-            "def": 636
+            "def": 556
         },
         "deaths": 0,
         "penality": 0,

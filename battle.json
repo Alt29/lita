@@ -1,15 +1,14 @@
 {
     "mob": {
-        "name": "Phenix_de_glace",
-        "lvl": 287
+        "name": "Demon_intermediaire",
+        "lvl": 291
     },
     "players": {
         "ruinflex": "ruinflex",
+        "slashoroide": "slashoroide",
         "sorberas": "sorberas",
         "junglepingouy": "junglepingouy",
-        "altan3062": "altan3062",
-        "slashoroide": "slashoroide",
-        "terminator850": "terminator850"
+        "altan3062": "altan3062"
     },
     "debuff_time": 0,
     "status": "victoire"
