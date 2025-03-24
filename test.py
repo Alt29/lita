@@ -321,6 +321,9 @@ class BattleView(discord.ui.View):
                     level_up = 0
                     log_data[player]['gold'] += gold
                     
+                    if "classe" in log_data[player] and "name" in log_data[player]["classe"] and log_data[player]["classe"]["name"] == "Rat" and log_data[player]["classe"]["progression 1"] != "completed":
+                        log_data[player]["classe"]["progression 1"] += gold
+                    
                     drop_chance_1 = random.random()
                     drop_chance_2 = random.random()
                     drop_chance_3 = random.random()
@@ -2873,8 +2876,13 @@ def purchase_action(author_name, author_icon, global_name, item, quantity):
         if 'unique' in items[item] or 'requirements' in items[item]:
             quantity = 1
 
-        if gold < items[item]['price'] * quantity:
-            manque = items[item]['price'] * quantity - gold
+        price = items[item]['price'] * quantity
+        
+        if "classe" in log_data[author_name] and "name" in log_data[author_name]["classe"] and log_data[author_name]["classe"]["name"] == "Rat":
+            price = int(price * 0.9)
+        
+        if gold < price:
+            manque = price - gold
             tabFields = {'Vous n\'avez pas assez de gold, il vous manque : ' : str(manque) + ' :coin:'}
             color = discord.Color.red()
         else:
@@ -2907,7 +2915,7 @@ def purchase_action(author_name, author_icon, global_name, item, quantity):
                 color = discord.Color.red()
             else:
                 if upgrade:
-                    log_data[author_name]['gold'] = log_data[author_name]['gold'] - items[item]['price'] * quantity
+                    log_data[author_name]['gold'] = log_data[author_name]['gold'] - price
                     if 'stats' in items[item]:
                         if 'pv' in items[item]['stats']:
                             log_data[author_name]['stats']['pv'] += items[item]['stats']['pv'] * quantity
