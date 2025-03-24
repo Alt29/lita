@@ -1,14 +1,13 @@
 {
     "mob": {
-        "name": "Demon_intermediaire",
-        "lvl": 291
+        "name": "Bebe_dragon",
+        "lvl": 275
     },
     "players": {
+        "altan3062": "altan3062",
         "ruinflex": "ruinflex",
-        "slashoroide": "slashoroide",
-        "sorberas": "sorberas",
-        "junglepingouy": "junglepingouy",
-        "altan3062": "altan3062"
+        "terminator850": "terminator850",
+        "sorberas": "sorberas"
     },
     "debuff_time": 0,
     "status": "victoire"
