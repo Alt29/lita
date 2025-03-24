@@ -11,15 +11,15 @@
             "xp": 90,
             "special_1": {
                 "name": "Gelée",
-                "taux": 0.20
+                "taux": 0.15
             },
             "special_2": {
                 "name": "Essence de vie",
-                "taux": 0.05
+                "taux": 0.025
             },
             "special_3": {
                 "name": "Cristal de régénération",
-                "taux": 0.01
+                "taux": 0.005
             }
         },
         "image": "https://i.imgur.com/tLYX58K.jpeg",
@@ -39,15 +39,15 @@
             "xp": 120,
             "special_1": {
                 "name": "Os de squelette",
-                "taux": 0.20
+                "taux": 0.15
             },
             "special_2": {
                 "name": "Exo-squelette",
-                "taux": 0.05
+                "taux": 0.025
             },
             "special_3": {
                 "name": "Crâne maudit",
-                "taux": 0.01
+                "taux": 0.005
             }
         },
         "image": "https://i.imgur.com/Ckt7V81.jpeg",
@@ -67,15 +67,15 @@
             "xp": 160,
             "special_1": {
                 "name": "Peau de loup",
-                "taux": 0.20
+                "taux": 0.15
             },
             "special_2": {
                 "name": "Griffe de loup",
-                "taux": 0.05
+                "taux": 0.025
             },
             "special_3": {
                 "name": "Canine acérée",
-                "taux": 0.01
+                "taux": 0.005
             }
         },
         "image": "https://i.imgur.com/esNGY0j.jpeg",
@@ -95,15 +95,15 @@
             "xp": 100,
             "special_1": {
                 "name": "Silex",
-                "taux": 0.20
+                "taux": 0.15
             },
             "special_2": {
                 "name": "Butin bonus",
-                "taux": 0.05
+                "taux": 0.025
             },
             "special_3": {
                 "name": "Sang de gobelin",
-                "taux": 0.01
+                "taux": 0.005
             }
         },
         "image": "https://i.imgur.com/bLXiOQs.jpeg",
@@ -123,15 +123,15 @@
             "xp": 500,
             "special_1": {
                 "name": "Tissu",
-                "taux": 0.20
+                "taux": 0.15
             },
             "special_2": {
                 "name": "Cuir renforcé",
-                "taux": 0.05
+                "taux": 0.025
             },
             "special_3": {
                 "name": "Amulette de protection",
-                "taux": 0.01
+                "taux": 0.005
             }
         },
         "image": "https://i.imgur.com/6G7k698.jpeg",
@@ -151,15 +151,15 @@
             "xp": 600,
             "special_1": {
                 "name": "Chair putrifiée",
-                "taux": 0.20
+                "taux": 0.15
             },
             "special_2": {
                 "name": "Aile de démon",
-                "taux": 0.05
+                "taux": 0.025
             },
             "special_3": {
                 "name": "Ceinture maudite",
-                "taux": 0.01
+                "taux": 0.005
             }
         },
         "image": "https://i.imgur.com/IL043c6.jpeg",
@@ -179,15 +179,15 @@
             "xp": 425,
             "special_1": {
                 "name": "Pierre",
-                "taux": 0.20
+                "taux": 0.15
             },
             "special_2": {
                 "name": "Gemme",
-                "taux": 0.05
+                "taux": 0.025
             },
             "special_3": {
                 "name": "Noyau",
-                "taux": 0.01
+                "taux": 0.005
             }
         },
         "image": "https://i.imgur.com/6rEU6fp.jpeg",
@@ -207,15 +207,15 @@
             "xp": 600,
             "special_1": {
                 "name": "Peau carbonisée",
-                "taux": 0.20
+                "taux": 0.15
             },
             "special_2": {
                 "name": "Salive enflammée",
-                "taux": 0.05
+                "taux": 0.025
             },
             "special_3": {
                 "name": "Enragement",
-                "taux": 0.01
+                "taux": 0.005
             }
         },
         "image": "https://i.imgur.com/Hazhsdj.jpeg",
@@ -235,15 +235,15 @@
             "xp": 1000,
             "special_1": {
                 "name": "Gelée royale",
-                "taux": 0.20
+                "taux": 0.15
             },
             "special_2": {
                 "name": "Coeur de slime",
-                "taux": 0.05
+                "taux": 0.025
             },
             "special_3": {
                 "name": "Couronne du roi",
-                "taux": 0.01
+                "taux": 0.005
             }
         },
         "image": "https://i.imgur.com/hokqDoB.jpeg",
@@ -263,15 +263,15 @@
             "xp": 1600,
             "special_1": {
                 "name": "Pierre vent",
-                "taux": 0.20
+                "taux": 0.15
             },
             "special_2": {
                 "name": "Gemme vent",
-                "taux": 0.05
+                "taux": 0.025
             },
             "special_3": {
                 "name": "Noyau vent",
-                "taux": 0.01
+                "taux": 0.005
             }
         },
         "image": "https://i.imgur.com/U84IKSU.jpeg",
@@ -291,15 +291,15 @@
             "xp": 1300,
             "special_1": {
                 "name": "Pierre feu",
-                "taux": 0.20
+                "taux": 0.15
             },
             "special_2": {
                 "name": "Gemme feu",
-                "taux": 0.05
+                "taux": 0.025
             },
             "special_3": {
                 "name": "Noyau feu",
-                "taux": 0.01
+                "taux": 0.005
             }
         },
         "image": "https://i.imgur.com/CBvQJY6.jpeg",
@@ -319,15 +319,15 @@
             "xp": 2000,
             "special_1": {
                 "name": "Pierre eau",
-                "taux": 0.20
+                "taux": 0.15
             },
             "special_2": {
                 "name": "Gemme eau",
-                "taux": 0.05
+                "taux": 0.025
             },
             "special_3": {
                 "name": "Noyau eau",
-                "taux": 0.01
+                "taux": 0.005
             }
         },
         "image": "https://i.imgur.com/ii9x4pk.jpeg",
@@ -347,15 +347,15 @@
             "xp": 4000,
             "special_1": {
                 "name": "Pierre plante",
-                "taux": 0.20
+                "taux": 0.15
             },
             "special_2": {
                 "name": "Gemme plante",
-                "taux": 0.05
+                "taux": 0.025
             },
             "special_3": {
                 "name": "Noyau plante",
-                "taux": 0.01
+                "taux": 0.005
             }
         },
         "image": "https://i.imgur.com/hxgDuW7.jpeg",
@@ -375,15 +375,15 @@
             "xp": 1900,
             "special_1": {
                 "name": "Pierre foudre",
-                "taux": 0.20
+                "taux": 0.15
             },
             "special_2": {
                 "name": "Gemme foudre",
-                "taux": 0.05
+                "taux": 0.025
             },
             "special_3": {
                 "name": "Noyau foudre",
-                "taux": 0.01
+                "taux": 0.005
             }
         },
         "image": "https://i.imgur.com/ND7LgNf.jpeg",
@@ -403,15 +403,15 @@
             "xp": 4100,
             "special_1": {
                 "name": "Cendre feu",
-                "taux": 0.20
+                "taux": 0.15
             },
             "special_2": {
                 "name": "Plume feu",
-                "taux": 0.05
+                "taux": 0.025
             },
             "special_3": {
                 "name": "Coeur feu",
-                "taux": 0.01
+                "taux": 0.005
             }
         },
         "image": "https://i.imgur.com/cmsTck3.jpeg",
@@ -431,15 +431,15 @@
             "xp": 4500,
             "special_1": {
                 "name": "Cendre glace",
-                "taux": 0.20
+                "taux": 0.15
             },
             "special_2": {
                 "name": "Plume glace",
-                "taux": 0.05
+                "taux": 0.025
             },
             "special_3": {
                 "name": "Coeur glace",
-                "taux": 0.01
+                "taux": 0.005
             }
         },
         "image": "https://i.imgur.com/GoP2ssy.jpeg",
@@ -459,15 +459,15 @@
             "xp": 4300,
             "special_1": {
                 "name": "Cendre foudre",
-                "taux": 0.20
+                "taux": 0.15
             },
             "special_2": {
                 "name": "Plume foudre",
-                "taux": 0.05
+                "taux": 0.025
             },
             "special_3": {
                 "name": "Coeur foudre",
-                "taux": 0.01
+                "taux": 0.005
             }
         },
         "image": "https://i.imgur.com/8syNSUj.jpeg",
@@ -487,15 +487,15 @@
             "xp": 3700,
             "special_1": {
                 "name": "Corne de démon",
-                "taux": 0.20
+                "taux": 0.15
             },
             "special_2": {
                 "name": "Soif de sang",
-                "taux": 0.05
+                "taux": 0.025
             },
             "special_3": {
                 "name": "Âme corrompue",
-                "taux": 0.01
+                "taux": 0.005
             }
         },
         "image": "https://i.imgur.com/TwKBVxH.jpeg",
@@ -515,15 +515,15 @@
             "xp": 3600,
             "special_1": {
                 "name": "Ecaille de bébé dragon",
-                "taux": 0.20
+                "taux": 0.15
             },
             "special_2": {
                 "name": "Os de bébé dragon",
-                "taux": 0.05
+                "taux": 0.025
             },
             "special_3": {
                 "name": "Coeur de bébé dragon",
-                "taux": 0.01
+                "taux": 0.005
             }
         },
         "image": "https://i.imgur.com/ht0JGST.jpeg",
@@ -543,15 +543,15 @@
             "xp": 4800,
             "special_1": {
                 "name": "Peau de serpent",
-                "taux": 0.20
+                "taux": 0.15
             },
             "special_2": {
                 "name": "Brume affaiblissante",
-                "taux": 0.05
+                "taux": 0.025
             },
             "special_3": {
                 "name": "Venin mortel",
-                "taux": 0.01
+                "taux": 0.005
             }
         },
         "image": "https://i.imgur.com/FWu1jW3.jpeg",
@@ -571,15 +571,15 @@
             "xp": 4100,
             "special_1": {
                 "name": "Fourrure de troll",
-                "taux": 0.20
+                "taux": 0.15
             },
             "special_2": {
                 "name": "Ceinture imposante",
-                "taux": 0.05
+                "taux": 0.025
             },
             "special_3": {
                 "name": "Massue géante",
-                "taux": 0.01
+                "taux": 0.005
             }
         },
         "image": "https://i.imgur.com/pDBNZzB.jpeg",
@@ -599,15 +599,15 @@
             "xp": 20000,
             "special_1": {
                 "name": "Ecaille du dragon de glace",
-                "taux": 0.20
+                "taux": 0.15
             },
             "special_2": {
                 "name": "Os du dragon de glace",
-                "taux": 0.05
+                "taux": 0.025
             },
             "special_3": {
                 "name": "Coeur du dragon de glace",
-                "taux": 0.01
+                "taux": 0.005
             }
         },
         "image": "https://i.imgur.com/vjSsklY.jpeg",
@@ -627,15 +627,15 @@
             "xp": 20000,
             "special_1": {
                 "name": "Ecaille du dragon de feu",
-                "taux": 0.20
+                "taux": 0.15
             },
             "special_2": {
                 "name": "Os du dragon de feu",
-                "taux": 0.05
+                "taux": 0.025
             },
             "special_3": {
                 "name": "Coeur du dragon de feu",
-                "taux": 0.01
+                "taux": 0.005
             }
         },
         "image": "https://i.imgur.com/udGJJ6U.jpeg",
@@ -655,15 +655,15 @@
             "xp": 30000,
             "special_1": {
                 "name": "Aura impossante",
-                "taux": 0.20
+                "taux": 0.15
             },
             "special_2": {
                 "name": "Coup double",
-                "taux": 0.05
+                "taux": 0.025
             },
             "special_3": {
                 "name": "Résurection",
-                "taux": 0.01
+                "taux": 0.005
             }
         },
         "image": "https://i.imgur.com/OcjMGWV.jpeg",

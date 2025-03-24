@@ -2021,19 +2021,40 @@ async def potion_command(interaction: discord.Interaction, potion: str, ingrédi
         
         if log_data[interaction.user.name]["bag"][ingrédient_3]["quantity"] == 0:
             del log_data[interaction.user.name]["bag"][ingrédient_3]
+        
+        nbr_potion = 1
+        
+        if "classe" in log_data[interaction.user.name] and "name" in log_data[interaction.user.name]["classe"] and log_data[interaction.user.name]["classe"]["name"] == "Alchimiste":
+            bonus = random.randint(0, 4)
             
+            msg_bonus = ""
+            if bonus == 1:
+                msg_bonus = "Confection agréable • "
+            else:
+                if bonus == 2:
+                    msg_bonus = "Confection précise • "
+                else:
+                    if bonus == 3:
+                        msg_bonus = "Confection chirurgicale • "
+                    else:
+                        if bonus == 4:
+                            msg_bonus = "Confection parfaite • "
+            
+            nbr_potion += bonus
+        
+        
         if potion in log_data[interaction.user.name]['bag']:
-                log_data[interaction.user.name]['bag'][potion]["quantity"] += 1
+                log_data[interaction.user.name]['bag'][potion]["quantity"] += nbr_potion
         else:
-            log_data[interaction.user.name]['bag'][potion] = {"quantity": 1, "icon": ":test_tube:"}
+            log_data[interaction.user.name]['bag'][potion] = {"quantity": nbr_potion, "icon": ":test_tube:"}
 
         if "classe" in log_data[interaction.user.name] and "name" in log_data[interaction.user.name]["classe"] and log_data[interaction.user.name]["classe"]["name"] == "Alchimiste" and log_data[interaction.user.name]["classe"]["progression 1"] != "completed":
-            log_data[interaction.user.name]["classe"]["progression 1"] += 1
+            log_data[interaction.user.name]["classe"]["progression 1"] += nbr_potion
 
     with open("log.json", "w") as file:
             json.dump(log_data, file, indent=4)
 
-    title = "Création de 1 :test_tube: " + potion
+    title = msg_bonus + "Création de " + nbr_potion + " :test_tube: " + potion
     description = potions[potion]["description"]
     footer = "Prochainement utilisable." #a1b2 à faire
     
