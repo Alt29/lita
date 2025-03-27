@@ -111,7 +111,7 @@ class BattleView(discord.ui.View):
         if interaction.user.name not in log_data:
             max_place = max((player["place"] for player in log_data.values()), default=0)
             place = max_place + 1
-            log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
+            log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "secret_potion": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "gold_boosted": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
         else:
             if 'global_name' not in log_data[interaction.user.name] or 'avatar' not in log_data[interaction.user.name]:
                 log_data[interaction.user.name]['global_name'] = interaction.user.global_name
@@ -316,13 +316,23 @@ class BattleView(discord.ui.View):
                 player_levelup = ""
                 bonus_xp = ""
                 drop_loot = ""
+                bonus_gold = ""
                 
                 for player in battle["players"]:
                     level_up = 0
-                    log_data[player]['gold'] += gold
+                    
+                    gold_win = gold
+                    now = datetime.now()
+                    gold_boosted_time = datetime.strptime(log_data[player]["gold_boosted"], "%Y-%m-%d %H:%M:%S.%f")
+                    
+                    if gold_boosted_time > now:
+                        gold_win = gold*2
+                        bonus_gold = bonus_gold + "<@" + str(log_data[player]['id']) + "> + " + str(gold) + " :coin:\n"
+                    
+                    log_data[player]['gold'] += gold_win
                     
                     if "classe" in log_data[player] and "name" in log_data[player]["classe"] and log_data[player]["classe"]["name"] == "Rat" and log_data[player]["classe"]["progression 1"] != "completed":
-                        log_data[player]["classe"]["progression 1"] += gold
+                        log_data[player]["classe"]["progression 1"] += gold_win
                     
                     drop_chance_1 = random.random()
                     drop_chance_2 = random.random()
@@ -368,7 +378,7 @@ class BattleView(discord.ui.View):
                                 mob_for = (battle['mob']['lvl'] * mobs[battle['mob']['name']]['stats']['for']) * (0.9 ** nbr_debuffer)
                                 
                                 if log_data[player]["stats"]["for"] > mob_for:
-                                    log_data[player]["stats"]["for"] += mob_for//100
+                                    log_data[player]["stats"]["for"] += int(mob_for//100)
                             else:
                                 if log_data[player]["classe"]["name"] == "Gardien":
                                     
@@ -379,8 +389,6 @@ class BattleView(discord.ui.View):
                                     if log_data[player]["stats"]["def"] > mob_def:
                                         log_data[player]["stats"]["def"] += mob_def//100
                                 
-                    
-                    now = datetime.now()
                     boosted_time = datetime.strptime(log_data[player]["xp_boosted"], "%Y-%m-%d %H:%M:%S.%f")
                     
                     if boosted_time > now:
@@ -419,32 +427,22 @@ class BattleView(discord.ui.View):
                             break
                     
                     if level_up > 0:
-                        player_levelup = player_levelup + "<@" + str(log_data[player]['id']) + "> + " + str(level_up) + " level (" + str(log_data[player]['level']['lvl']) + ")\n"
-                        
-                if player_levelup == "":
-                    if bonus_xp == "":
-                        if drop_loot == "":
-                            tabFields = {"Récompenses à se partager :" : res}
-                        else:
-                            tabFields = {"Récompenses à se partager :" : res, "Loot drop :" : drop_loot}
-                    else:
-                        if drop_loot == "":
-                            tabFields = {"Récompenses à se partager :" : res, "Bonus boost XP :" : bonus_xp}
-                        else:
-                            tabFields = {"Récompenses à se partager :" : res, "Bonus boost XP :" : bonus_xp, "Loot drop :" : drop_loot}
-                        
-                else:
-                    if bonus_xp == "":
-                        if drop_loot == "":
-                            tabFields = {"Récompenses à se partager :" : res, "Level UP :" : player_levelup}
-                        else:
-                            tabFields = {"Récompenses à se partager :" : res, "Level UP :" : player_levelup, "Loot drop :" : drop_loot}
-                    else:
-                        if drop_loot == "":
-                            tabFields = {"Récompenses à se partager :" : res, "Bonus boost XP :" : bonus_xp, "Level UP :" : player_levelup}
-                        else:
-                            tabFields = {"Récompenses à se partager :" : res, "Bonus boost XP :" : bonus_xp, "Level UP :" : player_levelup, "Loot drop :" : drop_loot}
-                                                        
+                        player_levelup = player_levelup + "<@" + str(log_data[player]['id']) + "> + " + str(level_up) + " level (" + str(log_data[player]['level']['lvl']) + ")\n"    
+                    
+                tabFields = {"Récompenses à se partager :": res}
+
+                if bonus_gold:
+                    tabFields["Bonus Gold :"] = bonus_gold
+                
+                if bonus_xp:
+                    tabFields["Bonus boost XP :"] = bonus_xp
+                
+                if player_levelup:
+                    tabFields["Level UP :"] = player_levelup
+
+                if drop_loot:
+                    tabFields["Loot drop :"] = drop_loot
+                                              
                 title = "Victoire !"
                 color = discord.Color.green()
                 battle['status'] = 'victoire'
@@ -488,7 +486,7 @@ class EnchereView(discord.ui.View):
         if interaction.user.name not in log_data:
             max_place = max((player["place"] for player in log_data.values()), default=0)
             place = max_place + 1
-            log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
+            log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "secret_potion": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "gold_boosted": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
         else:
             if 'global_name' not in log_data[interaction.user.name] or 'avatar' not in log_data[interaction.user.name]:
                 log_data[interaction.user.name]['global_name'] = interaction.user.global_name
@@ -525,7 +523,7 @@ class EnchereView(discord.ui.View):
         if interaction.user.name not in log_data:
             max_place = max((player["place"] for player in log_data.values()), default=0)
             place = max_place + 1
-            log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
+            log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "secret_potion": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "gold_boosted": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
         else:
             if 'global_name' not in log_data[interaction.user.name] or 'avatar' not in log_data[interaction.user.name]:
                 log_data[interaction.user.name]['global_name'] = interaction.user.global_name
@@ -605,7 +603,7 @@ class EveilView(discord.ui.View):
             if interaction.user.name not in log_data:
                 max_place = max((player["place"] for player in log_data.values()), default=0)
                 place = max_place + 1
-                log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
+                log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "secret_potion": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "gold_boosted": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
             else:
                 if 'global_name' not in log_data[interaction.user.name] or 'avatar' not in log_data[interaction.user.name]:
                     log_data[interaction.user.name]['global_name'] = interaction.user.global_name
@@ -631,10 +629,11 @@ class EveilView(discord.ui.View):
         if self.message:
             await self.message.edit(view=self)    
 class BoostXPView(discord.ui.View):
-    def __init__(self, timeout, author_name):
+    def __init__(self, timeout, author_name, quantity, self_message):
         super().__init__(timeout=timeout)
-        self.message = None
+        self.message = self_message
         self.author_name = author_name
+        self.quantity = quantity
 
     @discord.ui.button(label="Utiliser", style=discord.ButtonStyle.green, custom_id="btn_boostxp")
     async def btn_boostxp(self, interaction: discord.Interaction, button: discord.ui.Button):
@@ -646,7 +645,7 @@ class BoostXPView(discord.ui.View):
             if interaction.user.name not in log_data:
                 max_place = max((player["place"] for player in log_data.values()), default=0)
                 place = max_place + 1
-                log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
+                log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "secret_potion": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "gold_boosted": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
             else:
                 if 'global_name' not in log_data[interaction.user.name] or 'avatar' not in log_data[interaction.user.name]:
                     log_data[interaction.user.name]['global_name'] = interaction.user.global_name
@@ -660,16 +659,24 @@ class BoostXPView(discord.ui.View):
             else:
                 choice_date = now
             
-            boost_duration = choice_date + timedelta(days=1)
+            boost_duration = choice_date + timedelta(days=(1*self.quantity))
             log_data[interaction.user.name]['xp_boosted'] = str(boost_duration)
-            log_data[interaction.user.name]['bag']["BoostXP"]['quantity'] -= 1
+            log_data[interaction.user.name]['bag']["BoostXP"]['quantity'] -= self.quantity
             
             if log_data[interaction.user.name]['bag']["BoostXP"]['quantity'] == 0:
                 del log_data[interaction.user.name]['bag']["BoostXP"]
 
-            formatted_boost_duration = boost_duration.strftime("%d/%m/%Y à %Hh%M")  # Reformater
+            formatted_boost_duration = boost_duration.strftime("%d/%m/%Y à %Hh%M")
 
-            await interaction.response.send_message("Votre gain d'XP est multiplié par 2, fin de l'effet le " + formatted_boost_duration)
+            if self.quantity > 1:
+                title = f"{self.quantity} Boost XP :diamond_shape_with_a_dot_inside: utilisés"
+            else:
+                title = f"{self.quantity} Boost XP :diamond_shape_with_a_dot_inside: utilisé"
+                
+            description = "Votre gain d'XP :diamond_shape_with_a_dot_inside: est multiplié par 2, fin de l'effet le " + formatted_boost_duration
+            embed = create_embed(title=title, description=description, color=discord.Color.blue())
+
+            await interaction.response.send_message(embed=embed)
 
             for child in self.children:
                 child.disabled = True
@@ -700,7 +707,7 @@ class WheelView(discord.ui.View):
             if interaction.user.name not in log_data:
                 max_place = max((player["place"] for player in log_data.values()), default=0)
                 place = max_place + 1
-                log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
+                log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "secret_potion": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "gold_boosted": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
             else:
                 if 'global_name' not in log_data[interaction.user.name] or 'avatar' not in log_data[interaction.user.name]:
                     log_data[interaction.user.name]['global_name'] = interaction.user.global_name
@@ -820,7 +827,7 @@ class CraftView(discord.ui.View):
             if interaction.user.name not in log_data:
                 max_place = max((player["place"] for player in log_data.values()), default=0)
                 place = max_place + 1
-                log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
+                log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "secret_potion": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "gold_boosted": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
             else:
                 if 'global_name' not in log_data[interaction.user.name] or 'avatar' not in log_data[interaction.user.name]:
                     log_data[interaction.user.name]['global_name'] = interaction.user.global_name
@@ -972,7 +979,7 @@ async def on_message(message):
         if message.author.name not in log_data:
             max_place = max((player["place"] for player in log_data.values()), default=0)
             place = max_place + 1
-            log_data[message.author.name] = {"id": message.author.id, "global_name": message.author.global_name, "avatar": str(message.author.avatar), "avenger": False, "rank": 0, "place": place, "gold": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
+            log_data[message.author.name] = {"id": message.author.id, "global_name": message.author.global_name, "avatar": str(message.author.avatar), "avenger": False, "rank": 0, "place": place, "gold": 0, "secret_potion": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "gold_boosted": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
             updated = True
         else:
             if 'global_name' not in log_data[message.author.name] or 'avatar' not in log_data[message.author.name]:
@@ -1008,17 +1015,8 @@ async def on_message(message):
         await message.channel.send(embed=embed)
 
     if message.content.startswith("!eveil"):
-        if await time_command(message, "!eveil", 0.0025):
+        if await time_command(message.author.name, message.channel, "!eveil", 0.0025):
             embed, view = eveil_action(message.author.name, message.author.avatar, message.author.global_name)
-            if view is not None:
-                view.message = await message.channel.send(embed=embed, view=view)
-            else:
-                await message.channel.send(embed=embed)
-            updated = True
-    
-    if message.content.startswith("!boostxp"):
-        if await time_command(message, "!boostxp", 0.0025):
-            embed, view = boostxp_action(message.author.name, message.author.avatar, message.author.global_name)
             if view is not None:
                 view.message = await message.channel.send(embed=embed, view=view)
             else:
@@ -1026,13 +1024,13 @@ async def on_message(message):
             updated = True
 
     if message.content.startswith("!sw"):
-        if await time_command(message, "!sw", 0.0025):
+        if await time_command(message.author.name, message.channel, "!sw", 0.0025):
             embed, view = wheel_action(message.author.name, message.author.avatar, message.author.global_name)
             view.message = await message.channel.send(embed=embed, view=view)
             updated = True
 
     if message.content.startswith("!craft"):
-        if await time_command(message, "!craft", 0.0025):
+        if await time_command(message.author.name, message.channel, "!craft", 0.0025):
             command_and_argument = message.content.split(maxsplit=2)
 
             if len(command_and_argument) == 2 or len(command_and_argument) == 3 :
@@ -1278,20 +1276,20 @@ async def on_message(message):
         updated = True
 
     if message.content.startswith("!daily"):
-        if await time_command(message, "!daily", 24):
+        if await time_command(message.author.name, message.channel, "!daily", 24):
             embed = daily_action(message.author.name, message.author.avatar, message.author.global_name)
             await message.channel.send(embed=embed)
         updated = True
 
     if message.content.startswith("!explore"):
-        if await time_command(message, "!explore", 1):
+        if await time_command(message.author.name, message.channel, "!explore", 1):
             embed = explore_action(message.author.name, message.author.avatar, message.author.global_name)
             await message.channel.send(embed=embed)
         updated = True
 
     if message.content.startswith("!compter"):
         if message.author.id == 518397017072992257 or message.author.id == 802116818134892545:
-            if await time_command(message, "!compter", 24):
+            if await time_command(message.author.name, message.channel, "!compter", 24):
                 gain = 1072 * max(log_data[message.author.name]['rank'] * 4, 1)
                 gain = gain * 2
                 embed = compter_action(message.author.name, message.author.avatar, message.author.global_name, gain)
@@ -1305,7 +1303,7 @@ async def on_message(message):
             await message.channel.send(embed=embed)
 
     if message.content.startswith("!train"):
-        if await time_command(message, "!train", 3):
+        if await time_command(message.author.name, message.channel, "!train", 3):
             embed = train_action(message.author.name, message.author.avatar, message.author.global_name)
             await message.channel.send(embed=embed)
         updated = True
@@ -2026,11 +2024,11 @@ async def potion_command(interaction: discord.Interaction, potion: str, ingrédi
             del log_data[interaction.user.name]["bag"][ingrédient_3]
         
         nbr_potion = 1
+        msg_bonus = ""
         
         if "classe" in log_data[interaction.user.name] and "name" in log_data[interaction.user.name]["classe"] and log_data[interaction.user.name]["classe"]["name"] == "Alchimiste":
             bonus = random.randint(0, 2)
             
-            msg_bonus = ""
             if bonus == 1:
                 msg_bonus = "Confection chirurgicale • "
             else:
@@ -2051,9 +2049,9 @@ async def potion_command(interaction: discord.Interaction, potion: str, ingrédi
     with open("log.json", "w") as file:
             json.dump(log_data, file, indent=4)
 
-    title = msg_bonus + "Création de " + nbr_potion + " :test_tube: " + potion
+    title = msg_bonus + "Création de " + str(nbr_potion) + " :test_tube: " + potion
     description = potions[potion]["description"]
-    footer = "Prochainement utilisable." #a1b2 à faire
+    footer = "/splash nom_potion pour utiliser vos potions."
     
     embed = create_embed(title=title, color=discord.Color.blue(), author_name=interaction.user.global_name, author_icon=interaction.user.avatar, description=description, footer=footer)
 
@@ -2118,8 +2116,214 @@ async def ingrédient_3_autocomplete(interaction: discord.Interaction, current: 
 
     return suggestions
 
-async def time_command(message, command, cooldown):
-    author_name = message.author.name
+@tree.command(name="splash", description="Utilisation de potions.")
+@app_commands.describe(potion="Choisissez un type de potion à utiliser", quantité="Premier ingrédient")
+async def splash_command(interaction: discord.Interaction, potion: str, quantité: int = 1):
+    
+    if potion == None:
+        await interaction.response.send_message("Il faut choissir une potion.", ephemeral=True)
+        return
+    
+    existing_potions = []
+    
+    for potion_name in potions:
+        existing_potions.append(potions[potion_name]["name"])
+    
+    if potion not in existing_potions:
+        await interaction.response.send_message("Cette potion n'existe pas, vérifiez son appellation.", ephemeral=True)
+        return
+    
+    if potion not in log_data[interaction.user.name]["bag"]:
+        await interaction.response.send_message("Vous ne possédez pas d'exemplaire de cette potion.", ephemeral=True)
+        return
+    
+    if quantité <= 0 :
+        await interaction.response.send_message("La quantité doit être d'au moins 1.", ephemeral=True)
+        return
+    
+    if log_data[interaction.user.name]["bag"][potion]["quantity"] - quantité < 0:
+        await interaction.response.send_message("Vous n'avez pas assez d'exemplaire de cette potion.", ephemeral=True)
+        return
+    else:
+        log_data[interaction.user.name]["bag"][potion]["quantity"] -= quantité
+        
+        if log_data[interaction.user.name]["bag"][potion]["quantity"] == 0:
+            del log_data[interaction.user.name]["bag"][potion]
+
+    potion_effects = ""
+    total = ""
+    total_pv = 0
+    total_for = 0
+    total_def = 0
+    total_gold = 0
+    time_gold = 0
+    
+    liste_types = list(potions[potion]["type"].keys())
+    
+    for i in range(quantité):
+        grad = random.randint(1, 100)
+        if grad <= 35:
+            grad = "I"
+        else:
+            if grad <= 60:
+                grad = "II"
+            else:
+                if grad <= 80:
+                    grad = "III"
+                else:
+                    if grad <= 95:
+                        grad = "IV"
+                    else:
+                        grad = "V"
+                        
+        selected_type = random.choice(liste_types)
+        final_potion = potions[potion]["type"][selected_type]["grad"][grad]
+        potion_effects += final_potion["name"] + " " + final_potion["description"] + "\n"
+        
+        if "hours" in final_potion["effects"]:
+            time_gold += final_potion["effects"]["hours"]
+        else:
+            if "lost_gold" in final_potion["effects"]:
+                total_gold += final_potion["effects"]["lost_gold"]
+            else:
+                if "pv" in final_potion["effects"]:
+                    total_pv += final_potion["effects"]["pv"]
+                else:
+                    if "for" in final_potion["effects"]:
+                        total_for += final_potion["effects"]["for"]
+                    else:
+                        if "def" in final_potion["effects"]:
+                            total_def += final_potion["effects"]["def"]
+                        else:
+                            if "secret_potion" in final_potion["effects"]:
+                                log_data[interaction.user.name]["secret_potion"] += final_potion["effects"]["secret_potion"]
+    
+    if time_gold > 0:
+        total += f"\n+100% :coin: pendant {time_gold}h"
+        now = datetime.now()
+        last_boosted_time = datetime.strptime(log_data[interaction.user.name]['gold_boosted'], "%Y-%m-%d %H:%M:%S.%f")
+        
+        if last_boosted_time > now:
+            choice_date = last_boosted_time
+        else:
+            choice_date = now
+            
+        boost_duration = choice_date + timedelta(hours=time_gold)
+        log_data[interaction.user.name]["gold_boosted"] = str(boost_duration)
+        
+    
+    if total_gold < 0:
+        total += f"\n{total_gold} :coin:"
+        log_data[interaction.user.name]["gold"] += total_gold
+        
+    if total_pv != 0:
+        total += f"\n{total_pv} :hearts:"
+        log_data[interaction.user.name]["stats"]["pv"] += total_pv
+        
+    if total_for != 0:
+        total += f"\n{total_for} :crossed_swords:"
+        log_data[interaction.user.name]["stats"]["for"] += total_for
+        
+    if total_def != 0:
+        total += f"\n{total_def} :shield:"
+        log_data[interaction.user.name]["stats"]["def"] += total_def
+        
+    
+    
+
+    with open("log.json", "w") as file:
+            json.dump(log_data, file, indent=4)
+
+    title = "Utilisation de " + str(quantité) + " :test_tube: " + potion
+    
+    if total == "":
+        description = "Résultat : \n" + potion_effects
+    else:
+        description = "Résultat : \n" + potion_effects + "\nTotal :" + total
+    
+    embed = create_embed(title=title, color=discord.Color.blue(), author_name=interaction.user.global_name, author_icon=interaction.user.avatar, description=description)
+
+    await interaction.response.send_message(embed=embed)
+
+@splash_command.autocomplete("potion")
+async def mes_potions_autocomplete(interaction: discord.Interaction, current: str):
+    existing_potions = []
+
+    for potion in potions:
+        existing_potions.append(potions[potion]["name"])
+    
+    mes_potions = []
+    
+    for item in log_data[interaction.user.name]["bag"]:
+        if item in existing_potions:
+            mes_potions.append(item)
+    
+    suggestions = [
+        app_commands.Choice(name=potion, value=potion) 
+        for potion in mes_potions if current.lower() in potion.lower()
+    ][:25]
+    
+    return suggestions
+
+@tree.command(name="boost", description="Relative aux boosts.")
+@app_commands.describe(type="Info ou XP", quantité="Quantité de boost à utiliser")
+async def boost_command(interaction: discord.Interaction, type: str, quantité: int = 1):
+    if type == None:
+        await interaction.response.send_message("Préciser le type de la commande.", ephemeral=True)
+        return
+    
+    normalised_type = normalize_text(type)
+    
+    if normalised_type != "info" and normalised_type != "xp":
+        await interaction.response.send_message("Ce type n'existe pas pour cette commande.", ephemeral=True)
+        return
+    
+    if quantité <= 0 :
+        await interaction.response.send_message("La quantité doit être d'au moins 1.", ephemeral=True)
+        return
+    
+    if normalised_type == "xp":
+        if "BoostXP" not in log_data[interaction.user.name]["bag"] or log_data[interaction.user.name]["bag"]["BoostXP"]["quantity"] < quantité:
+            await interaction.response.send_message("Vous n'avez pas assez d'exemplaire de BoostXP.", ephemeral=True)
+            return
+        else:
+            if await time_command(interaction.user.name, interaction.channel, "!boostxp", 0.0025):
+                await interaction.response.defer()  # Déférer la réponse pour éviter un timeout
+                self_message = await interaction.original_response()
+                
+                embed, view = boostxp_action(interaction.user.name, interaction.user.avatar, interaction.user.global_name, quantité, self_message)
+                
+                await interaction.followup.send(embed=embed, view=view)
+                    
+                with open("log.json", "w") as file:
+                    json.dump(log_data, file, indent=4)
+    else:
+        if normalised_type == "info":
+            title = "Information sur l'état de vos différents bonus."
+            description = ""
+            
+            xp_boost_time = log_data[interaction.user.name]["xp_boosted"]
+            gold_boost_time = log_data[interaction.user.name]["gold_boosted"]
+
+            xp_restant = format_temps_restant(xp_boost_time)
+            gold_restant = format_temps_restant(gold_boost_time)
+
+            description += f"**Bonus d'XP** :diamond_shape_with_a_dot_inside: : {xp_restant}"
+            description += f"\n**Bonus de Gold** :coin: : {gold_restant}"
+            
+            embed = create_embed(title=title, color=discord.Color.blue(), author_name=interaction.user.global_name, author_icon=interaction.user.avatar, description=description)
+            await interaction.response.send_message(embed=embed)
+
+@boost_command.autocomplete("type")
+async def boost_type_autocomplete(interaction: discord.Interaction, current: str):
+    suggestions = [
+        app_commands.Choice(name=option, value=option) 
+        for option in ["Info", "XP"] if current.lower() in option.lower()
+    ]
+    
+    return suggestions
+
+async def time_command(author_name, channel, command, cooldown):
     check, waiting_time = check_time(author_name, command, cooldown)
 
     if check:
@@ -2130,7 +2334,7 @@ async def time_command(message, command, cooldown):
 
         return True
     else:
-        await message.channel.send("Vous devez attendre encore " + waiting_time)
+        await channel.send("Vous devez attendre encore " + waiting_time)
         return False
 
 def info_action():
@@ -2154,12 +2358,13 @@ def info_action():
         '!eveil :' : 'Brisez vos limites !',
         '!sw :' : 'Tenter votre chance à la Sakura Wheel !',
         '!classe :' : '[En travaux] :construction:',
-        '!boostxp :' : 'Utilisez vos Boost XP !',
+        '/boost :' : 'Commande liée à vos bonus. :new:',
         '/sell item prix quantité :' : 'Mettre en vente vos items à la brocante.',
         '/buy vente quantité :' : 'Achetez des items à la brocante.',
         '/brocante :' : 'Pour voir la brocante.',
-        '!select nom de la classe :' : 'Pour choisir votre classe. :new:',
+        '!select nom de la classe :' : 'Pour choisir votre classe.',
         '/potion' : 'Pour concoter vos meilleures et pires idées. :new:',
+        '/splash' : 'Pour utiliser vos potions. :new:',
     }
     color = discord.Color.blue()
     title = 'Informations'
@@ -2237,16 +2442,16 @@ def eveil_action(author_name, author_icon, global_name):
 
     return embed, view
 
-def boostxp_action(author_name, author_icon, global_name):
+def boostxp_action(author_name, author_icon, global_name, quantity, self_message):
     view = None
 
-    if "BoostXP" in log_data[author_name]["bag"] and log_data[author_name]["bag"]["BoostXP"]["quantity"] > 0:
+    if "BoostXP" in log_data[author_name]["bag"] and log_data[author_name]["bag"]["BoostXP"]["quantity"] - quantity >= 0:
         title = "Vous avez " + str(log_data[author_name]["bag"]["BoostXP"]["quantity"]) + " BoostXP :diamond_shape_with_a_dot_inside:"
-        description = "Voulez-vous en utiliser 1 ? Ceci vous confèrera un bonus d'xp de +100% pendant 24h."
+        description = f"Voulez-vous en utiliser {quantity} ? Ceci vous confèrera un bonus d'xp de +100% pendant {quantity*24}h."
         color = discord.Color.blue()
-        view = BoostXPView(timeout=6, author_name=author_name)
+        view = BoostXPView(timeout=6, author_name=author_name, quantity=quantity, self_message=self_message)
     else:
-        title = "Vous n'avez pas de BoostXP"
+        title = "Vous n'avez pas assez de BoostXP"
         description = "Vous pouvez en acheter dans le !market ou bien en gagner avec la Sakura Wheel !sw"
         color = discord.Color.red()
 
@@ -2650,29 +2855,39 @@ def top_action(author_name, type):
     return create_embed(title=title, color=color, footer=footer, tabFields=tabFields)
 
 def daily_action(author_name, author_icon, global_name):
-    if author_name in log_data:
-        if 'max_daily' in log_data[author_name]:
-            now = datetime.now()
-            daily_date_str = log_data[author_name]['last_daily']
-            daily_date = datetime.fromisoformat(daily_date_str)
-            time_difference = now - daily_date
-            if time_difference < timedelta(hours=48):
-                log_data[author_name]['max_daily'] += 500
-            else:
-                log_data[author_name]['max_daily'] = 500
+    if 'max_daily' in log_data[author_name]:
+        now = datetime.now()
+        daily_date_str = log_data[author_name]['last_daily']
+        daily_date = datetime.fromisoformat(daily_date_str)
+        time_difference = now - daily_date
+        if time_difference < timedelta(hours=48):
+            log_data[author_name]['max_daily'] += 500
         else:
             log_data[author_name]['max_daily'] = 500
-
-        if 'gold' in log_data[author_name]:
-            log_data[author_name]['gold'] += log_data[author_name]['max_daily']
-        else:
-            log_data[author_name]['gold'] = log_data[author_name]['max_daily']
     else:
-        log_data[author_name] = {'max_daily': 500}
-        log_data[author_name] = {'gold': log_data[author_name]['max_daily']}
+        log_data[author_name]['max_daily'] = 500
+
+    gold_win = log_data[author_name]['max_daily']
+    
+    bonus_gold = ""
+    now = datetime.now()
+    boosted_time = datetime.strptime(log_data[author_name]["gold_boosted"], "%Y-%m-%d %H:%M:%S.%f")
+    
+    if boosted_time > now:
+        bonus_gold = f"{gold_win} :coin:"
+        gold_win = gold_win*2
+
+    if 'gold' in log_data[author_name]:
+        log_data[author_name]['gold'] += gold_win
+    else:
+        log_data[author_name]['gold'] = gold_win
 
     title = 'Daily Streak ' + str(log_data[author_name]['max_daily']//500) +  ' :fire: !'
     tabFields = {'Vous récupérez : ' : str(log_data[author_name]['max_daily']) + ' :coin:'}
+    
+    if bonus_gold != "":
+        tabFields["Bonus Gold :"] = bonus_gold
+    
     color = discord.Color.green()
     footer = 'Revenez également demain !'
     return create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, footer=footer, tabFields=tabFields)
@@ -2713,26 +2928,54 @@ def explore_action(author_name, author_icon, global_name):
                             alea = alea + 1600 + rank * 500
 
     alea = alea * (rank + 1)
+    gold_win = alea
+
+    bonus_gold = ""
+    now = datetime.now()
+    boosted_time = datetime.strptime(log_data[author_name]["gold_boosted"], "%Y-%m-%d %H:%M:%S.%f")
+    
+    if boosted_time > now:
+        bonus_gold = f"{alea} :coin:"
+        gold_win = alea*2
+        
 
     if author_name in log_data:
         if 'gold' in log_data[author_name]:
-            log_data[author_name]['gold'] += alea
+            log_data[author_name]['gold'] += gold_win
         else:
-            log_data[author_name]['gold'] = alea
+            log_data[author_name]['gold'] = gold_win
     else:
-        log_data[author_name] = {'gold': alea}
+        log_data[author_name] = {'gold': gold_win}
 
 
     tabFields = {'Vous récupérez : ' : str(alea) + ' :coin:'}
+    
+    if bonus_gold != "":
+        tabFields["Bonus Gold :"] = bonus_gold
+
+    
     color = discord.Color.green()
     footer = 'Revenez dans 1 heure !'
     return create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, footer=footer, tabFields=tabFields)
 
 def compter_action(author_name, author_icon, global_name, record):
-    log_data[author_name]['gold'] += record
+    bonus_gold = ""
+    gold_win = record
+    now = datetime.now()
+    boosted_time = datetime.strptime(log_data[author_name]["gold_boosted"], "%Y-%m-%d %H:%M:%S.%f")
+    
+    if boosted_time > now:
+        bonus_gold = f"{record} :coin:"
+        gold_win = record*2
+    
+    log_data[author_name]['gold'] += gold_win
 
     title = 'Pour vos exploits dans #compter !'
     tabFields = {'Vous récupérez : ' : str(record) + ' :coin:'}
+    
+    if bonus_gold != "":
+        tabFields["Bonus Gold :"] = bonus_gold
+    
     color = discord.Color.green()
     footer = 'Revenez demain !'
     return create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, footer=footer, tabFields=tabFields)
@@ -2863,6 +3106,8 @@ def ranking(type, author_name):
     return str(ranking_position) + '/' + str(len(sorted_authors))
 
 def purchase_action(author_name, author_icon, global_name, item, quantity):
+    if item == "Boostxp":
+        item = "BoostXP"
     title = 'Achat'
     if item in items and 'price' in items[item]:
         if author_name in log_data:
@@ -3019,5 +3264,25 @@ def additionner_stats(lignes):
             total_def += chiffres[2]
 
     return f"Réduction :\nPV : {total_pv} :hearts:   For : {total_for} :crossed_swords:   Def : {total_def} :shield:"
+
+def format_temps_restant(date_fin):
+    now = datetime.now()
+    date_fin = datetime.strptime(date_fin, "%Y-%m-%d %H:%M:%S.%f")
+    delta = date_fin - now
+
+    if delta.total_seconds() <= 0:
+        return "Aucun"
+
+    jours = delta.days
+    heures, reste_secondes = divmod(delta.seconds, 3600)
+    minutes, secondes = divmod(reste_secondes, 60)
+
+    parties = []
+    if jours: parties.append(f"{jours} jour{'s' if jours > 1 else ''}")
+    if heures: parties.append(f"{heures} heure{'s' if heures > 1 else ''}")
+    if minutes: parties.append(f"{minutes} minute{'s' if minutes > 1 else ''}")
+    if secondes: parties.append(f"{secondes} seconde{'s' if secondes > 1 else ''}")
+
+    return " et ".join(", ".join(parties).rsplit(", ", 1))
 
 client.run(TOKEN)

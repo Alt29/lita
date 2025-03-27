@@ -2,220 +2,355 @@
     "Potion à effet aléatoire": {
         "name": "Potion à effet aléatoire",
         "description": "Jusqu'où êtes-vous prêt à aller pour satisfaire votre curiosité ?",
-        "effets": {
+        "type": {
             "gold+": {
                 "grad": {
                     "I": {
-                        "name": "Gold+ I",
-                        "description": "Potion bonus gold +100% durée 1h"
+                        "name": "I • Bonus Gold",
+                        "description": "+100% :coin: pendant 1h",
+                        "effects": {
+                            "hours": 1
+                        }
                     },
                     "II": {
-                        "name": "Gold+ II",
-                        "description": "Potion bonus gold +200% durée 1h"
+                        "name": "II • Bonus Gold",
+                        "description": "+100% :coin: pendant 2h",
+                        "effects": {
+                            "hours": 2
+                        }
                     },
                     "III": {
-                        "name": "Gold+ III",
-                        "description": "Potion bonus gold +300% durée 1h"
+                        "name": "III • Bonus Gold",
+                        "description": "+100% :coin: pendant 6h",
+                        "effects": {
+                            "hours": 6
+                        }
                     },
                     "IV": {
-                        "name": "Gold+ IV",
-                        "description": "Potion bonus gold +400% durée 1h"
+                        "name": "IV • Bonus Gold",
+                        "description": "+100% :coin: pendant 12h",
+                        "effects": {
+                            "hours": 12
+                        }
                     },
                     "V": {
-                        "name": "Gold+ V",
-                        "description": "Potion bonus gold +500% durée 1h"
+                        "name": "V • Bonus Gold",
+                        "description": "+100% :coin: pendant 24h",
+                        "effects": {
+                            "hours": 24
+                        }
                     }
                 }
             },
             "gold-": {
                 "grad": {
                     "I": {
-                        "name": "Gold- I",
-                        "description": "Potion perte gold 5000"
+                        "name": "I • Malus Gold",
+                        "description": "-5000 :coin:",
+                        "effects": {
+                            "lost_gold": -5000
+                        }
                     },
                     "II": {
-                        "name": "Gold- II",
-                        "description": "Potion perte gold 10000"
+                        "name": "II • Malus Gold",
+                        "description": "-10000 :coin:",
+                        "effects": {
+                            "lost_gold": -10000
+                        }
                     },
                     "III": {
-                        "name": "Gold- III",
-                        "description": "Potion perte gold 15000"
+                        "name": "III • Malus Gold",
+                        "description": "-25000 :coin:",
+                        "effects": {
+                            "lost_gold": -25000
+                        }
                     },
                     "IV": {
-                        "name": "Gold- IV",
-                        "description": "Potion perte gold 20000"
+                        "name": "IV • Malus Gold",
+                        "description": "-50000 :coin:",
+                        "effects": {
+                            "lost_gold": -50000
+                        }
                     },
                     "V": {
-                        "name": "Gold- V",
-                        "description": "Potion perte gold 25000"
+                        "name": "V • Malus Gold",
+                        "description": "-100000 :coin:",
+                        "effects": {
+                            "lost_gold": -100000
+                        }
                     }
                 }
             },
             "pv+": {
                 "grad": {
                     "I": {
-                        "name": "PV+ I",
-                        "description": "Potion gain PV 1000"
+                        "name": "I • Bonus PV",
+                        "description": "+2500 :hearts:",
+                        "effects": {
+                            "pv": 2500
+                        }
                     },
                     "II": {
-                        "name": "PV+ II",
-                        "description": "Potion gain PV 5000"
+                        "name": "II • Bonus PV",
+                        "description": "+5000 :hearts:",
+                        "effects": {
+                            "pv": 5000
+                        }
                     },
                     "III": {
-                        "name": "PV+ III",
-                        "description": "Potion gain PV 10000"
+                        "name": "III • Bonus PV",
+                        "description": "+12500 :hearts:",
+                        "effects": {
+                            "pv": 12500
+                        }
                     },
                     "IV": {
-                        "name": "PV+ IV",
-                        "description": "Potion gain PV 15000"
+                        "name": "IV • Bonus PV",
+                        "description": "+25000 :hearts:",
+                        "effects": {
+                            "pv": 25000
+                        }
                     },
                     "V": {
-                        "name": "PV+ V",
-                        "description": "Potion gain PV 20000"
+                        "name": "V • Bonus PV",
+                        "description": "+50000 :hearts:",
+                        "effects": {
+                            "pv": 50000
+                        }
                     }
                 }
             },
             "pv-": {
                 "grad": {
                     "I": {
-                        "name": "PV- I",
-                        "description": "Potion perte PV 500"
+                        "name": "I • Malus PV",
+                        "description": "-625 :hearts:",
+                        "effects": {
+                            "pv": -625
+                        }
                     },
                     "II": {
-                        "name": "PV- II",
-                        "description": "Potion perte PV 2500"
+                        "name": "II • Malus PV",
+                        "description": "-1250 :hearts:",
+                        "effects": {
+                            "pv": -1250
+                        }
                     },
                     "III": {
-                        "name": "PV- III",
-                        "description": "Potion perte PV 5000"
+                        "name": "III • Malus PV",
+                        "description": "-3125 :hearts:",
+                        "effects": {
+                            "pv": -3125
+                        }
                     },
                     "IV": {
-                        "name": "PV- IV",
-                        "description": "Potion perte PV 7500"
+                        "name": "IV • Malus PV",
+                        "description": "-6250 :hearts:",
+                        "effects": {
+                            "pv": -6250
+                        }
                     },
                     "V": {
-                        "name": "PV- V",
-                        "description": "Potion perte PV 10000"
+                        "name": "V • Malus PV",
+                        "description": "-12500 :hearts:",
+                        "effects": {
+                            "pv": -12500
+                        }
                     }
                 }
             },
             "for+": {
                 "grad": {
                     "I": {
-                        "name": "For+ I",
-                        "description": "Potion gain For 8"
+                        "name": "I • Bonus For",
+                        "description": "+20 :crossed_swords:",
+                        "effects": {
+                            "for": 20
+                        }
                     },
                     "II": {
-                        "name": "For+ II",
-                        "description": "Potion gain For 40"
+                        "name": "II • Bonus For",
+                        "description": "+40 :crossed_swords:",
+                        "effects": {
+                            "for": 40
+                        }
                     },
                     "III": {
-                        "name": "For+ III",
-                        "description": "Potion gain For 80"
+                        "name": "III • Bonus For",
+                        "description": "+100 :crossed_swords:",
+                        "effects": {
+                            "for": 100
+                        }
                     },
                     "IV": {
-                        "name": "For+ IV",
-                        "description": "Potion gain For 120"
+                        "name": "IV • Bonus For",
+                        "description": "+200 :crossed_swords:",
+                        "effects": {
+                            "for": 200
+                        }
                     },
                     "V": {
-                        "name": "For+ V",
-                        "description": "Potion gain For 160"
+                        "name": "V • Bonus For",
+                        "description": "+400 :crossed_swords:",
+                        "effects": {
+                            "for": 400
+                        }
                     }
                 }
             },
             "for-": {
                 "grad": {
                     "I": {
-                        "name": "For- I",
-                        "description": "Potion perte For 4"
+                        "name": "I • Malus For",
+                        "description": "-5 :crossed_swords:",
+                        "effects": {
+                            "for": -5
+                        }
                     },
                     "II": {
-                        "name": "For- II",
-                        "description": "Potion perte For 20"
+                        "name": "II • Malus For",
+                        "description": "-10 :crossed_swords:",
+                        "effects": {
+                            "for": -10
+                        }
                     },
                     "III": {
-                        "name": "For- III",
-                        "description": "Potion perte For 40"
+                        "name": "III • Malus For",
+                        "description": "-25 :crossed_swords:",
+                        "effects": {
+                            "for": -25
+                        }
                     },
                     "IV": {
-                        "name": "For- IV",
-                        "description": "Potion perte For 60"
+                        "name": "IV • Malus For",
+                        "description": "-50 :crossed_swords:",
+                        "effects": {
+                            "for": -50
+                        }
                     },
                     "V": {
-                        "name": "For- V",
-                        "description": "Potion perte For 80"
+                        "name": "V • Malus For",
+                        "description": "-100 :crossed_swords:",
+                        "effects": {
+                            "for": -100
+                        }
                     }
                 }
             },
             "def+": {
                 "grad": {
                     "I": {
-                        "name": "Def+ I",
-                        "description": "Potion gain Def 16"
+                        "name": "I • Bonus Def",
+                        "description": "+40 :shield:",
+                        "effects": {
+                            "def": 40
+                        }
                     },
                     "II": {
-                        "name": "Def+ II",
-                        "description": "Potion gain Def 80"
+                        "name": "II • Bonus Def",
+                        "description": "+80 :shield:",
+                        "effects": {
+                            "def": 80
+                        }
                     },
                     "III": {
-                        "name": "Def+ III",
-                        "description": "Potion gain Def 160"
+                        "name": "III • Bonus Def",
+                        "description": "+200 :shield:",
+                        "effects": {
+                            "def": 200
+                        }
                     },
                     "IV": {
-                        "name": "Def+ IV",
-                        "description": "Potion gain Def 240"
+                        "name": "IV • Bonus Def",
+                        "description": "+400 :shield:",
+                        "effects": {
+                            "def": 400
+                        }
                     },
                     "V": {
-                        "name": "Def+ V",
-                        "description": "Potion gain Def 320"
+                        "name": "V • Bonus Def",
+                        "description": "+800 :shield:",
+                        "effects": {
+                            "def": 800
+                        }
                     }
                 }
             },
             "def-": {
                 "grad": {
                     "I": {
-                        "name": "Def- I",
-                        "description": "Potion perte Def 8"
+                        "name": "I • Malus Def",
+                        "description": "-10 :shield:",
+                        "effects": {
+                            "def": -10
+                        }
                     },
                     "II": {
-                        "name": "Def- II",
-                        "description": "Potion perte Def 40"
+                        "name": "II • Malus Def",
+                        "description": "-20 :shield:",
+                        "effects": {
+                            "def": -20
+                        }
                     },
                     "III": {
-                        "name": "Def- III",
-                        "description": "Potion perte Def 80"
+                        "name": "III • Malus Def",
+                        "description": "-50 :shield:",
+                        "effects": {
+                            "def": -50
+                        }
                     },
                     "IV": {
-                        "name": "Def- IV",
-                        "description": "Potion perte Def 120"
+                        "name": "IV • Malus Def",
+                        "description": "-100 :shield:",
+                        "effects": {
+                            "def": -100
+                        }
                     },
                     "V": {
-                        "name": "Def- V",
-                        "description": "Potion perte Def 160"
+                        "name": "V • Malus Def",
+                        "description": "-200 :shield:",
+                        "effects": {
+                            "def": -200
+                        }
                     }
                 }
             },
             "rien": {
                 "grad": {
                     "I": {
-                        "name": "Rien I",
-                        "description": "Potion inutile"
+                        "name": "I • Rien",
+                        "description": "aucun effet ?",
+                        "effects": {
+                            "secret_potion": 1
+                        }
                     },
                     "II": {
-                        "name": "Rien II",
-                        "description": "Potion inutile"
+                        "name": "II • Rien",
+                        "description": "aucun effet ?",
+                        "effects": {
+                            "secret_potion": 2
+                        }
                     },
                     "III": {
-                        "name": "Rien III",
-                        "description": "Potion inutile"
+                        "name": "III • Rien",
+                        "description": "aucun effet ?",
+                        "effects": {
+                            "secret_potion": 5
+                        }
                     },
                     "IV": {
-                        "name": "Rien IV",
-                        "description": "Potion inutile"
+                        "name": "IV • Rien",
+                        "description": "aucun effet ?",
+                        "effects": {
+                            "secret_potion": 10
+                        }
                     },
                     "V": {
-                        "name": "Rien V",
-                        "description": "Potion inutile"
+                        "name": "V • Rien",
+                        "description": "aucun effet ?",
+                        "effects": {
+                            "secret_potion": 20
+                        }
                     }
                 }
             }
