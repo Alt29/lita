@@ -13,7 +13,13 @@
         "!train": "2025-03-24 22:34:19.517496",
         "xp_boosted": "2025-04-30 23:00:19.134490",
         "gold_boosted": "2024-01-01 11:11:11.111111",
-        "bag": {
+        "skill": {
+            "PointXP": {
+                "quantity": 65,
+                "icon": ":white_flower:"
+            }
+        },
+        "equipment": {
             "Casquette": {
                 "quantity": 1,
                 "icon": ":billed_cap:",
@@ -38,14 +44,12 @@
                 "quantity": 1,
                 "icon": ":jeans:",
                 "rank": 7
-            },
+            }
+        },
+        "rune": {
             "Volcan": {
                 "quantity": 10,
                 "icon": ":volcano:"
-            },
-            "PointXP": {
-                "quantity": 65,
-                "icon": ":white_flower:"
             },
             "Ocean": {
                 "quantity": 11,
@@ -54,7 +58,9 @@
             "Arbre": {
                 "quantity": 12,
                 "icon": ":deciduous_tree:"
-            },
+            }
+        },
+        "drop": {
             "Ecaille de b\u00e9b\u00e9 dragon": {
                 "quantity": 1,
                 "icon": ":beginner::dragon:"
@@ -118,7 +124,9 @@
             "Corne de d\u00e9mon": {
                 "quantity": 2,
                 "icon": ":smiling_imp:"
-            },
+            }
+        },
+        "bag": {
             "Rare": {
                 "quantity": 35,
                 "icon": "<:Rare:1222193217957662760>"
@@ -177,7 +185,13 @@
         "!train": "2025-03-24 22:04:46.594741",
         "xp_boosted": "2025-03-29 10:46:14.314506",
         "gold_boosted": "2024-01-01 11:11:11.111111",
-        "bag": {
+        "skill": {
+            "PointXP": {
+                "quantity": 54,
+                "icon": ":white_flower:"
+            }
+        },
+        "equipment": {
             "Casquette": {
                 "quantity": 1,
                 "icon": ":billed_cap:",
@@ -202,23 +216,27 @@
                 "quantity": 1,
                 "icon": ":dagger:",
                 "rank": 7
-            },
-            "PointXP": {
-                "quantity": 54,
-                "icon": ":white_flower:"
-            },
+            }
+        },
+        "rune": {
             "Arbre": {
                 "quantity": 2,
                 "icon": ":deciduous_tree:"
             },
-            "Legendaire": {
-                "quantity": 2,
-                "icon": "<:Legendaire:1222193258403336222>"
+            "Eau": {
+                "quantity": 5,
+                "icon": ":droplet:"
             },
-            "Rare": {
-                "quantity": 36,
-                "icon": "<:Rare:1222193217957662760>"
+            "Volcan": {
+                "quantity": 3,
+                "icon": ":volcano:"
             },
+            "Ocean": {
+                "quantity": 4,
+                "icon": ":ocean:"
+            }
+        },
+        "drop": {
             "Peau carbonis\u00e9e": {
                 "quantity": 4,
                 "icon": ":bacon:"
@@ -239,10 +257,6 @@
                 "quantity": 1,
                 "icon": ":gem::fire:"
             },
-            "Potion \u00e0 effet al\u00e9atoire": {
-                "quantity": 3,
-                "icon": ":test_tube:"
-            },
             "Pierre vent": {
                 "quantity": 3,
                 "icon": ":rock::dash:"
@@ -250,22 +264,6 @@
             "Cendre glace": {
                 "quantity": 5,
                 "icon": ":fog::snowflake:"
-            },
-            "Epique": {
-                "quantity": 1,
-                "icon": "<:Epique:1222193241022136491>"
-            },
-            "Eau": {
-                "quantity": 5,
-                "icon": ":droplet:"
-            },
-            "Volcan": {
-                "quantity": 3,
-                "icon": ":volcano:"
-            },
-            "Ocean": {
-                "quantity": 4,
-                "icon": ":ocean:"
             },
             "Pierre feu": {
                 "quantity": 2,
@@ -311,13 +309,31 @@
                 "quantity": 2,
                 "icon": ":rock::droplet:"
             },
-            "BoostXP": {
-                "quantity": 1,
-                "icon": ":diamond_shape_with_a_dot_inside:"
-            },
             "Peau de loup": {
                 "quantity": 1,
                 "icon": ":wolf:"
+            }
+        },
+        "bag": {
+            "Legendaire": {
+                "quantity": 2,
+                "icon": "<:Legendaire:1222193258403336222>"
+            },
+            "Rare": {
+                "quantity": 36,
+                "icon": "<:Rare:1222193217957662760>"
+            },
+            "Potion \u00e0 effet al\u00e9atoire": {
+                "quantity": 3,
+                "icon": ":test_tube:"
+            },
+            "Epique": {
+                "quantity": 1,
+                "icon": "<:Epique:1222193241022136491>"
+            },
+            "BoostXP": {
+                "quantity": 1,
+                "icon": ":diamond_shape_with_a_dot_inside:"
             }
         },
         "level": {
@@ -374,19 +390,19 @@
         "!train": "2025-03-24 22:18:31.374658",
         "xp_boosted": "2024-01-01 11:11:11.111111",
         "gold_boosted": "2024-01-01 11:11:11.111111",
-        "bag": {
+        "skill": {
             "PointXP": {
                 "quantity": 54,
                 "icon": ":white_flower:"
-            },
-            "Epique": {
-                "quantity": 3,
-                "icon": "<:Epique:1222193241022136491>"
-            },
-            "Rare": {
-                "quantity": 2,
-                "icon": "<:Rare:1222193217957662760>"
-            },
+            }
+        },
+        "equipment": {
+
+        },
+        "rune": {
+
+        },
+        "drop": {
             "Corne de d\u00e9mon": {
                 "quantity": 2,
                 "icon": ":smiling_imp:"
@@ -423,13 +439,23 @@
                 "quantity": 1,
                 "icon": ":rock::seedling:"
             },
-            "Legendaire": {
-                "quantity": 7,
-                "icon": "<:Legendaire:1222193258403336222>"
-            },
             "Cendre foudre": {
                 "quantity": 1,
                 "icon": ":fog::zap:"
+            }
+        },
+        "bag": {
+            "Epique": {
+                "quantity": 3,
+                "icon": "<:Epique:1222193241022136491>"
+            },
+            "Rare": {
+                "quantity": 2,
+                "icon": "<:Rare:1222193217957662760>"
+            },
+            "Legendaire": {
+                "quantity": 7,
+                "icon": "<:Legendaire:1222193258403336222>"
             }
         },
         "level": {
@@ -484,7 +510,13 @@
         "!train": "2025-03-24 22:18:08.417057",
         "xp_boosted": "2025-03-25 22:00:31.576829",
         "gold_boosted": "2024-01-01 11:11:11.111111",
-        "bag": {
+        "skill": {
+            "PointXP": {
+                "quantity": 65,
+                "icon": ":white_flower:"
+            }
+        },
+        "equipment": {
             "Dague": {
                 "quantity": 1,
                 "icon": ":dagger:",
@@ -509,14 +541,12 @@
                 "quantity": 1,
                 "icon": ":jeans:",
                 "rank": 7
-            },
+            }
+        },
+        "rune": {
             "Volcan": {
                 "quantity": 50,
                 "icon": ":volcano:"
-            },
-            "PointXP": {
-                "quantity": 65,
-                "icon": ":white_flower:"
             },
             "Ocean": {
                 "quantity": 26,
@@ -529,7 +559,23 @@
             "Plante": {
                 "quantity": 220,
                 "icon": ":seedling:"
+            }
+        },
+        "drop": {
+            "Fourrure de troll": {
+                "quantity": 4,
+                "icon": ":mammoth:"
             },
+            "Pierre eau": {
+                "quantity": 4,
+                "icon": ":rock::droplet:"
+            },
+            "Peau de serpent": {
+                "quantity": 1,
+                "icon": ":snake:"
+            }
+        },
+        "bag": {
             "Legendaire": {
                 "quantity": 3,
                 "icon": "<:Legendaire:1222193258403336222>"
@@ -545,18 +591,6 @@
             "Potion \u00e0 effet al\u00e9atoire": {
                 "quantity": 1,
                 "icon": ":test_tube:"
-            },
-            "Fourrure de troll": {
-                "quantity": 4,
-                "icon": ":mammoth:"
-            },
-            "Pierre eau": {
-                "quantity": 4,
-                "icon": ":rock::droplet:"
-            },
-            "Peau de serpent": {
-                "quantity": 1,
-                "icon": ":snake:"
             }
         },
         "level": {
@@ -612,7 +646,13 @@
         "!train": "2025-03-24 17:53:31.797174",
         "xp_boosted": "2024-01-01 11:11:11.111111",
         "gold_boosted": "2024-01-01 11:11:11.111111",
-        "bag": {
+        "skill": {
+            "PointXP": {
+                "quantity": 51,
+                "icon": ":white_flower:"
+            }
+        },
+        "equipment": {
             "Casquette": {
                 "quantity": 1,
                 "icon": ":billed_cap:",
@@ -637,11 +677,9 @@
                 "quantity": 1,
                 "icon": ":dagger:",
                 "rank": 7
-            },
-            "PointXP": {
-                "quantity": 51,
-                "icon": ":white_flower:"
-            },
+            }
+        },
+        "rune": {
             "Volcan": {
                 "quantity": 10,
                 "icon": ":volcano:"
@@ -649,11 +687,15 @@
             "Eau": {
                 "quantity": 640,
                 "icon": ":droplet:"
-            },
+            }
+        },
+        "drop": {
             "Pierre feu": {
                 "quantity": 1,
                 "icon": ":rock::fire:"
             }
+        },
+        "bag": {
         },
         "level": {
             "lvl": 51,
@@ -703,6 +745,18 @@
         "!train": "2024-01-01 11:11:11.111111",
         "xp_boosted": "2024-01-01 11:11:11.111111",
         "gold_boosted": "2024-01-01 11:11:11.111111",
+        "skill": {
+            
+        },
+        "equipment": {
+
+        },
+        "rune": {
+
+        },
+        "drop": {
+
+        },
         "bag": {},
         "level": {
             "lvl": 0,
@@ -748,6 +802,18 @@
         "!train": "2025-02-09 20:25:52.143611",
         "xp_boosted": "2024-01-01 11:11:11.111111",
         "gold_boosted": "2024-01-01 11:11:11.111111",
+        "skill": {
+            
+        },
+        "equipment": {
+
+        },
+        "rune": {
+
+        },
+        "drop": {
+
+        },
         "bag": {},
         "level": {
             "lvl": 0,
@@ -793,6 +859,18 @@
         "!train": "2024-01-01 11:11:11.111111",
         "xp_boosted": "2024-01-01 11:11:11.111111",
         "gold_boosted": "2024-01-01 11:11:11.111111",
+        "skill": {
+            
+        },
+        "equipment": {
+
+        },
+        "rune": {
+
+        },
+        "drop": {
+
+        },
         "bag": {},
         "level": {
             "lvl": 0,
@@ -836,7 +914,13 @@
         "!train": "2025-03-24 23:28:33.253765",
         "xp_boosted": "2024-01-01 11:11:11.111111",
         "gold_boosted": "2024-01-01 11:11:11.111111",
-        "bag": {
+        "skill": {
+            "PointXP": {
+                "quantity": 46,
+                "icon": ":white_flower:"
+            }
+        },
+        "equipment": {
             "Baskets": {
                 "quantity": 1,
                 "icon": ":athletic_shoe:",
@@ -861,26 +945,29 @@
                 "quantity": 1,
                 "icon": ":jeans:",
                 "rank": 5
+            }
+        },
+        "rune": {
+            "Ocean": {
+                "quantity": 1,
+                "icon": ":ocean:"
             },
             "Branche": {
                 "quantity": 3,
                 "icon": ":herb:"
             },
-            "PointXP": {
-                "quantity": 46,
-                "icon": ":white_flower:"
-            },
             "Brasier": {
                 "quantity": 1,
                 "icon": ":boom:"
-            },
+            }
+        },
+        "drop": {
+
+        },
+        "bag": {
             "Rare": {
                 "quantity": 5,
                 "icon": "<:Rare:1222193217957662760>"
-            },
-            "Ocean": {
-                "quantity": 1,
-                "icon": ":ocean:"
             }
         },
         "level": {
@@ -935,6 +1022,18 @@
         "!train": "2025-02-10 09:17:14.890323",
         "xp_boosted": "2024-01-01 11:11:11.111111",
         "gold_boosted": "2024-01-01 11:11:11.111111",
+        "skill": {
+            
+        },
+        "equipment": {
+
+        },
+        "rune": {
+
+        },
+        "drop": {
+
+        },
         "bag": {},
         "level": {
             "lvl": 0,
@@ -978,7 +1077,13 @@
         "!train": "2025-03-24 23:50:31.547759",
         "xp_boosted": "2025-04-09 00:15:56.751132",
         "gold_boosted": "2024-01-01 11:11:11.111111",
-        "bag": {
+        "skill": {
+            "PointXP": {
+                "quantity": 60,
+                "icon": ":white_flower:"
+            }
+        },
+        "equipment": {
             "Casquette": {
                 "quantity": 1,
                 "icon": ":billed_cap:",
@@ -1003,14 +1108,12 @@
                 "quantity": 1,
                 "icon": ":dagger:",
                 "rank": 7
-            },
+            }
+        },
+        "rune": {
             "Volcan": {
                 "quantity": 17,
                 "icon": ":volcano:"
-            },
-            "PointXP": {
-                "quantity": 60,
-                "icon": ":white_flower:"
             },
             "Ocean": {
                 "quantity": 16,
@@ -1019,7 +1122,9 @@
             "Arbre": {
                 "quantity": 22,
                 "icon": ":deciduous_tree:"
-            },
+            }
+        },
+        "drop": {
             "Corne de d\u00e9mon": {
                 "quantity": 2,
                 "icon": ":smiling_imp:"
@@ -1093,6 +1198,8 @@
                 "icon": ":rock::dash:"
             }
         },
+        "bag": {
+        },
         "level": {
             "lvl": 60,
             "xp": 19306746
@@ -1147,6 +1254,18 @@
         "!train": "2024-01-01 11:11:11.111111",
         "xp_boosted": "2024-01-01 11:11:11.111111",
         "gold_boosted": "2024-01-01 11:11:11.111111",
+        "skill": {
+            
+        },
+        "equipment": {
+
+        },
+        "rune": {
+
+        },
+        "drop": {
+
+        },
         "bag": {},
         "level": {
             "lvl": 0,
@@ -1190,15 +1309,17 @@
         "!train": "2025-03-22 21:35:22.820969",
         "xp_boosted": "2024-01-01 11:11:11.111111",
         "gold_boosted": "2024-01-01 11:11:11.111111",
-        "bag": {
+        "skill": {
+            "PointXP": {
+                "quantity": 43,
+                "icon": ":white_flower:"
+            }
+        },
+        "equipment": {
             "Baskets": {
                 "quantity": 1,
                 "icon": ":athletic_shoe:",
                 "rank": 5
-            },
-            "PointXP": {
-                "quantity": 43,
-                "icon": ":white_flower:"
             },
             "Tshirt": {
                 "quantity": 1,
@@ -1219,15 +1340,21 @@
                 "quantity": 1,
                 "icon": ":dagger:",
                 "rank": 5
-            },
+            }
+        },
+        "rune": {
             "Plante": {
                 "quantity": 20,
                 "icon": ":seedling:"
-            },
+            }
+        },
+        "drop": {
             "Pierre vent": {
                 "quantity": 1,
                 "icon": ":rock::dash:"
             }
+        },
+        "bag": {
         },
         "level": {
             "lvl": 43,
@@ -1281,15 +1408,13 @@
         "!train": "2025-03-25 00:25:47.391696",
         "xp_boosted": "2025-03-25 22:02:17.830761",
         "gold_boosted": "2024-01-01 11:11:11.111111",
-        "bag": {
+        "skill": {
             "PointXP": {
                 "quantity": 55,
                 "icon": ":white_flower:"
-            },
-            "Pierre plante": {
-                "quantity": 2,
-                "icon": ":rock::seedling:"
-            },
+            }
+        },
+        "equipment": {
             "Casquette": {
                 "quantity": 1,
                 "icon": ":billed_cap:",
@@ -1314,6 +1439,26 @@
                 "quantity": 1,
                 "icon": ":dagger:",
                 "rank": 5
+            }
+        },
+        "rune": {
+            "Volcan": {
+                "quantity": 9,
+                "icon": ":volcano:"
+            },
+            "Mer": {
+                "quantity": 2,
+                "icon": ":sweat_drops:"
+            },
+            "Ocean": {
+                "quantity": 1,
+                "icon": ":ocean:"
+            }
+        },
+        "drop": {
+            "Pierre plante": {
+                "quantity": 2,
+                "icon": ":rock::seedling:"
             },
             "Pierre foudre": {
                 "quantity": 1,
@@ -1342,10 +1487,6 @@
             "Gel\u00e9e royale": {
                 "quantity": 2,
                 "icon": ":microbe::crown:"
-            },
-            "Volcan": {
-                "quantity": 9,
-                "icon": ":volcano:"
             },
             "Pierre vent": {
                 "quantity": 3,
@@ -1383,18 +1524,6 @@
                 "quantity": 3,
                 "icon": ":drop_of_blood:"
             },
-            "Mer": {
-                "quantity": 2,
-                "icon": ":sweat_drops:"
-            },
-            "Ocean": {
-                "quantity": 1,
-                "icon": ":ocean:"
-            },
-            "Rare": {
-                "quantity": 102,
-                "icon": "<:Rare:1222193217957662760>"
-            },
             "Ceinture imposante": {
                 "quantity": 1,
                 "icon": ":loop:"
@@ -1403,6 +1532,16 @@
                 "quantity": 1,
                 "icon": ":fog::zap:"
             },
+            "Os de b\u00e9b\u00e9 dragon": {
+                "quantity": 1,
+                "icon": ":bone::dragon:"
+            }
+        },
+        "bag": {
+            "Rare": {
+                "quantity": 102,
+                "icon": "<:Rare:1222193217957662760>"
+            },
             "Fragment": {
                 "quantity": 1,
                 "icon": ":small_red_triangle:"
@@ -1410,10 +1549,6 @@
             "Epique": {
                 "quantity": 8,
                 "icon": "<:Epique:1222193241022136491>"
-            },
-            "Os de b\u00e9b\u00e9 dragon": {
-                "quantity": 1,
-                "icon": ":bone::dragon:"
             }
         },
         "level": {
@@ -1469,15 +1604,25 @@
         "!train": "2025-03-22 16:52:50.170898",
         "xp_boosted": "2024-01-01 11:11:11.111111",
         "gold_boosted": "2024-01-01 11:11:11.111111",
-        "bag": {
+        "skill": {
             "PointXP": {
                 "quantity": 30,
                 "icon": ":white_flower:"
-            },
+            }
+        },
+        "equipment": {
+
+        },
+        "rune": {
+
+        },
+        "drop": {
             "Cendre glace": {
                 "quantity": 1,
                 "icon": ":fog::snowflake:"
             }
+        },
+        "bag": {
         },
         "level": {
             "lvl": 30,
@@ -1520,6 +1665,18 @@
         "!train": "2024-01-01 11:11:11.111111",
         "xp_boosted": "2024-01-01 11:11:11.111111",
         "gold_boosted": "2024-01-01 11:11:11.111111",
+        "skill": {
+            
+        },
+        "equipment": {
+
+        },
+        "rune": {
+
+        },
+        "drop": {
+
+        },
         "bag": {},
         "level": {
             "lvl": 0,
