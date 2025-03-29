@@ -2,8 +2,8 @@
     "gain_1" : {
         "url": "https://i.imgur.com/XWO6ZF6.mp4",
         "price": {
-            "title": "Débloquer sa classe",
-            "item": "Classe",
+            "title": "Une étoile",
+            "item": "Étoile",
             "quantity": 1
         },
         "proba": 1
@@ -15,7 +15,7 @@
             "item": "Ticket",
             "quantity": 1
         },
-        "proba": 7
+        "proba": 6
     },
     "gain_3" : {
         "url": "https://i.imgur.com/dB1xdgb.mp4",
@@ -24,7 +24,7 @@
             "item": "Eau",
             "quantity": 20
         },
-        "proba": 16
+        "proba": 19
     },
     "gain_4" : {
         "url": "https://i.imgur.com/Q29h491.mp4",
@@ -33,7 +33,7 @@
             "item": "Plante",
             "quantity": 20
         },
-        "proba": 25
+        "proba": 32
     },
     "gain_5" : {
         "url": "https://i.imgur.com/3u6KqdM.mp4",
@@ -42,16 +42,16 @@
             "item": "Feu",
             "quantity": 20
         },
-        "proba": 34
+        "proba": 45
     },
     "gain_6" : {
         "url": "https://i.imgur.com/0XszJHz.mp4",
         "price": {
-            "title": "Boost XP 24h",
+            "title": "2 Boost XP 24h",
             "item": "BoostXP",
-            "quantity": 1
+            "quantity": 2
         },
-        "proba": 47
+        "proba": 54
     },
     "gain_7" : {
         "url": "https://i.imgur.com/9irFZEl.mp4",
@@ -60,16 +60,16 @@
             "item": "Ticket",
             "quantity": 3
         },
-        "proba": 52
+        "proba": 58
     },
     "gain_8" : {
         "url": "https://i.imgur.com/lDhWhVx.mp4",
         "price": {
-            "title": "50 000 Gold",
+            "title": "100 000 Gold",
             "item": "Gold",
-            "quantity": 50000
+            "quantity": 100000
         },
-        "proba": 65
+        "proba": 67
     },
     "gain_9" : {
         "url": "https://i.imgur.com/jkhZexB.mp4",
@@ -78,7 +78,7 @@
             "item": "Rare",
             "quantity": 10
         },
-        "proba": 81
+        "proba": 83
     },
     "gain_10" : {
         "url": "https://i.imgur.com/dELaqFI.mp4",
@@ -87,7 +87,7 @@
             "item": "Epique",
             "quantity": 3
         },
-        "proba": 90
+        "proba": 88
     },
     "gain_11" : {
         "url": "https://i.imgur.com/UUZvY9O.mp4",
@@ -96,7 +96,7 @@
             "item": "Legendaire",
             "quantity": 1
         },
-        "proba": 93
+        "proba": 90
     },
     "gain_12" : {
         "url": "https://i.imgur.com/Te7G76O.mp4",

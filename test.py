@@ -9,9 +9,9 @@ import random
 import unicodedata
 import re
 
-TOKEN = os.getenv('TOKEN')
-SAKURA_CHANNEL_ID = int(os.getenv('SAKURA_CHANNEL_ID'))
-ENCHERE_SAKURA_CHANNEL_ID = int(os.getenv('ENCHERE_SAKURA_CHANNEL_ID'))
+TOKEN = os.getenv("TOKEN")
+SAKURA_CHANNEL_ID = int(os.getenv("SAKURA_CHANNEL_ID"))
+ENCHERE_SAKURA_CHANNEL_ID = int(os.getenv("ENCHERE_SAKURA_CHANNEL_ID"))
 
 intents = discord.Intents.default()
 intents.messages = True
@@ -111,11 +111,11 @@ class BattleView(discord.ui.View):
         if interaction.user.name not in log_data:
             max_place = max((player["place"] for player in log_data.values()), default=0)
             place = max_place + 1
-            log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "secret_potion": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "gold_boosted": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
+            log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "secret_potion": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "gold_boosted": "2024-01-01 11:11:11.111111", "skill": {}, "equipment": {}, "rune": {}, "bag": {}, "drop": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
         else:
-            if 'global_name' not in log_data[interaction.user.name] or 'avatar' not in log_data[interaction.user.name]:
-                log_data[interaction.user.name]['global_name'] = interaction.user.global_name
-                log_data[interaction.user.name]['avatar'] = str(interaction.user.avatar)
+            if "global_name" not in log_data[interaction.user.name] or "avatar" not in log_data[interaction.user.name]:
+                log_data[interaction.user.name]["global_name"] = interaction.user.global_name
+                log_data[interaction.user.name]["avatar"] = str(interaction.user.avatar)
 
         await interaction.response.send_message("Vous partez affronter le monstre", ephemeral=True)
         battle["players"][interaction.user.name] = interaction.user.name
@@ -139,14 +139,14 @@ class BattleView(discord.ui.View):
                 if log_data[player]["classe"]["name"] == "Buffer":
                     buffers.append(player)
                     if len(battle["players"]) > 1:
-                        buff_pv += log_data[player]['stats']['pv']
-                        buff_for += log_data[player]['stats']['for']
-                        buff_def += log_data[player]['stats']['def']
+                        buff_pv += log_data[player]["stats"]["pv"]
+                        buff_for += log_data[player]["stats"]["for"]
+                        buff_def += log_data[player]["stats"]["def"]
                         
-            attaquant += "<@" + str(log_data[player]['id']) + "> "
-            total_pv += log_data[player]['stats']['pv']
-            total_for += log_data[player]['stats']['for']
-            total_def += log_data[player]['stats']['def']
+            attaquant += "<@" + str(log_data[player]["id"]) + "> "
+            total_pv += log_data[player]["stats"]["pv"]
+            total_for += log_data[player]["stats"]["for"]
+            total_def += log_data[player]["stats"]["def"]
             
         if buff_pv + buff_for + buff_def > 0:
             buff = (buff_pv * 100 / total_pv + buff_for * 100 / total_for + buff_def * 100 / total_def) / 3
@@ -157,7 +157,7 @@ class BattleView(discord.ui.View):
             total_for += buff_for
             total_def += buff_def
         
-        attaquant += '\n**PV : ' + str(total_pv) + ' :hearts:   For : ' + str(total_for) + ' :crossed_swords:   Def : ' + str(total_def) + ' :shield:**'
+        attaquant += "\n**PV : " + str(total_pv) + " :hearts:   For : " + str(total_for) + " :crossed_swords:   Def : " + str(total_def) + " :shield:**"
 
         embed = interaction.message.embeds[0]
         part_1, separator, part_2 = embed.title.partition(" • ")
@@ -234,7 +234,7 @@ class BattleView(discord.ui.View):
 
         mentions = " ".join([f"<@{user_id}>" for user_id in avenger])
         if len(mentions) > 0:
-            await channel.send(f'Aventuriers : {mentions} rassemblement !')
+            await channel.send(f"Aventuriers : {mentions} rassemblement !")
             await interaction.response.send_message("Le message d'aide a été envoyé !", ephemeral=True)
         else:
             await interaction.response.send_message("Il n'y a personne à appeler !", ephemeral=True)
@@ -264,20 +264,20 @@ class BattleView(discord.ui.View):
         total_def = 0
 
         for player in battle["players"]:
-            players.append(log_data[player]['id'])
+            players.append(log_data[player]["id"])
             if "classe" in log_data[player] and "name" in log_data[player]["classe"] and log_data[player]["classe"]["name"] == "Assassin":
-                total_pv += log_data[player]['stats']['pv'] * 3
-                total_for += log_data[player]['stats']['for'] * 3
-                total_def += log_data[player]['stats']['def'] * 3
+                total_pv += log_data[player]["stats"]["pv"] * 3
+                total_for += log_data[player]["stats"]["for"] * 3
+                total_def += log_data[player]["stats"]["def"] * 3
             else:
                 if "classe" in log_data[player] and "name" in log_data[player]["classe"] and log_data[player]["classe"]["name"] == "Buffer" and len(players) > 1:
-                    total_pv += log_data[player]['stats']['pv'] * 2
-                    total_for += log_data[player]['stats']['for'] * 2
-                    total_def += log_data[player]['stats']['def'] * 2
+                    total_pv += log_data[player]["stats"]["pv"] * 2
+                    total_for += log_data[player]["stats"]["for"] * 2
+                    total_def += log_data[player]["stats"]["def"] * 2
                 else:
-                    total_pv += log_data[player]['stats']['pv']
-                    total_for += log_data[player]['stats']['for']
-                    total_def += log_data[player]['stats']['def']
+                    total_pv += log_data[player]["stats"]["pv"]
+                    total_for += log_data[player]["stats"]["for"]
+                    total_def += log_data[player]["stats"]["def"]
 
         color = discord.Color.red()
 
@@ -298,20 +298,20 @@ class BattleView(discord.ui.View):
                             if log_data[player]["classe"]["progression 1"] != "completed":
                                 log_data[player]["classe"]["progression 1"] += len(players) - 1
                     
-            res_combat = combat(battle['mob']['name'], battle['mob']['lvl'], total_pv, total_for, total_def, nbr_debuffer)
+            res_combat = combat(battle["mob"]["name"], battle["mob"]["lvl"], total_pv, total_for, total_def, nbr_debuffer)
             
             if res_combat:
-                res = ''
+                res = ""
                 gold = 0
                 xp = 0
                 level_xp = [500, 600, 720, 864, 1036, 1243, 1492, 1791, 2149, 2578, 3093, 3711, 4453, 5343, 6411, 7693, 9231, 11077, 13293, 15951, 19141, 22969, 27563, 33075, 39690, 47628, 57153, 68584, 82300, 98760, 118512, 142214, 170657, 204788, 245746, 294895, 353873, 424647, 509576, 611491, 733790, 880548, 1056657, 1267989, 1521587, 1825904, 2191085, 2629302, 3155163, 3786195, 4543434, 5452120, 6542544, 7851052, 9421262, 11305514, 13566617, 16279940, 19535928, 23443113, 28131736, 33758083, 40509700, 48611640, 58333968, 70000762, 84000914, 100801096, 120961315, 145153578, 174184293, 209021151, 250825381, 301090457, 361308548, 433570258, 520284309, 624341171, 749209405, 899051286, 1078861543, 1294633852, 1553560622, 1864272746, 2237127295, 2684552754, 3221463305, 3865755966, 4638907159, 5566688591, 6680026309, 8016031570, 9619237884, 11543158461, 13851790153, 16622148183, 19946577820, 23935893384, 28723072061, 34467686474, 41361223769, 49633468522, 59560162226, 71472194671, 85766633605, 102919960326, 123503952391, 148204742869, 177845691442, 213414829731]
-                mob = battle['mob']['name']
-                if(mobs[mob]['loot']["gold"] > 0):
-                    res = 'Gold • ' + str(battle['mob']['lvl'] * mobs[mob]['loot']['gold']) + ' :coin:\n'
-                    gold = battle['mob']['lvl'] * mobs[mob]['loot']['gold'] // len(players)
-                if(mobs[mob]['loot']["xp"] > 0):
-                    res += 'XP • ' + str(battle['mob']['lvl'] * mobs[mob]['loot']['xp']) + ' :diamond_shape_with_a_dot_inside:'
-                    xp = battle['mob']['lvl'] * mobs[mob]['loot']['xp'] // len(players)
+                mob = battle["mob"]["name"]
+                if(mobs[mob]["loot"]["gold"] > 0):
+                    res = "Gold • " + str(battle["mob"]["lvl"] * mobs[mob]["loot"]["gold"]) + " :coin:\n"
+                    gold = battle["mob"]["lvl"] * mobs[mob]["loot"]["gold"] // len(players)
+                if(mobs[mob]["loot"]["xp"] > 0):
+                    res += "XP • " + str(battle["mob"]["lvl"] * mobs[mob]["loot"]["xp"]) + " :diamond_shape_with_a_dot_inside:"
+                    xp = battle["mob"]["lvl"] * mobs[mob]["loot"]["xp"] // len(players)
                     
                 player_levelup = ""
                 bonus_xp = ""
@@ -327,9 +327,9 @@ class BattleView(discord.ui.View):
                     
                     if gold_boosted_time > now:
                         gold_win = gold*2
-                        bonus_gold = bonus_gold + "<@" + str(log_data[player]['id']) + "> + " + str(gold) + " :coin:\n"
+                        bonus_gold = bonus_gold + "<@" + str(log_data[player]["id"]) + "> + " + str(gold) + " :coin:\n"
                     
-                    log_data[player]['gold'] += gold_win
+                    log_data[player]["gold"] += gold_win
                     
                     if "classe" in log_data[player] and "name" in log_data[player]["classe"] and log_data[player]["classe"]["name"] == "Rat" and log_data[player]["classe"]["progression 1"] != "completed":
                         log_data[player]["classe"]["progression 1"] += gold_win
@@ -341,32 +341,32 @@ class BattleView(discord.ui.View):
                     if mobs[mob]["loot"]["special_1"]["taux"] >= drop_chance_1:
                         drop_name = mobs[mob]["loot"]["special_1"]["name"]
                         
-                        if drop_name in log_data[player]['bag']:
-                            log_data[player]['bag'][drop_name]["quantity"] += 1
+                        if drop_name in log_data[player]["drop"]:
+                            log_data[player]["drop"][drop_name]["quantity"] += 1
                         else:
-                            log_data[player]['bag'][drop_name] = {"quantity": 1, "icon": items[drop_name]["icon"]}
+                            log_data[player]["drop"][drop_name] = {"quantity": 1, "icon": items[drop_name]["icon"]}
                         
-                        drop_loot = drop_loot + "<@" + str(log_data[player]['id']) + "> + 1 " + items[drop_name]["icon"] + " " + drop_name + "\n"
+                        drop_loot = drop_loot + "<@" + str(log_data[player]["id"]) + "> + 1 " + items[drop_name]["icon"] + " " + drop_name + "\n"
                     
                     if mobs[mob]["loot"]["special_2"]["taux"] >= drop_chance_2:
                         drop_name = mobs[mob]["loot"]["special_2"]["name"]
                         
-                        if drop_name in log_data[player]['bag']:
-                            log_data[player]['bag'][drop_name]["quantity"] += 1
+                        if drop_name in log_data[player]["drop"]:
+                            log_data[player]["drop"][drop_name]["quantity"] += 1
                         else:
-                            log_data[player]['bag'][drop_name] = {"quantity": 1, "icon": items[drop_name]["icon"]}
+                            log_data[player]["drop"][drop_name] = {"quantity": 1, "icon": items[drop_name]["icon"]}
                             
-                        drop_loot = drop_loot + "<@" + str(log_data[player]['id']) + "> + 1 " + items[drop_name]["icon"] + " " + drop_name + "\n"
+                        drop_loot = drop_loot + "<@" + str(log_data[player]["id"]) + "> + 1 " + items[drop_name]["icon"] + " " + drop_name + "\n"
                             
                     if mobs[mob]["loot"]["special_3"]["taux"] >= drop_chance_3:
                         drop_name = mobs[mob]["loot"]["special_3"]["name"]
                         
-                        if drop_name in log_data[player]['bag']:
-                            log_data[player]['bag'][drop_name]["quantity"] += 1
+                        if drop_name in log_data[player]["drop"]:
+                            log_data[player]["drop"][drop_name]["quantity"] += 1
                         else:
-                            log_data[player]['bag'][drop_name] = {"quantity": 1, "icon": items[drop_name]["icon"]}
+                            log_data[player]["drop"][drop_name] = {"quantity": 1, "icon": items[drop_name]["icon"]}
                             
-                        drop_loot = drop_loot + "<@" + str(log_data[player]['id']) + "> + 1 " + items[drop_name]["icon"] + " " + drop_name + "\n"
+                        drop_loot = drop_loot + "<@" + str(log_data[player]["id"]) + "> + 1 " + items[drop_name]["icon"] + " " + drop_name + "\n"
                     
                     if "classe" in log_data[player] and "name" in log_data[player]["classe"] and log_data[player]["classe"]["progression 1"] != "completed":
                         if log_data[player]["classe"]["name"] == "Assassin":
@@ -375,7 +375,7 @@ class BattleView(discord.ui.View):
                             if log_data[player]["classe"]["name"] == "Guerrier": 
                                 log_data[player]["classe"]["progression 1"] += 1
                                 
-                                mob_for = (battle['mob']['lvl'] * mobs[battle['mob']['name']]['stats']['for']) * (0.9 ** nbr_debuffer)
+                                mob_for = (battle["mob"]["lvl"] * mobs[battle["mob"]["name"]]["stats"]["for"]) * (0.9 ** nbr_debuffer)
                                 
                                 if log_data[player]["stats"]["for"] > mob_for:
                                     log_data[player]["stats"]["for"] += int(mob_for//100)
@@ -384,7 +384,7 @@ class BattleView(discord.ui.View):
                                     
                                     log_data[player]["classe"]["progression 1"] += len(players) - 1
                                     
-                                    mob_def = (battle['mob']['lvl'] * mobs[battle['mob']['name']]['stats']['def']) * (0.9 ** nbr_debuffer)
+                                    mob_def = (battle["mob"]["lvl"] * mobs[battle["mob"]["name"]]["stats"]["def"]) * (0.9 ** nbr_debuffer)
                                    
                                     if log_data[player]["stats"]["def"] > mob_def:
                                         log_data[player]["stats"]["def"] += mob_def//100
@@ -395,39 +395,39 @@ class BattleView(discord.ui.View):
                         xp_win = xp*2
                         if "classe" in log_data[player] and "name" in log_data[player]["classe"] and log_data[player]["classe"]["name"] == "Paysan":
                             xp_win = xp_win * 5
-                            bonus_xp = bonus_xp + "<@" + str(log_data[player]['id']) + "> + " + str(xp*9) + " :diamond_shape_with_a_dot_inside:\n"
+                            bonus_xp = bonus_xp + "<@" + str(log_data[player]["id"]) + "> + " + str(xp*9) + " :diamond_shape_with_a_dot_inside:\n"
                         else:
-                            bonus_xp = bonus_xp + "<@" + str(log_data[player]['id']) + "> + " + str(xp) + " :diamond_shape_with_a_dot_inside:\n"
+                            bonus_xp = bonus_xp + "<@" + str(log_data[player]["id"]) + "> + " + str(xp) + " :diamond_shape_with_a_dot_inside:\n"
                     else:
                         xp_win = xp
                         if "classe" in log_data[player] and "name" in log_data[player]["classe"] and log_data[player]["classe"]["name"] == "Paysan":
                             xp_win = xp_win * 5
-                            bonus_xp = bonus_xp + "<@" + str(log_data[player]['id']) + "> + " + str(xp*4) + " :diamond_shape_with_a_dot_inside:\n"
+                            bonus_xp = bonus_xp + "<@" + str(log_data[player]["id"]) + "> + " + str(xp*4) + " :diamond_shape_with_a_dot_inside:\n"
                         
-                    log_data[player]['level']['xp'] += xp_win
+                    log_data[player]["level"]["xp"] += xp_win
                     
-                    for lvl_xp in level_xp[log_data[player]['level']['lvl']:]:
-                        if log_data[player]['level']['xp'] > lvl_xp:
-                            log_data[player]['level']['xp'] -= lvl_xp
-                            log_data[player]['level']['lvl'] += 1
+                    for lvl_xp in level_xp[log_data[player]["level"]["lvl"]:]:
+                        if log_data[player]["level"]["xp"] > lvl_xp:
+                            log_data[player]["level"]["xp"] -= lvl_xp
+                            log_data[player]["level"]["lvl"] += 1
                             
                             if "classe" in log_data[player] and "name" in log_data[player]["classe"] and log_data[player]["classe"]["name"] == "Paysan":
-                                if log_data[player]['level']['lvl'] >= 70:
+                                if log_data[player]["level"]["lvl"] >= 70:
                                     log_data[player]["classe"]["progression 1"] = "completed"
                                 else:
-                                    log_data[player]["classe"]["progression 1"] = log_data[player]['level']['lvl']
+                                    log_data[player]["classe"]["progression 1"] = log_data[player]["level"]["lvl"]
                             
-                            if "PointXP" in log_data[player]['bag']:
-                                log_data[player]['bag']['PointXP']["quantity"] += 1
+                            if "PointXP" in log_data[player]["skill"]:
+                                log_data[player]["skill"]["PointXP"]["quantity"] += 1
                             else:
-                                log_data[player]['bag']['PointXP'] = {"quantity": 1, "icon": ":white_flower:"}
+                                log_data[player]["skill"]["PointXP"] = {"quantity": 1, "icon": ":white_flower:"}
                                 
                             level_up += 1
                         else:
                             break
                     
                     if level_up > 0:
-                        player_levelup = player_levelup + "<@" + str(log_data[player]['id']) + "> + " + str(level_up) + " level (" + str(log_data[player]['level']['lvl']) + ")\n"    
+                        player_levelup = player_levelup + "<@" + str(log_data[player]["id"]) + "> + " + str(level_up) + " level (" + str(log_data[player]["level"]["lvl"]) + ")\n"    
                     
                 tabFields = {"Récompenses à se partager :": res}
 
@@ -445,11 +445,11 @@ class BattleView(discord.ui.View):
                                               
                 title = "Victoire !"
                 color = discord.Color.green()
-                battle['status'] = 'victoire'
+                battle["status"] = "victoire"
             else:
                 title = "Défaite !"
                 tabFields = {} #Penality
-                battle['status'] = 'defaite'
+                battle["status"] = "defaite"
 
             mentions = " ".join([f"<@{user_id}>" for user_id in players])
             description = mentions
@@ -486,23 +486,23 @@ class EnchereView(discord.ui.View):
         if interaction.user.name not in log_data:
             max_place = max((player["place"] for player in log_data.values()), default=0)
             place = max_place + 1
-            log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "secret_potion": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "gold_boosted": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
+            log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "secret_potion": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "gold_boosted": "2024-01-01 11:11:11.111111", "skill": {}, "equipment": {}, "rune": {}, "bag": {}, "drop": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
         else:
-            if 'global_name' not in log_data[interaction.user.name] or 'avatar' not in log_data[interaction.user.name]:
-                log_data[interaction.user.name]['global_name'] = interaction.user.global_name
-                log_data[interaction.user.name]['avatar'] = str(interaction.user.avatar)
+            if "global_name" not in log_data[interaction.user.name] or "avatar" not in log_data[interaction.user.name]:
+                log_data[interaction.user.name]["global_name"] = interaction.user.global_name
+                log_data[interaction.user.name]["avatar"] = str(interaction.user.avatar)
 
         await interaction.response.send_message("Votre mise a été prise en compte", ephemeral=True)
 
         lot = self.lot
-        enchere[lot]['last_price'] += 500
-        enchere[lot]['last_player'] = interaction.user.name
-        enchere[lot]['join_player'][interaction.user.name] = enchere[lot]['last_price']
+        enchere[lot]["last_price"] += 500
+        enchere[lot]["last_player"] = interaction.user.name
+        enchere[lot]["join_player"][interaction.user.name] = enchere[lot]["last_price"]
 
         embed = interaction.message.embeds[0]
-        id = str(log_data[interaction.user.name]['id'])
+        id = str(log_data[interaction.user.name]["id"])
         embed.clear_fields()
-        embed.add_field(name="Plus grosse mise : ", value= str(enchere[lot]['last_price']) + ' <:sakura_coin:1217220808083247154> <@' + id + '>', inline=True)
+        embed.add_field(name="Plus grosse mise : ", value= str(enchere[lot]["last_price"]) + " <:sakura_coin:1217220808083247154> <@" + id + ">", inline=True)
         await interaction.followup.edit_message(message_id=interaction.message.id, embed=embed)
 
         with open("enchere.json", "w") as file:
@@ -523,23 +523,23 @@ class EnchereView(discord.ui.View):
         if interaction.user.name not in log_data:
             max_place = max((player["place"] for player in log_data.values()), default=0)
             place = max_place + 1
-            log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "secret_potion": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "gold_boosted": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
+            log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "secret_potion": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "gold_boosted": "2024-01-01 11:11:11.111111", "skill": {}, "equipment": {}, "rune": {}, "bag": {}, "drop": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
         else:
-            if 'global_name' not in log_data[interaction.user.name] or 'avatar' not in log_data[interaction.user.name]:
-                log_data[interaction.user.name]['global_name'] = interaction.user.global_name
-                log_data[interaction.user.name]['avatar'] = str(interaction.user.avatar)
+            if "global_name" not in log_data[interaction.user.name] or "avatar" not in log_data[interaction.user.name]:
+                log_data[interaction.user.name]["global_name"] = interaction.user.global_name
+                log_data[interaction.user.name]["avatar"] = str(interaction.user.avatar)
 
         await interaction.response.send_message("Votre mise a été prise en compte", ephemeral=True)
 
         lot = self.lot
-        enchere[lot]['last_price'] += 1000
-        enchere[lot]['last_player'] = interaction.user.name
-        enchere[lot]['join_player'][interaction.user.name] = enchere[lot]['last_price']
+        enchere[lot]["last_price"] += 1000
+        enchere[lot]["last_player"] = interaction.user.name
+        enchere[lot]["join_player"][interaction.user.name] = enchere[lot]["last_price"]
 
         embed = interaction.message.embeds[0]
-        id = str(log_data[interaction.user.name]['id'])
+        id = str(log_data[interaction.user.name]["id"])
         embed.clear_fields()
-        embed.add_field(name="Plus grosse mise : ", value= str(enchere[lot]['last_price']) + ' <:sakura_coin:1217220808083247154> <@' + id + '>', inline=True)
+        embed.add_field(name="Plus grosse mise : ", value= str(enchere[lot]["last_price"]) + " <:sakura_coin:1217220808083247154> <@" + id + ">", inline=True)
         await interaction.followup.edit_message(message_id=interaction.message.id, embed=embed)
 
         with open("enchere.json", "w") as file:
@@ -563,21 +563,21 @@ class EnchereView(discord.ui.View):
 
         title = "Fin de l'enchère !"
         color = discord.Color.green()
-        if enchere[lot]['last_player'] == "":
+        if enchere[lot]["last_player"] == "":
             title = "Aucun participant"
             color = discord.Color.red()
             embed = create_embed(title=title, color=color)
         else:
-            winner = '<@' + str(log_data[enchere[lot]['last_player']]['id']) + '>'
-            gain = str(enchere[lot]['quantity']) + ' :coin:'
-            mise = str(enchere[lot]['last_price']) + ' <:sakura_coin:1217220808083247154>'
+            winner = "<@" + str(log_data[enchere[lot]["last_player"]]["id"]) + ">"
+            gain = str(enchere[lot]["quantity"]) + " :coin:"
+            mise = str(enchere[lot]["last_price"]) + " <:sakura_coin:1217220808083247154>"
             participants = ""
-            for player in enchere[lot]['join_player']:
-                participants += '<@' + str(log_data[player]['id']) + '> ' + str(enchere[lot]['join_player'][player]) + ' <:sakura_coin:1217220808083247154>\n'
+            for player in enchere[lot]["join_player"]:
+                participants += "<@" + str(log_data[player]["id"]) + "> " + str(enchere[lot]["join_player"][player]) + " <:sakura_coin:1217220808083247154>\n"
             tabFields = {"Vainqueur des enchères :" : winner, "Gains :" : gain, "Mise :" : mise, "Participants :" : participants}
             embed = create_embed(title=title, color=color, tabFields=tabFields)
 
-            log_data[enchere[lot]['last_player']]['gold'] += enchere[lot]['quantity']
+            log_data[enchere[lot]["last_player"]]["gold"] += enchere[lot]["quantity"]
 
         await channel.send(embed=embed)
 
@@ -595,7 +595,7 @@ class EveilView(discord.ui.View):
     @discord.ui.button(label="M'éveiller", style=discord.ButtonStyle.green, custom_id="btn_eveil")
     async def btn_eveil(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.name == self.author_name:
-            rank = ['Pas d\'éveil', ':regional_indicator_f:', ':regional_indicator_e:', ':regional_indicator_d:', ':regional_indicator_c:', ':regional_indicator_b:', ':regional_indicator_a:', ':regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s: :regional_indicator_s:', ':regional_indicator_z:', ':regional_indicator_z: :regional_indicator_z:', ':regional_indicator_z: :regional_indicator_z: :regional_indicator_z:']
+            rank = ["Pas d'éveil", ":regional_indicator_f:", ":regional_indicator_e:", ":regional_indicator_d:", ":regional_indicator_c:", ":regional_indicator_b:", ":regional_indicator_a:", ":regional_indicator_s:", ":regional_indicator_s: :regional_indicator_s:", ":regional_indicator_s: :regional_indicator_s: :regional_indicator_s:", ":regional_indicator_z:", ":regional_indicator_z: :regional_indicator_z:", ":regional_indicator_z: :regional_indicator_z: :regional_indicator_z:"]
             self.timeout = 0
             if self.message is None:
                 self.message = interaction.message
@@ -603,18 +603,18 @@ class EveilView(discord.ui.View):
             if interaction.user.name not in log_data:
                 max_place = max((player["place"] for player in log_data.values()), default=0)
                 place = max_place + 1
-                log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "secret_potion": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "gold_boosted": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
+                log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "secret_potion": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "gold_boosted": "2024-01-01 11:11:11.111111", "skill": {}, "equipment": {}, "rune": {}, "bag": {}, "drop": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
             else:
-                if 'global_name' not in log_data[interaction.user.name] or 'avatar' not in log_data[interaction.user.name]:
-                    log_data[interaction.user.name]['global_name'] = interaction.user.global_name
-                    log_data[interaction.user.name]['avatar'] = str(interaction.user.avatar)
+                if "global_name" not in log_data[interaction.user.name] or "avatar" not in log_data[interaction.user.name]:
+                    log_data[interaction.user.name]["global_name"] = interaction.user.global_name
+                    log_data[interaction.user.name]["avatar"] = str(interaction.user.avatar)
 
-            log_data[interaction.user.name]['rank'] += 1
-            log_data[interaction.user.name]['bag'][self.gem_type]['quantity'] -= self.nbr_gem
-            if log_data[interaction.user.name]['bag'][self.gem_type]['quantity'] == 0:
-                del log_data[interaction.user.name]['bag'][self.gem_type]
+            log_data[interaction.user.name]["rank"] += 1
+            log_data[interaction.user.name]["bag"][self.gem_type]["quantity"] -= self.nbr_gem
+            if log_data[interaction.user.name]["bag"][self.gem_type]["quantity"] == 0:
+                del log_data[interaction.user.name]["bag"][self.gem_type]
 
-            await interaction.response.send_message("Vous vous êtes éveillé au rang : " + rank[log_data[interaction.user.name]['rank']] + ', félicitations !')
+            await interaction.response.send_message("Vous vous êtes éveillé au rang : " + rank[log_data[interaction.user.name]["rank"]] + ", félicitations !")
 
             for child in self.children:
                 child.disabled = True
@@ -645,14 +645,14 @@ class BoostXPView(discord.ui.View):
             if interaction.user.name not in log_data:
                 max_place = max((player["place"] for player in log_data.values()), default=0)
                 place = max_place + 1
-                log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "secret_potion": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "gold_boosted": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
+                log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "secret_potion": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "gold_boosted": "2024-01-01 11:11:11.111111", "skill": {}, "equipment": {}, "rune": {}, "bag": {}, "drop": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
             else:
-                if 'global_name' not in log_data[interaction.user.name] or 'avatar' not in log_data[interaction.user.name]:
-                    log_data[interaction.user.name]['global_name'] = interaction.user.global_name
-                    log_data[interaction.user.name]['avatar'] = str(interaction.user.avatar)
+                if "global_name" not in log_data[interaction.user.name] or "avatar" not in log_data[interaction.user.name]:
+                    log_data[interaction.user.name]["global_name"] = interaction.user.global_name
+                    log_data[interaction.user.name]["avatar"] = str(interaction.user.avatar)
 
             now = datetime.now()
-            last_boosted_time = datetime.strptime(log_data[interaction.user.name]['xp_boosted'], "%Y-%m-%d %H:%M:%S.%f")
+            last_boosted_time = datetime.strptime(log_data[interaction.user.name]["xp_boosted"], "%Y-%m-%d %H:%M:%S.%f")
             
             if last_boosted_time > now:
                 choice_date = last_boosted_time
@@ -660,11 +660,11 @@ class BoostXPView(discord.ui.View):
                 choice_date = now
             
             boost_duration = choice_date + timedelta(days=(1*self.quantity))
-            log_data[interaction.user.name]['xp_boosted'] = str(boost_duration)
-            log_data[interaction.user.name]['bag']["BoostXP"]['quantity'] -= self.quantity
+            log_data[interaction.user.name]["xp_boosted"] = str(boost_duration)
+            log_data[interaction.user.name]["bag"]["BoostXP"]["quantity"] -= self.quantity
             
-            if log_data[interaction.user.name]['bag']["BoostXP"]['quantity'] == 0:
-                del log_data[interaction.user.name]['bag']["BoostXP"]
+            if log_data[interaction.user.name]["bag"]["BoostXP"]["quantity"] == 0:
+                del log_data[interaction.user.name]["bag"]["BoostXP"]
 
             formatted_boost_duration = boost_duration.strftime("%d/%m/%Y à %Hh%M")
 
@@ -707,18 +707,18 @@ class WheelView(discord.ui.View):
             if interaction.user.name not in log_data:
                 max_place = max((player["place"] for player in log_data.values()), default=0)
                 place = max_place + 1
-                log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "secret_potion": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "gold_boosted": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
+                log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "secret_potion": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "gold_boosted": "2024-01-01 11:11:11.111111", "skill": {}, "equipment": {}, "rune": {}, "bag": {}, "drop": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
             else:
-                if 'global_name' not in log_data[interaction.user.name] or 'avatar' not in log_data[interaction.user.name]:
-                    log_data[interaction.user.name]['global_name'] = interaction.user.global_name
-                    log_data[interaction.user.name]['avatar'] = str(interaction.user.avatar)
+                if "global_name" not in log_data[interaction.user.name] or "avatar" not in log_data[interaction.user.name]:
+                    log_data[interaction.user.name]["global_name"] = interaction.user.global_name
+                    log_data[interaction.user.name]["avatar"] = str(interaction.user.avatar)
 
-            id = str(log_data[interaction.user.name]['id'])
+            id = str(log_data[interaction.user.name]["id"])
 
-            if 'Ticket' in log_data[interaction.user.name]['bag']:
-                log_data[interaction.user.name]['bag']['Ticket']['quantity'] -= 1
-                if log_data[interaction.user.name]['bag']['Ticket']['quantity'] == 0:
-                    del log_data[interaction.user.name]['bag']['Ticket']
+            if "Ticket" in log_data[interaction.user.name]["bag"]:
+                log_data[interaction.user.name]["bag"]["Ticket"]["quantity"] -= 1
+                if log_data[interaction.user.name]["bag"]["Ticket"]["quantity"] == 0:
+                    del log_data[interaction.user.name]["bag"]["Ticket"]
 
                 alea = random.randint(1, 100)
                 if alea <= 1:
@@ -756,41 +756,36 @@ class WheelView(discord.ui.View):
                                                         else:
                                                             lot = 12
 
-                await interaction.response.send_message(wheel['gain_' + str(lot)]['url'])
+                await interaction.response.send_message(wheel["gain_" + str(lot)]["url"])
 
-                price = wheel['gain_' + str(lot)]['price']['title']
+                price = wheel["gain_" + str(lot)]["price"]["title"]
 
-                item = wheel['gain_' + str(lot)]['price']['item']
+                item = wheel["gain_" + str(lot)]["price"]["item"]
 
                 if item in items:
-                    price += ' ' + items[item]['icon']
+                    price += " " + items[item]["icon"]
 
-                    if item in log_data[interaction.user.name]['bag']:
-                        log_data[interaction.user.name]['bag'][item]['quantity'] += wheel['gain_' + str(lot)]['price']['quantity']
+                    storage = items[item]["storage"]
+
+                    if item in log_data[interaction.user.name][storage]:
+                        log_data[interaction.user.name][storage][item]["quantity"] += wheel["gain_" + str(lot)]["price"]["quantity"]
                     else:
-                        log_data[interaction.user.name]['bag'][item] = {'quantity': wheel['gain_' + str(lot)]['price']['quantity'], 'icon': items[item]['icon']}
+                        log_data[interaction.user.name][storage][item] = {"quantity": wheel["gain_" + str(lot)]["price"]["quantity"], "icon": items[item]["icon"]}
 
-                    if 'stats' in items[item]:
-                        if 'pv' in items[item]['stats']:
-                            log_data[interaction.user.name]['stats']['pv'] += items[item]['stats']['pv'] * wheel['gain_' + str(lot)]['price']['quantity']
-                        if 'for' in items[item]['stats']:
-                            log_data[interaction.user.name]['stats']['for'] += items[item]['stats']['for'] * wheel['gain_' + str(lot)]['price']['quantity']
-                        if 'def' in items[item]['stats']:
-                            log_data[interaction.user.name]['stats']['def'] += items[item]['stats']['def'] * wheel['gain_' + str(lot)]['price']['quantity']
+                    if "stats" in items[item]:
+                        if "pv" in items[item]["stats"]:
+                            log_data[interaction.user.name]["stats"]["pv"] += items[item]["stats"]["pv"] * wheel["gain_" + str(lot)]["price"]["quantity"]
+                        if "for" in items[item]["stats"]:
+                            log_data[interaction.user.name]["stats"]["for"] += items[item]["stats"]["for"] * wheel["gain_" + str(lot)]["price"]["quantity"]
+                        if "def" in items[item]["stats"]:
+                            log_data[interaction.user.name]["stats"]["def"] += items[item]["stats"]["def"] * wheel["gain_" + str(lot)]["price"]["quantity"]
 
                 else:
-                    if item == 'Gold':
-                        log_data[interaction.user.name]['gold'] += 50000
+                    if item == "Gold":
+                        log_data[interaction.user.name]["gold"] += wheel["gain_" + str(lot)]["price"]["quantity"]
                     else:
-                        if item == 'Rien':
-                            price = 'absolument rien'
-                        else:
-                            if item == 'Classe':
-                                price = 'le déblocage de sa classe ! !'
-                                if 'classe' in log_data[interaction.user.name]:
-                                    log_data[interaction.user.name]['classe']['quantity'] += 1
-                                else:
-                                    log_data[interaction.user.name]['classe'] = {'unlock': True, 'quantity': 1}
+                        if item == "Rien":
+                            price = "absolument rien"
 
                 await interaction.followup.send("|| " + "<@" + id + ">" + " remporte " + price + " ! ||")
             else:
@@ -827,49 +822,56 @@ class CraftView(discord.ui.View):
             if interaction.user.name not in log_data:
                 max_place = max((player["place"] for player in log_data.values()), default=0)
                 place = max_place + 1
-                log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "secret_potion": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "gold_boosted": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
+                log_data[interaction.user.name] = {"id": interaction.user.id, "global_name": interaction.user.global_name, "avatar": str(interaction.user.avatar), "avenger": False, "rank": 0, "place": place,"gold": 0, "secret_potion": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "gold_boosted": "2024-01-01 11:11:11.111111", "skill": {}, "equipment": {}, "rune": {}, "bag": {}, "drop": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
             else:
-                if 'global_name' not in log_data[interaction.user.name] or 'avatar' not in log_data[interaction.user.name]:
-                    log_data[interaction.user.name]['global_name'] = interaction.user.global_name
-                    log_data[interaction.user.name]['avatar'] = str(interaction.user.avatar)
+                if "global_name" not in log_data[interaction.user.name] or "avatar" not in log_data[interaction.user.name]:
+                    log_data[interaction.user.name]["global_name"] = interaction.user.global_name
+                    log_data[interaction.user.name]["avatar"] = str(interaction.user.avatar)
 
-            id = str(log_data[interaction.user.name]['id'])
+            id = str(log_data[interaction.user.name]["id"])
 
-            for item in craft[self.item]['craft']['item']:
-                log_data[interaction.user.name]['bag'][item]['quantity'] -= craft[self.item]['craft']['item'][item] * self.quantity
-                if log_data[interaction.user.name]['bag'][item]['quantity'] == 0:
-                    del log_data[interaction.user.name]['bag'][item]
+            for item in craft[self.item]["craft"]["item"]:
+                storage = items[item]["storage"]
+                
+                if item in log_data[interaction.user.name][storage]:
+                    log_data[interaction.user.name][storage][item]["quantity"] -= craft[self.item]["craft"]["item"][item] * self.quantity
+                    
+                    if log_data[interaction.user.name][storage][item]["quantity"] == 0:
+                        del log_data[interaction.user.name][storage][item]
+                
 
-                if 'stats' in items[item]:
-                    if 'pv' in items[item]['stats']:
-                        log_data[interaction.user.name]['stats']['pv'] -= items[item]['stats']['pv'] * craft[self.item]['craft']['item'][item] * self.quantity
-                    if 'for' in items[item]['stats']:
-                        log_data[interaction.user.name]['stats']['for'] -= items[item]['stats']['for'] * craft[self.item]['craft']['item'][item] * self.quantity
-                    if 'def' in items[item]['stats']:
-                        log_data[interaction.user.name]['stats']['def'] -= items[item]['stats']['def'] * craft[self.item]['craft']['item'][item] * self.quantity
+                if "stats" in items[item]:
+                    if "pv" in items[item]["stats"]:
+                        log_data[interaction.user.name]["stats"]["pv"] -= items[item]["stats"]["pv"] * craft[self.item]["craft"]["item"][item] * self.quantity
+                    if "for" in items[item]["stats"]:
+                        log_data[interaction.user.name]["stats"]["for"] -= items[item]["stats"]["for"] * craft[self.item]["craft"]["item"][item] * self.quantity
+                    if "def" in items[item]["stats"]:
+                        log_data[interaction.user.name]["stats"]["def"] -= items[item]["stats"]["def"] * craft[self.item]["craft"]["item"][item] * self.quantity
 
             same_item = self.item
             
             if same_item == "Epique2":
                 same_item = "Epique"
             
-            if same_item in log_data[interaction.user.name]['bag']:
-                log_data[interaction.user.name]['bag'][same_item]['quantity'] += craft[self.item]['quantity'] * self.quantity
+            storage = items[same_item]["storage"]
+            
+            if same_item in log_data[interaction.user.name][storage]:
+                log_data[interaction.user.name][storage][same_item]["quantity"] += craft[self.item]["quantity"] * self.quantity
             else:
-                log_data[interaction.user.name]['bag'][same_item] = {"quantity": craft[self.item]['quantity'] * self.quantity, "icon": craft[self.item]['icon']}
+                log_data[interaction.user.name][storage][same_item] = {"quantity": craft[self.item]["quantity"] * self.quantity, "icon": craft[self.item]["icon"]}
 
             if "classe" in items[self.item]:
                 log_data[interaction.user.name]["classe"]["progression 2"] = "Fabriqué" #a1b2 faire l'exaltation de la classe
 
-            if 'stats' in craft[self.item]:
-                if 'pv' in craft[self.item]['stats']:
-                    log_data[interaction.user.name]['stats']['pv'] += craft[self.item]['stats']['pv'] * craft[self.item]['quantity'] * self.quantity
-                if 'for' in craft[self.item]['stats']:
-                    log_data[interaction.user.name]['stats']['for'] += craft[self.item]['stats']['for'] * craft[self.item]['quantity'] * self.quantity
-                if 'def' in craft[self.item]['stats']:
-                    log_data[interaction.user.name]['stats']['def'] += craft[self.item]['stats']['def'] * craft[self.item]['quantity'] * self.quantity
+            if "stats" in craft[self.item]:
+                if "pv" in craft[self.item]["stats"]:
+                    log_data[interaction.user.name]["stats"]["pv"] += craft[self.item]["stats"]["pv"] * craft[self.item]["quantity"] * self.quantity
+                if "for" in craft[self.item]["stats"]:
+                    log_data[interaction.user.name]["stats"]["for"] += craft[self.item]["stats"]["for"] * craft[self.item]["quantity"] * self.quantity
+                if "def" in craft[self.item]["stats"]:
+                    log_data[interaction.user.name]["stats"]["def"] += craft[self.item]["stats"]["def"] * craft[self.item]["quantity"] * self.quantity
 
-            await interaction.response.send_message("<@" + id + ">" + " vient de crafter " + str(craft[self.item]['quantity'] * self.quantity) + ' ' + same_item + ' ' + craft[self.item]['icon'])
+            await interaction.response.send_message("<@" + id + ">" + " vient de crafter " + str(craft[self.item]["quantity"] * self.quantity) + " " + same_item + " " + craft[self.item]["icon"])
 
             for child in self.children:
                 child.disabled = True
@@ -903,16 +905,16 @@ async def hourly_mob():
         except FileNotFoundError:
             battle = {}
         
-        if 'status' in battle:
-            status = battle['status']
+        if "status" in battle:
+            status = battle["status"]
         else:
-            status = 'defaite'
+            status = "defaite"
         
-        old_lvl = battle['mob']['lvl']
+        old_lvl = battle["mob"]["lvl"]
         
         random_number = random.randint(20, 60)
         
-        if status == 'victoire':    
+        if status == "victoire":    
             mob_lvl = random.randint(old_lvl, old_lvl+random_number)
         else:
             min_lvl = old_lvl - random_number * 3
@@ -932,12 +934,12 @@ async def hourly_mob():
         spawn_rate = round(random.random(), 4)
 
         for mob in mobs:
-            if mobs[mob]['min_level'] <= mob_lvl and mobs[mob]['max_level'] > mob_lvl:
-                if(spawn_rate <= mobs[mob]['spawn_rate']):
+            if mobs[mob]["min_level"] <= mob_lvl and mobs[mob]["max_level"] > mob_lvl:
+                if(spawn_rate <= mobs[mob]["spawn_rate"]):
                     lvl = mob_lvl
-                    title = mobs[mob]['name'] + ' LVL ' + str(lvl)
-                    tabFields = {'PV : ' + str(lvl * mobs[mob]['stats']['pv']) + ' :hearts:   For : ' + str(lvl * mobs[mob]['stats']['for']) + ' :crossed_swords:   Def : ' + str(lvl * mobs[mob]['stats']['def']) + ' :shield:' : '', 'Combattez ce monstre !' : ''}
-                    image = mobs[mob]['image']
+                    title = mobs[mob]["name"] + " LVL " + str(lvl)
+                    tabFields = {"PV : " + str(lvl * mobs[mob]["stats"]["pv"]) + " :hearts:   For : " + str(lvl * mobs[mob]["stats"]["for"]) + " :crossed_swords:   Def : " + str(lvl * mobs[mob]["stats"]["def"]) + " :shield:" : "", "Combattez ce monstre !" : ""}
+                    image = mobs[mob]["image"]
                     mob_name = mob
 
                     if(lvl <= 50):
@@ -975,16 +977,16 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content.startswith("!"):
+    if message.content.startswith("!") or message.content.startswith("/"):
         if message.author.name not in log_data:
             max_place = max((player["place"] for player in log_data.values()), default=0)
             place = max_place + 1
-            log_data[message.author.name] = {"id": message.author.id, "global_name": message.author.global_name, "avatar": str(message.author.avatar), "avenger": False, "rank": 0, "place": place, "gold": 0, "secret_potion": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "gold_boosted": "2024-01-01 11:11:11.111111", "bag": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
+            log_data[message.author.name] = {"id": message.author.id, "global_name": message.author.global_name, "avatar": str(message.author.avatar), "avenger": False, "rank": 0, "place": place, "gold": 0, "secret_potion": 0, "!daily": "2024-01-01 11:11:11.111111", "!explore": "2024-01-01 11:11:11.111111", "!train": "2024-01-01 11:11:11.111111", "xp_boosted": "2024-01-01 11:11:11.111111", "gold_boosted": "2024-01-01 11:11:11.111111", "skill": {}, "equipment": {}, "rune": {}, "bag": {}, "drop": {}, "level": {"lvl": 0, "xp": 0}, "stats": {"pv": 1000, "for": 10, "def": 10}, "deaths": 0, "penality": 0, "mobs_kill": {"Slime": 0, "Squelette": 0, "Loup": 0, "Gobelin": 0, "Troll": 0, "Serpent":0, "Dragon": 0, "Demon": 0, "Devoreur": 0}, "title": {}, "classe": {"unlock": True, "quantity": 0}}
             updated = True
         else:
-            if 'global_name' not in log_data[message.author.name] or 'avatar' not in log_data[message.author.name]:
-                log_data[message.author.name]['global_name'] = message.author.global_name
-                log_data[message.author.name]['avatar'] = str(message.author.avatar)
+            if "global_name" not in log_data[message.author.name] or "avatar" not in log_data[message.author.name]:
+                log_data[message.author.name]["global_name"] = message.author.global_name
+                log_data[message.author.name]["avatar"] = str(message.author.avatar)
                 updated = True
 
     if message.content.startswith("!info"):
@@ -999,15 +1001,15 @@ async def on_message(message):
         if len(command_and_argument) == 2:
             command, cible = command_and_argument
             for player in log_data:
-                if cible == '<@' + str(log_data[player]['id']) + '>':
+                if cible == "<@" + str(log_data[player]["id"]) + ">":
                     name = player
-                    if 'avatar' in log_data[player]:
-                        avatar = log_data[player]['avatar']
+                    if "avatar" in log_data[player]:
+                        avatar = log_data[player]["avatar"]
                     else:
                         avatar = None
 
-                    if 'global_name' in log_data[player]:
-                        global_name = log_data[player]['global_name']
+                    if "global_name" in log_data[player]:
+                        global_name = log_data[player]["global_name"]
                     else:
                         global_name = None
 
@@ -1047,8 +1049,8 @@ async def on_message(message):
 
                 can_craft = True
                 if item not in craft:
-                    title = 'Vérifiez l\'appélation de ce que vous voulez crafter.'
-                    tabFields = {'Faites !craft pour voir la liste des crafts disponibles.' : ''}
+                    title = "Vérifiez l'appélation de ce que vous voulez crafter."
+                    tabFields = {"Faites !craft pour voir la liste des crafts disponibles." : ""}
                     color = discord.Color.red()
                     embed = create_embed(title=title, color=color, tabFields=tabFields)
                     await message.channel.send(embed=embed)
@@ -1071,7 +1073,7 @@ async def on_message(message):
                         updated = True
                     else:
                         title = f"Item de classe"
-                        tabFields = {"Vous n'avez pas accès à ce craft, c'est un craft unique à débloquer via sa classe." : ''}
+                        tabFields = {"Vous n'avez pas accès à ce craft, c'est un craft unique à débloquer via sa classe." : ""}
                         color = discord.Color.red()
                         embed = create_embed(title=title, color=color, tabFields=tabFields)
                         await message.channel.send(embed=embed)
@@ -1083,8 +1085,8 @@ async def on_message(message):
                         classe_item +=  f"{items[item]["icon"]} {items[item]["name"]} • {items[item]["spe"]}\n"
                 
                 
-                title = 'Craft'
-                tabFields = {'Faites !craft nom_item optionnel_quantité' : '', 'Liste des crafts disponibles : ' : '', 'Gemmes d\'éveil :' : '<:Rare:1222193217957662760> Rare\n<:Epique:1222193241022136491> Epique\n<:Epique:1222193241022136491> Epique2\n<:Legendaire:1222193258403336222> Legendaire\n:small_red_triangle: Fragment\n:octagonal_sign: Ultime\n', 'Runes améliorées :' : ':boom: Brasier • For+40\n:volcano: Volcan • For+600\n:herb: Branche • Def+80\n:deciduous_tree: Arbre • Def+1200\n:sweat_drops: Mer • PV+5000\n:ocean: Ocean • PV+75000', "Item de classe :" : classe_item}
+                title = "Craft"
+                tabFields = {"Faites !craft nom_item optionnel_quantité" : "", "Liste des crafts disponibles : " : "", "Gemmes d'éveil :" : "<:Rare:1222193217957662760> Rare\n<:Epique:1222193241022136491> Epique\n<:Epique:1222193241022136491> Epique2\n<:Legendaire:1222193258403336222> Legendaire\n:small_red_triangle: Fragment\n:octagonal_sign: Ultime\n", "Runes améliorées :" : ":boom: Brasier • For+40\n:volcano: Volcan • For+600\n:herb: Branche • Def+80\n:deciduous_tree: Arbre • Def+1200\n:sweat_drops: Mer • PV+5000\n:ocean: Ocean • PV+75000", "Item de classe :" : classe_item}
                 color = discord.Color.lighter_grey()
                 embed = create_embed(title=title, color=color, tabFields=tabFields)
                 await message.channel.send(embed=embed)
@@ -1103,8 +1105,8 @@ async def on_message(message):
             if len(command_and_argument) == 3:
                 command, cible, montant = command_and_argument
                 for player in log_data:
-                    if cible == '<@' + str(log_data[player]['id']) + '>' and is_integer(montant) and int(montant) > 0:
-                        log_data[player]['gold'] += int(montant)
+                    if cible == "<@" + str(log_data[player]["id"]) + ">" and is_integer(montant) and int(montant) > 0:
+                        log_data[player]["gold"] += int(montant)
                         title = "Gold donnés"
                         description = "Vous donnez " + montant + " :coin: à " + cible
                         color = discord.Color.green()
@@ -1127,8 +1129,8 @@ async def on_message(message):
             if len(command_and_argument) == 3:
                 command, cible, montant = command_and_argument
                 for player in log_data:
-                    if cible == '<@' + str(log_data[player]['id']) + '>' and is_integer(montant) and int(montant) > 0:
-                        log_data[player]['gold'] -= int(montant)
+                    if cible == "<@" + str(log_data[player]["id"]) + ">" and is_integer(montant) and int(montant) > 0:
+                        log_data[player]["gold"] -= int(montant)
                         title = "Gold retirés"
                         description = "Vous retirez " + montant + " :coin: à " + cible
                         color = discord.Color.green()
@@ -1151,17 +1153,17 @@ async def on_message(message):
             command, cible, montant = command_and_argument
             for player in log_data:
                 if player != message.author.name:
-                    if cible == '<@' + str(log_data[player]['id']) + '>' and is_integer(montant) and int(montant) > 0:
-                        if log_data[message.author.name]['gold'] >= int(montant):
-                            log_data[message.author.name]['gold'] -= int(montant)
-                            log_data[player]['gold'] += int(montant)
+                    if cible == "<@" + str(log_data[player]["id"]) + ">" and is_integer(montant) and int(montant) > 0:
+                        if log_data[message.author.name]["gold"] >= int(montant):
+                            log_data[message.author.name]["gold"] -= int(montant)
+                            log_data[player]["gold"] += int(montant)
                             title = "Gold envoyés"
-                            description = "Vous envoyez " + montant + " :coin: à " + cible + "\nVotre nouveau solde : " + str(log_data[message.author.name]['gold']) + " :coin:"
+                            description = "Vous envoyez " + montant + " :coin: à " + cible + "\nVotre nouveau solde : " + str(log_data[message.author.name]["gold"]) + " :coin:"
                             color = discord.Color.green()
                             updated = True
                         else:
                             title = "Vous n'avez pas assez de :coin:"
-                            description = "Votre solde : " + str(log_data[message.author.name]['gold']) + " :coin:"
+                            description = "Votre solde : " + str(log_data[message.author.name]["gold"]) + " :coin:"
 
         embed = create_embed(title=title, description=description, color=color)
         await message.channel.send(embed=embed)
@@ -1176,27 +1178,27 @@ async def on_message(message):
             command, cible = command_and_argument
             for player in log_data:
                 if player != message.author.name:
-                    if cible == '<@' + str(log_data[player]['id']) + '>':
-                        if log_data[player]['place'] < log_data[message.author.name]['place']:
-                            sum_author_stats = int(log_data[message.author.name]['stats']['pv']/250 + log_data[message.author.name]['stats']['for']/2 + log_data[message.author.name]['stats']['def']/4)
-                            sum_cible_stats = int(log_data[player]['stats']['pv']/250 + log_data[player]['stats']['for']/2 + log_data[player]['stats']['def']/4)
+                    if cible == "<@" + str(log_data[player]["id"]) + ">":
+                        if log_data[player]["place"] < log_data[message.author.name]["place"]:
+                            sum_author_stats = int(log_data[message.author.name]["stats"]["pv"]/250 + log_data[message.author.name]["stats"]["for"]/2 + log_data[message.author.name]["stats"]["def"]/4)
+                            sum_cible_stats = int(log_data[player]["stats"]["pv"]/250 + log_data[player]["stats"]["for"]/2 + log_data[player]["stats"]["def"]/4)
                             if sum_author_stats > sum_cible_stats:
-                                place_win = log_data[player]['place']
-                                log_data[player]['place'] = log_data[message.author.name]['place']
-                                log_data[message.author.name]['place'] = place_win
+                                place_win = log_data[player]["place"]
+                                log_data[player]["place"] = log_data[message.author.name]["place"]
+                                log_data[message.author.name]["place"] = place_win
                                 title = "Combat remporté"
-                                description = "**" + "\n<@" + str(log_data[message.author.name]['id']) + ">\n" + 'PV : ' + str(log_data[message.author.name]['stats']['pv']) + ' :hearts:   For : ' + str(log_data[message.author.name]['stats']['for']) + ' :crossed_swords:   Def : ' + str(log_data[message.author.name]['stats']['def']) + ' :shield:' + "\nvs\n" + "<@" + str(log_data[player]['id']) + ">\n" + 'PV : ' + str(log_data[player]['stats']['pv']) + ' :hearts:   For : ' + str(log_data[player]['stats']['for']) + ' :crossed_swords:   Def : ' + str(log_data[player]['stats']['def']) + ' :shield:'  + "\n\nVous remportez votre combat contre <@" + str(log_data[player]['id']) + "> et vous récupérez sa place au !top-rank" + "**"
+                                description = "**" + "\n<@" + str(log_data[message.author.name]["id"]) + ">\n" + "PV : " + str(log_data[message.author.name]["stats"]["pv"]) + " :hearts:   For : " + str(log_data[message.author.name]["stats"]["for"]) + " :crossed_swords:   Def : " + str(log_data[message.author.name]["stats"]["def"]) + " :shield:" + "\nvs\n" + "<@" + str(log_data[player]["id"]) + ">\n" + "PV : " + str(log_data[player]["stats"]["pv"]) + " :hearts:   For : " + str(log_data[player]["stats"]["for"]) + " :crossed_swords:   Def : " + str(log_data[player]["stats"]["def"]) + " :shield:"  + "\n\nVous remportez votre combat contre <@" + str(log_data[player]["id"]) + "> et vous récupérez sa place au !top-rank" + "**"
                                 color = discord.Color.green()
                                 updated = True
                             else:
                                 title = "Combat perdu"
-                                description = "**" + "\n<@" + str(log_data[message.author.name]['id']) + ">\n" + 'PV : ' + str(log_data[message.author.name]['stats']['pv']) + ' :hearts:   For : ' + str(log_data[message.author.name]['stats']['for']) + ' :crossed_swords:   Def : ' + str(log_data[message.author.name]['stats']['def']) + ' :shield:' + "\nvs\n" + "<@" + str(log_data[player]['id']) + ">\n" + 'PV : ' + str(log_data[player]['stats']['pv']) + ' :hearts:   For : ' + str(log_data[player]['stats']['for']) + ' :crossed_swords:   Def : ' + str(log_data[player]['stats']['def']) + ' :shield:'  + "\n\nVous perdez votre combat contre <@" + str(log_data[player]['id']) + ">\nVotre place au !top-rank est inchangée" + "**"
+                                description = "**" + "\n<@" + str(log_data[message.author.name]["id"]) + ">\n" + "PV : " + str(log_data[message.author.name]["stats"]["pv"]) + " :hearts:   For : " + str(log_data[message.author.name]["stats"]["for"]) + " :crossed_swords:   Def : " + str(log_data[message.author.name]["stats"]["def"]) + " :shield:" + "\nvs\n" + "<@" + str(log_data[player]["id"]) + ">\n" + "PV : " + str(log_data[player]["stats"]["pv"]) + " :hearts:   For : " + str(log_data[player]["stats"]["for"]) + " :crossed_swords:   Def : " + str(log_data[player]["stats"]["def"]) + " :shield:"  + "\n\nVous perdez votre combat contre <@" + str(log_data[player]["id"]) + ">\nVotre place au !top-rank est inchangée" + "**"
                                 color = discord.Color.red()
                         else:
                             title = "Vous ne pouvez pas défier quelqu'un qui est plus bas au classement !top-rank que vous"
                             description = "Visez plus haut"
 
-        footer = "Classement rank : " + str(log_data[message.author.name]['place']) + '/' + str(len(log_data))
+        footer = "Classement rank : " + str(log_data[message.author.name]["place"]) + "/" + str(len(log_data))
         embed = create_embed(title=title, description=description, color=color, footer=footer)
         await message.channel.send(embed=embed)
 
@@ -1221,16 +1223,16 @@ async def on_message(message):
                     channel = client.get_channel(ENCHERE_SAKURA_CHANNEL_ID)
                     if channel is None:
                         return
-                    title = "Lot n°" + str(lot) + ' : ' + str(enchere[lot]['name']) + ' ' + str(quantity) + ' :coin:'
+                    title = "Lot n°" + str(lot) + " : " + str(enchere[lot]["name"]) + " " + str(quantity) + " :coin:"
                     description = "Mise à prix : " + str(start_price) + " <:sakura_coin:1217220808083247154>"
                     color = discord.Color.dark_teal()
-                    image = enchere[lot]['image']
-                    enchere[lot]['is_played'] = True
-                    enchere[lot]['quantity'] = int(quantity)
-                    enchere[lot]['start_price'] = int(start_price)
-                    enchere[lot]['last_price'] = int(start_price)
-                    enchere[lot]['last_player'] = ""
-                    enchere[lot]['join_player'] = {}
+                    image = enchere[lot]["image"]
+                    enchere[lot]["is_played"] = True
+                    enchere[lot]["quantity"] = int(quantity)
+                    enchere[lot]["start_price"] = int(start_price)
+                    enchere[lot]["last_price"] = int(start_price)
+                    enchere[lot]["last_player"] = ""
+                    enchere[lot]["join_player"] = {}
 
                     embed = create_embed(title=title, description=description, color=color, image=image)
                     view = EnchereView(timeout=3600, lot=lot)
@@ -1259,19 +1261,19 @@ async def on_message(message):
         if len(command_and_argument) == 2:
             command, cible = command_and_argument
             for player in log_data:
-                if cible == '<@' + str(log_data[player]['id']) + '>':
+                if cible == "<@" + str(log_data[player]["id"]) + ">":
                     name = player
-                    if 'avatar' in log_data[player]:
-                        avatar = log_data[player]['avatar']
+                    if "avatar" in log_data[player]:
+                        avatar = log_data[player]["avatar"]
                     else:
                         avatar = None
 
-                    if 'global_name' in log_data[player]:
-                        global_name = log_data[player]['global_name']
+                    if "global_name" in log_data[player]:
+                        global_name = log_data[player]["global_name"]
                     else:
                         global_name = None
 
-        embed = me_action(name, avatar, global_name, 'gold')
+        embed = gold_action(name, avatar, global_name)
         await message.channel.send(embed=embed)
         updated = True
 
@@ -1290,7 +1292,7 @@ async def on_message(message):
     if message.content.startswith("!compter"):
         if message.author.id == 518397017072992257 or message.author.id == 802116818134892545:
             if await time_command(message.author.name, message.channel, "!compter", 24):
-                gain = 1072 * max(log_data[message.author.name]['rank'] * 4, 1)
+                gain = 1072 * max(log_data[message.author.name]["rank"] * 4, 1)
                 gain = gain * 2
                 embed = compter_action(message.author.name, message.author.avatar, message.author.global_name, gain)
                 await message.channel.send(embed=embed)
@@ -1316,56 +1318,125 @@ async def on_message(message):
         if len(command_and_argument) == 2:
             command, cible = command_and_argument
             for player in log_data:
-                if cible == '<@' + str(log_data[player]['id']) + '>':
+                if cible == "<@" + str(log_data[player]["id"]) + ">":
                     name = player
-                    if 'avatar' in log_data[player]:
-                        avatar = log_data[player]['avatar']
+                    if "avatar" in log_data[player]:
+                        avatar = log_data[player]["avatar"]
                     else:
                         avatar = None
 
-                    if 'global_name' in log_data[player]:
-                        global_name = log_data[player]['global_name']
+                    if "global_name" in log_data[player]:
+                        global_name = log_data[player]["global_name"]
                     else:
                         global_name = None
 
-        embed = me_action(name, avatar, global_name, 'profil')
+        embed = profil_action(name, avatar, global_name)
         await message.channel.send(embed=embed)
         updated = True
 
     if message.content.startswith("!top-rank"):
-        embed = top_action(message.author.name, 'place')
+        embed = top_action(message.author.name, "place")
         await message.channel.send(embed=embed)
         updated = True
 
     if message.content.startswith("!top-eveil"):
-        embed = top_action(message.author.name, 'rank')
+        embed = top_action(message.author.name, "rank")
         await message.channel.send(embed=embed)
         updated = True
 
     if message.content.startswith("!top-gold"):
-        embed = top_action(message.author.name, 'gold')
+        embed = top_action(message.author.name, "gold")
         await message.channel.send(embed=embed)
         updated = True
 
     if message.content.startswith("!top-level"):
-        embed = top_action(message.author.name, 'level')
+        embed = top_action(message.author.name, "level")
         await message.channel.send(embed=embed)
         updated = True
 
     if message.content.startswith("!top-pv"):
-        embed = top_action(message.author.name, 'pv')
+        embed = top_action(message.author.name, "pv")
         await message.channel.send(embed=embed)
         updated = True
 
     if message.content.startswith("!top-for"):
-        embed = top_action(message.author.name, 'for')
+        embed = top_action(message.author.name, "for")
         await message.channel.send(embed=embed)
         updated = True
 
     if message.content.startswith("!top-def"):
-        embed = top_action(message.author.name, 'def')
+        embed = top_action(message.author.name, "def")
         await message.channel.send(embed=embed)
         updated = True
+
+    if message.content.startswith("!skill"):
+        name = message.author.name
+        avatar = message.author.avatar
+        global_name = message.author.global_name
+        command_and_argument = message.content.split(maxsplit=1)
+        if len(command_and_argument) == 2:
+            command, cible = command_and_argument
+            for player in log_data:
+                if cible == "<@" + str(log_data[player]["id"]) + ">":
+                    name = player
+                    if "avatar" in log_data[player]:
+                        avatar = log_data[player]["avatar"]
+                    else:
+                        avatar = None
+
+                    if "global_name" in log_data[player]:
+                        global_name = log_data[player]["global_name"]
+                    else:
+                        global_name = None
+
+        embed = skill_action(name, avatar, global_name)
+        await message.channel.send(embed=embed)
+        
+    if message.content.startswith("!equipment"):
+        name = message.author.name
+        avatar = message.author.avatar
+        global_name = message.author.global_name
+        command_and_argument = message.content.split(maxsplit=1)
+        if len(command_and_argument) == 2:
+            command, cible = command_and_argument
+            for player in log_data:
+                if cible == "<@" + str(log_data[player]["id"]) + ">":
+                    name = player
+                    if "avatar" in log_data[player]:
+                        avatar = log_data[player]["avatar"]
+                    else:
+                        avatar = None
+
+                    if "global_name" in log_data[player]:
+                        global_name = log_data[player]["global_name"]
+                    else:
+                        global_name = None
+
+        embed = equipment_action(name, avatar, global_name)
+        await message.channel.send(embed=embed)
+        
+    if message.content.startswith("!rune"):
+        name = message.author.name
+        avatar = message.author.avatar
+        global_name = message.author.global_name
+        command_and_argument = message.content.split(maxsplit=1)
+        if len(command_and_argument) == 2:
+            command, cible = command_and_argument
+            for player in log_data:
+                if cible == "<@" + str(log_data[player]["id"]) + ">":
+                    name = player
+                    if "avatar" in log_data[player]:
+                        avatar = log_data[player]["avatar"]
+                    else:
+                        avatar = None
+
+                    if "global_name" in log_data[player]:
+                        global_name = log_data[player]["global_name"]
+                    else:
+                        global_name = None
+
+        embed = rune_action(name, avatar, global_name)
+        await message.channel.send(embed=embed)
 
     if message.content.startswith("!bag"):
         name = message.author.name
@@ -1375,21 +1446,43 @@ async def on_message(message):
         if len(command_and_argument) == 2:
             command, cible = command_and_argument
             for player in log_data:
-                if cible == '<@' + str(log_data[player]['id']) + '>':
+                if cible == "<@" + str(log_data[player]["id"]) + ">":
                     name = player
-                    if 'avatar' in log_data[player]:
-                        avatar = log_data[player]['avatar']
+                    if "avatar" in log_data[player]:
+                        avatar = log_data[player]["avatar"]
                     else:
                         avatar = None
 
-                    if 'global_name' in log_data[player]:
-                        global_name = log_data[player]['global_name']
+                    if "global_name" in log_data[player]:
+                        global_name = log_data[player]["global_name"]
                     else:
                         global_name = None
 
-        embed = me_action(name, avatar, global_name, 'bag')
+        embed = bag_action(name, avatar, global_name)
         await message.channel.send(embed=embed)
-        updated = True
+    
+    if message.content.startswith("!drop"):
+        name = message.author.name
+        avatar = message.author.avatar
+        global_name = message.author.global_name
+        command_and_argument = message.content.split(maxsplit=1)
+        if len(command_and_argument) == 2:
+            command, cible = command_and_argument
+            for player in log_data:
+                if cible == "<@" + str(log_data[player]["id"]) + ">":
+                    name = player
+                    if "avatar" in log_data[player]:
+                        avatar = log_data[player]["avatar"]
+                    else:
+                        avatar = None
+
+                    if "global_name" in log_data[player]:
+                        global_name = log_data[player]["global_name"]
+                    else:
+                        global_name = None
+
+        embed = drop_action(name, avatar, global_name)
+        await message.channel.send(embed=embed)
 
     if message.content.startswith("!purchase"):
         command_and_argument = message.content.split(maxsplit=2)
@@ -1408,8 +1501,8 @@ async def on_message(message):
             embed = purchase_action(message.author.name, message.author.avatar, message.author.global_name, item, quantity)
             updated = True
         else:
-            title = 'Achat'
-            tabFields = {'Faites !purchase nom_item optionnel_quantité' : ''}
+            title = "Achat"
+            tabFields = {"Faites !purchase nom_item optionnel_quantité" : ""}
             color = discord.Color.red()
             embed = create_embed(title=title, color=color, author_name=message.author.global_name, author_icon=message.author.avatar, tabFields=tabFields)
 
@@ -1459,7 +1552,7 @@ async def on_message(message):
                     color = discord.Color.green()
                     embed = create_embed(title=title, description=description, color=color)
                 else:
-                    title = 'Erreur dans la commande'
+                    title = "Erreur dans la commande"
                     description = "Vérifiez l'orthographe de la classe (pas de classe exaltée ici), majuscule ou accent par exemple"
                     color = discord.Color.red()
                     embed = create_embed(title=title, color=color, description=description)
@@ -1485,7 +1578,7 @@ async def cd_command(interaction: discord.Interaction, cible: str = None):
 
     if cible:
         for player in log_data:
-            if cible == f'<@{log_data[player]["id"]}>':
+            if cible == f"<@{log_data[player]["id"]}>":
                 name = player
                 avatar = log_data[player].get("avatar", None)
                 global_name = log_data[player].get("global_name", None)
@@ -1779,96 +1872,108 @@ async def brocante_command(interaction: discord.Interaction):
 @tree.command(name="sell", description="Vente d'items entre joueurs.")
 @app_commands.describe(item="Choisissez un item à mettre en vente", prix="Fixez un prix unitaire", quantité="Choisissez une quantité à mettre en vente")
 async def sell_command(interaction: discord.Interaction, item: str, prix: int, quantité: int = 1):
-    
-    if item == None:
-        await interaction.response.send_message("Vous n'avez pas d'items vendables.", ephemeral=True)
+    if item not in items:
+        await interaction.response.send_message("Cet item n'existe pas.", ephemeral=True)
         return
-    
-    my_items = []
 
-    for bag_item in log_data[interaction.user.name]["bag"]:
-        if not "unique" in items[bag_item] and bag_item != "PointXP" :
-            my_items.append(bag_item)
-    
-    if item not in my_items:
-        await interaction.response.send_message("Vous ne pouvez pas vendre cet item.", ephemeral=True)
+    details = items[item]
+    storage = details["storage"]
+
+    # Vérification si l'item est vendable et si le joueur le possède
+    if not details.get("sellable", False):  
+        await interaction.response.send_message(f"Vous ne pouvez pas vendre **{item}**, ce n'est pas un objet vendable.", ephemeral=True)
         return
     
-    if prix < 0 :
+    user_inventory = log_data[interaction.user.name].get(storage, {})
+
+    if item not in user_inventory:
+        await interaction.response.send_message(f"Vous ne possédez pas de **{item}**.", ephemeral=True)
+        return
+
+    if prix < 0:
         await interaction.response.send_message("Le prix ne peut être négatif.", ephemeral=True)
         return
-    
-    if quantité <= 0 :
+
+    if quantité <= 0:
         await interaction.response.send_message("La quantité doit être d'au moins 1.", ephemeral=True)
         return
     
-    if quantité > log_data[interaction.user.name]["bag"][item]["quantity"]:
-        await interaction.response.send_message("Vous n'avez pas autant d'exemplaires.", ephemeral=True)
-        return
-    else:
-        log_data[interaction.user.name]["bag"][item]["quantity"] -= quantité
-        
-        if log_data[interaction.user.name]["bag"][item]["quantity"] == 0:
-            del log_data[interaction.user.name]['bag'][item]
-        
-        if "stats" in items[item]:
-            if "pv" in items[item]["stats"]:
-                log_data[interaction.user.name]["stats"]["pv"] -= items[item]["stats"]["pv"] * quantité
-                
-            if "for" in items[item]["stats"]:
-                log_data[interaction.user.name]["stats"]["for"] -= items[item]["stats"]["for"] * quantité
-                
-            if "def" in items[item]["stats"]:
-                log_data[interaction.user.name]["stats"]["def"] -= items[item]["stats"]["def"] * quantité
-        
-        existing = None
-        
-        for sale in brocante:
-            if brocante[sale]["seller_id"] == interaction.user.id and brocante[sale]["item"] == item and brocante[sale]["price"] == prix:
-                existing = sale 
-        
-        if existing:
-            brocante[existing]["quantity"] += quantité
-        else:
-            brocante["Vente " + str(len(brocante) + 1)] = {"seller_id": interaction.user.id, "seller_name": interaction.user.name, "item": item, "price": prix, "quantity": quantité}
+    item_quantity = user_inventory.get(item, {}).get("quantity", 0)
     
-    with open("log.json", "w") as file:
-            json.dump(log_data, file, indent=4)
-            
-    with open("brocante.json", "w") as file:
-            json.dump(brocante, file, indent=4)
+    if quantité > item_quantity:
+        await interaction.response.send_message(f"Vous n'avez pas assez de **{item}** ({item_quantity} en stock).", ephemeral=True)
+        return
+
+    # Mise à jour de l'inventaire après la vente
+    user_inventory[item]["quantity"] -= quantité
+
+    if user_inventory[item]["quantity"] == 0:
+        del user_inventory[item]
+
+    # Mise à jour des statistiques (pv, for, def) si présentes
+    stats = log_data[interaction.user.name].get("stats", {})
+    for stat in ["pv", "for", "def"]:
+        if stat in details.get("stats", {}):
+            stats[stat] = stats.get(stat, 0) - details["stats"][stat] * quantité
+
+    # Trouver une vente existante correspondant au même vendeur, même item et même prix
+    existing_sale = next(
+        (sale for sale in brocante if brocante[sale]["seller_id"] == interaction.user.id 
+        and brocante[sale]["item"] == item 
+        and brocante[sale]["price"] == prix),
+        None
+    )
+
+    if existing_sale:
+        brocante[existing_sale]["quantity"] += quantité
+    else:
+        sale_id = f"Vente {len(brocante) + 1}"
+        brocante[sale_id] = {
+            "seller_id": interaction.user.id,
+            "seller_name": interaction.user.name,
+            "item": item,
+            "price": prix,
+            "quantity": quantité
+        }
+    
+    save_json("log.json", log_data)
+    save_json("brocante.json", brocante)
 
     title = "Mise en vente"
-    description = f"**Item • **{items[item]["icon"]} {item}\n **Quantité • **{quantité}\n **Prix unitaire • **{prix} :coin:"
+    description = f"**Item • **{details["icon"]} {item}\n **Quantité • **{quantité}\n **Prix unitaire • **{prix} :coin:"
     footer = "Faites /brocante pour voir les items en vente."
-    
+
     embed = create_embed(title=title, color=discord.Color.blue(), author_name=interaction.user.global_name, author_icon=interaction.user.avatar, description=description, footer=footer)
 
     await interaction.response.send_message(embed=embed)
 
 @sell_command.autocomplete("item")
 async def item_autocomplete(interaction: discord.Interaction, current: str):
-    my_items = []
+    user_data = log_data.get(interaction.user.name, {})
+    storages = ["rune", "bag", "drop"]  # Liste des stockages à vérifier
+    
+    # Liste des items vendables
+    sellable_items = {item for item, details in items.items() if details.get("sellable", False)}
 
-    for item in log_data[interaction.user.name]["bag"]:
-        if not "unique" in items[item] and item != "PointXP" :
-            my_items.append(item)
-    
+    # Vérifier quels items vendables sont possédés par l'utilisateur
+    owned_sellable_items = set()
+
+    for storage in storages:
+        user_inventory = user_data.get(storage, {})
+        for item in user_inventory:
+            if item in sellable_items:
+                owned_sellable_items.add(item)
+
     suggestions = [
-        app_commands.Choice(name=item, value=item) 
-        for item in my_items if current.lower() in item.lower()
+        app_commands.Choice(name=item, value=item)
+        for item in owned_sellable_items if current.lower() in item.lower()
     ][:25]
-    
+
     return suggestions
 
 @tree.command(name="buy", description="Achat d'items entre joueurs.")
 @app_commands.describe(vente="Choisissez une vente", quantité="Choisissez une quantité d'items à acheter")
 async def buy_command(interaction: discord.Interaction, vente: str, quantité: int = 1):
-    
-    if vente == None:
-        await interaction.response.send_message("Il n'y a pas d'item en vente.", ephemeral=True)
-        return
-    
     if vente not in brocante:
         await interaction.response.send_message("Cette vente n'est pas dans la brocante.", ephemeral=True)
         return
@@ -1880,59 +1985,53 @@ async def buy_command(interaction: discord.Interaction, vente: str, quantité: i
     if quantité > brocante[vente]["quantity"]:
         await interaction.response.send_message("Il n'a pas autant d'exemplaires en vente.", ephemeral=True)
         return
-    else:
-        item = brocante[vente]["item"]
-        price = brocante[vente]["price"] * quantité
-        seller_name = brocante[vente]["seller_name"]
-        seller_id = brocante[vente]["seller_id"]
-        
-        if log_data[interaction.user.name]["gold"] >= price:
-            log_data[interaction.user.name]["gold"] -= price
-            log_data[seller_name]["gold"] += price
-            brocante[vente]["quantity"] -= quantité
-            
-            if brocante[vente]["quantity"] == 0:
-                keys_list = list(brocante.keys())
-                index_vente = keys_list.index(vente)
-                
-                for i in range(index_vente, len(keys_list) - 1):
-                    brocante[keys_list[i]] = brocante[keys_list[i + 1]]
 
-                del brocante[keys_list[-1]] 
-            
-            if item in log_data[interaction.user.name]["bag"]:
-                log_data[interaction.user.name]["bag"][item]["quantity"] += quantité
-            else:
-                log_data[interaction.user.name]["bag"][item] = {'quantity': quantité, 'icon': items[item]['icon']}
-        
-        
-            if "stats" in items[item]:
-                if "pv" in items[item]["stats"]:
-                    log_data[interaction.user.name]["stats"]["pv"] += items[item]["stats"]["pv"] * quantité
-                    
-                if "for" in items[item]["stats"]:
-                    log_data[interaction.user.name]["stats"]["for"] += items[item]["stats"]["for"] * quantité
-                    
-                if "def" in items[item]["stats"]:
-                    log_data[interaction.user.name]["stats"]["def"] += items[item]["stats"]["def"] * quantité
-        
-        else:
-            await interaction.response.send_message("Vous n'avez pas assez de gold.", ephemeral=True)
-            return
-
-    with open("log.json", "w") as file:
-            json.dump(log_data, file, indent=4)
-            
-    with open("brocante.json", "w") as file:
-            json.dump(brocante, file, indent=4)
-
-    title = "Achat"
-    description = f"<@{log_data[interaction.user.name]["id"]}> vient d'acheter {quantité} {items[item]['icon']} {item} à <@{seller_id}> pour {price} :coin:"
-    footer = "Faites /brocante pour voir les items en vente."
+    item = brocante[vente]["item"]
+    price = brocante[vente]["price"] * quantité
+    seller_name = brocante[vente]["seller_name"]
+    seller_id = brocante[vente]["seller_id"]
     
-    embed = create_embed(title=title, color=discord.Color.green(), author_name=interaction.user.global_name, author_icon=interaction.user.avatar, description=description, footer=footer)
+    if log_data.get(interaction.user.name, {}).get("gold", 0) >= price:
+        log_data[interaction.user.name]["gold"] -= price
+        log_data[seller_name]["gold"] += price
+        brocante[vente]["quantity"] -= quantité
+        
+        if brocante[vente]["quantity"] == 0:
+            keys_list = list(brocante.keys())
+            index_vente = keys_list.index(vente)
+            
+            for i in range(index_vente, len(keys_list) - 1):
+                brocante[keys_list[i]] = brocante[keys_list[i + 1]]
 
-    await interaction.response.send_message(embed=embed)
+            del brocante[keys_list[-1]] 
+        
+        details = items[item]
+        storage = details["storage"]
+        
+        if item in log_data[interaction.user.name].get(storage, {}):
+            log_data[interaction.user.name][storage][item]["quantity"] += quantité
+        else:
+            log_data[interaction.user.name][storage][item] = {"quantity": quantité, "icon": details["icon"]}
+
+        # Mise à jour des statistiques (pv, for, def) si présentes
+        stats = log_data[interaction.user.name].get("stats", {})
+        for stat in ["pv", "for", "def"]:
+            if stat in details.get("stats", {}):
+                stats[stat] = stats.get(stat, 0) + details["stats"][stat] * quantité
+                        
+        save_json("log.json", log_data)
+        save_json("brocante.json", brocante)
+
+        title = "Achat"
+        description = f"<@{log_data[interaction.user.name]["id"]}> vient d'acheter {quantité} {details["icon"]} {item} à <@{seller_id}> pour {price} :coin:"
+        footer = "Faites /brocante pour voir les items en vente."
+
+        embed = create_embed(title=title, color=discord.Color.green(), author_name=interaction.user.global_name, author_icon=interaction.user.avatar, description=description, footer=footer)
+
+        await interaction.response.send_message(embed=embed)
+    else:
+        await interaction.response.send_message("Vous n'avez pas assez de gold.", ephemeral=True)
+        return
 
 @buy_command.autocomplete("vente")
 async def vente_autocomplete(interaction: discord.Interaction, current: str):
@@ -1951,103 +2050,68 @@ async def vente_autocomplete(interaction: discord.Interaction, current: str):
 @tree.command(name="potion", description="Concoction de potions.")
 @app_commands.describe(potion="Choisissez un type de potion à concocter", ingrédient_1="Premier ingrédient", ingrédient_2="Deuxième ingrédient", ingrédient_3="Troisième ingrédient")
 async def potion_command(interaction: discord.Interaction, potion: str, ingrédient_1: str, ingrédient_2: str, ingrédient_3: str):
-    
-    if potion == None:
-        await interaction.response.send_message("Il faut choissir une recette de potion.", ephemeral=True)
-        return
-    
-    existing = False
-    
-    for potion_list in potions:
-        if potion == potions[potion_list]["name"]:
-            existing = True
-    
-    if existing == False:
+    # Vérifier si la potion existe
+    if potion not in potions:
         await interaction.response.send_message("Cette potion n'existe pas, vérifiez son appellation.", ephemeral=True)
         return
     
-    if ingrédient_1 == None or ingrédient_2 == None or ingrédient_3 == None:
+    # Vérifier que les 3 ingrédients sont fournis
+    if not ingrédient_1 or not ingrédient_2 or not ingrédient_3:
         await interaction.response.send_message("Il vous faut 3 ingrédients.", ephemeral=True)
         return
     
-    my_ingredients = []
-
-    for bag_item in log_data[interaction.user.name]["bag"]:
-        if "drop_grad" in items[bag_item] and items[bag_item]["drop_grad"] == 1 :
-            my_ingredients.append(bag_item)
+    my_ingredients = {item for item in log_data[interaction.user.name]["drop"] if "drop_grad" in items[item] and items[item]["drop_grad"] == 1}
     
     if ingrédient_1 not in my_ingredients or ingrédient_2 not in my_ingredients or ingrédient_3 not in my_ingredients:
         await interaction.response.send_message("Vous ne pouvez pas faire cette potion avec ces ingrédients.", ephemeral=True)
         return
     
-    nbr_ingrédient_1 = 1
-    nbr_ingrédient_2 = 1
-    nbr_ingrédient_3 = 1
+    # Calculer les quantités des ingrédients nécessaires
+    ingredient_quantities = {ingrédient_1: 1, ingrédient_2: 1, ingrédient_3: 1}
     
     if ingrédient_1 == ingrédient_2 == ingrédient_3:
-        nbr_ingrédient_1 = 3
-        nbr_ingrédient_2 = 3
-        nbr_ingrédient_3 = 3
-    else:
-        if ingrédient_1 == ingrédient_2:
-            nbr_ingrédient_1 = 2
-            nbr_ingrédient_2 = 2
-            nbr_ingrédient_3 = 1
-        else:
-            if ingrédient_1 == ingrédient_3:
-                nbr_ingrédient_1 = 2
-                nbr_ingrédient_2 = 1
-                nbr_ingrédient_3 = 2
-            else:
-                if ingrédient_2 == ingrédient_3:
-                    nbr_ingrédient_1 = 1
-                    nbr_ingrédient_2 = 2
-                    nbr_ingrédient_3 = 2
+        ingredient_quantities = {ingrédient_1: 3}
+    elif ingrédient_1 == ingrédient_2:
+        ingredient_quantities = {ingrédient_1: 2, ingrédient_3: 1}
+    elif ingrédient_1 == ingrédient_3:
+        ingredient_quantities = {ingrédient_1: 2, ingrédient_2: 1}
+    elif ingrédient_2 == ingrédient_3:
+        ingredient_quantities = {ingrédient_1: 1, ingrédient_2: 2}
+
+    # Vérifier que l'utilisateur a assez d'exemplaires de chaque ingrédient
+    for ingredient, quantity in ingredient_quantities.items():
+        if log_data[interaction.user.name]["drop"][ingredient]["quantity"] < quantity:
+            await interaction.response.send_message(f"Vous n'avez pas assez de {ingredient}.", ephemeral=True)
+            return
+
+    # Réduire les quantités des ingrédients dans le sac
+    for ingredient, quantity in ingredient_quantities.items():
+        log_data[interaction.user.name]["drop"][ingredient]["quantity"] -= quantity
+        if log_data[interaction.user.name]["drop"][ingredient]["quantity"] == 0:
+            del log_data[interaction.user.name]["drop"][ingredient]
+        
+    nbr_potion = 1
+    msg_bonus = ""
+
+    if "classe" in log_data[interaction.user.name] and log_data[interaction.user.name]["classe"].get("name") == "Alchimiste":
+        bonus = random.randint(0, 2)
+        
+        if bonus == 1:
+            msg_bonus = "Confection chirurgicale • "
+        elif bonus == 2:
+            msg_bonus = "Confection parfaite • "
+        
+        nbr_potion += bonus
     
-    if log_data[interaction.user.name]["bag"][ingrédient_1]["quantity"] - nbr_ingrédient_1 < 0 or log_data[interaction.user.name]["bag"][ingrédient_2]["quantity"] - nbr_ingrédient_2 < 0 or log_data[interaction.user.name]["bag"][ingrédient_3]["quantity"] - nbr_ingrédient_3 < 0:
-        await interaction.response.send_message("Vous n'avez pas assez d'exemplaire de ces ingrédients.", ephemeral=True)
-        return
+    if potion in log_data[interaction.user.name]["bag"]:
+        log_data[interaction.user.name]["bag"][potion]["quantity"] += nbr_potion
     else:
-        log_data[interaction.user.name]["bag"][ingrédient_1]["quantity"] -= 1
-        
-        if log_data[interaction.user.name]["bag"][ingrédient_1]["quantity"] == 0:
-            del log_data[interaction.user.name]["bag"][ingrédient_1]
-        
-        log_data[interaction.user.name]["bag"][ingrédient_2]["quantity"] -= 1
-        
-        if log_data[interaction.user.name]["bag"][ingrédient_2]["quantity"] == 0:
-            del log_data[interaction.user.name]["bag"][ingrédient_2]
-            
-        log_data[interaction.user.name]["bag"][ingrédient_3]["quantity"] -= 1
-        
-        if log_data[interaction.user.name]["bag"][ingrédient_3]["quantity"] == 0:
-            del log_data[interaction.user.name]["bag"][ingrédient_3]
-        
-        nbr_potion = 1
-        msg_bonus = ""
-        
-        if "classe" in log_data[interaction.user.name] and "name" in log_data[interaction.user.name]["classe"] and log_data[interaction.user.name]["classe"]["name"] == "Alchimiste":
-            bonus = random.randint(0, 2)
-            
-            if bonus == 1:
-                msg_bonus = "Confection chirurgicale • "
-            else:
-                if bonus == 2:
-                    msg_bonus = "Confection parfaite • "
-            
-            nbr_potion += bonus
-        
-        
-        if potion in log_data[interaction.user.name]['bag']:
-                log_data[interaction.user.name]['bag'][potion]["quantity"] += nbr_potion
-        else:
-            log_data[interaction.user.name]['bag'][potion] = {"quantity": nbr_potion, "icon": ":test_tube:"}
+        log_data[interaction.user.name]["bag"][potion] = {"quantity": nbr_potion, "icon": ":test_tube:"}
 
-        if "classe" in log_data[interaction.user.name] and "name" in log_data[interaction.user.name]["classe"] and log_data[interaction.user.name]["classe"]["name"] == "Alchimiste" and log_data[interaction.user.name]["classe"]["progression 1"] != "completed":
-            log_data[interaction.user.name]["classe"]["progression 1"] += nbr_potion
+    if log_data[interaction.user.name]["classe"].get("name") == "Alchimiste" and log_data[interaction.user.name]["classe"].get("progression 1") != "completed":
+        log_data[interaction.user.name]["classe"]["progression 1"] += nbr_potion
 
-    with open("log.json", "w") as file:
-            json.dump(log_data, file, indent=4)
+    save_json("log.json", log_data)
 
     title = msg_bonus + "Création de " + str(nbr_potion) + " :test_tube: " + potion
     description = potions[potion]["description"]
@@ -2071,65 +2135,37 @@ async def potion_autocomplete(interaction: discord.Interaction, current: str):
 
     return suggestions
 
-@potion_command.autocomplete("ingrédient_1")
-async def ingrédient_1_autocomplete(interaction: discord.Interaction, current: str):
-    my_ingredients = []
-            
-    for bag_item in log_data[interaction.user.name]["bag"]:
-        if "drop_grad" in items[bag_item] and items[bag_item]["drop_grad"] == 1 :
-            my_ingredients.append(bag_item)
+async def ingredient_autocomplete(interaction: discord.Interaction, current: str):
+    """Fonction générique pour l'autocomplétion des ingrédients."""
+    my_ingredients = [
+        drop for drop in log_data[interaction.user.name]["drop"]
+        if "drop_grad" in items[drop] and items[drop]["drop_grad"] == 1
+    ]
     
+    # Recherche les suggestions
     suggestions = [
-        app_commands.Choice(name=ingredient, value=ingredient) 
+        app_commands.Choice(name=ingredient, value=ingredient)
         for ingredient in my_ingredients if current.lower() in ingredient.lower()
     ][:25]
-
+    
     return suggestions
+
+@potion_command.autocomplete("ingrédient_1")
+async def ingrédient_1_autocomplete(interaction: discord.Interaction, current: str):
+    return await ingredient_autocomplete(interaction, current)
 
 @potion_command.autocomplete("ingrédient_2")
 async def ingrédient_2_autocomplete(interaction: discord.Interaction, current: str):
-    my_ingredients = []
-            
-    for bag_item in log_data[interaction.user.name]["bag"]:
-        if "drop_grad" in items[bag_item] and items[bag_item]["drop_grad"] == 1 :
-            my_ingredients.append(bag_item)
-    
-    suggestions = [
-        app_commands.Choice(name=ingredient, value=ingredient) 
-        for ingredient in my_ingredients if current.lower() in ingredient.lower()
-    ][:25]
-
-    return suggestions
+    return await ingredient_autocomplete(interaction, current)
 
 @potion_command.autocomplete("ingrédient_3")
 async def ingrédient_3_autocomplete(interaction: discord.Interaction, current: str):
-    my_ingredients = []
-            
-    for bag_item in log_data[interaction.user.name]["bag"]:
-        if "drop_grad" in items[bag_item] and items[bag_item]["drop_grad"] == 1 :
-            my_ingredients.append(bag_item)
-    
-    suggestions = [
-        app_commands.Choice(name=ingredient, value=ingredient) 
-        for ingredient in my_ingredients if current.lower() in ingredient.lower()
-    ][:25]
-
-    return suggestions
+    return await ingredient_autocomplete(interaction, current)
 
 @tree.command(name="splash", description="Utilisation de potions.")
 @app_commands.describe(potion="Choisissez un type de potion à utiliser", quantité="Premier ingrédient")
-async def splash_command(interaction: discord.Interaction, potion: str, quantité: int = 1):
-    
-    if potion == None:
-        await interaction.response.send_message("Il faut choissir une potion.", ephemeral=True)
-        return
-    
-    existing_potions = []
-    
-    for potion_name in potions:
-        existing_potions.append(potions[potion_name]["name"])
-    
-    if potion not in existing_potions:
+async def splash_command(interaction: discord.Interaction, potion: str, quantité: int = 1):    
+    if potion not in potions:
         await interaction.response.send_message("Cette potion n'existe pas, vérifiez son appellation.", ephemeral=True)
         return
     
@@ -2141,7 +2177,7 @@ async def splash_command(interaction: discord.Interaction, potion: str, quantit�
         await interaction.response.send_message("La quantité doit être d'au moins 1.", ephemeral=True)
         return
     
-    if log_data[interaction.user.name]["bag"][potion]["quantity"] - quantité < 0:
+    if log_data[interaction.user.name]["bag"][potion]["quantity"] < quantité:
         await interaction.response.send_message("Vous n'avez pas assez d'exemplaire de cette potion.", ephemeral=True)
         return
     else:
@@ -2201,7 +2237,7 @@ async def splash_command(interaction: discord.Interaction, potion: str, quantit�
     if time_gold > 0:
         total += f"\n+100% :coin: pendant {time_gold}h"
         now = datetime.now()
-        last_boosted_time = datetime.strptime(log_data[interaction.user.name]['gold_boosted'], "%Y-%m-%d %H:%M:%S.%f")
+        last_boosted_time = datetime.strptime(log_data[interaction.user.name]["gold_boosted"], "%Y-%m-%d %H:%M:%S.%f")
         
         if last_boosted_time > now:
             choice_date = last_boosted_time
@@ -2210,7 +2246,6 @@ async def splash_command(interaction: discord.Interaction, potion: str, quantit�
             
         boost_duration = choice_date + timedelta(hours=time_gold)
         log_data[interaction.user.name]["gold_boosted"] = str(boost_duration)
-        
     
     if total_gold < 0:
         total += f"\n{total_gold} :coin:"
@@ -2227,19 +2262,15 @@ async def splash_command(interaction: discord.Interaction, potion: str, quantit�
     if total_def != 0:
         total += f"\n{total_def} :shield:"
         log_data[interaction.user.name]["stats"]["def"] += total_def
-        
     
-    
-
-    with open("log.json", "w") as file:
-            json.dump(log_data, file, indent=4)
+    save_json("log.json", log_data)
 
     title = "Utilisation de " + str(quantité) + " :test_tube: " + potion
     
-    if total == "":
-        description = "Résultat : \n" + potion_effects
-    else:
-        description = "Résultat : \n" + potion_effects + "\nTotal :" + total
+    description = f"Résultat : \n{potion_effects}"
+
+    if total:
+        description += f"\nTotal : {total}"
     
     embed = create_embed(title=title, color=discord.Color.blue(), author_name=interaction.user.global_name, author_icon=interaction.user.avatar, description=description)
 
@@ -2247,15 +2278,10 @@ async def splash_command(interaction: discord.Interaction, potion: str, quantit�
 
 @splash_command.autocomplete("potion")
 async def mes_potions_autocomplete(interaction: discord.Interaction, current: str):
-    existing_potions = []
-
-    for potion in potions:
-        existing_potions.append(potions[potion]["name"])
-    
     mes_potions = []
     
     for item in log_data[interaction.user.name]["bag"]:
-        if item in existing_potions:
+        if item in potions:
             mes_potions.append(item)
     
     suggestions = [
@@ -2327,8 +2353,8 @@ async def time_command(author_name, channel, command, cooldown):
     check, waiting_time = check_time(author_name, command, cooldown)
 
     if check:
-        if command == '!daily':
-            log_data[author_name]['last_daily'] = log_data[author_name][command]
+        if command == "!daily":
+            log_data[author_name]["last_daily"] = log_data[author_name][command]
 
         log_data[author_name][command] = str(datetime.now())
 
@@ -2339,41 +2365,45 @@ async def time_command(author_name, channel, command, cooldown):
 
 def info_action():
     tabFields = {
-        '!gold :' : 'Pour voir combien de gold vous avez.',
-        '!profil :' : 'Pour voir vos stats.',
-        '!daily :' : 'Pour récupérer des golds toutes les 24h, ne perdez pas votre série.',
-        '!compter :' : 'Pour les tenants du record dans #compter.',
-        '!explore :' : 'Explorez les profondeurs pour des golds toutes les heures.',
-        '!train :' : 'Pour un entraînement digne des plus grand, gagnez de l\'xp toutes les 3h.',
-        '!cd ou /cd :' : 'Pour voir vos cooldown.',
-        '!market ou /market :' : 'Pour acheter de quoi devenir plus fort.',
-        '!craft :' : 'Pour crafter des items.',
-        '!materiaux :' : 'Pour voir les stats des matériaux.',
-        '!top-[rank/gold/eveil/level/pv/for/def] :' : 'Pour voir un classement en particulier.',
-        '!fight :' : 'Pour se disputer le haut du classement !top-rank.',
-        '!bag :' : 'Pour voir ce que vous avez dans votre sac.',
-        '!purchase :' : 'Pour acheter un item au market.',
-        '!notif :' : "Pour rejoindre la liste des chads notifiés lors d'une demande d'aide",
-        '!send :' : "Pour envoyer de l'argent",
-        '!eveil :' : 'Brisez vos limites !',
-        '!sw :' : 'Tenter votre chance à la Sakura Wheel !',
-        '!classe :' : '[En travaux] :construction:',
-        '/boost :' : 'Commande liée à vos bonus. :new:',
-        '/sell item prix quantité :' : 'Mettre en vente vos items à la brocante.',
-        '/buy vente quantité :' : 'Achetez des items à la brocante.',
-        '/brocante :' : 'Pour voir la brocante.',
-        '!select nom de la classe :' : 'Pour choisir votre classe.',
-        '/potion' : 'Pour concoter vos meilleures et pires idées. :new:',
-        '/splash' : 'Pour utiliser vos potions. :new:',
+        "!gold :" : "Pour voir combien de gold vous avez.",
+        "!profil :" : "Pour voir vos stats.",
+        "!daily :" : "Pour récupérer des golds toutes les 24h, ne perdez pas votre série.",
+        "!compter :" : "Pour les tenants du record dans #compter.",
+        "!explore :" : "Explorez les profondeurs pour des golds toutes les heures.",
+        "!train :" : "Pour un entraînement digne des plus grand, gagnez de l'xp toutes les 3h.",
+        "!cd ou /cd :" : "Pour voir vos cooldown.",
+        "!market ou /market :" : "Pour acheter de quoi devenir plus fort.",
+        "!craft :" : "Pour crafter des items.",
+        "!materiaux :" : "Pour voir les stats des matériaux.",
+        "!top-[rank/gold/eveil/level/pv/for/def] :" : "Pour voir un classement en particulier.",
+        "!fight :" : "Pour se disputer le haut du classement !top-rank.",
+        "!skill :" : "Pour voir votre arbre de compétences. :construction:",
+        "!equipment :" : "Pour voir votre équipement. :new:",
+        "!rune :" : "Pour voir l'ensemble de vos rune. :new:",
+        "!bag :" : "Pour voir ce que vous avez dans votre sac.",
+        "!drop :" : "Pour voir vos drops de monstres. :new:",
+        "!purchase :" : "Pour acheter un item au market.",
+        "!notif :" : "Pour rejoindre la liste des chads notifiés lors d'une demande d'aide",
+        "!send :" : "Pour envoyer de l'argent",
+        "!eveil :" : "Brisez vos limites !",
+        "!sw :" : "Tenter votre chance à la Sakura Wheel !",
+        "!classe :" : "[En travaux] :construction:",
+        "/boost :" : "Commande liée à vos bonus. :new:",
+        "/sell item prix quantité :" : "Mettre en vente vos items à la brocante.",
+        "/buy vente quantité :" : "Achetez des items à la brocante.",
+        "/brocante :" : "Pour voir la brocante.",
+        "!select nom de la classe :" : "Pour choisir votre classe.",
+        "/potion" : "Pour concoter vos meilleures et pires idées. :new:",
+        "/splash" : "Pour utiliser vos potions. :new:",
     }
     color = discord.Color.blue()
-    title = 'Informations'
+    title = "Informations"
     return create_embed(title=title, color=color, tabFields=tabFields)
 
 def cd_action(author_name, author_icon, global_name):
-    daily_check, daily_waiting_time = check_time(author_name, '!daily', 24)
-    train_check, train_waiting_time = check_time(author_name, '!train', 3)
-    explore_check, explore_waiting_time = check_time(author_name, '!explore', 1)
+    daily_check, daily_waiting_time = check_time(author_name, "!daily", 24)
+    train_check, train_waiting_time = check_time(author_name, "!train", 3)
+    explore_check, explore_waiting_time = check_time(author_name, "!explore", 1)
 
     if daily_check:
         daily_waiting_time = ":white_check_mark: Vous pouvez faire la commande dès à présent !"
@@ -2390,8 +2420,8 @@ def cd_action(author_name, author_icon, global_name):
     else:
         train_waiting_time = ":x: " + train_waiting_time
 
-    if '!compter' in log_data[author_name]:
-        compter_check,compter_waiting_time = check_time(author_name, '!compter', 24)
+    if "!compter" in log_data[author_name]:
+        compter_check,compter_waiting_time = check_time(author_name, "!compter", 24)
 
         if compter_check:
             compter_waiting_time = ":white_check_mark: Vous pouvez faire la commande dès à présent !"
@@ -2399,43 +2429,43 @@ def cd_action(author_name, author_icon, global_name):
             compter_waiting_time = ":x: " + compter_waiting_time
 
         tabFields = {
-            '!daily :' : daily_waiting_time,
-            '!compter :' : compter_waiting_time,
-            '!train :' : train_waiting_time,
-            '!explore :' : explore_waiting_time
+            "!daily :" : daily_waiting_time,
+            "!compter :" : compter_waiting_time,
+            "!train :" : train_waiting_time,
+            "!explore :" : explore_waiting_time
         }
     else:
         tabFields = {
-            '!daily :' : daily_waiting_time,
-            '!train :' : train_waiting_time,
-            '!explore :' : explore_waiting_time
+            "!daily :" : daily_waiting_time,
+            "!train :" : train_waiting_time,
+            "!explore :" : explore_waiting_time
         }
 
     color = discord.Color.blue()
-    title = 'Cooldown'
+    title = "Cooldown"
     embed = create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, tabFields=tabFields)
     return embed
 
 def eveil_action(author_name, author_icon, global_name):
     view = None
-    player_rank = log_data[author_name]['rank']
-    rank = ['Pas d\'éveil', ':regional_indicator_f:', ':regional_indicator_e:', ':regional_indicator_d:', ':regional_indicator_c:', ':regional_indicator_b:', ':regional_indicator_a:', ':regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s: :regional_indicator_s:', ':regional_indicator_z:', ':regional_indicator_z: :regional_indicator_z:', ':regional_indicator_z: :regional_indicator_z: :regional_indicator_z:']
+    player_rank = log_data[author_name]["rank"]
+    rank = ["Pas d'éveil", ":regional_indicator_f:", ":regional_indicator_e:", ":regional_indicator_d:", ":regional_indicator_c:", ":regional_indicator_b:", ":regional_indicator_a:", ":regional_indicator_s:", ":regional_indicator_s: :regional_indicator_s:", ":regional_indicator_s: :regional_indicator_s: :regional_indicator_s:", ":regional_indicator_z:", ":regional_indicator_z: :regional_indicator_z:", ":regional_indicator_z: :regional_indicator_z: :regional_indicator_z:"]
     current_rank = rank[player_rank]
     next_rank = rank[player_rank + 1]
 
     res, owned, nbr_gem, gem_type = gems_required(author_name, player_rank + 1)
 
     tabFields = {
-        'Rang d\'éveil' : current_rank + ' :arrow_right: ' + next_rank,
-        'Gemmes d\'éveil : ' : res,
+        "Rang d'éveil" : current_rank + " :arrow_right: " + next_rank,
+        "Gemmes d'éveil : " : res,
     }
 
     if owned:
-        title = 'Éveil'
+        title = "Éveil"
         color = discord.Color.blue()
         view = EveilView(timeout=6, nbr_gem=nbr_gem, gem_type=gem_type, author_name=author_name)
     else:
-        title = 'Gemmes d\'éveil manquantes'
+        title = "Gemmes d'éveil manquantes"
         color = discord.Color.red()
 
     embed = create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, tabFields=tabFields)
@@ -2445,7 +2475,7 @@ def eveil_action(author_name, author_icon, global_name):
 def boostxp_action(author_name, author_icon, global_name, quantity, self_message):
     view = None
 
-    if "BoostXP" in log_data[author_name]["bag"] and log_data[author_name]["bag"]["BoostXP"]["quantity"] - quantity >= 0:
+    if "BoostXP" in log_data[author_name]["bag"] and log_data[author_name]["bag"]["BoostXP"]["quantity"] >= quantity:
         title = "Vous avez " + str(log_data[author_name]["bag"]["BoostXP"]["quantity"]) + " BoostXP :diamond_shape_with_a_dot_inside:"
         description = f"Voulez-vous en utiliser {quantity} ? Ceci vous confèrera un bonus d'xp de +100% pendant {quantity*24}h."
         color = discord.Color.blue()
@@ -2460,8 +2490,8 @@ def boostxp_action(author_name, author_icon, global_name, quantity, self_message
     return embed, view
 
 def wheel_action(author_name, author_icon, global_name):
-    title = 'Sakura Wheel'
-    description = 'Faites tourner la roue contre un ticket :tickets: !'
+    title = "Sakura Wheel"
+    description = "Faites tourner la roue contre un ticket :tickets: !"
     color = discord.Color.blue()
     view = WheelView(timeout=6, author_name=author_name)
 
@@ -2471,17 +2501,17 @@ def wheel_action(author_name, author_icon, global_name):
 
 def craft_action(author_name, author_icon, global_name, item, quantity):
     view = None
-    description = 'Modèle du craft unitaire :'
-    image = craft[item]['craft']['image']
+    description = "Modèle du craft unitaire :"
+    image = craft[item]["craft"]["image"]
 
     owned = item_required(author_name, item, quantity)
 
     if owned:
-        title = 'Craft de ' + str(quantity) + ' ' + item + ' ' + craft[item]['icon']
+        title = "Craft de " + str(quantity) + " " + item + " " + craft[item]["icon"]
         color = discord.Color.blue()
         view = CraftView(timeout=6, item=item, quantity=quantity, author_name=author_name)
     else:
-        title = 'Vous n\'avez pas de quoi crafter ' + str(quantity) + ' ' + item + ' ' + craft[item]['icon']
+        title = "Vous n'avez pas de quoi crafter " + str(quantity) + " " + item + " " + craft[item]["icon"]
         color = discord.Color.red()
 
     embed = create_embed(title=title, color=color, image=image, author_name=global_name, author_icon=author_icon, description=description)
@@ -2489,8 +2519,10 @@ def craft_action(author_name, author_icon, global_name, item, quantity):
     return embed, view
 
 def item_required(author_name, item, quantity):
-    for item_required in craft[item]['craft']['item']:
-        if item_required not in log_data[author_name]['bag'] or craft[item]['craft']['item'][item_required] * quantity > log_data[author_name]['bag'][item_required]['quantity']:
+    for item_required in craft[item]["craft"]["item"]:
+        storage = items[item_required]["storage"]
+        
+        if item_required not in log_data[author_name][storage] or craft[item]["craft"]["item"][item_required] * quantity > log_data[author_name][storage][item_required]["quantity"]:
             return False
 
     return True
@@ -2503,29 +2535,29 @@ def gems_required(author_name, rank):
         nbr_gem = 3
 
     if gem_rank == 0:
-        gem = '<:Rare:1222193217957662760> Rare'
-        gem_type = 'Rare'
+        gem = "<:Rare:1222193217957662760> Rare"
+        gem_type = "Rare"
     else:
         if gem_rank == 1:
-            gem = '<:Epique:1222193241022136491> Epique'
-            gem_type = 'Epique'
+            gem = "<:Epique:1222193241022136491> Epique"
+            gem_type = "Epique"
         else:
             if gem_rank == 2:
-                gem = '<:Legendaire:1222193258403336222> Legendaire'
-                gem_type = 'Legendaire'
+                gem = "<:Legendaire:1222193258403336222> Legendaire"
+                gem_type = "Legendaire"
             else:
                 if gem_rank == 3:
-                    gem = ':octagonal_sign: Ultime'
-                    gem_type = 'Ultime'
+                    gem = ":octagonal_sign: Ultime"
+                    gem_type = "Ultime"
                  
 
-    if gem_type in log_data[author_name]['bag']:
-        quantity = log_data[author_name]['bag'][gem_type]['quantity']
+    if gem_type in log_data[author_name]["bag"]:
+        quantity = log_data[author_name]["bag"][gem_type]["quantity"]
     else:
         quantity = 0
 
     nbr_gem = nbr_gem * nbr_gem
-    res = str(quantity) + '/' + str(nbr_gem) + ' • ' + gem
+    res = str(quantity) + "/" + str(nbr_gem) + " • " + gem
     if quantity >= nbr_gem:
         owned = True
     else:
@@ -2535,35 +2567,35 @@ def gems_required(author_name, rank):
 
 def materiaux_action():
     tabFields = {
-        ':regional_indicator_s: Étherium :' : 'PV : 35 000 :hearts:\nFor : 50 :crossed_swords:\nDef : 350 :shield:\nPrix : 360 000 :coin:',
-        ':regional_indicator_a: Adamantium :' : 'PV : 12 000 :hearts:\nFor : 30 :crossed_swords:\nDef : 120 :shield:\nPrix : 120 000 :coin:',
-        ':regional_indicator_b: Orichalque :' : 'PV : 3 500 :hearts:\nFor : 20 :crossed_swords:\nDef : 35 :shield:\nPrix : 40 000 :coin:',
-        ':regional_indicator_c: Mithril :' : 'PV : 1 000 :hearts:\nFor : 4 :crossed_swords:\nDef : 16 :shield:\nPrix : 13 000 :coin:',
-        ':regional_indicator_d: Argent :' : 'PV : 300 :hearts:\nFor : 2 :crossed_swords:\nDef : 4 :shield:\nPrix : 4 500 :coin:',
-        ':regional_indicator_e: Fer :' : 'PV : 200 :hearts:\nFor : 1 :crossed_swords:\nDef : 3 :shield:\nPrix : 1 500 :coin:',
-        ':regional_indicator_f: Cuir :' : 'PV : 100 :hearts:\nDef : 2 :shield:\nPrix : 500 :coin:',
+        ":regional_indicator_s: Étherium :" : "PV : 35 000 :hearts:\nFor : 50 :crossed_swords:\nDef : 350 :shield:\nPrix : 360 000 :coin:",
+        ":regional_indicator_a: Adamantium :" : "PV : 12 000 :hearts:\nFor : 30 :crossed_swords:\nDef : 120 :shield:\nPrix : 120 000 :coin:",
+        ":regional_indicator_b: Orichalque :" : "PV : 3 500 :hearts:\nFor : 20 :crossed_swords:\nDef : 35 :shield:\nPrix : 40 000 :coin:",
+        ":regional_indicator_c: Mithril :" : "PV : 1 000 :hearts:\nFor : 4 :crossed_swords:\nDef : 16 :shield:\nPrix : 13 000 :coin:",
+        ":regional_indicator_d: Argent :" : "PV : 300 :hearts:\nFor : 2 :crossed_swords:\nDef : 4 :shield:\nPrix : 4 500 :coin:",
+        ":regional_indicator_e: Fer :" : "PV : 200 :hearts:\nFor : 1 :crossed_swords:\nDef : 3 :shield:\nPrix : 1 500 :coin:",
+        ":regional_indicator_f: Cuir :" : "PV : 100 :hearts:\nDef : 2 :shield:\nPrix : 500 :coin:",
     }
     color = discord.Color.blue()
-    title = 'Matériaux'
+    title = "Matériaux"
     return create_embed(title=title, color=color, tabFields=tabFields)
 
 def market_action():
-    base_items = ':billed_cap: Casquette • Def+1 • 500 :coin:\n:shirt: Tshirt • Def+2 • 1000 :coin:\n:jeans: Jean • Def+2 • 1000 :coin:\n:athletic_shoe: Baskets • Def+1 • 500 :coin:\n:dagger: Dague • For+3 • 1500 :coin:'
-    material_items = ':regional_indicator_s: Étherium • 360000 :coin:\n:regional_indicator_a: Adamantium • 120000 :coin:\n:regional_indicator_b: Orichalque • 40000 :coin:\n:regional_indicator_c: Mithril • 13000 :coin:\n:regional_indicator_d: Argent • 4500 :coin:\n:regional_indicator_e: Fer • 1500 :coin:\n:regional_indicator_f: Cuir • 500 :coin:'
-    rune_items = ':fire: Feu • For+2 • 2000 :coin:\n:seedling: Plante • Def+4 • 2000 :coin:\n:droplet: Eau • PV+250 • 2000 :coin:'
-    rank_items = '<:Legendaire:1222193258403336222> Legendaire • 500000 :coin:\n<:Epique:1222193241022136491> Epique • 50000 :coin:\n<:Rare:1222193217957662760> Rare • 5000 :coin:'
-    other_items = ':tickets: Ticket • 60000 :coin:\n:diamond_shape_with_a_dot_inside: BoostXP • 50000 :coin:'
+    base_items = ":billed_cap: Casquette • Def+1 • 500 :coin:\n:shirt: Tshirt • Def+2 • 1000 :coin:\n:jeans: Jean • Def+2 • 1000 :coin:\n:athletic_shoe: Baskets • Def+1 • 500 :coin:\n:dagger: Dague • For+3 • 1500 :coin:"
+    material_items = ":regional_indicator_s: Étherium • 360000 :coin:\n:regional_indicator_a: Adamantium • 120000 :coin:\n:regional_indicator_b: Orichalque • 40000 :coin:\n:regional_indicator_c: Mithril • 13000 :coin:\n:regional_indicator_d: Argent • 4500 :coin:\n:regional_indicator_e: Fer • 1500 :coin:\n:regional_indicator_f: Cuir • 500 :coin:"
+    rune_items = ":fire: Feu • For+2 • 2000 :coin:\n:seedling: Plante • Def+4 • 2000 :coin:\n:droplet: Eau • PV+250 • 2000 :coin:"
+    rank_items = "<:Legendaire:1222193258403336222> Legendaire • 500000 :coin:\n<:Epique:1222193241022136491> Epique • 50000 :coin:\n<:Rare:1222193217957662760> Rare • 5000 :coin:"
+    other_items = ":tickets: Ticket • 60000 :coin:\n:diamond_shape_with_a_dot_inside: BoostXP • 50000 :coin:"
 
     tabFields = {
-        'Pour acheter : ' : '!purchase nom_item',
-        'Équipements de base : ' : base_items,
-        'Matériaux : ' : material_items,
-        'Runes : ' : rune_items,
-        'Gemmes d\'éveil :' : rank_items,
-        'Autres :' : other_items
+        "Pour acheter : " : "!purchase nom_item",
+        "Équipements de base : " : base_items,
+        "Matériaux : " : material_items,
+        "Runes : " : rune_items,
+        "Gemmes d'éveil :" : rank_items,
+        "Autres :" : other_items
     }
     color = discord.Color.lighter_grey()
-    title = 'Boutique'
+    title = "Boutique"
     return create_embed(title=title, color=color, tabFields=tabFields)
 
 def classe_action(type):
@@ -2578,11 +2610,11 @@ def classe_action(type):
             
     if type == "simple":
         title = "Découvrez quelle classe vous convient le mieux !"
-        tabFields = {'Classes :' : "**" + listes_classes + "**"}
+        tabFields = {"Classes :" : "**" + listes_classes + "**"}
         footer = "Plus d'info : !classe nom_classe ou !classe exaltee"
     else:
         title = "Découvrez quelle classe exaltee vous convient le mieux !"
-        tabFields = {'Classes exaltées :' : "**" + listes_classes + "**"}
+        tabFields = {"Classes exaltées :" : "**" + listes_classes + "**"}
         footer = "Plus d'info : !classe nom_classe ou !classe"
     
     color = discord.Color.lighter_grey()
@@ -2607,7 +2639,7 @@ def classe_info_action(info_classe):
       
     description = "Vérifiez l'orthographe de la classe, majuscule ou accent par exemple"
     color = discord.Color.red()
-    title = 'Erreur dans la commande'
+    title = "Erreur dans la commande"
                
     return create_embed(title=title, color=color, description=description)
     
@@ -2694,180 +2726,291 @@ def string_time(difference):
 
     return waiting_time
 
-def me_action(author_name, author_icon, global_name, type):
+def profil_action(author_name, author_icon, global_name):
+    rank = ["Pas d'éveil", ":regional_indicator_f:", ":regional_indicator_e:", ":regional_indicator_d:", ":regional_indicator_c:", ":regional_indicator_b:", ":regional_indicator_a:", ":regional_indicator_s:", ":regional_indicator_s: :regional_indicator_s:", ":regional_indicator_s: :regional_indicator_s: :regional_indicator_s:", ":regional_indicator_z:", ":regional_indicator_z: :regional_indicator_z:", ":regional_indicator_z: :regional_indicator_z: :regional_indicator_z:"]
 
-    if author_name in log_data:
-        if type not in log_data[author_name]:
-            if type == 'bag':
-                log_data[author_name][type] = {}
-            else:
-                log_data[author_name][type] = 0
-    else:
-        if type == 'bag':
-            log_data[author_name] = {type: {}}
-        else:
-            log_data[author_name] = {type: 0}
+    level_xp = [500, 600, 720, 864, 1036, 1243, 1492, 1791, 2149, 2578, 3093, 3711, 4453, 5343, 6411, 7693, 9231, 11077, 13293, 15951, 19141, 22969, 27563, 33075, 39690, 47628, 57153, 68584, 82300, 98760, 118512, 142214, 170657, 204788, 245746, 294895, 353873, 424647, 509576, 611491, 733790, 880548, 1056657, 1267989, 1521587, 1825904, 2191085, 2629302, 3155163, 3786195, 4543434, 5452120, 6542544, 7851052, 9421262, 11305514, 13566617, 16279940, 19535928, 23443113, 28131736, 33758083, 40509700, 48611640, 58333968, 70000762, 84000914, 100801096, 120961315, 145153578, 174184293, 209021151, 250825381, 301090457, 361308548, 433570258, 520284309, 624341171, 749209405, 899051286, 1078861543, 1294633852, 1553560622, 1864272746, 2237127295, 2684552754, 3221463305, 3865755966, 4638907159, 5566688591, 6680026309, 8016031570, 9619237884, 11543158461, 13851790153, 16622148183, 19946577820, 23935893384, 28723072061, 34467686474, 41361223769, 49633468522, 59560162226, 71472194671, 85766633605, 102919960326, 123503952391, 148204742869, 177845691442, 213414829731]
 
-    if type == 'profil':
-        res = log_data[author_name]['rank']
-    else:
-        res = log_data[author_name][type]
+    author_data = log_data[author_name]
 
-    if type == 'gold':
-        tabFields = {'Gold :' : str(res) + ' :coin:'}
-        color = discord.Color.gold()
-    else:
-        rank = ['Pas d\'éveil', ':regional_indicator_f:', ':regional_indicator_e:', ':regional_indicator_d:', ':regional_indicator_c:', ':regional_indicator_b:', ':regional_indicator_a:', ':regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s: :regional_indicator_s:', ':regional_indicator_z:', ':regional_indicator_z: :regional_indicator_z:', ':regional_indicator_z: :regional_indicator_z: :regional_indicator_z:']
-        if type == 'profil':
-            level_xp = [500, 600, 720, 864, 1036, 1243, 1492, 1791, 2149, 2578, 3093, 3711, 4453, 5343, 6411, 7693, 9231, 11077, 13293, 15951, 19141, 22969, 27563, 33075, 39690, 47628, 57153, 68584, 82300, 98760, 118512, 142214, 170657, 204788, 245746, 294895, 353873, 424647, 509576, 611491, 733790, 880548, 1056657, 1267989, 1521587, 1825904, 2191085, 2629302, 3155163, 3786195, 4543434, 5452120, 6542544, 7851052, 9421262, 11305514, 13566617, 16279940, 19535928, 23443113, 28131736, 33758083, 40509700, 48611640, 58333968, 70000762, 84000914, 100801096, 120961315, 145153578, 174184293, 209021151, 250825381, 301090457, 361308548, 433570258, 520284309, 624341171, 749209405, 899051286, 1078861543, 1294633852, 1553560622, 1864272746, 2237127295, 2684552754, 3221463305, 3865755966, 4638907159, 5566688591, 6680026309, 8016031570, 9619237884, 11543158461, 13851790153, 16622148183, 19946577820, 23935893384, 28723072061, 34467686474, 41361223769, 49633468522, 59560162226, 71472194671, 85766633605, 102919960326, 123503952391, 148204742869, 177845691442, 213414829731]
-            
-            classe_name = "Aucune"
-            
-            if "classe" in log_data[author_name] and "name" in log_data[author_name]['classe'] and "icon" in log_data[author_name]['classe']:
-                classe_name = log_data[author_name]['classe']["icon"] + " " + log_data[author_name]['classe']["name"]
+    classe_name = "Aucune"
+    if "classe" in author_data and "name" in author_data["classe"] and "icon" in author_data["classe"]:
+        classe_name = author_data["classe"]["icon"] + " " + author_data["classe"]["name"]
 
-            tabFields = {"Classe": classe_name, "Level :" : str(log_data[author_name]['level']['lvl']) + " [" + str(log_data[author_name]['level']['xp']) + "/" + str(level_xp[log_data[author_name]['level']['lvl']]) + "] (" + str(f"{log_data[author_name]['level']['xp'] * 100 / level_xp[log_data[author_name]['level']['lvl']]:.2f}") + " %)", 'Rang :' : rank[res], 'Stats :' : '', 'PV : ' + str(log_data[author_name]['stats']['pv']) + ' :hearts:': '', 'For : ' + str(log_data[author_name]['stats']['for']) + ' :crossed_swords:' : '', 'Def : ' + str(log_data[author_name]['stats']['def']) + ' :shield:': ''}
-            color = discord.Color.dark_purple()
-        else:
-            bag = ''
-            casquette = ''
-            tshirt = ''
-            jean = ''
-            baskets = ''
-            if type == 'bag':
-                if res != {}:
-                    for item in res:
-                        if 'rank' in log_data[author_name][type][item] and log_data[author_name][type][item]['rank'] > 0:
-                            if item == 'Casquette':
-                                casquette = log_data[author_name][type][item]['icon'] + rank[log_data[author_name][type][item]['rank']] + ' ' + item + ' • ' + str(log_data[author_name][type][item]['quantity']) + '\n';
-                            else:
-                                if item == 'Tshirt':
-                                    tshirt = log_data[author_name][type][item]['icon'] + rank[log_data[author_name][type][item]['rank']] + ' ' + item + ' • ' + str(log_data[author_name][type][item]['quantity']) + '\n';
-                                else:
-                                    if item == 'Jean':
-                                        jean = log_data[author_name][type][item]['icon'] + rank[log_data[author_name][type][item]['rank']] + ' ' + item + ' • ' + str(log_data[author_name][type][item]['quantity']) + '\n';
-                                    else:
-                                        if item == 'Baskets':
-                                            baskets = log_data[author_name][type][item]['icon'] + rank[log_data[author_name][type][item]['rank']] + ' ' + item + ' • ' + str(log_data[author_name][type][item]['quantity']) + '\n';
-                                        else:
-                                            bag += log_data[author_name][type][item]['icon'] + rank[log_data[author_name][type][item]['rank']] + ' ' + item + ' • ' + str(log_data[author_name][type][item]['quantity']) + '\n'
-                        else:
-                            bag += log_data[author_name][type][item]['icon'] + ' ' + item + ' • ' + str(log_data[author_name][type][item]['quantity']) + '\n'
-                    bag = casquette + tshirt + jean + baskets + bag
-                else:
-                    bag = 'Rien'
-                tabFields = {'Vous avez :' : bag}
-                color = discord.Color.dark_teal()
+    tabFields = {
+        "Classe": classe_name,
+        "Level :": f"{author_data["level"]["lvl"]} [{author_data["level"]["xp"]}/{level_xp[author_data["level"]["lvl"]]}] ({author_data["level"]["xp"] * 100 / level_xp[author_data["level"]["lvl"]]:.2f}%)",
+        "Rang :": rank[author_data["rank"]],
+        "Stats :": "",
+        f"PV : {author_data["stats"]["pv"]} :hearts:": "",
+        f"For : {author_data["stats"]["for"]} :crossed_swords:": "",
+        f"Def : {author_data["stats"]["def"]} :shield:": ""
+    }
+    color = discord.Color.dark_purple()
 
-    footer = None
-    if type != 'bag':
-        if type == 'profil':
-            footer = 'Classement level : ' + ranking('level', author_name)
-        else:
-            footer = 'Classement ' + type + ' : ' + ranking(type, author_name)
+    footer = f"Classement level : {ranking("level", author_name)}"
+    
     return create_embed(color=color, author_name=global_name, author_icon=author_icon, footer=footer, tabFields=tabFields)
 
+def gold_action(author_name, author_icon, global_name):
+    author_gold = log_data[author_name]["gold"]
+    tabFields = {"Gold :": f"{author_gold} :coin:"}
+    color = discord.Color.gold()
+    footer = f"Classement gold : {ranking("gold", author_name)}"
+    
+    return create_embed(color=color, author_name=global_name, author_icon=author_icon, footer=footer, tabFields=tabFields)
+
+def bag_action(author_name, author_icon, global_name):
+    author_bag = log_data[author_name]["bag"]
+    bag = ""
+    priority_order = ["Étoile", "Rare", "Epique", "Legendaire", "Fragment", "Ultime", "Ticket", "BoostXP", "Potion à effet aléatoire"]
+    
+    if author_bag != {}:   
+        # Trier les items de l'équipement selon la liste de priorité
+        for item in priority_order:
+            if item in author_bag:
+                    equipment += f"{author_bag[item]["icon"]} {item} • {author_bag[item]["quantity"]}\n"
+
+        # Ajouter les autres équipements (non priorisés)
+        for item in author_bag:
+            if item not in priority_order:
+                equipment += f"{author_bag[item]["icon"]} {item} • {author_bag[item]["quantity"]}\n"
+    else:
+        bag = "Rien"
+    
+    title = "Votre Sac"
+    tabFields = {"Vous avez :": bag}
+    color = discord.Color.dark_teal()
+
+    return create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, tabFields=tabFields)
+
+def equipment_action(author_name, author_icon, global_name):
+    author_equipment = log_data[author_name]["equipment"]
+    rank = ["Basique", ":regional_indicator_f:", ":regional_indicator_e:", ":regional_indicator_d:", ":regional_indicator_c:", ":regional_indicator_b:", ":regional_indicator_a:", ":regional_indicator_s:", ":regional_indicator_s: :regional_indicator_s:", ":regional_indicator_s: :regional_indicator_s: :regional_indicator_s:", ":regional_indicator_z:", ":regional_indicator_z: :regional_indicator_z:", ":regional_indicator_z: :regional_indicator_z: :regional_indicator_z:"]
+    equipment = ""
+    priority_order = ["Casquette", "Tshirt", "Jean", "Baskets", "Dague"]
+    
+    if author_equipment != {}:
+        # Trier les items de l'équipement selon la liste de priorité
+        for item in priority_order:
+            if item in author_equipment:
+                if 'rank' in author_equipment[item] and author_equipment[item]["rank"] > 0:
+                    equipment += f"{author_equipment[item]["icon"]} {rank[author_equipment[item]["rank"]]} {item}\n"
+                else:
+                    equipment += f"{author_equipment[item]["icon"]} {item}\n"
+
+        # Ajouter les autres équipements (non priorisés)
+        for item in author_equipment:
+            if item not in priority_order:
+                equipment += f"{author_equipment[item]["icon"]} {item}\n"
+    else:
+        equipment = "Rien"
+    
+    title = "Vos Équipements"  
+    tabFields = {"Vous avez :": equipment}
+    color = discord.Color.dark_teal()
+
+    return create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, tabFields=tabFields)
+
+def rune_action(author_name, author_icon, global_name):
+    author_rune = log_data[author_name]["rune"]
+    rune_list = ""
+    rune_list_2 = ""
+    priority_order = ["Eau", "Mer", "Ocean", "Feu", "Brasier", "Volcan", "Plante", "Branche", "Arbre"]
+    
+    if author_rune != {}:
+        # Trier les runes selon la liste de priorité
+        for index, rune in enumerate(priority_order):
+            if index == 0:
+                rune_list += "Rune PV :\n"
+            if index == 3:
+                rune_list += "\nRune For :\n"
+            if index == 6:
+                rune_list += "\nRune Def :\n"
+            if rune in author_rune:
+                rune_list += f"{author_rune[rune]["icon"]} {rune} • {author_rune[rune]["quantity"]}\n"
+
+        # Ajouter les autres runes (non priorisés)
+        for rune in author_rune:
+            if rune not in priority_order:
+                rune_list_2 += f"{author_rune[rune]["icon"]} • {author_rune[rune]["quantity"]}\n"
+
+        # Combine tout dans l'ordre voulu
+        if rune_list_2 != "":
+            rune_list += f"Autres :\n{rune_list_2}"
+    else:
+        rune_list = "Rien"
+    
+    title = "Vos Runes" 
+    tabFields = {"Vous avez :": rune_list}
+    color = discord.Color.dark_teal()
+
+    return create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, tabFields=tabFields)
+
+def drop_action(author_name, author_icon, global_name):
+    author_drop = log_data[author_name]["drop"]
+    drop_list = ""
+    drop_list_1 = ""
+    drop_list_2 = ""
+    drop_list_3 = ""
+    priority_order = ["Gelée", "Essence de vie", "Cristal de régénération", "Os de squelette", "Exo-squelette", "Crâne maudit", "Peau de loup", "Griffe de loup", "Canine acérée", "Butin bonus", "Sang de gobelin", "Tissu", "Cuir renforcé", "Amulette de protection", "démon", "Chair putrifiée", "Aile de démon", "Ceinture maudite", "Pierre", "Gemme", "Noyau", "Peau carbonisée", "Salive enflammée", "Enragement", "Gelée royale", "Coeur de slime", "Couronne du roi", "Pierre vent", "Gemme vent", "Noyau vent", "Pierre feu", "Gemme feu", "Noyau feu", "Pierre eau", "Gemme eau", "Noyau eau", "Pierre plante", "Gemme plante", "Noyau plante", "Pierre foudre", "Gemme foudre", "Noyau foudre", "Cendre feu", "Plume feu", "Coeur feu", "Cendre glace", "Plume glace", "Coeur glace", "Cendre foudre", "Plume foudre", "Coeur foudre", "Corne de démon", "Soif de sang", "Âme corrompue", "Écaille de bébé dragon", "Os de bébé dragon", "Coeur de bébé dragon", "Peau de serpent", "Brume affaiblissante", "Venin mortel", "Fourrure de troll", "Ceinture imposante", "Massue géante", "Écaille du dragon de glace", "Os du dragon de glace", "Coeur du dragon de glace", "Écaille du dragon de feu", "Os du dragon de feu", "Coeur du dragon de feu", "Aura imposante", "Coup double", "Résurrection"]
+    mob_name = ["Slime", "Squelette", "Meute de loups", "Gobelin", "Grand gobelin", "Zombi démon", "Golem", "Chien enragé", "Roi des slimes", "Golem de vent", "Golem de feu", "Golem d'eau", "Golem de plante", "Golem de foudre", "Phénix de feu", "Phénix de glace", "Phénix de foudre", "Démon intermédiaire", "Bébé dragon", "Serpent géant", "Troll des neiges", "Dragone de glace", "Dragon de feu", "Dévoreur d'âmes"]
+    
+    if author_drop != {}:
+        # Trier les drops selon la liste de priorité
+        for index, drop in enumerate(priority_order):
+            if index%3 == 0:
+                if drop_list_1 == drop_list:
+                    drop_list = drop_list_2
+                else:
+                    drop_list_2 = drop_list
+
+                drop_list += f"\n{mob_name[int(index/3)]}\n"
+
+                drop_list_1 = drop_list
+
+            if drop in author_drop:
+                drop_list += f"{author_drop[drop]["icon"]} {drop} • {author_drop[drop]["quantity"]}\n"
+        
+        if drop_list_1 == drop_list:
+            drop_list = drop_list_2
+        else:
+            drop_list_2 = drop_list
+
+        # Ajouter les autres drops (non priorisés)
+        for drop in author_drop:
+            if drop not in priority_order:
+                drop_list_3 += f"{author_drop[drop]["icon"]} • {author_drop[drop]["quantity"]}\n"
+
+        # Combine tout dans l'ordre voulu
+        if drop_list_3 != "":
+            drop_list += f"Autres :\n{drop_list_3}"
+    else:
+        drop_list = "Rien"
+    
+    title = "Vos Drops"
+    tabFields = {"Vous avez :": drop_list}
+    color = discord.Color.dark_teal()
+
+    return create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, tabFields=tabFields)
+
+def skill_action(author_name, author_icon, global_name):
+    author_skill = log_data[author_name]["skill"]
+    skill = ""
+    
+    if author_skill != {}:
+        for item in author_skill:
+            skill += author_skill[item]["icon"] + " " + item + " • " + str(author_skill[item]["quantity"]) + "\n"
+    else:
+        skill = "Rien"
+       
+    title = "Arbre de compétence (en travaux)" 
+    tabFields = {"Vous avez :": skill}
+    color = discord.Color.dark_teal()
+
+    return create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, tabFields=tabFields)
+
 def top_action(author_name, type):
-    if type == 'pv' or type == 'for' or type == 'def' or type == 'place':
-        filtered_authors = [author for author in log_data.keys() if 'stats' in log_data[author]]
+    if type == "pv" or type == "for" or type == "def" or type == "place":
+        filtered_authors = [author for author in log_data.keys() if "stats" in log_data[author]]
     else :
         filtered_authors = [author for author in log_data.keys() if type in log_data[author]]
     filtered_authors_id = []
     for author in filtered_authors:
-        filtered_authors_id.append("<@" + str(log_data[author]['id']) + ">")
+        filtered_authors_id.append("<@" + str(log_data[author]["id"]) + ">")
 
-    if type == 'level':
-        sorted_authors = sorted(filtered_authors, key=lambda x: log_data[x][type]['lvl'], reverse=True)
+    if type == "level":
+        sorted_authors = sorted(filtered_authors, key=lambda x: log_data[x][type]["lvl"], reverse=True)
     else:
-        if type == 'pv' or type == 'for' or type == 'def':
-           sorted_authors = sorted(filtered_authors, key=lambda x: log_data[x]['stats'][type], reverse=True)
+        if type == "pv" or type == "for" or type == "def":
+           sorted_authors = sorted(filtered_authors, key=lambda x: log_data[x]["stats"][type], reverse=True)
         else:
-            if type == 'place':
+            if type == "place":
                 sorted_authors = sorted(filtered_authors, key=lambda x: log_data[x][type], reverse=False)
             else:
                 sorted_authors = sorted(filtered_authors, key=lambda x: log_data[x][type], reverse=True)
 
-    if(type == 'rank'):
-        rank = ['Pas d\'éveil', ':regional_indicator_f:', ':regional_indicator_e:', ':regional_indicator_d:', ':regional_indicator_c:', ':regional_indicator_b:', ':regional_indicator_a:', ':regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s: :regional_indicator_s:', ':regional_indicator_z:', ':regional_indicator_z: :regional_indicator_z:', ':regional_indicator_z: :regional_indicator_z: :regional_indicator_z:']
+    if(type == "rank"):
+        rank = ["Pas d'éveil", ":regional_indicator_f:", ":regional_indicator_e:", ":regional_indicator_d:", ":regional_indicator_c:", ":regional_indicator_b:", ":regional_indicator_a:", ":regional_indicator_s:", ":regional_indicator_s: :regional_indicator_s:", ":regional_indicator_s: :regional_indicator_s: :regional_indicator_s:", ":regional_indicator_z:", ":regional_indicator_z: :regional_indicator_z:", ":regional_indicator_z: :regional_indicator_z: :regional_indicator_z:"]
 
     tabFields = {}
     for i in range(len(sorted_authors)):
         if i > 8:
             break
-        if(type == 'gold'):
+        if(type == "gold"):
             if i == 0:
-                tabFields[''] = '**' + str(i+1) + '. <@' + str(log_data[sorted_authors[i]]['id']) + '>  •  ' + str(log_data[sorted_authors[i]][type]) + ' :coin:\n'
+                tabFields[""] = "**" + str(i+1) + ". <@" + str(log_data[sorted_authors[i]]["id"]) + ">  •  " + str(log_data[sorted_authors[i]][type]) + " :coin:\n"
             else:
-                tabFields[''] += str(i+1) + '. <@' + str(log_data[sorted_authors[i]]['id']) + '>  •  ' + str(log_data[sorted_authors[i]][type]) + ' :coin:\n'
+                tabFields[""] += str(i+1) + ". <@" + str(log_data[sorted_authors[i]]["id"]) + ">  •  " + str(log_data[sorted_authors[i]][type]) + " :coin:\n"
         else:
-            if(type == 'rank'):
+            if(type == "rank"):
                 if i == 0:
-                    tabFields[''] = '**' + str(i+1) + '. <@' + str(log_data[sorted_authors[i]]['id']) + '>  •  ' + rank[log_data[sorted_authors[i]][type]] + '\n'
+                    tabFields[""] = "**" + str(i+1) + ". <@" + str(log_data[sorted_authors[i]]["id"]) + ">  •  " + rank[log_data[sorted_authors[i]][type]] + "\n"
                 else:
-                    tabFields[''] += str(i+1) + '. <@' + str(log_data[sorted_authors[i]]['id']) + '>  •  ' + rank[log_data[sorted_authors[i]][type]] + '\n'
+                    tabFields[""] += str(i+1) + ". <@" + str(log_data[sorted_authors[i]]["id"]) + ">  •  " + rank[log_data[sorted_authors[i]][type]] + "\n"
             else:
-                if(type == 'level'):
+                if(type == "level"):
                     if i == 0:
-                        tabFields[''] = '**' + str(i+1) + '. <@' + str(log_data[sorted_authors[i]]['id']) + '>  •  Level ' + str(log_data[sorted_authors[i]][type]['lvl']) + '\n'
+                        tabFields[""] = "**" + str(i+1) + ". <@" + str(log_data[sorted_authors[i]]["id"]) + ">  •  Level " + str(log_data[sorted_authors[i]][type]["lvl"]) + "\n"
                     else:
-                        tabFields[''] += str(i+1) + '. <@' + str(log_data[sorted_authors[i]]['id']) + '>  •  Level ' + str(log_data[sorted_authors[i]][type]['lvl']) + '\n'
+                        tabFields[""] += str(i+1) + ". <@" + str(log_data[sorted_authors[i]]["id"]) + ">  •  Level " + str(log_data[sorted_authors[i]][type]["lvl"]) + "\n"
                 else:
-                    if(type == 'pv'):
+                    if(type == "pv"):
                         if i == 0:
-                            tabFields[''] = '**' + str(i+1) + '. <@' + str(log_data[sorted_authors[i]]['id']) + '>  •  PV : ' + str(log_data[sorted_authors[i]]['stats'][type]) + ' :hearts:\n'
+                            tabFields[""] = "**" + str(i+1) + ". <@" + str(log_data[sorted_authors[i]]["id"]) + ">  •  PV : " + str(log_data[sorted_authors[i]]["stats"][type]) + " :hearts:\n"
                         else:
-                            tabFields[''] += str(i+1) + '. <@' + str(log_data[sorted_authors[i]]['id']) + '>  •  PV : ' + str(log_data[sorted_authors[i]]['stats'][type]) + ' :hearts:\n'
+                            tabFields[""] += str(i+1) + ". <@" + str(log_data[sorted_authors[i]]["id"]) + ">  •  PV : " + str(log_data[sorted_authors[i]]["stats"][type]) + " :hearts:\n"
                     else:
-                        if(type == 'for'):
+                        if(type == "for"):
                             if i == 0:
-                                tabFields[''] = '**' + str(i+1) + '. <@' + str(log_data[sorted_authors[i]]['id']) + '>  •  For : ' + str(log_data[sorted_authors[i]]['stats'][type]) + ' :crossed_swords:\n'
+                                tabFields[""] = "**" + str(i+1) + ". <@" + str(log_data[sorted_authors[i]]["id"]) + ">  •  For : " + str(log_data[sorted_authors[i]]["stats"][type]) + " :crossed_swords:\n"
                             else:
-                                tabFields[''] += str(i+1) + '. <@' + str(log_data[sorted_authors[i]]['id']) + '>  •  For : ' + str(log_data[sorted_authors[i]]['stats'][type]) + ' :crossed_swords:\n'
+                                tabFields[""] += str(i+1) + ". <@" + str(log_data[sorted_authors[i]]["id"]) + ">  •  For : " + str(log_data[sorted_authors[i]]["stats"][type]) + " :crossed_swords:\n"
                         else:
-                            if(type == 'def'):
+                            if(type == "def"):
                                 if i == 0:
-                                    tabFields[''] = '**' + str(i+1) + '. <@' + str(log_data[sorted_authors[i]]['id']) + '>  •  Def : ' + str(log_data[sorted_authors[i]]['stats'][type]) + ' :shield:\n'
+                                    tabFields[""] = "**" + str(i+1) + ". <@" + str(log_data[sorted_authors[i]]["id"]) + ">  •  Def : " + str(log_data[sorted_authors[i]]["stats"][type]) + " :shield:\n"
                                 else:
-                                    tabFields[''] += str(i+1) + '. <@' + str(log_data[sorted_authors[i]]['id']) + '>  •  Def : ' + str(log_data[sorted_authors[i]]['stats'][type]) + ' :shield:\n'
+                                    tabFields[""] += str(i+1) + ". <@" + str(log_data[sorted_authors[i]]["id"]) + ">  •  Def : " + str(log_data[sorted_authors[i]]["stats"][type]) + " :shield:\n"
                             else:
-                                if(type == 'place'):
+                                if(type == "place"):
                                     if i == 0:
-                                        tabFields[''] = '**' + str(i+1) + '. <@' + str(log_data[sorted_authors[i]]['id']) + '>  •  :crown:\n'
+                                        tabFields[""] = "**" + str(i+1) + ". <@" + str(log_data[sorted_authors[i]]["id"]) + ">  •  :crown:\n"
                                     else:
                                         if i == 1:
-                                            tabFields[''] += str(i+1) + '. <@' + str(log_data[sorted_authors[i]]['id']) + '>  •  :second_place:\n'
+                                            tabFields[""] += str(i+1) + ". <@" + str(log_data[sorted_authors[i]]["id"]) + ">  •  :second_place:\n"
                                         else:
                                             if i == 2:
-                                                tabFields[''] += str(i+1) + '. <@' + str(log_data[sorted_authors[i]]['id']) + '>  •  :third_place:\n'
+                                                tabFields[""] += str(i+1) + ". <@" + str(log_data[sorted_authors[i]]["id"]) + ">  •  :third_place:\n"
                                             else:
-                                                tabFields[''] += str(i+1) + '. <@' + str(log_data[sorted_authors[i]]['id']) + '>\n'
+                                                tabFields[""] += str(i+1) + ". <@" + str(log_data[sorted_authors[i]]["id"]) + ">\n"
 
     target_index = sorted_authors.index(author_name)
     ranking_position = target_index + 1
 
-    tabFields[''] += '**'
-    if type == 'rank' :
-        title = 'Classement éveil'
+    tabFields[""] += "**"
+    if type == "rank" :
+        title = "Classement éveil"
     else:
-        title = 'Classement ' + type
+        title = "Classement " + type
     color = discord.Color.blue()
-    footer = 'Votre classement : ' + str(ranking_position) + '/' + str(len(sorted_authors))
+    footer = "Votre classement : " + str(ranking_position) + "/" + str(len(sorted_authors))
     return create_embed(title=title, color=color, footer=footer, tabFields=tabFields)
 
 def daily_action(author_name, author_icon, global_name):
-    if 'max_daily' in log_data[author_name]:
+    if "max_daily" in log_data[author_name]:
         now = datetime.now()
-        daily_date_str = log_data[author_name]['last_daily']
+        daily_date_str = log_data[author_name]["last_daily"]
         daily_date = datetime.fromisoformat(daily_date_str)
         time_difference = now - daily_date
         if time_difference < timedelta(hours=48):
-            log_data[author_name]['max_daily'] += 500
+            log_data[author_name]["max_daily"] += 500
         else:
-            log_data[author_name]['max_daily'] = 500
+            log_data[author_name]["max_daily"] = 500
     else:
-        log_data[author_name]['max_daily'] = 500
+        log_data[author_name]["max_daily"] = 500
 
-    gold_win = log_data[author_name]['max_daily']
+    gold_win = log_data[author_name]["max_daily"]
     
     bonus_gold = ""
     now = datetime.now()
@@ -2877,23 +3020,23 @@ def daily_action(author_name, author_icon, global_name):
         bonus_gold = f"{gold_win} :coin:"
         gold_win = gold_win*2
 
-    if 'gold' in log_data[author_name]:
-        log_data[author_name]['gold'] += gold_win
+    if "gold" in log_data[author_name]:
+        log_data[author_name]["gold"] += gold_win
     else:
-        log_data[author_name]['gold'] = gold_win
+        log_data[author_name]["gold"] = gold_win
 
-    title = 'Daily Streak ' + str(log_data[author_name]['max_daily']//500) +  ' :fire: !'
-    tabFields = {'Vous récupérez : ' : str(log_data[author_name]['max_daily']) + ' :coin:'}
+    title = "Daily Streak " + str(log_data[author_name]["max_daily"]//500) +  " :fire: !"
+    tabFields = {"Vous récupérez : " : str(log_data[author_name]["max_daily"]) + " :coin:"}
     
     if bonus_gold != "":
         tabFields["Bonus Gold :"] = bonus_gold
     
     color = discord.Color.green()
-    footer = 'Revenez également demain !'
+    footer = "Revenez également demain !"
     return create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, footer=footer, tabFields=tabFields)
 
 def explore_action(author_name, author_icon, global_name):
-    rank = log_data[author_name]['rank']
+    rank = log_data[author_name]["rank"]
     num = (rank + 1) * 100
     num_90 = (num * 90) // 100
     num_110 = (num * 110) // 100
@@ -2901,30 +3044,30 @@ def explore_action(author_name, author_icon, global_name):
     
     random_number = random.randint(1, 1000)
     if random_number <= 210:
-        title = 'I • L\'Antre de l\'Ours'
+        title = "I • L'Antre de l'Ours"
         alea = alea + 25 + rank * 40
     else:
         if random_number <= 410:
-            title = 'II • La Forêt des Tentations'
+            title = "II • La Forêt des Tentations"
             alea = alea + 50 + rank * 90
         else:
             if random_number <= 590:
-                title = 'III • Les Grandes Falaises'
+                title = "III • Les Grandes Falaises"
                 alea = alea + 100 + rank * 140 
             else:
                 if random_number <= 750:
-                    title = 'IV • Les Profondeurs de la Coupe'
+                    title = "IV • Les Profondeurs de la Coupe"
                     alea = alea + 200 + rank * 190
                 else:
                     if random_number <= 890:
-                        title = 'V • La Mer des Cadavres'
+                        title = "V • La Mer des Cadavres"
                         alea = alea + 400 + rank * 240
                     else:
                         if random_number <= 970:
-                            title = 'VI • La Capitale des Non-Retournés'
+                            title = "VI • La Capitale des Non-Retournés"
                             alea = alea + 800 + rank * 300
                         else:
-                            title = 'VII • La Dernière Épreuve'
+                            title = "VII • La Dernière Épreuve"
                             alea = alea + 1600 + rank * 500
 
     alea = alea * (rank + 1)
@@ -2940,22 +3083,22 @@ def explore_action(author_name, author_icon, global_name):
         
 
     if author_name in log_data:
-        if 'gold' in log_data[author_name]:
-            log_data[author_name]['gold'] += gold_win
+        if "gold" in log_data[author_name]:
+            log_data[author_name]["gold"] += gold_win
         else:
-            log_data[author_name]['gold'] = gold_win
+            log_data[author_name]["gold"] = gold_win
     else:
-        log_data[author_name] = {'gold': gold_win}
+        log_data[author_name] = {"gold": gold_win}
 
 
-    tabFields = {'Vous récupérez : ' : str(alea) + ' :coin:'}
+    tabFields = {"Vous récupérez : " : str(alea) + " :coin:"}
     
     if bonus_gold != "":
         tabFields["Bonus Gold :"] = bonus_gold
 
     
     color = discord.Color.green()
-    footer = 'Revenez dans 1 heure !'
+    footer = "Revenez dans 1 heure !"
     return create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, footer=footer, tabFields=tabFields)
 
 def compter_action(author_name, author_icon, global_name, record):
@@ -2968,22 +3111,22 @@ def compter_action(author_name, author_icon, global_name, record):
         bonus_gold = f"{record} :coin:"
         gold_win = record*2
     
-    log_data[author_name]['gold'] += gold_win
+    log_data[author_name]["gold"] += gold_win
 
-    title = 'Pour vos exploits dans #compter !'
-    tabFields = {'Vous récupérez : ' : str(record) + ' :coin:'}
+    title = "Pour vos exploits dans #compter !"
+    tabFields = {"Vous récupérez : " : str(record) + " :coin:"}
     
     if bonus_gold != "":
         tabFields["Bonus Gold :"] = bonus_gold
     
     color = discord.Color.green()
-    footer = 'Revenez demain !'
+    footer = "Revenez demain !"
     return create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, footer=footer, tabFields=tabFields)
 
 def train_action(author_name, author_icon, global_name):
     level_xp = [500, 600, 720, 864, 1036, 1243, 1492, 1791, 2149, 2578, 3093, 3711, 4453, 5343, 6411, 7693, 9231, 11077, 13293, 15951, 19141, 22969, 27563, 33075, 39690, 47628, 57153, 68584, 82300, 98760, 118512, 142214, 170657, 204788, 245746, 294895, 353873, 424647, 509576, 611491, 733790, 880548, 1056657, 1267989, 1521587, 1825904, 2191085, 2629302, 3155163, 3786195, 4543434, 5452120, 6542544, 7851052, 9421262, 11305514, 13566617, 16279940, 19535928, 23443113, 28131736, 33758083, 40509700, 48611640, 58333968, 70000762, 84000914, 100801096, 120961315, 145153578, 174184293, 209021151, 250825381, 301090457, 361308548, 433570258, 520284309, 624341171, 749209405, 899051286, 1078861543, 1294633852, 1553560622, 1864272746, 2237127295, 2684552754, 3221463305, 3865755966, 4638907159, 5566688591, 6680026309, 8016031570, 9619237884, 11543158461, 13851790153, 16622148183, 19946577820, 23935893384, 28723072061, 34467686474, 41361223769, 49633468522, 59560162226, 71472194671, 85766633605, 102919960326, 123503952391, 148204742869, 177845691442, 213414829731]
 
-    rank = log_data[author_name]['rank']
+    rank = log_data[author_name]["rank"]
     num = (rank + 1) * 100
     num_90 = (num * 90) // 100
     num_110 = (num * 110) // 100
@@ -2991,34 +3134,34 @@ def train_action(author_name, author_icon, global_name):
 
     random_number = random.randint(1, 1000)
     if random_number <= 220:
-        title = 'I • La Porte de l\'Ouverture'
+        title = "I • La Porte de l'Ouverture"
         alea = alea + 25 + rank * 40
     else:
         if random_number <= 400:
-            title = 'II • La Porte de l\'Énergie'
+            title = "II • La Porte de l'Énergie"
             alea = alea + 50 + rank * 90
         else:
             if random_number <= 560:
-                title = 'III • La Porte de la Vie'
+                title = "III • La Porte de la Vie"
                 alea = alea + 100 + rank * 140 
             else:
                 if random_number <= 700:
-                    title = 'IV • La Porte de la Douleur'
+                    title = "IV • La Porte de la Douleur"
                     alea = alea + 200 + rank * 190
                 else:
                     if random_number <= 820:
-                        title = 'V • La Porte de la Forêt'
+                        title = "V • La Porte de la Forêt"
                         alea = alea + 400 + rank * 240
                     else:
                         if random_number <= 910:
-                            title = 'VI • La Porte de la Vision'
+                            title = "VI • La Porte de la Vision"
                             alea = alea + 800 + rank * 290
                         else:
                             if random_number <= 970:
-                                title = 'VII • La Porte de l\'Insanité'
+                                title = "VII • La Porte de l'Insanité"
                                 alea = alea + 1600 + rank * 350
                             else:
-                                title = 'VIII • La Porte de la Mort'
+                                title = "VIII • La Porte de la Mort"
                                 alea = alea + 3200 + rank * 500
 
     alea = alea * (rank + 1) * 5
@@ -3033,32 +3176,32 @@ def train_action(author_name, author_icon, global_name):
     if "classe" in log_data[author_name] and "name" in log_data[author_name]["classe"] and log_data[author_name]["classe"]["name"] == "Paysan":
         xp_win = xp_win * 5
     
-    log_data[author_name]['level']['xp'] += xp_win
+    log_data[author_name]["level"]["xp"] += xp_win
     
     level_up = 0
 
-    for lvl_xp in level_xp[log_data[author_name]['level']['lvl']:]:
-        if log_data[author_name]['level']['xp'] > lvl_xp:
-            log_data[author_name]['level']['xp'] -= lvl_xp
-            log_data[author_name]['level']['lvl'] += 1
+    for lvl_xp in level_xp[log_data[author_name]["level"]["lvl"]:]:
+        if log_data[author_name]["level"]["xp"] > lvl_xp:
+            log_data[author_name]["level"]["xp"] -= lvl_xp
+            log_data[author_name]["level"]["lvl"] += 1
             
             if "classe" in log_data[author_name] and "name" in log_data[author_name]["classe"] and log_data[author_name]["classe"]["name"] == "Paysan":
-                if log_data[author_name]['level']['lvl'] >= 70:
+                if log_data[author_name]["level"]["lvl"] >= 70:
                     log_data[author_name]["classe"]["progression 1"] = "completed"
                 else:
-                    log_data[author_name]["classe"]["progression 1"] = log_data[author_name]['level']['lvl']
+                    log_data[author_name]["classe"]["progression 1"] = log_data[author_name]["level"]["lvl"]
             
-            if "PointXP" in log_data[author_name]['bag']:
-                log_data[author_name]['bag']['PointXP']["quantity"] += 1
+            if "PointXP" in log_data[author_name]["skill"]:
+                log_data[author_name]["skill"]["PointXP"]["quantity"] += 1
             else:
-                log_data[author_name]['bag']['PointXP'] = {"quantity": 1, "icon": ":white_flower:"}
+                log_data[author_name]["skill"]["PointXP"] = {"quantity": 1, "icon": ":white_flower:"}
 
             level_up += 1
         else:
             break
         
     gain_xp = f"{alea} :diamond_shape_with_a_dot_inside:"
-    player_levelup = f"<@{log_data[author_name]['id']}> + {level_up} level ({log_data[author_name]["level"]["lvl"]})" if level_up > 0 else None
+    player_levelup = f"<@{log_data[author_name]["id"]}> + {level_up} level ({log_data[author_name]["level"]["lvl"]})" if level_up > 0 else None
 
     tabFields = {"Vous gagnez :" : gain_xp}
 
@@ -3070,7 +3213,7 @@ def train_action(author_name, author_icon, global_name):
         tabFields["Level UP :"] = player_levelup
     
     color = discord.Color.green()
-    footer = 'Revenez dans 3 heures !'
+    footer = "Revenez dans 3 heures !"
     return create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, footer=footer, tabFields=tabFields)
 
 def create_embed(title = None, description = None, color = None, author_name = None, author_icon = None, image = None, footer = None, tabFields = None):
@@ -3097,95 +3240,96 @@ def create_embed(title = None, description = None, color = None, author_name = N
 
 def ranking(type, author_name):
     filtered_authors = [author for author in log_data.keys() if type in log_data[author]]
-    if type == 'level':
-        sorted_authors = sorted(filtered_authors, key=lambda x: log_data[x][type]['lvl'], reverse=True)
+    if type == "level":
+        sorted_authors = sorted(filtered_authors, key=lambda x: log_data[x][type]["lvl"], reverse=True)
     else:
         sorted_authors = sorted(filtered_authors, key=lambda x: log_data[x][type], reverse=True)
     target_index = sorted_authors.index(author_name)
     ranking_position = target_index + 1
-    return str(ranking_position) + '/' + str(len(sorted_authors))
+    return str(ranking_position) + "/" + str(len(sorted_authors))
 
 def purchase_action(author_name, author_icon, global_name, item, quantity):
     if item == "Boostxp":
         item = "BoostXP"
-    title = 'Achat'
-    if item in items and 'price' in items[item]:
+    title = "Achat"
+    if item in items and "price" in items[item]:
+        storage = items[item]["storage"]
         if author_name in log_data:
-            if 'gold' not in log_data[author_name]:
-                log_data[author_name]['gold'] = 0
+            if "gold" not in log_data[author_name]:
+                log_data[author_name]["gold"] = 0
         else:
-            log_data[author_name] = {'gold': 0}
+            log_data[author_name] = {"gold": 0}
 
-        gold = log_data[author_name]['gold']
+        gold = log_data[author_name]["gold"]
 
-        if 'unique' in items[item] or 'requirements' in items[item]:
+        if "unique" in items[item] or "requirements" in items[item]:
             quantity = 1
 
-        price = items[item]['price'] * quantity
+        price = items[item]["price"] * quantity
         
         if "classe" in log_data[author_name] and "name" in log_data[author_name]["classe"] and log_data[author_name]["classe"]["name"] == "Rat":
             price = int(price * 0.9)
         
         if gold < price:
             manque = price - gold
-            tabFields = {'Vous n\'avez pas assez de gold, il vous manque : ' : str(manque) + ' :coin:'}
+            tabFields = {"Vous n'avez pas assez de gold, il vous manque : " : str(manque) + " :coin:"}
             color = discord.Color.red()
         else:
             upgrade = True
-            if 'requirements' in items[item]:
-                if 'Casquette' in log_data[author_name]['bag'] and log_data[author_name]['bag']['Casquette']['rank'] == items[item]['requirements']:
-                    log_data[author_name]['bag']['Casquette']['rank'] += 1
+            if "requirements" in items[item]:
+                if "Casquette" in log_data[author_name]["equipment"] and log_data[author_name]["equipment"]["Casquette"]["rank"] == items[item]["requirements"]:
+                    log_data[author_name]["equipment"]["Casquette"]["rank"] += 1
                     upgrade = True
                 else:
-                    if 'Tshirt' in log_data[author_name]['bag'] and log_data[author_name]['bag']['Tshirt']['rank']  == items[item]['requirements']:
-                        log_data[author_name]['bag']['Tshirt']['rank'] += 1
+                    if "Tshirt" in log_data[author_name]["equipment"] and log_data[author_name]["equipment"]["Tshirt"]["rank"]  == items[item]["requirements"]:
+                        log_data[author_name]["equipment"]["Tshirt"]["rank"] += 1
                         upgrade = True
                     else:
-                        if 'Jean' in log_data[author_name]['bag'] and log_data[author_name]['bag']['Jean']['rank']  == items[item]['requirements']:
-                            log_data[author_name]['bag']['Jean']['rank'] += 1
+                        if "Jean" in log_data[author_name]["equipment"] and log_data[author_name]["equipment"]["Jean"]["rank"]  == items[item]["requirements"]:
+                            log_data[author_name]["equipment"]["Jean"]["rank"] += 1
                             upgrade = True
                         else:
-                            if 'Baskets' in log_data[author_name]['bag'] and log_data[author_name]['bag']['Baskets']['rank']  == items[item]['requirements']:
-                                log_data[author_name]['bag']['Baskets']['rank'] += 1
+                            if "Baskets" in log_data[author_name]["equipment"] and log_data[author_name]["equipment"]["Baskets"]["rank"]  == items[item]["requirements"]:
+                                log_data[author_name]["equipment"]["Baskets"]["rank"] += 1
                                 upgrade = True
                             else:
-                                if 'Dague' in log_data[author_name]['bag'] and log_data[author_name]['bag']['Dague']['rank']  == items[item]['requirements']:
-                                    log_data[author_name]['bag']['Dague']['rank'] += 1
+                                if "Dague" in log_data[author_name]["equipment"] and log_data[author_name]["equipment"]["Dague"]["rank"]  == items[item]["requirements"]:
+                                    log_data[author_name]["equipment"]["Dague"]["rank"] += 1
                                     upgrade = True
                                 else:
                                     upgrade = False
 
-            if 'unique' in items[item] and item in log_data[author_name]['bag']:
-                tabFields = {'Ceci est un item unique, vous le possédez déjà.' : ''}
+            if "unique" in items[item] and item in log_data[author_name]["equipment"]:
+                tabFields = {"Ceci est un item unique, vous le possédez déjà." : ""}
                 color = discord.Color.red()
             else:
                 if upgrade:
-                    log_data[author_name]['gold'] = log_data[author_name]['gold'] - price
-                    if 'stats' in items[item]:
-                        if 'pv' in items[item]['stats']:
-                            log_data[author_name]['stats']['pv'] += items[item]['stats']['pv'] * quantity
-                        if 'for' in items[item]['stats']:
-                            log_data[author_name]['stats']['for'] += items[item]['stats']['for'] * quantity
-                        if 'def' in items[item]['stats']:
-                            log_data[author_name]['stats']['def'] += items[item]['stats']['def'] * quantity
-                    tabFields = {'Vous venez d\'acheter : ' : items[item]['icon'] + ' ' + item + " x" + str(quantity)}
+                    log_data[author_name]["gold"] = log_data[author_name]["gold"] - price
+                    if "stats" in items[item]:
+                        if "pv" in items[item]["stats"]:
+                            log_data[author_name]["stats"]["pv"] += items[item]["stats"]["pv"] * quantity
+                        if "for" in items[item]["stats"]:
+                            log_data[author_name]["stats"]["for"] += items[item]["stats"]["for"] * quantity
+                        if "def" in items[item]["stats"]:
+                            log_data[author_name]["stats"]["def"] += items[item]["stats"]["def"] * quantity
+                    tabFields = {"Vous venez d'acheter : " : items[item]["icon"] + " " + item + " x" + str(quantity)}
                     color = discord.Color.green()
 
-                    materiaux = ['Cuir', 'Fer', 'Argent', 'Mithril', 'Orichalque', 'Adamantium', 'Étherium']
+                    materiaux = ["Cuir", "Fer", "Argent", "Mithril", "Orichalque", "Adamantium", "Étherium"]
                     if item not in materiaux:
-                        if item in log_data[author_name]['bag']:
-                            log_data[author_name]['bag'][item]['quantity'] += quantity
+                        if item in log_data[author_name][storage]:
+                            log_data[author_name][storage][item]["quantity"] += quantity
                         else:
-                            if 'rank' in items[item]:
-                                log_data[author_name]['bag'][item] = {'quantity': quantity, 'icon': items[item]['icon'], 'rank': items[item]['rank']}
+                            if "rank" in items[item]:
+                                log_data[author_name][storage][item] = {"quantity": quantity, "icon": items[item]["icon"], "rank": items[item]["rank"]}
                             else:
-                                log_data[author_name]['bag'][item] = {'quantity': quantity, 'icon': items[item]['icon']}
+                                log_data[author_name][storage][item] = {"quantity": quantity, "icon": items[item]["icon"]}
                 else:
-                    rank = ['Basique', ':regional_indicator_f:', ':regional_indicator_e:', ':regional_indicator_d:', ':regional_indicator_c:', ':regional_indicator_b:', ':regional_indicator_a:', ':regional_indicator_s:', ':regional_indicator_s: :regional_indicator_s:']
-                    tabFields = {'L\'achat est impossible vérifie si vous avez au moins 1 équipement de rang ' + rank[items[item]['requirements']] : ''}
+                    rank = ["Basique", ":regional_indicator_f:", ":regional_indicator_e:", ":regional_indicator_d:", ":regional_indicator_c:", ":regional_indicator_b:", ":regional_indicator_a:", ":regional_indicator_s:", ":regional_indicator_s: :regional_indicator_s:"]
+                    tabFields = {"L'achat est impossible vérifie si vous avez au moins 1 équipement de rang " + rank[items[item]["requirements"]] : ""}
                     color = discord.Color.red()
     else:
-        tabFields = {'Vérifiez l\'appélation de ce que vous voulez acheter.' : ''}
+        tabFields = {"Vérifiez l'appélation de ce que vous voulez acheter." : ""}
         color = discord.Color.red()
 
     return create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, tabFields=tabFields)
@@ -3196,9 +3340,9 @@ def combat(mob_name, mob_lvl, total_pv, total_for, total_def, nbr_debuffer):
     else:
         debuff = 1
         
-    mob_pv = (mob_lvl * mobs[mob_name]['stats']['pv']) * debuff
-    mob_for = (mob_lvl * mobs[mob_name]['stats']['for']) * debuff
-    mob_def = (mob_lvl * mobs[mob_name]['stats']['def']) * debuff
+    mob_pv = (mob_lvl * mobs[mob_name]["stats"]["pv"]) * debuff
+    mob_for = (mob_lvl * mobs[mob_name]["stats"]["for"]) * debuff
+    mob_def = (mob_lvl * mobs[mob_name]["stats"]["def"]) * debuff
 
     sum_mob_stats = int(mob_pv/250 + mob_for/2 + mob_def/4)
     sum_players_stats = int(total_pv/250 + total_for/2 + total_def/4)
@@ -3208,16 +3352,16 @@ def combat(mob_name, mob_lvl, total_pv, total_for, total_def, nbr_debuffer):
 
 def notif_action(author_name):
     chad = ""
-    if log_data[author_name]['avenger']:
-        log_data[author_name]['avenger'] = False
+    if log_data[author_name]["avenger"]:
+        log_data[author_name]["avenger"] = False
         title = "Vous ne serez plus notifié lorsqu'une personne demande de l'aide"
     else:
-        log_data[author_name]['avenger'] = True
+        log_data[author_name]["avenger"] = True
         title = "Desormais vous serez notifié lorsqu'une personne demande de l'aide"
 
     for player in log_data:
-        if(log_data[player]['avenger']):
-            chad += "<@" + str(log_data[player]['id']) + ">" + " "
+        if(log_data[player]["avenger"]):
+            chad += "<@" + str(log_data[player]["id"]) + ">" + " "
     description = "Liste des chads actuelle : " + chad
     color = discord.Color.green()
     return create_embed(title=title, color=color, description=description)
@@ -3231,7 +3375,7 @@ def is_integer(s):
 
 def normalize_text(text):
     text = text.lower()
-    text = ''.join(c for c in unicodedata.normalize('NFD', text) if unicodedata.category(c) != 'Mn')
+    text = "".join(c for c in unicodedata.normalize("NFD", text) if unicodedata.category(c) != "Mn")
     return text
 
 def reduce_numbers_by_10_percent(text):
@@ -3278,11 +3422,16 @@ def format_temps_restant(date_fin):
     minutes, secondes = divmod(reste_secondes, 60)
 
     parties = []
-    if jours: parties.append(f"{jours} jour{'s' if jours > 1 else ''}")
-    if heures: parties.append(f"{heures} heure{'s' if heures > 1 else ''}")
-    if minutes: parties.append(f"{minutes} minute{'s' if minutes > 1 else ''}")
-    if secondes: parties.append(f"{secondes} seconde{'s' if secondes > 1 else ''}")
+    if jours: parties.append(f"{jours} jour{"s" if jours > 1 else ""}")
+    if heures: parties.append(f"{heures} heure{"s" if heures > 1 else ""}")
+    if minutes: parties.append(f"{minutes} minute{"s" if minutes > 1 else ""}")
+    if secondes: parties.append(f"{secondes} seconde{"s" if secondes > 1 else ""}")
 
     return " et ".join(", ".join(parties).rsplit(", ", 1))
+
+# Sauvegarde des fichiers JSON
+def save_json(filename, data):
+    with open(filename, "w") as file:
+        json.dump(data, file, indent=4)
 
 client.run(TOKEN)

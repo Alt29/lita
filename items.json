@@ -6,7 +6,9 @@
         },
         "icon": ":billed_cap:",
         "unique": true,
-        "rank": 0
+        "rank": 0,
+        "storage": "equipment",
+        "sellable": false
     },
     "Tshirt": {
         "price": 1000,
@@ -15,7 +17,9 @@
         },
         "icon": ":shirt:",
         "unique": true,
-        "rank": 0
+        "rank": 0,
+        "storage": "equipment",
+        "sellable": false
     },
     "Jean": {
         "price": 1000,
@@ -24,7 +28,9 @@
         },
         "icon": ":jeans:",
         "unique": true,
-        "rank": 0
+        "rank": 0,
+        "storage": "equipment",
+        "sellable": false
     },
     "Baskets": {
         "price": 500,
@@ -33,7 +39,9 @@
         },
         "icon": ":athletic_shoe:",
         "unique": true,
-        "rank": 0
+        "rank": 0,
+        "storage": "equipment",
+        "sellable": false
     },
     "Dague": {
         "price": 1500,
@@ -42,7 +50,9 @@
         },
         "icon": ":dagger:",
         "unique": true,
-        "rank": 0
+        "rank": 0,
+        "storage": "equipment",
+        "sellable": false
     },
     "Étherium": {
         "price": 360000,
@@ -52,7 +62,9 @@
             "pv": 35000
         },
         "icon": ":regional_indicator_s:",
-        "requirements": 6
+        "requirements": 6,
+        "storage": "equipment",
+        "sellable": false
     },
     "Adamantium": {
         "price": 120000,
@@ -62,7 +74,9 @@
             "pv": 12000
         },
         "icon": ":regional_indicator_a:",
-        "requirements": 5
+        "requirements": 5,
+        "storage": "equipment",
+        "sellable": false
     },
     "Orichalque": {
         "price": 40000,
@@ -72,7 +86,9 @@
             "pv": 3500
         },
         "icon": ":regional_indicator_b:",
-        "requirements": 4
+        "requirements": 4,
+        "storage": "equipment",
+        "sellable": false
     },
     "Mithril": {
         "price": 13000,
@@ -82,7 +98,9 @@
             "pv": 1000
         },
         "icon": ":regional_indicator_c:",
-        "requirements": 3
+        "requirements": 3,
+        "storage": "equipment",
+        "sellable": false
     },
     "Argent": {
         "price": 4500,
@@ -92,7 +110,9 @@
             "pv": 300
         },
         "icon": ":regional_indicator_d:",
-        "requirements": 2
+        "requirements": 2,
+        "storage": "equipment",
+        "sellable": false
     },
     "Fer": {
         "price": 1500,
@@ -102,7 +122,9 @@
             "pv": 200
         },
         "icon": ":regional_indicator_e:",
-        "requirements": 1
+        "requirements": 1,
+        "storage": "equipment",
+        "sellable": false
     },
     "Cuir": {
         "price": 500,
@@ -111,467 +133,678 @@
             "pv": 100
         },
         "icon": ":regional_indicator_f:",
-        "requirements": 0
+        "requirements": 0,
+        "storage": "equipment",
+        "sellable": false
     },
     "Feu": {
         "price": 2000,
         "stats": {
             "for": 2
         },
-        "icon": ":fire:"
+        "icon": ":fire:",
+        "storage": "rune",
+        "sellable": true
     },
     "Plante": {
         "price": 2000,
         "stats": {
             "def": 4
         },
-        "icon": ":seedling:"
+        "icon": ":seedling:",
+        "storage": "rune",
+        "sellable": true
     },
     "Eau": {
         "price": 2000,
         "stats": {
             "pv": 250
         },
-        "icon": ":droplet:"
+        "icon": ":droplet:",
+        "storage": "rune",
+        "sellable": true
     },
     "Ultime": {
-        "icon": ":octagonal_sign:"
+        "icon": ":octagonal_sign:",
+        "storage": "bag",
+        "sellable": true
     },
     "Fragment": {
-        "icon": ":small_red_triangle:"
+        "icon": ":small_red_triangle:",
+        "storage": "bag",
+        "sellable": true
     },
     "Legendaire": {
         "price": 500000,
-        "icon": "<:Legendaire:1222193258403336222>"
+        "icon": "<:Legendaire:1222193258403336222>",
+        "storage": "bag",
+        "sellable": true
     },
     "Epique": {
         "price": 50000,
-        "icon": "<:Epique:1222193241022136491>"
+        "icon": "<:Epique:1222193241022136491>",
+        "storage": "bag",
+        "sellable": true
     },
     "Rare": {
         "price": 5000,
-        "icon": "<:Rare:1222193217957662760>"
+        "icon": "<:Rare:1222193217957662760>",
+        "storage": "bag",
+        "sellable": true
     },
     "Ticket": {
         "price": 60000,
-        "icon": ":tickets:"
+        "icon": ":tickets:",
+        "storage": "bag",
+        "sellable": true
     },
     "BoostXP": {
         "price": 50000,
-        "icon": ":diamond_shape_with_a_dot_inside:"
+        "icon": ":diamond_shape_with_a_dot_inside:",
+        "storage": "bag",
+        "sellable": true
     },
     "Brasier": {
         "stats": {
             "for": 40
         },
-        "icon": ":boom:"
+        "icon": ":boom:",
+        "storage": "rune",
+        "sellable": true
     },
     "Volcan": {
         "stats": {
             "for": 600
         },
-        "icon": ":volcano:"
+        "icon": ":volcano:",
+        "storage": "rune",
+        "sellable": true
     },
     "Branche": {
         "stats": {
             "def": 80
         },
-        "icon": ":herb:"
+        "icon": ":herb:",
+        "storage": "rune",
+        "sellable": true
     },
     "Arbre": {
         "stats": {
             "def": 1200
         },
-        "icon": ":deciduous_tree:"
+        "icon": ":deciduous_tree:",
+        "storage": "rune",
+        "sellable": true
     },
     "Mer": {
         "stats": {
             "pv": 5000
         },
-        "icon": ":sweat_drops:"
+        "icon": ":sweat_drops:",
+        "storage": "rune",
+        "sellable": true
     },
     "Ocean": {
         "stats": {
             "pv": 75000
         },
-        "icon": ":ocean:"
+        "icon": ":ocean:",
+        "storage": "rune",
+        "sellable": true
     },
     "PointXP": {
-        "icon": ":white_flower:"
+        "icon": ":white_flower:",
+        "storage": "skill",
+        "sellable": false
     },
     "Faux": {
         "name": "Faux de la lune funeste",
         "icon": ":crescent_moon:",
         "spe": "Collecte des Âmes",
         "unique": true,
-        "classe": "Assassin"
+        "classe": "Assassin",
+        "storage": "equipment",
+        "sellable": false
     },
     "Main": {
         "name": "Main de Midas",
         "icon": ":index_pointing_at_the_viewer:",
         "spe": "Don de Midas",
         "unique": true,
-        "classe": "Rat"
+        "classe": "Rat",
+        "storage": "equipment",
+        "sellable": false
     },
     "Jackpot": {
         "name": "Jackpot 777",
         "icon": ":slot_machine:",
         "spe": "Faveur de la Providence",
         "unique": true,
-        "classe": "Chanceux"
+        "classe": "Chanceux",
+        "storage": "equipment",
+        "sellable": false
     },
     "Hache": {
         "name": "Hache du Massacre Rouge",
         "icon": ":axe:",
         "spe": "Fureur du Berserker",
         "unique": true,
-        "classe": "Guerrier"
+        "classe": "Guerrier",
+        "storage": "equipment",
+        "sellable": false
     },
     "Egide": {
         "name": "Égide Réfléchissante",
         "icon": ":mirror:",
         "spe": "Retour à l'envoyeur",
         "unique": true,
-        "classe": "Gardien"
+        "classe": "Gardien",
+        "storage": "equipment",
+        "sellable": false
     },
     "Catalyseur": {
         "name": "Catalyseur Runique",
         "icon": ":amphora:",
         "spe": "Affinité Runique",
         "unique": true,
-        "classe": "Druide"
+        "classe": "Druide",
+        "storage": "equipment",
+        "sellable": false
     },
     "Aureole": {
         "name": "Auréole de la Grâce Divine",
         "icon": ":dizzy:",
         "spe": "Augmentation Cruciale",
         "unique": true,
-        "classe": "Buffer"
+        "classe": "Buffer",
+        "storage": "equipment",
+        "sellable": false
     },
     "Grimoire": {
         "name": "Grimoire des murmures démoniaques",
         "icon": ":hamsa:",
         "spe": "Absorption de puissance",
         "unique": true,
-        "classe": "D\u00e9buffer"
+        "classe": "D\u00e9buffer",
+        "storage": "equipment",
+        "sellable": false
     },
     "Memoires": {
         "name": "Mémoires du Savant Fou",
         "icon": ":brain:",
         "spe": "Connaissances perdues",
         "unique": true,
-        "classe": "Alchimiste"
+        "classe": "Alchimiste",
+        "storage": "equipment",
+        "sellable": false
     },
     "Balance": {
         "name": "Balance des Opprimés",
         "icon": ":scales:",
         "spe": "Collecte des taxes",
         "unique": true,
-        "classe": "Paysan"
+        "classe": "Paysan",
+        "storage": "equipment",
+        "sellable": false
     },
     "ZZZ": {
         "name": "ZZZ Matière Ultime",
         "icon": ":regional_indicator_z: :regional_indicator_z: :regional_indicator_z:",
         "spe": "Créations Ultimes",
         "unique": true,
-        "classe": "Forgeron"
+        "classe": "Forgeron",
+        "storage": "equipment",
+        "sellable": false
     },
     "Bague": {
         "name": "Bague Étincelante",
         "icon": ":ring:",
         "spe": "Ferveur du Chevalier",
         "unique": true,
-        "classe": "Grenouille"
+        "classe": "Grenouille",
+        "storage": "equipment",
+        "sellable": false
     },
     "Gelée": {
         "icon": ":microbe:",
-        "drop_grad": 1
+        "drop_grad": 1,
+        "storage": "drop",
+        "sellable": true
     },
     "Os de squelette": {
         "icon": ":bone:",
-        "drop_grad": 1
+        "drop_grad": 1,
+        "storage": "drop",
+        "sellable": true
     },
     "Peau de loup": {
         "icon": ":wolf:",
-        "drop_grad": 1
+        "drop_grad": 1,
+        "storage": "drop",
+        "sellable": true
     },
     "Silex": {
         "icon": ":mountain:",
-        "drop_grad": 1
+        "drop_grad": 1,
+        "storage": "drop",
+        "sellable": true
     },
     "Tissu": {
         "icon": ":reminder_ribbon:",
-        "drop_grad": 1
+        "drop_grad": 1,
+        "storage": "drop",
+        "sellable": true
     },
     "Chair putrifiée": {
         "icon": ":man_zombie:",
-        "drop_grad": 1
+        "drop_grad": 1,
+        "storage": "drop",
+        "sellable": true
     },
     "Pierre": {
         "icon": ":rock:",
-        "drop_grad": 1
+        "drop_grad": 1,
+        "storage": "drop",
+        "sellable": true
     },
     "Peau carbonisée": {
         "icon": ":bacon:",
-        "drop_grad": 1
+        "drop_grad": 1,
+        "storage": "drop",
+        "sellable": true
     },
     "Gelée royale": {
         "icon": ":microbe::crown:",
-        "drop_grad": 1
+        "drop_grad": 1,
+        "storage": "drop",
+        "sellable": true
     },
     "Pierre vent": {
         "icon": ":rock::dash:",
-        "drop_grad": 1
+        "drop_grad": 1,
+        "storage": "drop",
+        "sellable": true
     },
     "Pierre feu": {
         "icon": ":rock::fire:",
-        "drop_grad": 1
+        "drop_grad": 1,
+        "storage": "drop",
+        "sellable": true
     },
     "Pierre eau": {
         "icon": ":rock::droplet:",
-        "drop_grad": 1
+        "drop_grad": 1,
+        "storage": "drop",
+        "sellable": true
     },
     "Pierre plante": {
         "icon": ":rock::seedling:",
-        "drop_grad": 1
+        "drop_grad": 1,
+        "storage": "drop",
+        "sellable": true
     },
     "Pierre foudre": {
         "icon": ":rock::zap:",
-        "drop_grad": 1
+        "drop_grad": 1,
+        "storage": "drop",
+        "sellable": true
     },
     "Cendre feu": {
         "icon": ":fog::fire:",
-        "drop_grad": 1
+        "drop_grad": 1,
+        "storage": "drop",
+        "sellable": true
     },
     "Cendre glace": {
         "icon": ":fog::snowflake:",
-        "drop_grad": 1
+        "drop_grad": 1,
+        "storage": "drop",
+        "sellable": true
     },
     "Cendre foudre": {
         "icon": ":fog::zap:",
-        "drop_grad": 1
+        "drop_grad": 1,
+        "storage": "drop",
+        "sellable": true
     },
     "Corne de démon": {
         "icon": ":smiling_imp:",
-        "drop_grad": 1
+        "drop_grad": 1,
+        "storage": "drop",
+        "sellable": true
     },
     "Ecaille de bébé dragon": {
         "icon": ":beginner::dragon:",
-        "drop_grad": 1
+        "drop_grad": 1,
+        "storage": "drop",
+        "sellable": true
     },
     "Peau de serpent": {
         "icon": ":snake:",
-        "drop_grad": 1
+        "drop_grad": 1,
+        "storage": "drop",
+        "sellable": true
     },
     "Fourrure de troll": {
         "icon": ":mammoth:",
-        "drop_grad": 1
+        "drop_grad": 1,
+        "storage": "drop",
+        "sellable": true
     },
     "Ecaille du dragon de glace": {
         "icon": ":beginner::dragon::snowflake:",
-        "drop_grad": 1
+        "drop_grad": 1,
+        "storage": "drop",
+        "sellable": true
     },
     "Ecaille du dragon de feu": {
         "icon": ":beginner::dragon::fire:",
-        "drop_grad": 1
+        "drop_grad": 1,
+        "storage": "drop",
+        "sellable": true
     },
     "Aura impossante": {
         "icon": ":anya_hehe2:",
-        "drop_grad": 1
+        "drop_grad": 1,
+        "storage": "drop",
+        "sellable": true
     },
     "Essence de vie": {
         "icon": ":heart_exclamation:",
-        "drop_grad": 2
+        "drop_grad": 2,
+        "storage": "drop",
+        "sellable": true
     },
     "Exo-squelette": {
         "icon": ":x_ray:",
-        "drop_grad": 2
+        "drop_grad": 2,
+        "storage": "drop",
+        "sellable": true
     },
     "Griffe de loup": {
         "icon": ":round_pushpin:",
-        "drop_grad": 2
+        "drop_grad": 2,
+        "storage": "drop",
+        "sellable": true
     },
     "Butin bonus": {
         "icon": ":moneybag:",
-        "drop_grad": 2
+        "drop_grad": 2,
+        "storage": "drop",
+        "sellable": true
     },
     "Cuir renforcé": {
         "icon": ":mans_shoe:",
-        "drop_grad": 2
+        "drop_grad": 2,
+        "storage": "drop",
+        "sellable": true
     },
     "Aile de démon": {
         "icon": ":bat:",
-        "drop_grad": 2
+        "drop_grad": 2,
+        "storage": "drop",
+        "sellable": true
     },
     "Gemme": {
         "icon": ":gem:",
-        "drop_grad": 2
+        "drop_grad": 2,
+        "storage": "drop",
+        "sellable": true
     },
     "Salive enflammée": {
         "icon": ":hot_face:",
-        "drop_grad": 2
+        "drop_grad": 2,
+        "storage": "drop",
+        "sellable": true
     },
     "Coeur de slime": {
         "icon": ":green_heart:",
-        "drop_grad": 2
+        "drop_grad": 2,
+        "storage": "drop",
+        "sellable": true
     },
     "Gemme vent": {
         "icon": ":gem::dash:",
-        "drop_grad": 2
+        "drop_grad": 2,
+        "storage": "drop",
+        "sellable": true
     },
     "Gemme feu": {
         "icon": ":gem::fire:",
-        "drop_grad": 2
+        "drop_grad": 2,
+        "storage": "drop",
+        "sellable": true
     },
     "Gemme eau": {
         "icon": ":gem::droplet:",
-        "drop_grad": 2
+        "drop_grad": 2,
+        "storage": "drop",
+        "sellable": true
     },
     "Gemme plante": {
         "icon": ":gem::seedling:",
-        "drop_grad": 2
+        "drop_grad": 2,
+        "storage": "drop",
+        "sellable": true
     },
     "Gemme foudre": {
         "icon": ":gem::zap:",
-        "drop_grad": 2
+        "drop_grad": 2,
+        "storage": "drop",
+        "sellable": true
     },
     "Plume feu": {
         "icon": ":feather::fire:",
-        "drop_grad": 2
+        "drop_grad": 2,
+        "storage": "drop",
+        "sellable": true
     },
     "Plume glace": {
         "icon": ":feather::snowflake:",
-        "drop_grad": 2
+        "drop_grad": 2,
+        "storage": "drop",
+        "sellable": true
     },
     "Plume foudre": {
         "icon": ":feather::zap:",
-        "drop_grad": 2
+        "drop_grad": 2,
+        "storage": "drop",
+        "sellable": true
     },
     "Soif de sang": {
         "icon": ":drop_of_blood:",
-        "drop_grad": 2
+        "drop_grad": 2,
+        "storage": "drop",
+        "sellable": true
     },
     "Os de bébé dragon": {
         "icon": ":bone::dragon:",
-        "drop_grad": 2
+        "drop_grad": 2,
+        "storage": "drop",
+        "sellable": true
     },
     "Brume affaiblissante": {
         "icon": ":face_in_clouds:",
-        "drop_grad": 2
+        "drop_grad": 2,
+        "storage": "drop",
+        "sellable": true
     },
     "Ceinture imposante": {
         "icon": ":loop:",
-        "drop_grad": 2
+        "drop_grad": 2,
+        "storage": "drop",
+        "sellable": true
     },
     "Os du dragon de glace": {
         "icon": ":bone::dragon::snowflake:",
-        "drop_grad": 2
+        "drop_grad": 2,
+        "storage": "drop",
+        "sellable": true
     },
     "Os du dragon de feu": {
         "icon": ":bone::dragon::fire:",
-        "drop_grad": 2
+        "drop_grad": 2,
+        "storage": "drop",
+        "sellable": true
     },
     "Coup double": {
         "icon": ":right_facing_fist::left_facing_fist:",
-        "drop_grad": 2
+        "drop_grad": 2,
+        "storage": "drop",
+        "sellable": true
     },
     "Cristal de régénération": {
         "icon": ":crystal_ball:",
-        "drop_grad": 3
+        "drop_grad": 3,
+        "storage": "drop",
+        "sellable": true
     },
     "Crâne maudit": {
         "icon": ":skull:",
-        "drop_grad": 3
+        "drop_grad": 3,
+        "storage": "drop",
+        "sellable": true
     },
     "Canine acérée": {
         "icon": ":tooth:",
-        "drop_grad": 3
+        "drop_grad": 3,
+        "storage": "drop",
+        "sellable": true
     },
     "Sang de gobelin": {
         "icon": ":drop_of_blood::troll:",
-        "drop_grad": 3
+        "drop_grad": 3,
+        "storage": "drop",
+        "sellable": true
     },
     "Amulette de protection": {
         "icon": ":shell:",
-        "drop_grad": 3
+        "drop_grad": 3,
+        "storage": "drop",
+        "sellable": true
     },
     "Ceinture maudite": {
         "icon": ":prayer_beads:",
-        "drop_grad": 3
+        "drop_grad": 3,
+        "storage": "drop",
+        "sellable": true
     },
     "Noyau": {
         "icon": ":radio_button:",
-        "drop_grad": 3
+        "drop_grad": 3,
+        "storage": "drop",
+        "sellable": true
     },
     "Enragement": {
         "icon": ":triumph:",
-        "drop_grad": 3
+        "drop_grad": 3,
+        "storage": "drop",
+        "sellable": true
     },
     "Couronne du roi": {
         "icon": ":crown:",
-        "drop_grad": 3
+        "drop_grad": 3,
+        "storage": "drop",
+        "sellable": true
     },
     "Noyau vent": {
         "icon": ":white_circle:",
-        "drop_grad": 3
+        "drop_grad": 3,
+        "storage": "drop",
+        "sellable": true
     },
     "Noyau feu": {
         "icon": ":red_circle:",
-        "drop_grad": 3
+        "drop_grad": 3,
+        "storage": "drop",
+        "sellable": true
     },
     "Noyau eau": {
         "icon": ":blue_circle:",
-        "drop_grad": 3
+        "drop_grad": 3,
+        "storage": "drop",
+        "sellable": true
     },
     "Noyau plante": {
         "icon": ":green_circle:",
-        "drop_grad": 3
+        "drop_grad": 3,
+        "storage": "drop",
+        "sellable": true
     },
     "Noyau foudre": {
         "icon": ":yellow_circle:",
-        "drop_grad": 3
+        "drop_grad": 3,
+        "storage": "drop",
+        "sellable": true
     },
     "Coeur feu": {
         "icon": ":anatomical_heart::fire:",
-        "drop_grad": 3
+        "drop_grad": 3,
+        "storage": "drop",
+        "sellable": true
     },
     "Coeur glace": {
         "icon": ":anatomical_heart::snowflake:",
-        "drop_grad": 3
+        "drop_grad": 3,
+        "storage": "drop",
+        "sellable": true
     },
     "Coeur foudre": {
         "icon": ":anatomical_heart::zap:",
-        "drop_grad": 3
+        "drop_grad": 3,
+        "storage": "drop",
+        "sellable": true
     },
     "Âme corrompue": {
         "icon": ":ghost:",
-        "drop_grad": 3
+        "drop_grad": 3,
+        "storage": "drop",
+        "sellable": true
     },
     "Coeur de bébé dragon": {
         "icon": ":anatomical_heart::dragon:",
-        "drop_grad": 3
+        "drop_grad": 3,
+        "storage": "drop",
+        "sellable": true
     },
     "Venin mortel": {
         "icon": ":skull_crossbones:",
-        "drop_grad": 3
+        "drop_grad": 3,
+        "storage": "drop",
+        "sellable": true
     },
     "Massue géante": {
         "icon": ":cricket_game:",
-        "drop_grad": 3
+        "drop_grad": 3,
+        "storage": "drop",
+        "sellable": true
     },
     "Coeur du dragon de glace": {
         "icon": ":anatomical_heart::dragon::snowflake:",
-        "drop_grad": 3
+        "drop_grad": 3,
+        "storage": "drop",
+        "sellable": true
     },
     "Coeur du dragon de feu": {
         "icon": ":anatomical_heart::dragon::fire:",
-        "drop_grad": 3
+        "drop_grad": 3,
+        "storage": "drop",
+        "sellable": true
     },
     "Résurection": {
         "icon": ":innocent:",
-        "drop_grad": 3
+        "drop_grad": 3,
+        "storage": "drop",
+        "sellable": true
     },
     "Potion à effet aléatoire": {
-        "icon": ":test_tube:"
+        "icon": ":test_tube:",
+        "storage": "bag",
+        "sellable": true
+    },
+    "Étoile": {
+        "icon": ":star:",
+        "storage": "bag",
+        "sellable": true
     }
 }
