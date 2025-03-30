@@ -333,5 +333,15 @@
         },
         "quantity": 1,
         "icon": ":ring:"
+    },
+    "Voeu": {
+        "craft": {
+            "image": "https://i.imgur.com/KqZpZdb.jpeg",
+            "item": {
+                "Étoile" : 10
+            }
+        },
+        "quantity": 1,
+        "icon": ":star2:"
     }
 }

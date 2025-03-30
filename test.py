@@ -368,12 +368,14 @@ class BattleView(discord.ui.View):
                             
                         drop_loot = drop_loot + "<@" + str(log_data[player]["id"]) + "> + 1 " + items[drop_name]["icon"] + " " + drop_name + "\n"
                     
-                    if "classe" in log_data[player] and "name" in log_data[player]["classe"] and log_data[player]["classe"]["progression 1"] != "completed":
+                    if "classe" in log_data[player] and "name" in log_data[player]["classe"]:
                         if log_data[player]["classe"]["name"] == "Assassin":
-                            log_data[player]["classe"]["progression 1"] += 1
+                            if log_data[player]["classe"]["progression 1"] != "completed":
+                                log_data[player]["classe"]["progression 1"] += 1
                         else:
                             if log_data[player]["classe"]["name"] == "Guerrier": 
-                                log_data[player]["classe"]["progression 1"] += 1
+                                if log_data[player]["classe"]["progression 1"] != "completed":
+                                    log_data[player]["classe"]["progression 1"] += 1
                                 
                                 mob_for = (battle["mob"]["lvl"] * mobs[battle["mob"]["name"]]["stats"]["for"]) * (0.9 ** nbr_debuffer)
                                 
@@ -381,14 +383,62 @@ class BattleView(discord.ui.View):
                                     log_data[player]["stats"]["for"] += int(mob_for//100)
                             else:
                                 if log_data[player]["classe"]["name"] == "Gardien":
-                                    
-                                    log_data[player]["classe"]["progression 1"] += len(players) - 1
+                                    if log_data[player]["classe"]["progression 1"] != "completed":
+                                        log_data[player]["classe"]["progression 1"] += len(players) - 1
                                     
                                     mob_def = (battle["mob"]["lvl"] * mobs[battle["mob"]["name"]]["stats"]["def"]) * (0.9 ** nbr_debuffer)
                                    
                                     if log_data[player]["stats"]["def"] > mob_def:
-                                        log_data[player]["stats"]["def"] += mob_def//100
-                                
+                                        log_data[player]["stats"]["def"] += int(mob_def//100)
+                                else:
+                                    if log_data[player]["classe"]["name"] == "Druide":
+                                        mob_pv = (battle["mob"]["lvl"] * mobs[battle["mob"]["name"]]["stats"]["pv"]) * (0.9 ** nbr_debuffer)
+                                        mob_for = (battle["mob"]["lvl"] * mobs[battle["mob"]["name"]]["stats"]["for"]) * (0.9 ** nbr_debuffer)
+                                        mob_def = (battle["mob"]["lvl"] * mobs[battle["mob"]["name"]]["stats"]["def"]) * (0.9 ** nbr_debuffer)
+                                        
+                                        rune_storage = log_data[player]["rune"]
+                                        
+                                        if log_data[player]["stats"]["pv"] > mob_pv:
+                                            nbr_eau = int(mob_pv/400/250)
+                                            
+                                            if nbr_eau > 0 :
+                                                drop_loot += f"<@{log_data[player]["id"]}> + {nbr_eau} {items["Eau"]["icon"]} Eau\n"
+                                                
+                                                if "Eau" in rune_storage:
+                                                    rune_storage["Eau"]["quantity"] += nbr_eau
+                                                else:
+                                                    rune_storage["Eau"] = {"quantity": nbr_eau, "icon": items["Eau"]["icon"]}
+                                                    
+                                                log_data[player]["stats"]["pv"] += nbr_eau * 250
+                                                    
+                                                
+                                        if log_data[player]["stats"]["for"] > mob_for:
+                                            nbr_feu = int(mob_for/400/2)
+                                            
+                                            if nbr_feu > 0 :
+                                                drop_loot += f"<@{log_data[player]["id"]}> + {nbr_feu} {items["Feu"]["icon"]} Feu\n"
+                                        
+                                                if "Feu" in rune_storage:
+                                                    rune_storage["Feu"]["quantity"] += nbr_feu
+                                                else:
+                                                    rune_storage["Feu"] = {"quantity": nbr_feu, "icon": items["Feu"]["icon"]}
+                                                    
+                                                log_data[player]["stats"]["for"] += nbr_feu * 2
+                                        
+                                        
+                                        if log_data[player]["stats"]["def"] > mob_def:
+                                            nbr_plante = int(mob_def/400/4)
+                                            
+                                            if nbr_plante > 0 :
+                                                drop_loot += f"<@{log_data[player]["id"]}> + {nbr_plante} {items["Plante"]["icon"]} Plante\n"
+                    
+                                                if "Plante" in rune_storage:
+                                                    rune_storage["Plante"]["quantity"] += nbr_plante
+                                                else:
+                                                    rune_storage["Plante"] = {"quantity": nbr_plante, "icon": items["Plante"]["icon"]}
+                                                    
+                                                log_data[player]["stats"]["def"] += nbr_plante * 4
+
                     boosted_time = datetime.strptime(log_data[player]["xp_boosted"], "%Y-%m-%d %H:%M:%S.%f")
                     
                     if boosted_time > now:
@@ -692,10 +742,11 @@ class BoostXPView(discord.ui.View):
             await self.message.edit(view=self)
 
 class WheelView(discord.ui.View):
-    def __init__(self, timeout, author_name):
+    def __init__(self, timeout, author_name, quantity):
         super().__init__(timeout=timeout)
         self.message = None
         self.author_name = author_name
+        self.quantity = quantity
 
     @discord.ui.button(label="Tenter ma chance", style=discord.ButtonStyle.green, custom_id="btn_wheel")
     async def btn_wheel(self, interaction: discord.Interaction, button: discord.ui.Button):
@@ -715,81 +766,92 @@ class WheelView(discord.ui.View):
 
             id = str(log_data[interaction.user.name]["id"])
 
-            if "Ticket" in log_data[interaction.user.name]["bag"]:
-                log_data[interaction.user.name]["bag"]["Ticket"]["quantity"] -= 1
+            if "Ticket" in log_data[interaction.user.name]["bag"] and log_data[interaction.user.name]["bag"]["Ticket"]["quantity"] >= self.quantity:
+                log_data[interaction.user.name]["bag"]["Ticket"]["quantity"] -= self.quantity
                 if log_data[interaction.user.name]["bag"]["Ticket"]["quantity"] == 0:
                     del log_data[interaction.user.name]["bag"]["Ticket"]
 
-                alea = random.randint(1, 100)
-                if alea <= 1:
-                    lot = 1
-                else:
-                    if alea <= 7:
-                        lot = 2
+                for i in range(self.quantity):
+                    alea = random.randint(1, 100)
+                    if alea <= 1:
+                        lot = 1
                     else:
-                        if alea <= 16:
-                            lot = 3
+                        if alea <= 7:
+                            lot = 2
                         else:
-                            if alea <= 25:
-                                lot = 4
+                            if alea <= 16:
+                                lot = 3
                             else:
-                                if alea <= 34:
-                                    lot = 5
+                                if alea <= 25:
+                                    lot = 4
                                 else:
-                                    if alea <= 47:
-                                        lot = 6
+                                    if alea <= 34:
+                                        lot = 5
                                     else:
-                                        if alea <= 52:
-                                            lot = 7
+                                        if alea <= 47:
+                                            lot = 6
                                         else:
-                                            if alea <= 65:
-                                                lot = 8
+                                            if alea <= 52:
+                                                lot = 7
                                             else:
-                                                if alea <= 81:
-                                                    lot = 9
+                                                if alea <= 65:
+                                                    lot = 8
                                                 else:
-                                                    if alea <= 90:
-                                                        lot = 10
+                                                    if alea <= 81:
+                                                        lot = 9
                                                     else:
-                                                        if alea <= 93:
-                                                            lot = 11
+                                                        if alea <= 90:
+                                                            lot = 10
                                                         else:
-                                                            lot = 12
-
-                await interaction.response.send_message(wheel["gain_" + str(lot)]["url"])
-
-                price = wheel["gain_" + str(lot)]["price"]["title"]
-
-                item = wheel["gain_" + str(lot)]["price"]["item"]
-
-                if item in items:
-                    price += " " + items[item]["icon"]
-
-                    storage = items[item]["storage"]
-
-                    if item in log_data[interaction.user.name][storage]:
-                        log_data[interaction.user.name][storage][item]["quantity"] += wheel["gain_" + str(lot)]["price"]["quantity"]
+                                                            if alea <= 93:
+                                                                lot = 11
+                                                            else:
+                                                                lot = 12
+                    
+                    if self.quantity == 1:
+                        await interaction.response.send_message(wheel["gain_" + str(lot)]["url"])
                     else:
-                        log_data[interaction.user.name][storage][item] = {"quantity": wheel["gain_" + str(lot)]["price"]["quantity"], "icon": items[item]["icon"]}
+                        if i == 0:
+                            await interaction.response.send_message(wheel["gain_" + str(lot)]["url"])
 
-                    if "stats" in items[item]:
-                        if "pv" in items[item]["stats"]:
-                            log_data[interaction.user.name]["stats"]["pv"] += items[item]["stats"]["pv"] * wheel["gain_" + str(lot)]["price"]["quantity"]
-                        if "for" in items[item]["stats"]:
-                            log_data[interaction.user.name]["stats"]["for"] += items[item]["stats"]["for"] * wheel["gain_" + str(lot)]["price"]["quantity"]
-                        if "def" in items[item]["stats"]:
-                            log_data[interaction.user.name]["stats"]["def"] += items[item]["stats"]["def"] * wheel["gain_" + str(lot)]["price"]["quantity"]
+                    price = wheel["gain_" + str(lot)]["price"]["title"]
 
-                else:
-                    if item == "Gold":
-                        log_data[interaction.user.name]["gold"] += wheel["gain_" + str(lot)]["price"]["quantity"]
+                    item = wheel["gain_" + str(lot)]["price"]["item"]
+
+                    if item in items:
+                        price += " " + items[item]["icon"]
+
+                        storage = items[item]["storage"]
+
+                        if item in log_data[interaction.user.name][storage]:
+                            log_data[interaction.user.name][storage][item]["quantity"] += wheel["gain_" + str(lot)]["price"]["quantity"]
+                        else:
+                            log_data[interaction.user.name][storage][item] = {"quantity": wheel["gain_" + str(lot)]["price"]["quantity"], "icon": items[item]["icon"]}
+
+                        if "stats" in items[item]:
+                            if "pv" in items[item]["stats"]:
+                                log_data[interaction.user.name]["stats"]["pv"] += items[item]["stats"]["pv"] * wheel["gain_" + str(lot)]["price"]["quantity"]
+                            if "for" in items[item]["stats"]:
+                                log_data[interaction.user.name]["stats"]["for"] += items[item]["stats"]["for"] * wheel["gain_" + str(lot)]["price"]["quantity"]
+                            if "def" in items[item]["stats"]:
+                                log_data[interaction.user.name]["stats"]["def"] += items[item]["stats"]["def"] * wheel["gain_" + str(lot)]["price"]["quantity"]
+
                     else:
-                        if item == "Rien":
-                            price = "absolument rien"
-
-                await interaction.followup.send("|| " + "<@" + id + ">" + " remporte " + price + " ! ||")
+                        if item == "Gold":
+                            log_data[interaction.user.name]["gold"] += wheel["gain_" + str(lot)]["price"]["quantity"]
+                        else:
+                            if item == "Rien":
+                                price = "absolument rien"
+                    
+                    if self.quantity == 1:
+                        await interaction.followup.send("|| " + "<@" + id + ">" + " remporte " + price + " ! ||")
+                    else:
+                        if i == 0:
+                            await interaction.followup.send("|| " + "<@" + id + ">" + " remporte " + price + " ! ||")
+                        else:
+                            await interaction.channel.send("|| " + "<@" + id + ">" + " remporte " + price + " ! ||")
             else:
-                await interaction.response.send_message("<@" + id + ">" + ", reviens lorsque tu auras des tickets.")
+                await interaction.response.send_message("<@" + id + ">" + ", reviens lorsque tu auras assez de tickets.")
 
             for child in self.children:
                 child.disabled = True
@@ -894,7 +956,7 @@ async def hourly_mob():
 
     while not client.is_closed():
         now = datetime.now()
-        next_hour = (now + timedelta(minutes=15)).replace(second=0, microsecond=0) #a1b2
+        next_hour = (now + timedelta(minutes=6)).replace(second=0, microsecond=0) #a1b2
         wait_time = (next_hour - now).total_seconds()
 
         await asyncio.sleep(wait_time)
@@ -963,7 +1025,7 @@ async def hourly_mob():
                     embed = create_embed(title=title, color=color, image=image, tabFields=tabFields)
                     break;
 
-        view = BattleView(timeout=600) #a1b2
+        view = BattleView(timeout=240) #a1b2
         view.message = await channel.send(embed=embed, view=view)
 
         battles = {"mob": {"name": mob_name, "lvl": lvl}, "players": {}}
@@ -1027,7 +1089,18 @@ async def on_message(message):
 
     if message.content.startswith("!sw"):
         if await time_command(message.author.name, message.channel, "!sw", 0.0025):
-            embed, view = wheel_action(message.author.name, message.author.avatar, message.author.global_name)
+            command_and_argument = message.content.split(maxsplit=1)
+            
+            quantity = 1
+            
+            if len(command_and_argument) == 2:
+                command, quantity = command_and_argument
+                if is_integer(quantity) and int(quantity) > 0:
+                    quantity = int(quantity)
+                else:
+                    quantity = 1
+                
+            embed, view = wheel_action(message.author.name, message.author.avatar, message.author.global_name, quantity)
             view.message = await message.channel.send(embed=embed, view=view)
             updated = True
 
@@ -1086,7 +1159,7 @@ async def on_message(message):
                 
                 
                 title = "Craft"
-                tabFields = {"Faites !craft nom_item optionnel_quantité" : "", "Liste des crafts disponibles : " : "", "Gemmes d'éveil :" : "<:Rare:1222193217957662760> Rare\n<:Epique:1222193241022136491> Epique\n<:Epique:1222193241022136491> Epique2\n<:Legendaire:1222193258403336222> Legendaire\n:small_red_triangle: Fragment\n:octagonal_sign: Ultime\n", "Runes améliorées :" : ":boom: Brasier • For+40\n:volcano: Volcan • For+600\n:herb: Branche • Def+80\n:deciduous_tree: Arbre • Def+1200\n:sweat_drops: Mer • PV+5000\n:ocean: Ocean • PV+75000", "Item de classe :" : classe_item}
+                tabFields = {"Faites !craft nom_item optionnel_quantité" : "", "Liste des crafts disponibles : " : "", "Spéciaux :": ":star2: Voeu\n" , "Gemmes d'éveil :" : "<:Rare:1222193217957662760> Rare\n<:Epique:1222193241022136491> Epique\n<:Epique:1222193241022136491> Epique2\n<:Legendaire:1222193258403336222> Legendaire\n:small_red_triangle: Fragment\n:octagonal_sign: Ultime\n", "Runes améliorées :" : ":boom: Brasier • For+40\n:volcano: Volcan • For+600\n:herb: Branche • Def+80\n:deciduous_tree: Arbre • Def+1200\n:sweat_drops: Mer • PV+5000\n:ocean: Ocean • PV+75000", "Item de classe :" : classe_item}
                 color = discord.Color.lighter_grey()
                 embed = create_embed(title=title, color=color, tabFields=tabFields)
                 await message.channel.send(embed=embed)
@@ -1620,11 +1693,11 @@ async def assassin_command(interaction: discord.Interaction):
 async def rat_command(interaction: discord.Interaction):
     if "classe" in log_data[interaction.user.name] and "name" in log_data[interaction.user.name]["classe"] and log_data[interaction.user.name]["classe"]["name"] == "Rat":
         title = "Informations cachées sur la classe :mouse: Rat"
-        if log_data[interaction.user.name]["classe"]["progression 1"] == "completed" or log_data[interaction.user.name]["classe"]["progression 1"] >= 10000000:
+        if log_data[interaction.user.name]["classe"]["progression 1"] == "completed" or log_data[interaction.user.name]["classe"]["progression 1"] >= 5000000:
             progression_1 = "**Progression • Réussie**"
             log_data[interaction.user.name]["classe"]["progression 1"] = "completed"
         else:
-            progression_1 = "**Progression • **" + "[" + str(log_data[interaction.user.name]["classe"]["progression 1"]) + "/10000000]"
+            progression_1 = "**Progression • **" + "[" + str(log_data[interaction.user.name]["classe"]["progression 1"]) + "/5000000]"
         
         description = "**Pour exalter votre classe :mouse: Rat en la classe :coin: Midas, réussissez ces quêtes :**\n\n**Quête 1 • **" + classes["rat"]["details"]["Quete 1"]["quete"] + "\n**Récompense • **" + classes["rat"]["details"]["Quete 1"]["recompense"] + "\n" + progression_1 + "\n\n**Quête 2 • **" + classes["rat"]["details"]["Quete 2"]["quete"] + "\n **Récompense • **" + classes["rat"]["details"]["Quete 2"]["recompense"] + "\n**Progression • **" + log_data[interaction.user.name]["classe"]["progression 2"]
         embed = create_embed(title=title, description=description, color=discord.Color.blue())
@@ -1704,11 +1777,27 @@ async def gardien_command(interaction: discord.Interaction):
 async def druide_command(interaction: discord.Interaction):
     if "classe" in log_data[interaction.user.name] and "name" in log_data[interaction.user.name]["classe"] and log_data[interaction.user.name]["classe"]["name"] == "Druide":
         title = "Informations cachées sur la classe :coral: Druide"
-        if log_data[interaction.user.name]["classe"]["progression 1"] == "completed" or log_data[interaction.user.name]["classe"]["progression 1"] >= 45:
+        rune_storage = log_data[interaction.user.name]["rune"]
+        nbr_volcan = 0
+        nbr_ocean = 0
+        nbr_arbre = 0
+        
+        if "Volcan" in rune_storage:
+            nbr_volcan = rune_storage["Volcan"]["quantity"]
+        
+        if "Ocean" in rune_storage:
+            nbr_ocean = rune_storage["Ocean"]["quantity"]
+            
+        if "Arbre" in rune_storage:
+            nbr_arbre = rune_storage["Arbre"]["quantity"]
+        
+        log_data[interaction.user.name]["classe"]["progression 1"] = nbr_volcan + nbr_ocean + nbr_arbre
+        
+        if log_data[interaction.user.name]["classe"]["progression 1"] == "completed" or log_data[interaction.user.name]["classe"]["progression 1"] >= 25:
             progression_1 = "**Progression • Réussie**"
             log_data[interaction.user.name]["classe"]["progression 1"] = "completed"
         else:
-            progression_1 = "**Progression • **" + "[" + str(log_data[interaction.user.name]["classe"]["progression 1"]) + "/45]"
+            progression_1 = "**Progression • **" + "[" + str(log_data[interaction.user.name]["classe"]["progression 1"]) + "/25]"
         
         description = "**Pour exalter votre classe :coral: Druide en la classe :libra: Spécialiste runique, réussissez ces quêtes :**\n\n**Quête 1 • **" + classes["druide"]["details"]["Quete 1"]["quete"] + "\n**Récompense • **" + classes["druide"]["details"]["Quete 1"]["recompense"] + "\n" + progression_1 + "\n\n**Quête 2 • **" + classes["druide"]["details"]["Quete 2"]["quete"] + "\n **Récompense • **" + classes["druide"]["details"]["Quete 2"]["recompense"] + "\n**Progression • **" + log_data[interaction.user.name]["classe"]["progression 2"]
         embed = create_embed(title=title, description=description, color=discord.Color.blue())
@@ -1903,6 +1992,25 @@ async def sell_command(interaction: discord.Interaction, item: str, prix: int, q
     if quantité > item_quantity:
         await interaction.response.send_message(f"Vous n'avez pas assez de **{item}** ({item_quantity} en stock).", ephemeral=True)
         return
+
+    if "name" in log_data[interaction.user.name]["classe"] and log_data[interaction.user.name]["classe"]["name"] == "Druide" and (item == "Volcan" or item == "Ocean" or item == "Arbre"):
+        rune_storage = log_data[interaction.user.name]["rune"]
+        nbr_volcan = 0
+        nbr_ocean = 0
+        nbr_arbre = 0
+        
+        if "Volcan" in rune_storage:
+            nbr_volcan = rune_storage["Volcan"]["quantity"]
+        
+        if "Ocean" in rune_storage:
+            nbr_ocean = rune_storage["Ocean"]["quantity"]
+            
+        if "Arbre" in rune_storage:
+            nbr_arbre = rune_storage["Arbre"]["quantity"]
+           
+        if nbr_volcan + nbr_ocean + nbr_arbre - quantité < 25:
+            await interaction.response.send_message(f"Vous ne pouvez pas vendre de **{item}** car votre quête de classe vous interdit de vendre des runes de paliers III si vous en avez moins de 25 après la vente.", ephemeral=True)
+            return
 
     # Mise à jour de l'inventaire après la vente
     user_inventory[item]["quantity"] -= quantité
@@ -2365,36 +2473,36 @@ async def time_command(author_name, channel, command, cooldown):
 
 def info_action():
     tabFields = {
-        "!gold :" : "Pour voir combien de gold vous avez.",
-        "!profil :" : "Pour voir vos stats.",
-        "!daily :" : "Pour récupérer des golds toutes les 24h, ne perdez pas votre série.",
+        "!gold :" : "Voir vos gold.",
+        "!profil :" : "Voir vos stats.",
+        "!daily :" : "Récupérer des golds toutes les 24h, ne perdez pas votre série.",
         "!compter :" : "Pour les tenants du record dans #compter.",
         "!explore :" : "Explorez les profondeurs pour des golds toutes les heures.",
-        "!train :" : "Pour un entraînement digne des plus grand, gagnez de l'xp toutes les 3h.",
-        "!cd ou /cd :" : "Pour voir vos cooldown.",
-        "!market ou /market :" : "Pour acheter de quoi devenir plus fort.",
-        "!craft :" : "Pour crafter des items.",
-        "!materiaux :" : "Pour voir les stats des matériaux.",
-        "!top-[rank/gold/eveil/level/pv/for/def] :" : "Pour voir un classement en particulier.",
-        "!fight :" : "Pour se disputer le haut du classement !top-rank.",
-        "!skill :" : "Pour voir votre arbre de compétences. :construction:",
-        "!equipment :" : "Pour voir votre équipement. :new:",
-        "!rune :" : "Pour voir l'ensemble de vos rune. :new:",
-        "!bag :" : "Pour voir ce que vous avez dans votre sac.",
-        "!drop :" : "Pour voir vos drops de monstres. :new:",
-        "!purchase :" : "Pour acheter un item au market.",
-        "!notif :" : "Pour rejoindre la liste des chads notifiés lors d'une demande d'aide",
-        "!send :" : "Pour envoyer de l'argent",
+        "!train :" : "Entraînement digne des plus grands, gagnez de l'xp toutes les 3h.",
+        "!cd ou /cd :" : "Voir vos cooldown.",
+        "!market ou /market :" : "Acheter de quoi devenir plus fort.",
+        "!craft :" : "Crafter des items.",
+        "!materiaux :" : "Voir les stats des matériaux.",
+        "!top-[rank/gold/eveil/level/pv/for/def] :" : "Voir les classements.",
+        "!fight :" : "Disputez vous le haut du classement !top-rank.",
+        "!skill :" : "Voir votre arbre de compétences. :construction:",
+        "!equipment :" : "Voir votre équipement. :new:",
+        "!rune :" : "Voir l'ensemble de vos rune. :new:",
+        "!bag :" : "Voir ce que vous avez dans votre sac.",
+        "!drop :" : "Voir vos drops de monstres. :new:",
+        "!purchase :" : "Acheter un item au market.",
+        "!notif :" : "Rejoindre la liste des chads notifié(e)s lors d'une demande d'aide",
+        "!send :" : "Envoyer de l'argent",
         "!eveil :" : "Brisez vos limites !",
         "!sw :" : "Tenter votre chance à la Sakura Wheel !",
-        "!classe :" : "[En travaux] :construction:",
+        "!classe :" : "Voir les info des classes",
         "/boost :" : "Commande liée à vos bonus. :new:",
-        "/sell item prix quantité :" : "Mettre en vente vos items à la brocante.",
-        "/buy vente quantité :" : "Achetez des items à la brocante.",
-        "/brocante :" : "Pour voir la brocante.",
-        "!select nom de la classe :" : "Pour choisir votre classe.",
-        "/potion" : "Pour concoter vos meilleures et pires idées. :new:",
-        "/splash" : "Pour utiliser vos potions. :new:",
+        "/sell :" : "Mettre en vente vos items à la brocante.",
+        "/buy :" : "Achetez des items à la brocante.",
+        "/brocante :" : "Voir la brocante.",
+        "!select nom_classe :" : "Choisir votre classe.",
+        "/potion" : "Concoter vos meilleures et pires idées. :new:",
+        "/splash" : "Utiliser vos potions. :new:",
     }
     color = discord.Color.blue()
     title = "Informations"
@@ -2489,11 +2597,11 @@ def boostxp_action(author_name, author_icon, global_name, quantity, self_message
 
     return embed, view
 
-def wheel_action(author_name, author_icon, global_name):
+def wheel_action(author_name, author_icon, global_name, quantity):
     title = "Sakura Wheel"
-    description = "Faites tourner la roue contre un ticket :tickets: !"
+    description = f"Faites tourner la roue contre {quantity} ticket :tickets: !"
     color = discord.Color.blue()
-    view = WheelView(timeout=6, author_name=author_name)
+    view = WheelView(timeout=6, author_name=author_name, quantity=quantity)
 
     embed = create_embed(title=title, color=color, author_name=global_name, author_icon=author_icon, description=description)
 
@@ -2769,12 +2877,12 @@ def bag_action(author_name, author_icon, global_name):
         # Trier les items de l'équipement selon la liste de priorité
         for item in priority_order:
             if item in author_bag:
-                    equipment += f"{author_bag[item]["icon"]} {item} • {author_bag[item]["quantity"]}\n"
+                    bag += f"{author_bag[item]["icon"]} {item} • {author_bag[item]["quantity"]}\n"
 
         # Ajouter les autres équipements (non priorisés)
         for item in author_bag:
             if item not in priority_order:
-                equipment += f"{author_bag[item]["icon"]} {item} • {author_bag[item]["quantity"]}\n"
+                bag += f"{author_bag[item]["icon"]} {item} • {author_bag[item]["quantity"]}\n"
     else:
         bag = "Rien"
     

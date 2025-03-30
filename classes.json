@@ -27,7 +27,7 @@
         "description": "Il n'y a pas de petite économie, vous bénéficiez de -10% sur les prix du !market",
         "details": {
             "Quete 1": {
-                "quete": "Gagner 10M :coin: en combattant des monstres",
+                "quete": "Gagner 5M :coin: en combattant des monstres",
                 "recompense": "Débloquage du craft de la Main de Midas."
             },
             "Quete 2": {
@@ -115,7 +115,7 @@
         "description": "Le langage runique n'a plus de secret pour vous, vous extrairez des runes aléatoires sur les monstres vaincus",
         "details": {
             "Quete 1": {
-                "quete": "La somme de vos rubes Volcans, Arbres et Océans doit être de 45 ou plus",
+                "quete": "La somme de vos runes Volcans, Arbres et Océans doit être de 25 ou plus",
                 "recompense": "Débloquage du craft du Catalyseur Runique."
             },
             "Quete 2": {
