@@ -163,14 +163,14 @@
     },
     "Main": {
         "craft": {
-            "image": "https://i.imgur.com/sPJ0Bfg.jpeg",
+            "image": "https://i.imgur.com/2IKnZlR.jpeg",
             "item": {
-                "Pierre eau" : 3,
-                "Gemme eau" : 1,
-                "Fourrure de troll" : 4,
-                "Aile de démon" : 2,
-                "Âme corrompue" : 1,
-                "Fragment" : 5,
+                "Butin bonus" : 2,
+                "Écaille de bébé dragon" : 2,
+                "Os de bébé dragon" : 1,
+                "Noyau" : 1,
+                "Coeur glace" : 1,
+                "Fragment" : 4,
                 "Ultime" : 1
             }
         },

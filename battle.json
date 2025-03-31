@@ -1,11 +1,16 @@
 {
     "mob": {
-        "name": "Phenix_de_glace",
-        "lvl": 258
+        "name": "Troll_des_neiges",
+        "lvl": 281
     },
     "players": {
-        "altan3062": "altan3062"
+        "ruinflex": "ruinflex",
+        "akastukye": "akastukye",
+        "altan3062": "altan3062",
+        "terminator850": "terminator850",
+        "marylis": "marylis",
+        "junglepingouy": "junglepingouy"
     },
-    "status": "defaite",
-    "debuff_time": 0
+    "debuff_time": 0,
+    "status": "victoire"
 }

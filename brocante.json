@@ -14,48 +14,27 @@
         "quantity": 2
     },
     "Vente 3": {
-        "seller_id": 701782195844546662,
-        "seller_name": "altan3062",
-        "item": "Legendaire",
-        "price": 489000,
-        "quantity": 2
-    },
-    "Vente 4": {
-        "seller_id": 701782195844546662,
-        "seller_name": "altan3062",
-        "item": "Epique",
-        "price": 49000,
-        "quantity": 2
-    },
-    "Vente 5": {
-        "seller_id": 701782195844546662,
-        "seller_name": "altan3062",
-        "item": "Rare",
-        "price": 4900,
-        "quantity": 50
-    },
-    "Vente 6": {
         "seller_id": 802116818134892545,
         "seller_name": "terminator850",
         "item": "Legendaire",
         "price": 480000,
         "quantity": 3
     },
-    "Vente 7": {
+    "Vente 4": {
         "seller_id": 802116818134892545,
         "seller_name": "terminator850",
         "item": "BoostXP",
         "price": 15000,
         "quantity": 36
     },
-    "Vente 8": {
+    "Vente 5": {
         "seller_id": 802116818134892545,
         "seller_name": "terminator850",
         "item": "Epique",
         "price": 48000,
         "quantity": 20
     },
-    "Vente 9": {
+    "Vente 6": {
         "seller_id": 802116818134892545,
         "seller_name": "terminator850",
         "item": "Rare",

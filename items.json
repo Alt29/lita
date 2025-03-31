@@ -810,6 +810,6 @@
     "Voeu": {
         "icon": ":star2:",
         "storage": "bag",
-        "sellable": true
+        "sellable": false
     }
 }
