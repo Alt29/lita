@@ -147,14 +147,14 @@
     },
     "Faux": {
         "craft": {
-            "image": "https://i.imgur.com/sPJ0Bfg.jpeg",
+            "image": "https://i.imgur.com/lvQiz8u.jpeg",
             "item": {
-                "Pierre eau" : 3,
-                "Gemme eau" : 1,
-                "Fourrure de troll" : 4,
-                "Aile de demon" : 2,
-                "Ame corrompue" : 1,
-                "Fragment" : 5,
+                "Corne de démon" : 2,
+                "Pierre foudre" : 2,
+                "Gemme foudre": 1,
+                "Plume foudre" : 2,
+                "Noyau foudre" : 1,
+                "Fragment" : 2,
                 "Ultime" : 1
             }
         },
