@@ -514,7 +514,7 @@
             "gold": 575,
             "xp": 3600,
             "special_1": {
-                "name": "Ecaille de bébé dragon",
+                "name": "Écaille de bébé dragon",
                 "taux": 0.15
             },
             "special_2": {
@@ -598,7 +598,7 @@
             "gold": 1500,
             "xp": 20000,
             "special_1": {
-                "name": "Ecaille du dragon de glace",
+                "name": "Écaille du dragon de glace",
                 "taux": 0.15
             },
             "special_2": {
@@ -626,7 +626,7 @@
             "gold": 1500,
             "xp": 20000,
             "special_1": {
-                "name": "Ecaille du dragon de feu",
+                "name": "Écaille du dragon de feu",
                 "taux": 0.15
             },
             "special_2": {

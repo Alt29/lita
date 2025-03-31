@@ -944,10 +944,6 @@
             "Pierre foudre": {
                 "quantity": 2,
                 "icon": ":rock::zap:"
-            },
-            "\u00c9toile": {
-                "quantity": 1,
-                "icon": ":star:"
             }
         },
         "bag": {
@@ -966,6 +962,10 @@
             "Epique": {
                 "quantity": 1,
                 "icon": "<:Epique:1222193241022136491>"
+            },
+            "\u00c9toile": {
+                "quantity": 1,
+                "icon": ":star:"
             }
         },
         "level": {
@@ -1131,7 +1131,7 @@
                 "quantity": 2,
                 "icon": ":snake:"
             },
-            "Ecaille de b\u00e9b\u00e9 dragon": {
+            "Écaille de b\u00e9b\u00e9 dragon": {
                 "quantity": 3,
                 "icon": ":beginner::dragon:"
             },
@@ -1469,7 +1469,7 @@
             }
         },
         "drop": {
-            "Ecaille de b\u00e9b\u00e9 dragon": {
+            "Écaille de b\u00e9b\u00e9 dragon": {
                 "quantity": 2,
                 "icon": ":beginner::dragon:"
             },

@@ -473,7 +473,7 @@
         "storage": "drop",
         "sellable": true
     },
-    "Ecaille de bébé dragon": {
+    "Écaille de bébé dragon": {
         "icon": ":beginner::dragon:",
         "drop_grad": 1,
         "storage": "drop",
@@ -491,13 +491,13 @@
         "storage": "drop",
         "sellable": true
     },
-    "Ecaille du dragon de glace": {
+    "Écaille du dragon de glace": {
         "icon": ":beginner::dragon::snowflake:",
         "drop_grad": 1,
         "storage": "drop",
         "sellable": true
     },
-    "Ecaille du dragon de feu": {
+    "Écaille du dragon de feu": {
         "icon": ":beginner::dragon::fire:",
         "drop_grad": 1,
         "storage": "drop",
