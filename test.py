@@ -956,7 +956,7 @@ async def hourly_mob():
 
     while not client.is_closed():
         now = datetime.now()
-        next_hour = (now + timedelta(minutes=6)).replace(second=0, microsecond=0) #a1b2
+        next_hour = (now + timedelta(minutes=15)).replace(second=0, microsecond=0) #a1b2
         wait_time = (next_hour - now).total_seconds()
 
         await asyncio.sleep(wait_time)
@@ -1025,7 +1025,7 @@ async def hourly_mob():
                     embed = create_embed(title=title, color=color, image=image, tabFields=tabFields)
                     break;
 
-        view = BattleView(timeout=240) #a1b2
+        view = BattleView(timeout=600) #a1b2
         view.message = await channel.send(embed=embed, view=view)
 
         battles = {"mob": {"name": mob_name, "lvl": lvl}, "players": {}}
