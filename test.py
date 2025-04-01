@@ -2472,41 +2472,10 @@ async def time_command(author_name, channel, command, cooldown):
         return False
 
 def info_action():
-    tabFields = {
-        "!gold :" : "Voir vos gold.",
-        "!profil :" : "Voir vos stats.",
-        "!daily :" : "Récupérer des golds toutes les 24h, ne perdez pas votre série.",
-        "!compter :" : "Pour les tenants du record dans #compter.",
-        "!explore :" : "Explorez les profondeurs pour des golds toutes les heures.",
-        "!train :" : "Entraînement digne des plus grands, gagnez de l'xp toutes les 3h.",
-        "!cd ou /cd :" : "Voir vos cooldown.",
-        "!market ou /market :" : "Acheter de quoi devenir plus fort.",
-        "!craft :" : "Crafter des items.",
-        "!materiaux :" : "Voir les stats des matériaux.",
-        "!top-[rank/gold/eveil/level/pv/for/def] :" : "Voir les classements.",
-        "!fight :" : "Disputez vous le haut du classement !top-rank.",
-        "!skill :" : "Voir votre arbre de compétences. :construction:",
-        "!equipment :" : "Voir votre équipement. :new:",
-        "!rune :" : "Voir l'ensemble de vos rune. :new:",
-        "!bag :" : "Voir ce que vous avez dans votre sac.",
-        "!drop :" : "Voir vos drops de monstres. :new:",
-        "!purchase :" : "Acheter un item au market.",
-        "!notif :" : "Rejoindre la liste des chads notifié(e)s lors d'une demande d'aide",
-        "!send :" : "Envoyer de l'argent",
-        "!eveil :" : "Brisez vos limites !",
-        "!sw :" : "Tenter votre chance à la Sakura Wheel !",
-        "!classe :" : "Voir les info des classes",
-        "/boost :" : "Commande liée à vos bonus. :new:",
-        "/sell :" : "Mettre en vente vos items à la brocante.",
-        "/buy :" : "Achetez des items à la brocante.",
-        "/brocante :" : "Voir la brocante.",
-        "!select nom_classe :" : "Choisir votre classe.",
-        "/potion" : "Concoter vos meilleures et pires idées. :new:",
-        "/splash" : "Utiliser vos potions. :new:",
-    }
+    description = "!gold :\nVoir vos gold.\n!profil :\nVoir vos stats.\n!daily :\nRécupérer des golds toutes les 24h, ne perdez pas votre série.\n!compter :\nPour les tenants du record dans #compter.\n!explore :\nExplorez les profondeurs pour des golds toutes les heures.\n!train :\nEntraînement digne des plus grands, gagnez de l'xp toutes les 3h.\n!cd ou /cd :\nVoir vos cooldown.\n!market ou /market :\nAcheter de quoi devenir plus fort.\n!craft :\nCrafter des items.\n!materiaux :\nVoir les stats des matériaux.\n!top-[rank/gold/eveil/level/pv/for/def] :\nVoir les classements.\n!fight :\nDisputez vous le haut du classement !top-rank.\n!skill :\nVoir votre arbre de compétences. :construction:\n!equipment :\nVoir votre équipement. :new:\n!rune :\nVoir l'ensemble de vos rune. :new:\n!bag :\nVoir ce que vous avez dans votre sac.\n!drop :\nVoir vos drops de monstres. :new:\n!purchase :\nAcheter un item au market.\n!notif :\nRejoindre la liste des chads notifié(e)s lors d'une demande d'aide\n!send :\nEnvoyer de l'argent\n!eveil :\nBrisez vos limites !\n!sw :\nTenter votre chance à la Sakura Wheel !\n!classe :\nVoir les info des classes\n/boost :\nCommande liée à vos bonus. :new:\n/sell :\nMettre en vente vos items à la brocante.\n/buy :\nAchetez des items à la brocante.\n/brocante :\nVoir la brocante.\n!select nom_classe :\nChoisir votre classe.\n/potion\nConcoter vos meilleures et pires idées. :new:\n/splash\nUtiliser vos potions. :new:\n"
     color = discord.Color.blue()
     title = "Informations"
-    return create_embed(title=title, color=color, tabFields=tabFields)
+    return create_embed(title=title, color=color, description=description)
 
 def cd_action(author_name, author_icon, global_name):
     daily_check, daily_waiting_time = check_time(author_name, "!daily", 24)

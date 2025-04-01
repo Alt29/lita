@@ -1,15 +1,16 @@
 {
     "mob": {
-        "name": "Troll_des_neiges",
-        "lvl": 281
+        "name": "Demon_intermediaire",
+        "lvl": 482
     },
     "players": {
-        "ruinflex": "ruinflex",
-        "akastukye": "akastukye",
-        "altan3062": "altan3062",
-        "terminator850": "terminator850",
         "marylis": "marylis",
-        "junglepingouy": "junglepingouy"
+        "sorberas": "sorberas",
+        "terminator850": "terminator850",
+        "slashoroide": "slashoroide",
+        "altan3062": "altan3062",
+        "ruinflex": "ruinflex",
+        "akastukye": "akastukye"
     },
     "debuff_time": 0,
     "status": "victoire"

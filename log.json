@@ -6,16 +6,16 @@
         "avenger": true,
         "rank": 8,
         "place": 3,
-        "gold": 821960,
+        "gold": 4239292,
         "secret_potion": 2,
-        "!daily": "2025-03-30 22:43:32.152265",
-        "!explore": "2025-03-31 12:53:32.989950",
-        "!train": "2025-03-31 10:03:18.029578",
+        "!daily": "2025-03-31 23:17:22.994418",
+        "!explore": "2025-04-01 16:15:47.467558",
+        "!train": "2025-04-01 14:57:21.261896",
         "xp_boosted": "2025-09-05 23:00:19.134490",
         "gold_boosted": "2025-03-30 11:11:39.891547",
         "skill": {
             "PointXP": {
-                "quantity": 67,
+                "quantity": 68,
                 "icon": ":white_flower:"
             }
         },
@@ -64,11 +64,11 @@
                 "icon": ":seedling:"
             },
             "Eau": {
-                "quantity": 60,
+                "quantity": 80,
                 "icon": ":droplet:"
             },
             "Feu": {
-                "quantity": 40,
+                "quantity": 60,
                 "icon": ":fire:"
             }
         },
@@ -86,20 +86,44 @@
                 "icon": ":feather::snowflake:"
             },
             "Ceinture imposante": {
-                "quantity": 1,
+                "quantity": 2,
                 "icon": ":loop:"
             },
             "Gemme vent": {
                 "quantity": 1,
                 "icon": ":gem::dash:"
             },
-            "Cendre foudre": {
-                "quantity": 1,
-                "icon": ":fog::zap:"
+            "Peau de serpent": {
+                "quantity": 2,
+                "icon": ":snake:"
+            },
+            "\u00c9caille de b\u00e9b\u00e9 dragon": {
+                "quantity": 2,
+                "icon": ":beginner::dragon:"
             },
             "Cendre glace": {
                 "quantity": 1,
                 "icon": ":fog::snowflake:"
+            },
+            "Fourrure de troll": {
+                "quantity": 2,
+                "icon": ":mammoth:"
+            },
+            "Cendre feu": {
+                "quantity": 1,
+                "icon": ":fog::fire:"
+            },
+            "Pierre vent": {
+                "quantity": 1,
+                "icon": ":rock::dash:"
+            },
+            "Gel\u00e9e royale": {
+                "quantity": 2,
+                "icon": ":microbe::crown:"
+            },
+            "Gel\u00e9e": {
+                "quantity": 1,
+                "icon": ":microbe:"
             }
         },
         "bag": {
@@ -112,21 +136,25 @@
                 "icon": "<:Legendaire:1222193258403336222>"
             },
             "Epique": {
-                "quantity": 2,
+                "quantity": 5,
                 "icon": "<:Epique:1222193241022136491>"
             },
             "Rare": {
-                "quantity": 50,
+                "quantity": 70,
                 "icon": "<:Rare:1222193217957662760>"
+            },
+            "Ticket": {
+                "quantity": 1,
+                "icon": ":tickets:"
             }
         },
         "level": {
-            "lvl": 67,
-            "xp": 28911418
+            "lvl": 68,
+            "xp": 57593922
         },
         "stats": {
-            "pv": 1100250,
-            "for": 6770,
+            "pv": 1105250,
+            "for": 6785,
             "def": 18040
         },
         "deaths": 0,
@@ -143,19 +171,19 @@
             "Devoreur": 0
         },
         "title": {},
-        "last_daily": "2025-03-29 22:36:25.941148",
-        "max_daily": 24500,
+        "last_daily": "2025-03-30 22:43:32.152265",
+        "max_daily": 25000,
         "profil": 0,
         "!eveil": "2025-03-31 11:27:38.411041",
-        "!sw": "2025-03-30 23:37:53.326297",
-        "!craft": "2025-03-31 00:10:50.805726",
+        "!sw": "2025-03-31 16:12:23.876380",
+        "!craft": "2025-04-01 18:12:17.278088",
         "!boostxp": "2025-03-31 02:31:01.259122",
         "classe": {
             "unlock": true,
             "quantity": 4,
             "name": "Paysan",
             "icon": ":farmer:",
-            "progression 1": 67,
+            "progression 1": 68,
             "progression 2": "Pas encore craft\u00e9"
         }
     },
@@ -166,16 +194,16 @@
         "avenger": true,
         "rank": 8,
         "place": 5,
-        "gold": 3138489,
+        "gold": 1812766,
         "secret_potion": 0,
-        "!daily": "2025-03-31 07:44:35.088721",
-        "!explore": "2025-03-31 09:24:33.586475",
-        "!train": "2025-03-31 07:44:44.626445",
-        "xp_boosted": "2025-04-04 10:46:14.314506",
+        "!daily": "2025-04-01 09:13:50.738061",
+        "!explore": "2025-04-01 15:33:13.989989",
+        "!train": "2025-04-01 12:58:03.454150",
+        "xp_boosted": "2025-04-14 10:46:14.314506",
         "gold_boosted": "2025-03-31 20:08:17.650081",
         "skill": {
             "PointXP": {
-                "quantity": 55,
+                "quantity": 57,
                 "icon": ":white_flower:"
             }
         },
@@ -226,16 +254,8 @@
         },
         "drop": {
             "Peau carbonis\u00e9e": {
-                "quantity": 3,
+                "quantity": 5,
                 "icon": ":bacon:"
-            },
-            "Noyau eau": {
-                "quantity": 1,
-                "icon": ":blue_circle:"
-            },
-            "Gemme foudre": {
-                "quantity": 1,
-                "icon": ":gem::zap:"
             },
             "Gemme feu": {
                 "quantity": 1,
@@ -250,7 +270,7 @@
                 "icon": ":face_in_clouds:"
             },
             "Plume feu": {
-                "quantity": 1,
+                "quantity": 2,
                 "icon": ":feather::fire:"
             },
             "Ceinture imposante": {
@@ -261,22 +281,38 @@
                 "quantity": 1,
                 "icon": ":feather::snowflake:"
             },
-            "Cendre glace": {
+            "Venin mortel": {
                 "quantity": 1,
-                "icon": ":fog::snowflake:"
+                "icon": ":skull_crossbones:"
             },
-            "Pierre vent": {
+            "Noyau feu": {
                 "quantity": 1,
-                "icon": ":rock::dash:"
+                "icon": ":red_circle:"
+            },
+            "Plume foudre": {
+                "quantity": 1,
+                "icon": ":feather::zap:"
+            },
+            "Salive enflamm\u00e9e": {
+                "quantity": 1,
+                "icon": ":hot_face:"
+            },
+            "Gel\u00e9e royale": {
+                "quantity": 1,
+                "icon": ":microbe::crown:"
+            },
+            "Fourrure de troll": {
+                "quantity": 1,
+                "icon": ":mammoth:"
             }
         },
         "bag": {
             "Legendaire": {
-                "quantity": 2,
+                "quantity": 11,
                 "icon": "<:Legendaire:1222193258403336222>"
             },
             "Rare": {
-                "quantity": 36,
+                "quantity": 46,
                 "icon": "<:Rare:1222193217957662760>"
             },
             "Epique": {
@@ -288,13 +324,13 @@
                 "icon": ":diamond_shape_with_a_dot_inside:"
             },
             "Potion \u00e0 effet al\u00e9atoire": {
-                "quantity": 9,
+                "quantity": 5,
                 "icon": ":test_tube:"
             }
         },
         "level": {
-            "lvl": 55,
-            "xp": 6374544
+            "lvl": 57,
+            "xp": 3145779
         },
         "stats": {
             "pv": 557750,
@@ -316,19 +352,19 @@
         },
         "title": {},
         "profil": 0,
-        "last_daily": "2025-03-29 22:36:25.941148",
-        "max_daily": 21500,
+        "last_daily": "2025-03-31 07:44:35.088721",
+        "max_daily": 22000,
         "!eveil": "2025-03-23 17:30:55.802373",
-        "!compter": "2025-03-31 10:04:37.589482",
-        "!sw": "2025-03-23 21:05:12.564904",
-        "!craft": "2025-03-24 11:27:56.863197",
-        "!boostxp": "2025-03-23 22:02:05.050293",
+        "!compter": "2025-04-01 11:18:16.303634",
+        "!sw": "2025-03-31 17:19:15.284575",
+        "!craft": "2025-03-31 19:47:18.346828",
+        "!boostxp": "2025-03-31 17:24:04.481730",
         "classe": {
             "unlock": true,
             "quantity": 1,
             "name": "Alchimiste",
             "icon": ":alembic:",
-            "progression 1": 34,
+            "progression 1": "completed",
             "progression 2": "Pas encore craft\u00e9"
         }
     },
@@ -339,73 +375,53 @@
         "avenger": true,
         "rank": 9,
         "place": 13,
-        "gold": 459347,
-        "secret_potion": 0,
-        "!daily": "2025-03-30 22:43:34.553234",
-        "!explore": "2025-03-31 12:33:35.083168",
-        "!train": "2025-03-31 12:33:38.275209",
+        "gold": 763435,
+        "secret_potion": 12,
+        "!daily": "2025-03-31 22:47:28.089092",
+        "!explore": "2025-04-01 18:02:38.814568",
+        "!train": "2025-04-01 18:02:40.848880",
         "xp_boosted": "2025-04-04 11:11:11.111111",
-        "gold_boosted": "2024-01-01 11:11:11.111111",
+        "gold_boosted": "2025-04-02 00:20:06.140813",
         "skill": {
             "PointXP": {
-                "quantity": 55,
+                "quantity": 57,
                 "icon": ":white_flower:"
             }
         },
         "equipment": {},
         "rune": {},
         "drop": {
-            "Corne de d\u00e9mon": {
+            "Tissu": {
+                "quantity": 3,
+                "icon": ":reminder_ribbon:"
+            },
+            "Fourrure de troll": {
                 "quantity": 2,
-                "icon": ":smiling_imp:"
-            },
-            "Pierre": {
-                "quantity": 2,
-                "icon": ":rock:"
-            },
-            "Gemme plante": {
-                "quantity": 1,
-                "icon": ":gem::seedling:"
-            },
-            "Gel\u00e9e": {
-                "quantity": 1,
-                "icon": ":microbe:"
-            },
-            "Pierre vent": {
-                "quantity": 2,
-                "icon": ":rock::dash:"
-            },
-            "Cendre glace": {
-                "quantity": 1,
-                "icon": ":fog::snowflake:"
+                "icon": ":mammoth:"
             },
             "Gemme foudre": {
                 "quantity": 1,
                 "icon": ":gem::zap:"
             },
-            "Gel\u00e9e royale": {
-                "quantity": 3,
-                "icon": ":microbe::crown:"
-            },
-            "Pierre plante": {
+            "Gemme plante": {
                 "quantity": 1,
-                "icon": ":rock::seedling:"
+                "icon": ":gem::seedling:"
             },
-            "Cendre foudre": {
+            "Griffe de loup": {
                 "quantity": 1,
-                "icon": ":fog::zap:"
+                "icon": ":round_pushpin:"
+            },
+            "Pierre": {
+                "quantity": 1,
+                "icon": ":rock:"
             },
             "Pierre feu": {
                 "quantity": 1,
                 "icon": ":rock::fire:"
             },
-            "Tissu": {
+            "Peau de serpent": {
                 "quantity": 1,
-                "icon": ":reminder_ribbon:"
-            },
-            "Pierre eau": {
-                "quantity": 1,
-                "icon": ":rock::droplet:"
+                "icon": ":snake:"
             }
         },
         "bag": {
@@ -414,7 +430,7 @@
                 "icon": "<:Epique:1222193241022136491>"
             },
             "Rare": {
-                "quantity": 65,
+                "quantity": 224,
                 "icon": "<:Rare:1222193217957662760>"
             },
             "Legendaire": {
@@ -423,13 +439,13 @@
             }
         },
         "level": {
-            "lvl": 55,
-            "xp": 1705686
+            "lvl": 57,
+            "xp": 2437993
         },
         "stats": {
-            "pv": 1000,
-            "for": 10,
-            "def": 10
+            "pv": -12750,
+            "for": 195,
+            "def": 430
         },
         "deaths": 0,
         "penality": 0,
@@ -445,12 +461,12 @@
             "Devoreur": 0
         },
         "title": {},
-        "last_daily": "2025-03-29 22:36:25.941148",
-        "max_daily": 24000,
+        "last_daily": "2025-03-30 22:43:34.553234",
+        "max_daily": 24500,
         "profil": 0,
         "!eveil": "2025-03-17 21:17:28.987152",
         "!sw": "2025-03-12 17:21:09.893098",
-        "!craft": "2025-03-31 01:40:25.105178",
+        "!craft": "2025-03-31 18:01:09.826316",
         "classe": {
             "unlock": true,
             "quantity": 1,
@@ -467,11 +483,11 @@
         "avenger": true,
         "rank": 10,
         "place": 2,
-        "gold": 2398737,
+        "gold": 290558,
         "secret_potion": 0,
-        "!daily": "2025-03-30 22:43:42.559818",
-        "!explore": "2025-03-31 12:09:23.458911",
-        "!train": "2025-03-31 11:42:11.683259",
+        "!daily": "2025-03-31 23:11:07.744396",
+        "!explore": "2025-04-01 18:03:45.447938",
+        "!train": "2025-04-01 17:03:28.135880",
         "xp_boosted": "2025-04-04 22:00:31.576829",
         "gold_boosted": "2024-01-01 11:11:11.111111",
         "skill": {
@@ -546,36 +562,48 @@
                 "quantity": 1,
                 "icon": ":green_heart:"
             },
-            "Gel\u00e9e royale": {
-                "quantity": 1,
-                "icon": ":microbe::crown:"
-            },
             "Gemme eau": {
                 "quantity": 1,
                 "icon": ":gem::droplet:"
+            },
+            "Cendre foudre": {
+                "quantity": 1,
+                "icon": ":fog::zap:"
+            },
+            "Os de squelette": {
+                "quantity": 1,
+                "icon": ":bone:"
+            },
+            "Pierre feu": {
+                "quantity": 2,
+                "icon": ":rock::fire:"
             }
         },
         "bag": {
             "Legendaire": {
-                "quantity": 10,
+                "quantity": 3,
                 "icon": "<:Legendaire:1222193258403336222>"
             },
-            "Epique": {
-                "quantity": 54,
-                "icon": "<:Epique:1222193241022136491>"
-            },
             "Rare": {
-                "quantity": 160,
+                "quantity": 32,
                 "icon": "<:Rare:1222193217957662760>"
             },
             "\u00c9toile": {
                 "quantity": 4,
                 "icon": ":star:"
+            },
+            "Ultime": {
+                "quantity": 1,
+                "icon": ":octagonal_sign:"
+            },
+            "Epique": {
+                "quantity": 30,
+                "icon": "<:Epique:1222193241022136491>"
             }
         },
         "level": {
             "lvl": 66,
-            "xp": 17097017
+            "xp": 46866667
         },
         "stats": {
             "pv": 2205250,
@@ -596,11 +624,11 @@
             "Devoreur": 0
         },
         "title": {},
-        "last_daily": "2025-03-29 22:36:25.941148",
-        "max_daily": 25000,
+        "last_daily": "2025-03-30 22:43:42.559818",
+        "max_daily": 25500,
         "profil": 0,
-        "!eveil": "2025-03-23 04:12:11.593882",
-        "!craft": "2025-03-30 10:55:42.186225",
+        "!eveil": "2025-04-01 00:16:09.139481",
+        "!craft": "2025-04-01 00:20:42.834647",
         "!boostxp": "2025-03-13 10:21:20.310743",
         "!sw": "2025-03-13 10:20:07.851202",
         "classe": {
@@ -619,16 +647,16 @@
         "avenger": true,
         "rank": 7,
         "place": 4,
-        "gold": 311467,
+        "gold": 500027,
         "secret_potion": 0,
-        "!daily": "2025-03-30 22:43:35.479438",
-        "!explore": "2025-03-31 12:52:26.388749",
-        "!train": "2025-03-31 09:34:33.468549",
+        "!daily": "2025-03-31 22:57:54.491502",
+        "!explore": "2025-04-01 17:28:15.355832",
+        "!train": "2025-04-01 17:28:11.737859",
         "xp_boosted": "2025-04-04 11:11:11.111111",
         "gold_boosted": "2024-01-01 11:11:11.111111",
         "skill": {
             "PointXP": {
-                "quantity": 52,
+                "quantity": 55,
                 "icon": ":white_flower:"
             }
         },
@@ -664,17 +692,25 @@
                 "quantity": 10,
                 "icon": ":volcano:"
             },
-            "Mer": {
-                "quantity": 16,
-                "icon": ":sweat_drops:"
+            "Ocean": {
+                "quantity": 10,
+                "icon": ":ocean:"
+            },
+            "Arbre": {
+                "quantity": 5,
+                "icon": ":deciduous_tree:"
+            },
+            "Feu": {
+                "quantity": 10,
+                "icon": ":fire:"
             },
             "Plante": {
-                "quantity": 1,
+                "quantity": 19,
                 "icon": ":seedling:"
             },
-            "Ocean": {
-                "quantity": 8,
-                "icon": ":ocean:"
+            "Eau": {
+                "quantity": 14,
+                "icon": ":droplet:"
             }
         },
         "drop": {
@@ -697,17 +733,50 @@
             "Cendre foudre": {
                 "quantity": 1,
                 "icon": ":fog::zap:"
+            },
+            "Peau de serpent": {
+                "quantity": 2,
+                "icon": ":snake:"
+            },
+            "\u00c9caille de b\u00e9b\u00e9 dragon": {
+                "quantity": 1,
+                "icon": ":beginner::dragon:"
+            },
+            "Fourrure de troll": {
+                "quantity": 2,
+                "icon": ":mammoth:"
+            },
+            "Chair putrifi\u00e9e": {
+                "quantity": 2,
+                "icon": ":man_zombie:"
+            },
+            "Peau de loup": {
+                "quantity": 1,
+                "icon": ":wolf:"
+            },
+            "Cendre glace": {
+                "quantity": 1,
+                "icon": ":fog::snowflake:"
             }
         },
-        "bag": {},
+        "bag": {
+            "Rare": {
+                "quantity": 40,
+                "icon": "<:Rare:1222193217957662760>"
+            },
+            "Epique": {
+                "quantity": 5,
+                "icon": "<:Epique:1222193241022136491>"
+            }
+        },
         "level": {
-            "lvl": 52,
-            "xp": 3751176
+            "lvl": 55,
+            "xp": 3376672
         },
         "stats": {
-            "pv": 941500,
-            "for": 6545,
-            "def": 2664
+            "pv": 1015000,
+            "for": 6565,
+            "def": 8736
         },
         "deaths": 0,
         "penality": 0,
@@ -724,17 +793,17 @@
         },
         "title": {},
         "profil": 0,
-        "last_daily": "2025-03-29 22:36:25.941148",
-        "max_daily": 4500,
+        "last_daily": "2025-03-30 22:43:35.479438",
+        "max_daily": 5000,
         "!eveil": "2025-02-26 17:22:54.654271",
         "!boostxp": "2025-02-27 13:15:12.967009",
-        "!craft": "2025-03-31 09:35:09.632472",
+        "!craft": "2025-04-01 18:02:01.765619",
         "classe": {
             "unlock": true,
             "quantity": 1,
             "name": "Druide",
             "icon": ":coral:",
-            "progression 1": 18,
+            "progression 1": "completed",
             "progression 2": "Pas encore craft\u00e9"
         }
     },
@@ -890,16 +959,16 @@
         "avenger": true,
         "rank": 7,
         "place": 9,
-        "gold": 445954,
+        "gold": 169661,
         "secret_potion": 0,
-        "!daily": "2025-03-31 00:01:13.654640",
-        "!explore": "2025-03-31 11:23:03.171929",
-        "!train": "2025-03-31 10:01:17.608966",
+        "!daily": "2025-04-01 00:09:16.499449",
+        "!explore": "2025-04-01 17:56:53.298752",
+        "!train": "2025-04-01 15:11:45.366237",
         "xp_boosted": "2025-04-04 11:11:11.111111",
-        "gold_boosted": "2024-01-01 11:11:11.111111",
+        "gold_boosted": "2025-04-01 18:04:54.262795",
         "skill": {
             "PointXP": {
-                "quantity": 51,
+                "quantity": 53,
                 "icon": ":white_flower:"
             }
         },
@@ -953,38 +1022,38 @@
                 "quantity": 2,
                 "icon": ":smiling_imp:"
             },
-            "Cendre feu": {
-                "quantity": 1,
-                "icon": ":fog::fire:"
-            },
-            "Gel\u00e9e royale": {
-                "quantity": 1,
-                "icon": ":microbe::crown:"
-            },
             "Pierre foudre": {
                 "quantity": 2,
                 "icon": ":rock::zap:"
             },
-            "Pierre vent": {
+            "Gemme foudre": {
                 "quantity": 1,
-                "icon": ":rock::dash:"
+                "icon": ":gem::zap:"
             },
-            "Pierre plante": {
+            "Plume foudre": {
                 "quantity": 1,
-                "icon": ":rock::seedling:"
+                "icon": ":feather::zap:"
+            },
+            "Cendre feu": {
+                "quantity": 1,
+                "icon": ":fog::fire:"
+            },
+            "Cendre foudre": {
+                "quantity": 1,
+                "icon": ":fog::zap:"
             }
         },
         "bag": {
             "Rare": {
-                "quantity": 5,
+                "quantity": 15,
                 "icon": "<:Rare:1222193217957662760>"
             },
             "BoostXP": {
-                "quantity": 4,
+                "quantity": 6,
                 "icon": ":diamond_shape_with_a_dot_inside:"
             },
             "Legendaire": {
-                "quantity": 1,
+                "quantity": 4,
                 "icon": "<:Legendaire:1222193258403336222>"
             },
             "Epique": {
@@ -997,11 +1066,11 @@
             }
         },
         "level": {
-            "lvl": 51,
-            "xp": 1419446
+            "lvl": 53,
+            "xp": 4450872
         },
         "stats": {
-            "pv": 166636,
+            "pv": 160386,
             "for": 367,
             "def": 1145
         },
@@ -1019,17 +1088,17 @@
             "Devoreur": 0
         },
         "title": {},
-        "last_daily": "2025-03-29 23:55:18.567753",
-        "max_daily": 6500,
+        "last_daily": "2025-03-31 00:01:13.654640",
+        "max_daily": 7000,
         "!eveil": "2025-03-31 01:39:09.192302",
-        "!sw": "2025-03-31 00:24:21.601657",
-        "!craft": "2025-03-24 18:38:57.612455",
+        "!sw": "2025-04-01 00:24:25.904194",
+        "!craft": "2025-04-01 00:25:19.430958",
         "classe": {
             "unlock": true,
             "quantity": 2,
             "name": "Assassin",
             "icon": ":dagger:",
-            "progression 1": 95,
+            "progression 1": "completed",
             "progression 2": "Pas encore craft\u00e9"
         },
         "profil": 0
@@ -1088,16 +1157,16 @@
         "avenger": true,
         "rank": 9,
         "place": 1,
-        "gold": 1888739,
+        "gold": 4024310,
         "secret_potion": 0,
-        "!daily": "2025-03-30 22:43:35.213516",
-        "!explore": "2025-03-31 12:03:51.199831",
-        "!train": "2025-03-31 12:03:45.275458",
+        "!daily": "2025-03-31 22:56:45.344618",
+        "!explore": "2025-04-01 16:38:56.689453",
+        "!train": "2025-04-01 16:39:02.150918",
         "xp_boosted": "2025-04-19 00:15:56.751132",
         "gold_boosted": "2024-01-01 11:11:11.111111",
         "skill": {
             "PointXP": {
-                "quantity": 62,
+                "quantity": 63,
                 "icon": ":white_flower:"
             }
         },
@@ -1130,16 +1199,28 @@
         },
         "rune": {
             "Volcan": {
-                "quantity": 35,
+                "quantity": 43,
                 "icon": ":volcano:"
             },
             "Ocean": {
-                "quantity": 29,
+                "quantity": 36,
                 "icon": ":ocean:"
             },
             "Arbre": {
-                "quantity": 46,
+                "quantity": 51,
                 "icon": ":deciduous_tree:"
+            },
+            "Feu": {
+                "quantity": 56,
+                "icon": ":fire:"
+            },
+            "Plante": {
+                "quantity": 16,
+                "icon": ":seedling:"
+            },
+            "Eau": {
+                "quantity": 56,
+                "icon": ":droplet:"
             }
         },
         "drop": {
@@ -1156,20 +1237,16 @@
                 "icon": ":gem::zap:"
             },
             "Peau de serpent": {
-                "quantity": 2,
+                "quantity": 3,
                 "icon": ":snake:"
             },
             "\u00c9caille de b\u00e9b\u00e9 dragon": {
-                "quantity": 3,
+                "quantity": 4,
                 "icon": ":beginner::dragon:"
             },
             "Gemme feu": {
                 "quantity": 2,
                 "icon": ":gem::fire:"
-            },
-            "Noyau feu": {
-                "quantity": 1,
-                "icon": ":red_circle:"
             },
             "Plume foudre": {
                 "quantity": 1,
@@ -1183,20 +1260,16 @@
                 "quantity": 1,
                 "icon": ":anatomical_heart::zap:"
             },
-            "Venin mortel": {
-                "quantity": 1,
-                "icon": ":skull_crossbones:"
-            },
             "Cendre foudre": {
                 "quantity": 2,
                 "icon": ":fog::zap:"
             },
             "Cendre glace": {
-                "quantity": 6,
+                "quantity": 3,
                 "icon": ":fog::snowflake:"
             },
             "Cendre feu": {
-                "quantity": 2,
+                "quantity": 3,
                 "icon": ":fog::fire:"
             },
             "Gel\u00e9e royale": {
@@ -1234,22 +1307,34 @@
             "Soif de sang": {
                 "quantity": 1,
                 "icon": ":drop_of_blood:"
+            },
+            "Noyau eau": {
+                "quantity": 1,
+                "icon": ":blue_circle:"
+            },
+            "Peau carbonis\u00e9e": {
+                "quantity": 1,
+                "icon": ":bacon:"
             }
         },
         "bag": {
             "Voeu": {
                 "quantity": 1,
                 "icon": ":star2:"
+            },
+            "\u00c9toile": {
+                "quantity": 1,
+                "icon": ":star:"
             }
         },
         "level": {
-            "lvl": 62,
-            "xp": 12489027
+            "lvl": 63,
+            "xp": 3103681
         },
         "stats": {
-            "pv": 2436500,
-            "for": 21545,
-            "def": 57860
+            "pv": 2975500,
+            "for": 26457,
+            "def": 63924
         },
         "deaths": 0,
         "penality": 0,
@@ -1266,19 +1351,19 @@
         },
         "title": {},
         "profil": 0,
-        "last_daily": "2025-03-29 22:36:25.941148",
-        "max_daily": 21000,
+        "last_daily": "2025-03-30 22:43:35.213516",
+        "max_daily": 21500,
         "!eveil": "2025-03-19 22:51:07.392067",
-        "!compter": "2025-03-30 23:41:32.016834",
-        "!craft": "2025-03-31 04:17:54.411178",
-        "!sw": "2025-03-31 04:02:09.585324",
+        "!compter": "2025-04-01 00:10:03.495040",
+        "!craft": "2025-04-01 03:52:32.990784",
+        "!sw": "2025-04-01 00:49:24.776834",
         "!boostxp": "2025-03-31 00:05:18.924047",
         "classe": {
             "unlock": true,
             "quantity": 5,
             "name": "Rat",
             "icon": ":mouse:",
-            "progression 1": 4412028,
+            "progression 1": "completed",
             "progression 2": "Pas encore craft\u00e9"
         }
     },
@@ -1434,16 +1519,16 @@
         "avenger": true,
         "rank": 7,
         "place": 6,
-        "gold": 286690,
+        "gold": 368849,
         "secret_potion": 5,
-        "!daily": "2025-03-30 22:43:37.915201",
-        "!explore": "2025-03-31 06:27:50.711405",
-        "!train": "2025-03-31 06:27:54.213407",
+        "!daily": "2025-03-31 22:58:29.019309",
+        "!explore": "2025-04-01 17:28:40.526753",
+        "!train": "2025-04-01 16:12:07.309046",
         "xp_boosted": "2025-04-04 22:02:17.830761",
         "gold_boosted": "2024-01-01 11:11:11.111111",
         "skill": {
             "PointXP": {
-                "quantity": 58,
+                "quantity": 59,
                 "icon": ":white_flower:"
             }
         },
@@ -1476,7 +1561,7 @@
         },
         "rune": {
             "Volcan": {
-                "quantity": 10,
+                "quantity": 11,
                 "icon": ":volcano:"
             },
             "Ocean": {
@@ -1484,15 +1569,15 @@
                 "icon": ":ocean:"
             },
             "Feu": {
-                "quantity": 56,
+                "quantity": 152,
                 "icon": ":fire:"
             },
             "Eau": {
-                "quantity": 8,
+                "quantity": 108,
                 "icon": ":droplet:"
             },
             "Plante": {
-                "quantity": 60,
+                "quantity": 100,
                 "icon": ":seedling:"
             }
         },
@@ -1509,10 +1594,6 @@
                 "quantity": 1,
                 "icon": ":cricket_game:"
             },
-            "Gel\u00e9e royale": {
-                "quantity": 2,
-                "icon": ":microbe::crown:"
-            },
             "Gemme feu": {
                 "quantity": 1,
                 "icon": ":gem::fire:"
@@ -1522,7 +1603,7 @@
                 "icon": ":gem::zap:"
             },
             "Plume glace": {
-                "quantity": 1,
+                "quantity": 2,
                 "icon": ":feather::snowflake:"
             },
             "Corne de d\u00e9mon": {
@@ -1538,7 +1619,7 @@
                 "icon": ":drop_of_blood:"
             },
             "Ceinture imposante": {
-                "quantity": 2,
+                "quantity": 3,
                 "icon": ":loop:"
             },
             "Os de b\u00e9b\u00e9 dragon": {
@@ -1554,7 +1635,7 @@
                 "icon": ":anatomical_heart::fire:"
             },
             "Peau de serpent": {
-                "quantity": 1,
+                "quantity": 4,
                 "icon": ":snake:"
             },
             "Coeur de slime": {
@@ -1570,17 +1651,33 @@
                 "icon": ":mammoth:"
             },
             "Cendre glace": {
-                "quantity": 2,
+                "quantity": 4,
                 "icon": ":fog::snowflake:"
+            },
+            "Cendre foudre": {
+                "quantity": 3,
+                "icon": ":fog::zap:"
             },
             "Peau carbonis\u00e9e": {
                 "quantity": 1,
                 "icon": ":bacon:"
+            },
+            "Chair putrifi\u00e9e": {
+                "quantity": 1,
+                "icon": ":man_zombie:"
+            },
+            "Pierre": {
+                "quantity": 1,
+                "icon": ":rock:"
+            },
+            "Gel\u00e9e royale": {
+                "quantity": 1,
+                "icon": ":microbe::crown:"
             }
         },
         "bag": {
             "Rare": {
-                "quantity": 166,
+                "quantity": 168,
                 "icon": "<:Rare:1222193217957662760>"
             },
             "Fragment": {
@@ -1588,22 +1685,26 @@
                 "icon": ":small_red_triangle:"
             },
             "Epique": {
-                "quantity": 18,
+                "quantity": 69,
                 "icon": "<:Epique:1222193241022136491>"
             },
             "BoostXP": {
-                "quantity": 10,
+                "quantity": 24,
                 "icon": ":diamond_shape_with_a_dot_inside:"
+            },
+            "Legendaire": {
+                "quantity": 3,
+                "icon": "<:Legendaire:1222193258403336222>"
             }
         },
         "level": {
-            "lvl": 58,
-            "xp": 3107804
+            "lvl": 59,
+            "xp": 13981632
         },
         "stats": {
-            "pv": 281875,
-            "for": 6505,
-            "def": 876
+            "pv": 306875,
+            "for": 7400,
+            "def": 1036
         },
         "deaths": 0,
         "penality": 0,
@@ -1619,9 +1720,9 @@
             "Devoreur": 0
         },
         "title": {},
-        "last_daily": "2025-03-29 22:36:25.941148",
-        "max_daily": 5000,
-        "!sw": "2025-03-31 06:18:58.330775",
+        "last_daily": "2025-03-30 22:43:37.915201",
+        "max_daily": 5500,
+        "!sw": "2025-04-01 17:44:23.758736",
         "!eveil": "2025-03-24 12:12:19.597880",
         "classe": {
             "unlock": true,
@@ -1632,7 +1733,7 @@
             "progression 2": "Pas encore craft\u00e9"
         },
         "profil": 0,
-        "!craft": "2025-03-31 06:18:47.258792",
+        "!craft": "2025-04-01 17:46:53.457388",
         "!boostxp": "2025-03-24 02:13:48.065988"
     },
     "kazutohakaii": {

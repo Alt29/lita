@@ -226,14 +226,14 @@
     },
     "Catalyseur": {
         "craft": {
-            "image": "https://i.imgur.com/sPJ0Bfg.jpeg",
+            "image": "https://i.imgur.com/R9CD1zk.jpeg",
             "item": {
-                "Pierre eau" : 3,
-                "Gemme eau" : 1,
-                "Fourrure de troll" : 4,
-                "Aile de démon" : 2,
-                "Âme corrompue" : 1,
-                "Fragment" : 5,
+                "Pierre" : 3,
+                "Gemme" : 2,
+                "Ceinture imposante" : 2,
+                "Ceinture maudite" : 1,
+                "Noyau vent" : 1,
+                "Fragment" : 2,
                 "Ultime" : 1
             }
         },
@@ -272,14 +272,15 @@
     },
     "Memoires": {
         "craft": {
-            "image": "https://i.imgur.com/sPJ0Bfg.jpeg",
+            "image": "https://i.imgur.com/Bg7W3IN.jpeg",
             "item": {
-                "Pierre eau" : 3,
-                "Gemme eau" : 1,
-                "Fourrure de troll" : 4,
-                "Aile de démon" : 2,
-                "Âme corrompue" : 1,
-                "Fragment" : 5,
+                "Salive enflammée" : 2,
+                "Brume affaiblissante" : 1,
+                "Essence de vie" : 4,
+                "Sang de gobelin" : 1,
+                "Noyau feu" : 1,
+                "Venin mortel" : 1,
+                "Fragment" : 2,
                 "Ultime" : 1
             }
         },
